@@ -1,2 +1,2 @@
-# modeling-examples
+# workforce scheduling modeling example
 Gurobi modeling examples
