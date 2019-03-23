@@ -1,5 +1,4 @@
-# modeling-examples
-Gurobi modeling examples
+# Gurobi modeling examples
 
 ## Introduction: 
 
