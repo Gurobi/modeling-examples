@@ -1,5 +1,4 @@
 # Workforce Scheduling Modeling Example
-Gurobi modeling examples
 
 ## Motivation
 People are the most important asset in the services industry and the largest cost.
