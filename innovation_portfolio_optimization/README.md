@@ -31,5 +31,4 @@ budgets) and other business constraints (e.g. project precedence constraints) ?
 * IPO is formulated as a multi-objective MIP, conequently you will learn how to configure the model objective method 
 "Model.setObjectiveN() that allows to handle multiple objectives hierarchically.
 
-## Instructions
 
