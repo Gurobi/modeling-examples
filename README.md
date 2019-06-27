@@ -20,12 +20,7 @@ typical type of constraints can be used in different contexts.
 
 ## Index of modeling examples
 
-### Title: Workforce. 
-#### Description
-Consider a service business that needs to plan its workforce over a planning 
-horizon. There is a known demand of workers each planning period, and there is a limited 
-number of workers available at each planning period. This problem is a multi objective
-optimization problem. The primary objective is to minimize the number of temporal workers
-that needs to be contracted to satisfy workers demand at each planning period. The 
-secondary objective is to balance the workload of employed workers.
+- [Workforce](https://github.com/Gurobi/modeling-examples/tree/master/workforce)
+- [Innovation Portfolio Optimization](https://github.com/Gurobi/modeling-examples/tree/master/innovation_portfolio_optimization)
+
 
