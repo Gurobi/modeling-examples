@@ -29,8 +29,3 @@ optimization problem. The primary objective is to minimize the number of tempora
 that needs to be contracted to satisfy workers demand at each planning period. The 
 secondary objective is to balance the workload of employed workers.
 
-
-## Instructions
-+ Fernando ...
-
-## License for distribution
