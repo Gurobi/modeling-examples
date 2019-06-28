@@ -24,3 +24,5 @@ typical type of constraints can be used in different contexts.
 - [Innovation Portfolio Optimization](https://github.com/Gurobi/modeling-examples/tree/master/innovation_portfolio_optimization)
 
 
+
+These modeling examples are distributed under the Apache 2.0 license, (c) copyright 2019 Gurobi Optimization, LLC
