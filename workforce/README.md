@@ -29,3 +29,7 @@ workers that needs to hire, and as a secondary objective (fairness) it wants to 
 * The workforce scheduling problem is formulated as a multi-objective MIP, conequently you will learn how to configure the model objective 
 method "Model.setObjectiveN()" that allows to handle multiple objectives hierarchically.
 
+## HTML Example URL
+
+https://gurobi.github.io/modeling-examples/workforce/workforce_scheduling.html
+
