@@ -55,4 +55,4 @@ The goal is to find an allocation of resources to jobs that maximizes the total 
 
 ## HTML Example URL
 
-https://gurobi.github.io/ME-projects/RMO-FTE-Budget/RMO-FTE-Hire-budget.html
+https://gurobi.github.io/modeling-examples/RMO-FTE-Budget/RMO-FTE-Hire-budget.html
