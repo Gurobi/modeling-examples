@@ -4,7 +4,7 @@ This problem was introduced in 1930 and may well be one of the most intensively 
 
 ## HTML Example URL
 
-https://gurobi.github.io/ME-projects/traveling_salesman/tsp.html
+https://gurobi.github.io/modeling-examples/traveling_salesman/tsp.html
 
 
 Copyright © 2019 Gurobi Optimization, LLC
