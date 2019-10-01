@@ -49,4 +49,4 @@ In 2016, the technology was transferred to the former HP-SW Project Portfolio Ma
 
 ## HTML Example URL
 
-https://gurobi.github.io/ME-projects/IPO/ipoEM.html
+https://gurobi.github.io/modeling-examples/IPO/ipoEM.html
