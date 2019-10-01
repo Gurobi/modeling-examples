@@ -35,7 +35,7 @@ Bertsimas et. al. (2016) successfully applied mathematical programming to solve 
 
 ## HTML Example URL
 
-https://gurobi.github.io/ME-projects/linear_regression/L0-regression.html
+https://gurobi.github.io/modeling-examples/linear_regression/L0-regression.html
 
 
 Copyright © 2019 Gurobi Optimization, LLC
