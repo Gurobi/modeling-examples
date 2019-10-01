@@ -4,7 +4,7 @@ The goal of this model is to pick a set of retail store locations, chosen from a
 
 ## HTML Example URL
 
-https://gurobi.github.io/ME-projects/customer_assignment/customer_assignment.html
+https://gurobi.github.io/modeling-examples/customer_assignment/customer_assignment.html
 
 
 Copyright © 2019 Gurobi Optimization, LLC
