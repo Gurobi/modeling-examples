@@ -32,6 +32,6 @@ budgets) and other business constraints (e.g. project precedence constraints) ?
 "Model.setObjectiveN() that allows to handle multiple objectives hierarchically.
 
 ## HTML Example URL
-https://gurobi.github.io/modeling-examples/innovation_portfolio_optimization/ipoEM.html
+https://gurobi.github.io/modeling-examples/innovation_portfolio_optimization/ipo.html
 
 
