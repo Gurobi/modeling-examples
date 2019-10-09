@@ -20,9 +20,14 @@ show how the modeling objects of Gurobi and the typical type of constraints can 
 
 ## Index of modeling examples
 
-- [Workforce](https://github.com/Gurobi/modeling-examples/tree/master/workforce)
+- [Customer Assignment](https://github.com/Gurobi/modeling-examples/tree/master/customer_assignment)
+- [H.P. Williams](https://github.com/Gurobi/modeling-examples/tree/master/hp_williams)
 - [Innovation Portfolio Optimization](https://github.com/Gurobi/modeling-examples/tree/master/innovation_portfolio_optimization)
-
+- [The Lasso](https://github.com/Gurobi/modeling-examples/tree/master/lasso)
+- [L0-Regression](https://github.com/Gurobi/modeling-examples/tree/master/linear_regression)
+- [Resource Management Optimization](https://github.com/Gurobi/modeling-examples/tree/master/rmo_fte_budget)
+- [Traveling Salesman Problem](https://github.com/Gurobi/modeling-examples/tree/master/traveling_salesman)
+- [Workforce Scheduling](https://github.com/Gurobi/modeling-examples/tree/master/workforce)
 
 
 These modeling examples are distributed under the Apache 2.0 license, (c) copyright 2019 Gurobi Optimization, LLC
