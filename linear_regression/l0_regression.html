@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>L0-regression</title>
+<title>l0_regression</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,21 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Best-Subset-Selection:-L0-Regression">Best Subset Selection: L0-Regression<a class="anchor-link" href="#Best-Subset-Selection:-L0-Regression">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In this notebook you will:</p>
+<h1 id="Best-Subset-Selection:-L0-Regression">Best Subset Selection: L0-Regression<a class="anchor-link" href="#Best-Subset-Selection:-L0-Regression">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this notebook you will:</p>
 <ol>
 <li>Learn how to perform linear regression with feature selection using mathematical programming.</li>
 <li>Gain insights about related approaches, such as OLS regression and the Lasso.</li>
@@ -13141,42 +13127,16 @@ div#notebook {
 <li>Linear algebra (matrix multiplication, transpose and inverse).</li>
 <li>Linear regression analysis.</li>
 </ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Linear Regression was invented at the beginning of the XIX century and today, after more than 200 years, it is still used extensively in practical applications for description and prediction purposes:</p>
+<hr>
+<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>Linear Regression was invented at the beginning of the XIX century and today, after more than 200 years, it is still used extensively in practical applications for description and prediction purposes:</p>
 <ul>
 <li>In econometrics, it is useful to estimate the price elasticity of a particular product by regressing sales revenue on price and possibly other features such as demographic, competitor and retail information.</li>
 <li>In health sciences, it can be applied to predict how long a patient will remain, i.e. length of stay, in the ER of a hospital based on patient information, triage assessment, medical test results and date/time of arrival.</li>
 <li>In social sciences, it may shed light on future academic performance of students, so proactive measures can be taken to improve their learning.</li>
 </ul>
 <p>In general, Linear Regression is used to model the relationship between a continuous variable and other explanatory variables, which can be either continuous or categorical. When applying this technique, finding the subset of features that maximizes its perfomance is often of interest.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Linear Regression is a supervised learning algorithm used to predict a quantitative response. It assumes that there is a linear relationship between the feature vector $x_i \in \mathbb{R}^d$ and the response $y_i \in \mathbb{R}$. Mathematically speaking, for sample $i$ we have $y_i = \beta^T x_i + \epsilon_i$, where $\beta \in \mathbb{R}^d$ is the vector of feature weights, including the intercept, and  $\epsilon_i$ is a normally-distributed random variable with zero mean and constant variance representing the error term. We can learn the weights from a training dataset with $n$ observations $\{X \in \mathbb{M}^{nxd},y \in \mathbb{R}^n\}$ by minimizing the Residual Sum of Squares (RSS): $e^Te =(y-X\beta)^T (y-X\beta)=\beta^T X^T X\beta- 2y^TX\beta+y^T y$. The Ordinary Least Squares (OLS) method achieves this by taking the derivative of this quadratic —and thus convex— function and then finding the stationary point: $\beta_{OLS}=(X^T X)^{-1} X^T y$.</p>
+<hr>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Linear Regression is a supervised learning algorithm used to predict a quantitative response. It assumes that there is a linear relationship between the feature vector $x_i \in \mathbb{R}^d$ and the response $y_i \in \mathbb{R}$. Mathematically speaking, for sample $i$ we have $y_i = \beta^T x_i + \epsilon_i$, where $\beta \in \mathbb{R}^d$ is the vector of feature weights, including the intercept, and  $\epsilon_i$ is a normally-distributed random variable with zero mean and constant variance representing the error term. We can learn the weights from a training dataset with $n$ observations $\{X \in \mathbb{M}^{nxd},y \in \mathbb{R}^n\}$ by minimizing the Residual Sum of Squares (RSS): $e^Te =(y-X\beta)^T (y-X\beta)=\beta^T X^T X\beta- 2y^TX\beta+y^T y$. The Ordinary Least Squares (OLS) method achieves this by taking the derivative of this quadratic and convex function and then finding the stationary point: $\beta_{OLS}=(X^T X)^{-1} X^T y$.</p>
 <p>In practice, some of the features are in fact not associated with the response. By including them, we only add unnecessary complexity to the model and increase variance to the weight estimates. However, finding the best performing model is no simple task as there is an exponential number of candidates, as one has to test $\sum_{s=1}^{d-1}{{d-1} \choose s}$ models. Since OLS rarely yields estimates that are exactly zero, thus discarding the features related to them, we need to resort to feature selection methods. Popular methods include:</p>
 <ul>
 <li>Subset selection, e.g. stepwise selection.</li>
@@ -13185,21 +13145,8 @@ div#notebook {
 </ul>
 <p>The lasso has undoubtedly been the method of choice for the last decade. Basically it fits a model containing all $d$ predictors, while incorporating a budget constraint based on the L1-norm of $\beta$, disregarding the intercept component. In fact, this method minimizes the RSS, subject to $\sum_{l=1}^{d-1}\mathopen|\beta_l\mathclose| \leq s$, where $s$ is a hyper-parameter representing the budget that is usually tuned via cross-validation. This constraint has the effect of shrinking all weight estimates, allowing some of them to be exactly zero when $s$ is small enough. Finally, it is worth noting that the unconstrained version of the Lasso is more frequently used. This version solves an unconstrained optimization problem where $RSS + \lambda \sum_{l=1}^{d-1}\mathopen|\beta_l\mathclose|$ is minimized, for a given value of the —modified— lagrangian multiplier $\lambda \in \mathbb{R}^+$.</p>
 <p>A similar formulation is now presented, where the L0-norm is used instead. We now seek to minimize the RSS, subject to $\sum_{l=1}^{d-1}I(\beta_l \neq 0) \leq s$, where $I(\beta_l \neq 0)$ is an indicator function taking on the value of 1 if $\beta_j \neq 0$ and 0 otherwise. In this setting, $s$ represents the number of features to consider in the model. This optimization problem may be casted as a Mixed Integer Quadratic Program (MIQP). Traditionally, the feature selection problem has not been tackled this way because of the common belief in the statistics community that large scale problems are intractable. But this is no longer the case, considering the computing power currently available and the performance of modern optimization solvers such as Gurobi.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi optimizer solves such models using state-of-the-art mathematics and computer science.</p>
+<hr>
+<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi optimizer solves such models using state-of-the-art mathematics and computer science.</p>
 <p>A mathematical optimization model has five components, namely:</p>
 <ul>
 <li>Sets and indices.</li>
@@ -13209,13 +13156,6 @@ div#notebook {
 <li>Constraints.</li>
 </ul>
 <p>We now present a MIQP formulation that finds the weight estimates for a linear regression problem, where exactly $s$ of those weights must be nonzero:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$i \in I=\{1,2,\dots,n\}$: Set of observations.</p>
 <p>$j \in J=\{1,2,\dots,d\}$: Set of features, where the last ID corresponds to the intercept.</p>
 <p>$l \in L = J \backslash \{d\}$: Set of features, where the intercept is excluded.</p>
@@ -13226,28 +13166,28 @@ div#notebook {
 <p><strong>*Note:</strong> Recall that the RSS is defined as $\beta^T X^T X\beta- 2y^TX\beta+y^T y$.</p>
 <h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$\beta_j \in \mathbb{R}$: Weight of feature $j$, representing the change in the response variable per unit-change of feature $j$.</p>
 <p>$iszero_l \in \{0,1\}$: 1 if weight of feature $l$ is exactly equal to zero, and 0 otherwise. Auxiliary variable used to manage the budget constraint.</p>
-<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h3><ol>
+<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h3><ul>
 <li><strong>Training error</strong>: Minimize the Residual Sum of Squares (RSS):</li>
-</ol>
-<p>Min $\frac{1}{2}\sum_{j \in J}\sum_{j' \in J}Q_{j,j'}\beta_j\beta_{j'} - \sum_{j \in J}c_j\beta_j + \frac{1}{2}k$</p>
-<p>Note that we use the fact that if $x^*$ is a minimizer of $f(x)$, it is also a minimizer of $a\cdot f(x)$, as long as $a &gt; 0$.</p>
-<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><ol>
+</ul>
+\begin{equation}
+\text{Min} \quad Z = \frac{1}{2}\sum_{j \in J}\sum_{j' \in J}Q_{j,j'}\beta_j\beta_{j'} - \sum_{j \in J}c_j\beta_j + \frac{1}{2}k
+\tag{0}
+\end{equation}<p>Note that we use the fact that if $x^*$ is a minimizer of $f(x)$, it is also a minimizer of $a\cdot f(x)$, as long as $a &gt; 0$.</p>
+<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><ul>
 <li><strong>Mutual exclusivity</strong>: For each feature $l$, if $iszero_l=1$, then $\beta_l=0$ (defined as a Special Ordered Set of type one):</li>
-</ol>
-<p>$(\beta_l, iszero_l)$: SOS-1 $\quad \forall l \in L$</p>
-<ol>
+</ul>
+\begin{equation}
+(\beta_l, iszero_l): \text{SOS-1} \quad \forall l \in L
+\tag{1}
+\end{equation}<ul>
 <li><strong>Budget constraint</strong>: Exactly $|L| - s$ feature weights must be equal to zero:</li>
-</ol>
-<p>$\sum_{l \in L}iszero_l = |L| - s$</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This model, by means of constraint 2, implicitly considers all ${{d-1} \choose s}$ feature subsets at once. Notice that it defines the budget constraint as $\sum_{l=1}^{d-1}I(\beta_l \neq 0) = s$, provided that the training RSS decreases monotonically as more features are considered. Because of this, we need to adjust the number of features via cross-validation, using the Mean Square Error (MSE) as the performance metric.</p>
-<p>In the following implementation, we make use of four main libraries:</p>
+</ul>
+\begin{equation}
+\sum_{l \in L}iszero_l = |L| - s
+\tag{2}
+\end{equation}<p>This model, by means of constraint 2, implicitly considers all ${{d-1} \choose s}$ feature subsets at once. Notice that it defines the budget constraint as $\sum_{l=1}^{d-1}I(\beta_l \neq 0) = s$, provided that the training RSS decreases monotonically as more features are considered. Because of this, we need to adjust the number of features via cross-validation, using the Mean Square Error (MSE) as the performance metric.</p>
+<hr>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>In the following implementation, we make use of four main libraries:</p>
 <ul>
 <li><strong>Numpy</strong> for scientific computing.</li>
 <li><strong>Scikit learn</strong> for machine learning algorithms.</li>
@@ -13414,14 +13354,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Benchmark">Benchmark<a class="anchor-link" href="#Benchmark">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We now compare the performance of the aforementioned approach w.r.t. OLS regression on all features and the Lasso. The Boston dataset is used for this purpose. This dataset measures the prices of 506 houses, along with 13 features that provide insights about their neighbourhoods. We will use the original feature terminology, so the interested reader is referred to <a href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html">this website</a>.</p>
+<hr>
+<h2 id="Benchmark">Benchmark<a class="anchor-link" href="#Benchmark">&#182;</a></h2><p>We now compare the performance of the aforementioned approach w.r.t. OLS regression on all features and the Lasso. The Boston dataset is used for this purpose. This dataset measures the prices of 506 houses, along with 13 features that provide insights about their neighbourhoods. We will use the original feature terminology, so the interested reader is referred to <a href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html">this website</a>.</p>
 <p>Note that 20% of the samples are reserved for computing the out-of-sample MSE. The resulting metrics are displayed in a bar chart (shown below) to facilitate the comparison between models.</p>
 
 </div>
@@ -13627,34 +13561,14 @@ L0-regression kept 11 features.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Final-Model">Final Model<a class="anchor-link" href="#Final-Model">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The previous analysis indicates that the best candidate is the model suggested by L0-regression. The resulting equation is as follows:</p>
+<h3 id="Final-Model">Final Model<a class="anchor-link" href="#Final-Model">&#182;</a></h3><p>The previous analysis indicates that the best candidate is the model suggested by L0-regression. The resulting equation is as follows:</p>
 \begin{equation}
 \text{medv} = 22.56-1.02\text{crim}+1.46\text{zn}+0.49\text{chas}-1.93\text{nox}+2.53\text{rm}
 \end{equation}\begin{equation}
 -3.48\text{dis}+2.65\text{rad}-2.22\text{tax}-1.87\text{ptratio}+1.00\text{b}-3.69\text{lstat}
 \end{equation}<p>Since we standardized the data, the intercept represents the estimated median value (in thousands) of a house with mean values across features. Likewise, we can interpret $\beta_1=-1.02$ as the decrease in the house value when the per-capita crime rate increases by one standard deviation from the average value, <em>ceteris paribus</em> (similar statements can be made for the rest of the features). Finally, if the main purpose of the analysis is to explain the variability in the response, having 11 features may be too much. However, remember that one can always set the number of active features to a more manageable number to ease the interpretation, perhaps at the expense of predictive power.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>It has been shown how mathematical programming can be used to perform feature selection on linear regression problems. It is in fact a good alternative to the Lasso, given that L0-regression is scale invariant and does not add bias to the weight estimates. Furthermore, this approach is amenable to the specification of additional linear constraints (Bertsimas, 2015), such as:</p>
+<hr>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>It has been shown how mathematical programming can be used to perform feature selection on linear regression problems. It is in fact a good alternative to the Lasso, given that L0-regression is scale invariant and does not add bias to the weight estimates. Furthermore, this approach is amenable to the specification of additional linear constraints (Bertsimas, 2015), such as:</p>
 <ul>
 <li>Enforcing group sparcity among features.</li>
 <li>Limiting pairwise multicollinearity.</li>
@@ -13662,21 +13576,8 @@ L0-regression kept 11 features.
 <li>Considering a fixed set of nonlinear transformations.</li>
 </ul>
 <p>Nevertheless, take this result with caution, as "there is no free lunch in statistics". That is, no algorithm outperforms all others under all possible datasets. Ultimately, a good data scientist should consider multiple learning algorithms when analyzing a dataset.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ol>
+<hr>
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
 <li>Bertsimas, D., &amp; King, A. (2015). OR forum—An algorithmic approach to linear regression. Operations Research, 64(1), 2-16.</li>
 <li>Bertsimas, D., King, A., &amp; Mazumder, R. (2016). Best subset selection via a modern optimization lens. The annals of statistics, 44(2), 813-852.</li>
 <li>James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). An introduction to statistical learning. New York: springer.</li>
