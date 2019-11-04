@@ -23,7 +23,7 @@ It is shown that solving Bilinear Programs with Gurobi is as easy as configuring
 
 ## HTML Example URL
 
-https://gurobi.github.io/ME-projects/pooling/std_pooling.html
+https://gurobi.github.io/modeling-examples/pooling/std_pooling.html
 
 
 Copyright © 2019 Gurobi Optimization, LLC
