@@ -13343,24 +13343,46 @@ div#notebook {
 <span class="c1"># Deploy constraint sets</span>
 
 <span class="c1"># 1. Flow conservation</span>
-<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">ij</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Flow_conservation&quot;</span><span class="p">)</span>
+<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">ij</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span><span class="p">),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Flow_conservation&quot;</span><span class="p">)</span>
 <span class="c1"># 2. Source capacity</span>
-<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">ij</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">supply</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Source_capacity&quot;</span><span class="p">)</span>
+<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">ij</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">supply</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Source_capacity&quot;</span><span class="p">)</span>
 <span class="c1"># 3. Pool capacity</span>
-<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">cap</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Pool_capacity&quot;</span><span class="p">)</span>
+<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">cap</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span><span class="p">),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Pool_capacity&quot;</span><span class="p">)</span>
 <span class="c1"># 4. Target demand</span>
-<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">demand</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_demand&quot;</span><span class="p">)</span>
+<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">demand</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_demand&quot;</span><span class="p">)</span>
 <span class="c1"># 5. Pool concentration</span>
-<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span><span class="p">)</span> <span class="o">==</span> <span class="n">prop</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Pool_concentration&quot;</span><span class="p">)</span>
+<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+                               <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span><span class="p">)</span>
+                      <span class="o">==</span> <span class="n">prop</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Pool_concentration&quot;</span><span class="p">)</span>
 <span class="c1"># 6.1 Target (min) tolerances</span>
-<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ik</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2t</span><span class="p">)</span><span class="o">+</span><span class="n">quicksum</span><span class="p">(</span><span class="n">prop</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">p2t</span><span class="p">)</span><span class="o">&gt;=</span> <span class="n">min_tol</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">min_tol</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_min_tolerances&quot;</span><span class="p">)</span>
+<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ik</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+                               <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2t</span><span class="p">)</span>
+                      <span class="o">+</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">prop</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+                                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">p2t</span><span class="p">)</span>
+                      <span class="o">&gt;=</span> <span class="n">min_tol</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span>
+                      <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">min_tol</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_min_tolerances&quot;</span><span class="p">)</span>
 <span class="c1"># 6.2 Target (max) tolerances</span>
-<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ik</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2t</span><span class="p">)</span><span class="o">+</span><span class="n">quicksum</span><span class="p">(</span><span class="n">prop</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">p2t</span><span class="p">)</span><span class="o">&lt;=</span> <span class="n">max_tol</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">max_tol</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_max_tolerances&quot;</span><span class="p">)</span>
+<span class="n">p_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ik</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+                               <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2t</span><span class="p">)</span>
+                      <span class="o">+</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">prop</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+                                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">p2t</span><span class="p">)</span>
+                      <span class="o">&lt;=</span> <span class="n">max_tol</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span>
+                      <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">max_tol</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_max_tolerances&quot;</span><span class="p">)</span>
 
 <span class="c1"># Deploy Objective Function</span>
 
 <span class="c1"># 0. Total profit</span>
-<span class="n">obj</span> <span class="o">=</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">)</span> <span class="o">-</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ij</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span>
+               <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">)</span> \
+<span class="o">-</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ij</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">))</span>
+           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">)</span>
 <span class="n">p_pooling</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
 
 <span class="c1"># Find the optimal solution</span>
@@ -13390,7 +13412,7 @@ Changed value of parameter timelimit to 300.0
    Prev: inf  Min: 0.0  Max: inf  Default: inf
 Gurobi Optimizer version 9.0.0 build v9.0.0beta1 (mac64)
 Optimize a model with 10 rows, 24 columns and 38 nonzeros
-Model fingerprint: 0x07535d75
+Model fingerprint: 0x0b62f5c5
 Model has 20 quadratic constraints
 Coefficient statistics:
   Matrix range     [1e+00, 1e+00]
@@ -13415,91 +13437,83 @@ Root relaxation: objective 9.577646e+05, 56 iterations, 0.00 seconds
 
      0     0 957764.599    0   10          - 957764.599      -     -    0s
      0     0 957764.599    0   13          - 957764.599      -     -    0s
-     0     0 878230.977    0   21          - 878230.977      -     -    0s
-     0     0 878230.977    0   20          - 878230.977      -     -    0s
-     0     2 878230.977    0   20          - 878230.977      -     -    0s
-* 5375  3694             277    347604.36519 837698.434   141%   7.1    0s
-* 7297  4810             105    347686.54660 805308.405   132%   6.6    0s
-* 7298  4810             105    347689.66959 805308.405   132%   6.6    0s
-* 7301  4810             106    347753.90960 805308.405   132%   6.6    0s
-* 7566  4728             254    360278.76431 805308.405   124%   6.6    0s
-* 7569  4724             254    361457.20626 805308.405   123%   6.6    0s
-* 7574  4722             255    362113.86253 805308.405   122%   6.6    0s
-* 7577  4722             255    363289.17448 805308.405   122%   6.6    0s
-*10709  5878             142    392879.97867 772595.227  96.6%   6.9    0s
-*21041  7942             154    394630.03662 765241.082  93.9%  12.0    2s
-*22400  7038             139    415473.29812 762333.103  83.5%  13.1    2s
- 62360 32315 482903.856   58   16 415473.298 706999.642  70.2%   9.1    5s
- 136563 81391 706409.331   41   11 415473.298 706826.107  70.1%   7.2   10s
- 220261 137818 706710.173   66   19 415473.298 706757.820  70.1%   6.6   15s
- 301707 189258 549393.226  121   15 415473.298 706720.587  70.1%   6.4   20s
- 378178 234640     cutoff   81      415473.298 706701.751  70.1%   6.2   25s
- 448476 280425     cutoff   63      415473.298 706689.799  70.1%   6.1   30s
- 524966 327315 706328.072   46   24 415473.298 706680.825  70.1%   6.0   35s
- 595817 373416     cutoff  100      415473.298 706673.700  70.1%   6.0   40s
- 660105 412300 606310.376  144   14 415473.298 706669.067  70.1%   6.0   45s
- 732350 455708 618337.652   59   10 415473.298 706665.393  70.1%   6.0   50s
- 805697 499785 infeasible  171      415473.298 706662.350  70.1%   6.0   55s
- 879620 546644     cutoff   72      415473.298 706659.951  70.1%   6.0   60s
- 953452 586831 infeasible  154      415473.298 706658.732  70.1%   6.0   65s
- 1027431 630163     cutoff   83      415473.298 706656.888  70.1%   6.0   70s
- 1103179 677167     cutoff   67      415473.298 706655.654  70.1%   6.0   75s
- 1176997 721497     cutoff  203      415473.298 706654.407  70.1%   6.0   80s
- 1253442 767700 644216.584  229   15 415473.298 706653.221  70.1%   6.0   85s
- 1324302 810559 501270.689   70   20 415473.298 706652.369  70.1%   6.0   90s
- 1393709 853819     cutoff  164      415473.298 706651.647  70.1%   6.0   95s
- 1458212 892126 706405.837   62   24 415473.298 706650.920  70.1%   6.0  100s
- 1477011 903615 675272.086  165   14 415473.298 706650.717  70.1%   6.0  105s
- 1486916 909960 infeasible   91      415473.298 706650.617  70.1%   6.0  110s
- 1503243 920889 infeasible   82      415473.298 706650.476  70.1%   6.0  115s
- 1524629 934385     cutoff   78      415473.298 706650.282  70.1%   6.0  120s
- 1551812 951801 706636.912  105   11 415473.298 706650.055  70.1%   6.0  125s
- 1580668 969239 infeasible   76      415473.298 706649.832  70.1%   6.0  130s
- 1610438 988317 593153.401  235   18 415473.298 706649.604  70.1%   6.0  135s
- 1643112 1006886 511040.449  205    9 415473.298 706649.326  70.1%   6.0  140s
- 1684755 1030745 671341.010   84    8 415473.298 706648.945  70.1%   6.0  145s
- 1731320 1057145 448824.210   69    8 415473.298 706648.638  70.1%   6.0  150s
- 1784436 1087902 545340.688  106   20 415473.298 706648.228  70.1%   6.0  155s
- 1841399 1120212     cutoff   59      415473.298 706647.897  70.1%   6.0  160s
- 1899432 1154483 511128.667   95   20 415473.298 706647.545  70.1%   6.1  165s
- 1959359 1188597     cutoff   85      415473.298 706647.199  70.1%   6.1  170s
- 2025626 1229034     cutoff   75      415473.298 706646.819  70.1%   6.1  175s
- 2091178 1268227 668583.944   69   20 415473.298 706646.530  70.1%   6.1  180s
- 2162249 1311465 695244.943  169   12 415473.298 706646.228  70.1%   6.1  185s
- 2232397 1352087 589254.937  156   16 415473.298 706645.980  70.1%   6.1  190s
- 2302399 1393736 493683.122  114   15 415473.298 706645.737  70.1%   6.1  195s
- 2374123 1432584     cutoff  130      415473.298 706645.407  70.1%   6.1  200s
- 2447547 1476566 586529.593   77   17 415473.298 706645.148  70.1%   6.1  205s
- 2521292 1521217     cutoff  150      415473.298 706644.911  70.1%   6.1  210s
- 2595925 1566952 515471.001   72   21 415473.298 706644.596  70.1%   6.1  215s
- 2670474 1611022 519969.931  114   20 415473.298 706644.374  70.1%   6.1  220s
- 2744216 1655079 706631.127  150   12 415473.298 706644.173  70.1%   6.1  225s
- 2819075 1699516 678307.983   70   24 415473.298 706643.941  70.1%   6.1  230s
- 2892314 1741347     cutoff   61      415473.298 706643.756  70.1%   6.1  235s
- 2968427 1787267 693102.986   76   24 415473.298 706643.574  70.1%   6.1  240s
- 3044585 1832976 553476.890   87   21 415473.298 706643.376  70.1%   6.1  245s
- 3118918 1874813     cutoff  133      415473.298 706643.180  70.1%   6.1  250s
- 3193233 1919222     cutoff   74      415473.298 706642.991  70.1%   6.1  255s
- 3266826 1961094     cutoff  104      415473.298 706642.837  70.1%   6.1  260s
- 3343049 2004441     cutoff   86      415473.298 706642.701  70.1%   6.1  265s
- 3415412 2044872 706615.008  127   11 415473.298 706642.585  70.1%   6.1  270s
- 3490448 2088674 infeasible  126      415473.298 706642.451  70.1%   6.2  275s
- 3563611 2129987 474013.348  106   17 415473.298 706642.316  70.1%   6.2  280s
- 3634783 2172478 infeasible  112      415473.298 706642.173  70.1%   6.2  285s
- 3708727 2216305 478356.834   54   14 415473.298 706642.051  70.1%   6.2  290s
- 3781534 2258346 699155.496   83   24 415473.298 706641.932  70.1%   6.2  295s
- 3853770 2301391 706635.441  159   10 415473.298 706641.822  70.1%   6.2  300s
+     0     0 878230.977    0   23          - 878230.977      -     -    0s
+     0     0 878230.977    0   22          - 878230.977      -     -    0s
+     0     0 878230.977    0   22          - 878230.977      -     -    0s
+     0     2 878230.977    0   22          - 878230.977      -     -    0s
+* 1153  1103             157    372693.73412 868248.309   133%   7.4    0s
+*11122  4453             311    432572.38449 709865.858  64.1%   8.6    0s
+*15910  3849             136    433994.24393 700172.465  61.3%   9.8    1s
+*15917  3837             135    434296.80358 700172.465  61.2%   9.7    1s
+*16412  4138             133    434301.94482 694740.769  60.0%   9.8    1s
+ 75241 34439 571406.574   93   17 434301.945 665905.459  53.3%   9.2    5s
+ 124129 43223     cutoff  186      434301.945 665905.454  53.3%  11.2   10s
+ 173000 48274 663334.520  102   13 434301.945 665905.320  53.3%  12.5   15s
+ 232773 63554 665589.693   39   19 434301.945 665819.682  53.3%  12.8   20s
+ 301530 94200 665671.170   91    9 434301.945 665671.188  53.3%  12.3   25s
+ 365316 131877 665568.811   52    9 434301.945 665608.058  53.3%  11.7   30s
+ 428484 167844 593323.257   71   11 434301.945 665593.223  53.3%  11.4   35s
+ 502403 211543 593816.477   69   12 434301.945 665584.848  53.3%  11.0   40s
+ 577326 252911 infeasible   94      434301.945 665581.242  53.3%  10.7   45s
+ 646052 289275 593635.412   63   13 434301.945 665579.418  53.3%  10.6   50s
+ 713162 322497 infeasible   68      434301.945 665578.147  53.3%  10.6   55s
+ 778287 353077     cutoff   63      434301.945 665577.422  53.3%  10.6   60s
+ 844780 383400 572829.929   68   14 434301.945 665576.871  53.3%  10.6   65s
+ 911479 413175 infeasible   83      434301.945 665576.447  53.3%  10.6   70s
+ 977416 441868 560005.607   74   12 434301.945 665576.118  53.3%  10.6   75s
+ 1047295 472693 665573.957   60   16 434301.945 665575.824  53.3%  10.6   80s
+ 1113927 501541 infeasible   64      434301.945 665575.620  53.3%  10.6   85s
+ 1180961 529558 665574.369   52   19 434301.945 665575.447  53.3%  10.7   90s
+ 1244603 555769 infeasible   63      434301.945 665575.310  53.3%  10.7   95s
+ 1310379 581843 568399.988   81   14 434301.945 665575.190  53.3%  10.7  100s
+ 1377858 609060     cutoff   64      434301.945 665575.080  53.3%  10.8  105s
+ 1441042 634035 665573.003   56   11 434301.945 665574.993  53.3%  10.8  110s
+ 1506295 659797     cutoff   89      434301.945 665574.916  53.3%  10.9  115s
+ 1569599 684064 586184.585   73   14 434301.945 665574.848  53.3%  10.9  120s
+ 1634102 708959 infeasible   71      434301.945 665574.790  53.3%  10.9  125s
+ 1697708 732328 infeasible   62      434301.945 665574.736  53.3%  11.0  130s
+ 1760996 755787 513401.475   67    6 434301.945 665574.688  53.3%  11.0  135s
+ 1826359 779705 infeasible   48      434301.945 665574.644  53.3%  11.1  140s
+ 1887439 802523 665573.127   51   11 434301.945 665574.606  53.3%  11.1  145s
+ 1952187 826145 480668.055   67    8 434301.945 665574.569  53.3%  11.1  150s
+ 2013296 848210 infeasible   67      434301.945 665574.538  53.3%  11.2  155s
+ 2079040 872345     cutoff   70      434301.945 665574.505  53.3%  11.2  160s
+ 2140295 894435 582320.526   64   12 434301.945 665574.478  53.3%  11.2  165s
+ 2203845 917164 infeasible   70      434301.945 665574.452  53.3%  11.3  170s
+ 2267305 939467 infeasible   70      434301.945 665574.428  53.3%  11.3  175s
+ 2329741 961462 588909.285   65   15 434301.945 665574.406  53.3%  11.4  180s
+ 2391665 983294 infeasible   71      434301.945 665574.387  53.3%  11.4  185s
+ 2454306 1004868 infeasible   61      434301.945 665574.368  53.3%  11.5  190s
+ 2513012 1025291     cutoff   71      434301.945 665574.353  53.3%  11.5  195s
+ 2574222 1046265 infeasible   60      434301.945 665574.337  53.3%  11.5  200s
+ 2636331 1067673 infeasible   64      434301.945 665574.322  53.3%  11.6  205s
+ 2697390 1088775 665573.806   58   10 434301.945 665574.307  53.3%  11.6  210s
+ 2760173 1110320 665573.889   64   14 434301.945 665574.292  53.3%  11.7  215s
+ 2819825 1130455 665573.967   57   17 434301.945 665574.279  53.3%  11.7  220s
+ 2879534 1150349 455097.341   67    8 434301.945 665574.267  53.3%  11.7  225s
+ 2939689 1170371 594260.376   57   13 434301.945 665574.256  53.3%  11.8  230s
+ 3001153 1190726     cutoff   74      434301.945 665574.245  53.3%  11.8  235s
+ 3059731 1210383 infeasible   65      434301.945 665574.234  53.3%  11.8  240s
+ 3119925 1230023     cutoff   75      434301.945 665574.224  53.3%  11.9  245s
+ 3179573 1249276 infeasible   60      434301.945 665574.214  53.3%  11.9  250s
+ 3237070 1267450 595770.582   60   11 434301.945 665574.206  53.3%  12.0  255s
+ 3298689 1287193 665574.058   59   19 434301.945 665574.197  53.3%  12.0  260s
+ 3357999 1306848 583288.185   69   13 434301.945 665574.188  53.3%  12.0  265s
+ 3417865 1326366 588834.009   71   14 434301.945 665574.181  53.3%  12.1  270s
+ 3475444 1345447     cutoff   74      434301.945 665574.173  53.3%  12.1  275s
+ 3532054 1363744 infeasible   62      434301.945 665574.166  53.3%  12.1  280s
+ 3586665 1381237 467586.767   67    6 434301.945 665574.160  53.3%  12.2  285s
+ 3643196 1399309 509511.461   62    7 434301.945 665574.153  53.3%  12.2  290s
+ 3698199 1416778 infeasible   62      434301.945 665574.147  53.3%  12.3  295s
+ 3754650 1434465 665572.195   63   10 434301.945 665574.142  53.3%  12.3  300s
 
-Cutting planes:
-  RLT: 11
-
-Explored 3854179 nodes (23795613 simplex iterations) in 300.01 seconds
+Explored 3755235 nodes (46165412 simplex iterations) in 300.00 seconds
 Thread count was 8 (of 8 available processors)
 
-Solution count 10: 415473 394630 392880 ... 347687
+Solution count 5: 434302 434297 433994 ... 372694
 
 Time limit reached
-Best objective 4.154732981220e+05, best bound 7.066418221180e+05, gap 70.0812%
+Best objective 4.343019448152e+05, best bound 6.655741418206e+05, gap 53.2515%
 </pre>
 </div>
 </div>
@@ -13518,7 +13532,7 @@ Best objective 4.154732981220e+05, best bound 7.066418221180e+05, gap 70.0812%
 <li>20 bilinear constraints.</li>
 <li>a linear objective function.</li>
 </ul>
-<p>As can be seen, we still observe a gap of 70.10% after reaching the time limit of five minutes (at this point, the incumbent solution induces a total profit of 415,473.30 USD). In fact, even after 20 minutes the solver does not make much progress in closing the gap.</p>
+<p>As can be seen, we still observe a gap of 53.30% after reaching the time limit of five minutes (at this point, the incumbent solution induces a total profit of 434,301.95 USD). In fact, even after 20 minutes the solver does not make much progress in closing the gap.</p>
 <h3 id="Q-Formulation-(proportion)">Q-Formulation (proportion)<a class="anchor-link" href="#Q-Formulation-(proportion)">&#182;</a></h3><p>Let's now see how the q-formulation model performs:</p>
 
 </div>
@@ -13533,7 +13547,7 @@ Best objective 4.154732981220e+05, best bound 7.066418221180e+05, gap 70.0812%
 
 <span class="c1"># Set global parameters</span>
 <span class="n">q_pooling</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">nonConvex</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">p_pooling</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">timelimit</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="mi">60</span>
+<span class="n">q_pooling</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">timelimit</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="mi">60</span>
 
 <span class="c1"># Declare decision variables</span>
 
@@ -13542,28 +13556,51 @@ Best objective 4.154732981220e+05, best bound 7.066418221180e+05, gap 70.0812%
 <span class="n">jk</span> <span class="o">=</span> <span class="n">q_pooling</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">p2t</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Pool2Target&quot;</span><span class="p">)</span>
 <span class="n">ik</span><span class="p">[</span><span class="s2">&quot;s1&quot;</span><span class="p">,</span><span class="s2">&quot;t2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ub</span> <span class="o">=</span> <span class="mi">750</span>
 <span class="n">ik</span><span class="p">[</span><span class="s2">&quot;s3&quot;</span><span class="p">,</span><span class="s2">&quot;t1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">ub</span> <span class="o">=</span> <span class="mi">750</span>
-<span class="c1"># quality</span>
+<span class="c1"># proportion</span>
 <span class="n">p_ij</span> <span class="o">=</span> <span class="n">q_pooling</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">s2p</span><span class="p">,</span> <span class="n">ub</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Prop_Source2Pool&quot;</span><span class="p">)</span>
 
 <span class="c1"># Deploy constraint sets</span>
 
 <span class="c1"># 1. Source capacity</span>
-<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">p_ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span><span class="p">)</span> <span class="o">+</span> <span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">supply</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Source_capacity&quot;</span><span class="p">)</span>
+<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">p_ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+                               <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span><span class="p">)</span>
+                      <span class="o">+</span> <span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">supply</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Source_capacity&quot;</span><span class="p">)</span>
 <span class="c1"># 2. Pool capacity</span>
-<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">cap</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Pool_capacity&quot;</span><span class="p">)</span>
+<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">cap</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span><span class="p">),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Pool_capacity&quot;</span><span class="p">)</span>
 <span class="c1"># 3. Target demand</span>
-<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">demand</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_demand&quot;</span><span class="p">)</span>
+<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">demand</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_demand&quot;</span><span class="p">)</span>
 <span class="c1"># 4. Pool inflow</span>
-<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">p_ij</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Pool_inflow&quot;</span><span class="p">)</span>
+<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">p_ij</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span><span class="p">),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Pool_inflow&quot;</span><span class="p">)</span>
 <span class="c1"># 5.1 Target (min) tolerances</span>
-<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ik</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2t</span><span class="p">)</span><span class="o">+</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">p_ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">p2t</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_tol</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">min_tol</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_min_tolerances&quot;</span><span class="p">)</span>
+<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ik</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+                               <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2t</span><span class="p">)</span>
+                      <span class="o">+</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">p_ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+                                 <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">p2t</span><span class="p">)</span>
+                      <span class="o">&gt;=</span> <span class="n">min_tol</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span>
+                      <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">min_tol</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_min_tolerances&quot;</span><span class="p">)</span>
 <span class="c1"># 5.2 Target (max) tolerances</span>
-<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ik</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2t</span><span class="p">)</span><span class="o">+</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">p_ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">p2t</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_tol</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">max_tol</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_max_tolerances&quot;</span><span class="p">)</span>
+<span class="n">q_pooling</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">ik</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+                               <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2t</span><span class="p">)</span>
+                      <span class="o">+</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="n">p_ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span>
+                                 <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="ow">in</span> <span class="n">p2t</span><span class="p">)</span>
+                      <span class="o">&lt;=</span> <span class="n">max_tol</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span>
+                      <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">max_tol</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target_max_tolerances&quot;</span><span class="p">)</span>
 
 <span class="c1"># Deploy Objective Function</span>
 
 <span class="c1"># 0. Total profit</span>
-<span class="n">obj</span> <span class="o">=</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">)</span> <span class="o">-</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">p_ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span><span class="p">)</span><span class="o">+</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">price</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">k</span><span class="p">))</span>
+               <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">)</span> \
+<span class="o">-</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">p_ij</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">jk</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+                             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">pools</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">s2p</span><span class="p">)</span>
+                    <span class="o">+</span> <span class="n">ik</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">))</span>
+           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">)</span>
 <span class="n">q_pooling</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
 
 <span class="c1"># Find the optimal solution</span>
@@ -13586,11 +13623,11 @@ Best objective 4.154732981220e+05, best bound 7.066418221180e+05, gap 70.0812%
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Changed value of parameter nonConvex to 2
    Prev: -1  Min: -1  Max: 2  Default: -1
-Parameter timelimit unchanged
-   Value: 300.0  Min: 0.0  Max: inf  Default: inf
+Changed value of parameter timelimit to 300.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
 Gurobi Optimizer version 9.0.0 build v9.0.0beta1 (mac64)
 Optimize a model with 7 rows, 16 columns and 22 nonzeros
-Model fingerprint: 0x082d8c3a
+Model fingerprint: 0xf079c16d
 Model has 18 quadratic objective terms
 Model has 15 quadratic constraints
 Coefficient statistics:
@@ -13610,7 +13647,7 @@ Presolved: 95 rows, 35 columns, 315 nonzeros
 Presolved model has 18 bilinear constraint(s)
 Variable types: 35 continuous, 0 integer (0 binary)
 
-Root relaxation: objective 1.810743e+06, 39 iterations, 0.00 seconds
+Root relaxation: objective 1.810743e+06, 38 iterations, 0.00 seconds
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
@@ -13625,19 +13662,19 @@ Root relaxation: objective 1.810743e+06, 39 iterations, 0.00 seconds
      0     0 549889.932    0   18          - 549889.932      -     -    0s
      0     2 549889.932    0   18          - 549889.932      -     -    0s
 *   47    54               8    404852.41910 488385.774  20.6%   7.4    0s
-H   62    52                    433077.56632 488385.774  12.8%   6.8    0s
-H   65    52                    439182.58928 488385.774  11.2%   6.5    0s
+H   62    52                    433077.56632 488385.774  12.8%   7.0    0s
+H   65    52                    439182.58928 488385.774  11.2%   6.7    0s
 
 Cutting planes:
   RLT: 18
 
-Explored 147 nodes (659 simplex iterations) in 0.08 seconds
+Explored 131 nodes (664 simplex iterations) in 0.08 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 3: 439183 433078 404852 
 
 Optimal solution found (tolerance 1.00e-04)
-Best objective 4.391825892775e+05, best bound 4.392015775651e+05, gap 0.0043%
+Best objective 4.391825892775e+05, best bound 4.392166623994e+05, gap 0.0078%
 </pre>
 </div>
 </div>
@@ -13848,7 +13885,8 @@ Best objective 4.391825892775e+05, best bound 4.392015775651e+05, gap 0.0043%
 
 <span class="k">for</span> <span class="n">source</span><span class="p">,</span> <span class="n">pool</span> <span class="ow">in</span> <span class="n">p_ij</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">p_ij</span><span class="p">[</span><span class="n">source</span><span class="p">,</span> <span class="n">pool</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-6</span><span class="p">):</span>
-        <span class="n">s2p_plan</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">source</span><span class="p">,</span> <span class="n">pool</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p_ij</span><span class="p">[</span><span class="n">source</span><span class="p">,</span> <span class="n">pool</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p2t_plan</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pool</span><span class="p">,:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">flow</span> <span class="o">=</span> <span class="n">p_ij</span><span class="p">[</span><span class="n">source</span><span class="p">,</span> <span class="n">pool</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">p2t_plan</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pool</span><span class="p">,:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">s2p_plan</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">source</span><span class="p">,</span> <span class="n">pool</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">s2p_plan</span>
 </pre></div>
 
@@ -13892,17 +13930,17 @@ Best objective 4.391825892775e+05, best bound 4.392015775651e+05, gap 0.0043%
   <tbody>
     <tr>
       <th>s1</th>
-      <td>325.02</td>
+      <td>325.0</td>
       <td>1750.0</td>
     </tr>
     <tr>
       <th>s2</th>
-      <td>216.68</td>
+      <td>258.3</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>s3</th>
-      <td>541.70</td>
+      <td>500.0</td>
       <td>0.0</td>
     </tr>
   </tbody>
