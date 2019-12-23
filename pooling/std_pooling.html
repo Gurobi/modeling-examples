@@ -13187,7 +13187,7 @@ div#notebook {
 <li>Objective function(s).</li>
 <li>Constraints.</li>
 </ul>
-<p>A quadratic constraint that involves only products of disjoint pairs of variables is often called a bilinear constraint, and a model that contains bilinear constraints is often called a Bilinear Program. Bilinear constraints are a special case of non-convex quadratic constraints. This type of problems are typically solved using spatial Branch and Bound (sB&amp;B). This algorithm explores the entire search space, so it provides a globally valid lower bound on the optimal objective value and —given enough time— it will find a globally optimal solution (subject to tolerances). The interested reader is referred to <a href="#references">references</a> [3], [6] and [7].</p>
+<p>A quadratic constraint that involves only products of disjoint pairs of variables is often called a bilinear constraint, and a model that contains bilinear constraints is often called a Bilinear Program. Bilinear constraints are a special case of non-convex quadratic constraints. This type of problems is typically solved using spatial Branch and Bound (sB&amp;B). This algorithm explores the entire search space, so it provides a globally valid lower bound on the optimal objective value and —given enough time— it will find a globally optimal solution (subject to tolerances). The interested reader is referred to <a href="#references">references</a> [3], [6] and [7].</p>
 <p>We now present two alternative Bilinear Programs for the Standard Pooling Problem:</p>
 <h3 id="P-formulation-(Concentration)">P-formulation (Concentration)<a class="anchor-link" href="#P-formulation-(Concentration)">&#182;</a></h3><h4 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h4><p>$G=(V,E)$: Directed graph.</p>
 <p>$i,j \in V$: Set of nodes.</p>
@@ -13262,6 +13262,7 @@ div#notebook {
 <p>A model based on the first option is now presented:</p>
 <h3 id="Q-formulation-(Proportion)">Q-formulation (Proportion)<a class="anchor-link" href="#Q-formulation-(Proportion)">&#182;</a></h3><h4 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h4><p>$\text{flow}_{i,j} \in [0, \text{UB}_{i,j}]$: Flow from node $i$ to node $j$.</p>
 <p>$\text{prop}_{s,p} \in \mathbb{R}^+$: fraction of total inflow at pool $p$, coming from source $s$.</p>
+<p><strong>Note:</strong> The $\text{flow}$ variables from sources to pools are replaced by the $\text{prop}$ variables.</p>
 <h4 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h4><ul>
 <li><strong>Profit</strong>: Maximize total profits (notice the bilinear terms on the second expression).</li>
 </ul>
@@ -13307,7 +13308,7 @@ div#notebook {
 \tag{5.2}
 \end{equation}<p>One drawback is that if some of the source-to-pool edges have flow capacity, we need to define additional constraints instead of just specifying upper bounds on the associated decision variables. Such constraints can be defined with bilinear terms as follows:</p>
 <ul>
-<li><strong>Flow limit</strong>: Flow from source $s$ to pool $p$ cannot exceed the installed capacity (notice the bilinear terms on the left-hand side).</li>
+<li><strong>Flow limit</strong>: Flow from source $s$ to pool $p$ cannot exceed the installed capacity (notice the bilinear terms on the left-hand side). In the P-formulation, declaring this is as easy as setting the upper bound of the associated $\text{flow}$ variable. However, this variable no longer exists in the Q-formulation so we need to model the capacity as a constraint.  </li>
 </ul>
 \begin{equation}
 \text{prop}_{s,p} \cdot \sum_{t \in N(p)^+}{\text{flow}_{p,t}} \leq \text{UB}_{s,p} \quad \forall (i,j) \in E \cap \left( \text{Sources} \times \text{Pools} \right) \mid \text{UB}_{i,j} &lt; \infty
@@ -13695,7 +13696,7 @@ Best objective 4.391825892775e+05, best bound 4.392166623994e+05, gap 0.0078%
 </ul>
 <p>Notice it has fewer decision variables and also fewer bilinear constraints. Now Gurobi was able to find the optimal solution of 439,182.59 USD in less than one second, that is five orders of magnitude faster than before.</p>
 <hr>
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>Let's see the optimal flows found using the Q-formulation:</p>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>Let's see the optimal flows found:</p>
 <h3 id="Flow-from-Sources-to-Targets">Flow from Sources to Targets<a class="anchor-link" href="#Flow-from-Sources-to-Targets">&#182;</a></h3>
 </div>
 </div>
