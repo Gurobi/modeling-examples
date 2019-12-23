@@ -13128,7 +13128,7 @@ div#notebook {
 <li>Linear regression analysis.</li>
 </ul>
 <hr>
-<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>Linear Regression was invented at the beginning of the XIX century and today, after more than 200 years, it is still used extensively in practical applications for description and prediction purposes:</p>
+<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>Linear Regression was invented at the beginning of the 19th century and today, after more than 200 years, it is still used extensively in practical applications for description and prediction purposes:</p>
 <ul>
 <li>In econometrics, it is useful to estimate the price elasticity of a particular product by regressing sales revenue on price and possibly other features such as demographic, competitor and retail information.</li>
 <li>In health sciences, it can be applied to predict how long a patient will remain, i.e. length of stay, in the ER of a hospital based on patient information, triage assessment, medical test results and date/time of arrival.</li>
@@ -13155,11 +13155,11 @@ div#notebook {
 <li>Objective function(s).</li>
 <li>Constraints.</li>
 </ul>
-<p>We now present a MIQP formulation that finds the weight estimates for a linear regression problem, where exactly $s$ of those weights must be nonzero:</p>
+<p>We now present a MIQP formulation that finds the weight estimates for a linear regression problem, where at most $s$ of those weights can be nonzero:</p>
 <h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$i \in I=\{1,2,\dots,n\}$: Set of observations.</p>
 <p>$j \in J=\{1,2,\dots,d\}$: Set of features, where the last ID corresponds to the intercept.</p>
 <p>$l \in L = J \backslash \{d\}$: Set of features, where the intercept is excluded.</p>
-<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$s \in \mathbb{Z}^+$: Number of features to include in the model, ignoring the intercept.</p>
+<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$s \in \mathbb{N}$: Number of features to include in the model, ignoring the intercept.</p>
 <p>$Q = X^T X \in \mathbb{M}^{|J|x|J|}$: Quadratic component of the objective function.</p>
 <p>$c = y^TX \in \mathbb{R}^{|J|}$: Linear component of the objective function.</p>
 <p>$k = y^T y \in \mathbb{R}$: Constant component of the objective function.</p>
@@ -13183,7 +13183,7 @@ div#notebook {
 <li><strong>Budget constraint</strong>: Exactly $|L| - s$ feature weights must be equal to zero:</li>
 </ul>
 \begin{equation}
-\sum_{l \in L}iszero_l = |L| - s
+\sum_{l \in L}iszero_l \geq |L| - s
 \tag{2}
 \end{equation}<p>This model, by means of constraint 2, implicitly considers all ${{d-1} \choose s}$ feature subsets at once. Notice that it defines the budget constraint as $\sum_{l=1}^{d-1}I(\beta_l \neq 0) = s$, provided that the training RSS decreases monotonically as more features are considered. Because of this, we need to adjust the number of features via cross-validation, using the Mean Square Error (MSE) as the performance metric.</p>
 <hr>
@@ -13265,7 +13265,7 @@ div#notebook {
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">):</span>
         <span class="c1"># If iszero[i]=1, then beta[i] = 0</span>
         <span class="n">regressor</span><span class="o">.</span><span class="n">addSOS</span><span class="p">(</span><span class="n">GRB</span><span class="o">.</span><span class="n">SOS_TYPE1</span><span class="p">,</span> <span class="p">[</span><span class="n">beta</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">iszero</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
-    <span class="n">regressor</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">iszero</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">dim</span> <span class="o">-</span> <span class="n">non_zero</span><span class="p">)</span> <span class="c1"># Budget constraint</span>
+    <span class="n">regressor</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">iszero</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">dim</span> <span class="o">-</span> <span class="n">non_zero</span><span class="p">)</span> <span class="c1"># Budget constraint</span>
 
     <span class="c1"># We may use the Lasso or prev solution with fewer features as warm start</span>
     <span class="k">if</span> <span class="n">warm_up</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">warm_up</span><span class="p">)</span> <span class="o">==</span> <span class="n">dim</span><span class="p">:</span>
@@ -13566,11 +13566,11 @@ L0-regression kept 11 features.
 \text{medv} = 22.56-1.02\text{crim}+1.46\text{zn}+0.49\text{chas}-1.93\text{nox}+2.53\text{rm}
 \end{equation}\begin{equation}
 -3.48\text{dis}+2.65\text{rad}-2.22\text{tax}-1.87\text{ptratio}+1.00\text{b}-3.69\text{lstat}
-\end{equation}<p>Since we standardized the data, the intercept represents the estimated median value (in thousands) of a house with mean values across features. Likewise, we can interpret $\beta_1=-1.02$ as the decrease in the house value when the per-capita crime rate increases by one standard deviation from the average value, <em>ceteris paribus</em> (similar statements can be made for the rest of the features). Finally, if the main purpose of the analysis is to explain the variability in the response, having 11 features may be too much. However, remember that one can always set the number of active features to a more manageable number to ease the interpretation, perhaps at the expense of predictive power.</p>
+\end{equation}<p>Since we standardized the data, the intercept represents the estimated median value (in thousands) of a house with mean values across features. Likewise, we can interpret $\beta_1=-1.02$ as the decrease in the house value when the per-capita crime rate increases by one standard deviation from the average value, all other thing being equal (similar statements can be made for the rest of the features). Finally, if the main purpose of the analysis is to explain the variability in the response, having 11 features may be too much. However, remember that one can always set the number of active features to a more manageable number to ease the interpretation, perhaps at the expense of predictive power.</p>
 <hr>
 <h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>It has been shown how mathematical programming can be used to perform feature selection on linear regression problems. It is in fact a good alternative to the Lasso, given that L0-regression is scale invariant and does not add bias to the weight estimates. Furthermore, this approach is amenable to the specification of additional linear constraints (Bertsimas, 2015), such as:</p>
 <ul>
-<li>Enforcing group sparcity among features.</li>
+<li>Enforcing group sparsity among features.</li>
 <li>Limiting pairwise multicollinearity.</li>
 <li>Limiting global multicollinearity.</li>
 <li>Considering a fixed set of nonlinear transformations.</li>
