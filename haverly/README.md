@@ -22,7 +22,7 @@ It is shown that solving Bilinear Programs with Gurobi is as easy as configuring
 
 ## HTML Example URL
 
-https://gurobi.github.io/modeling-examples/pooling/haverly.html
+https://gurobi.github.io/modeling-examples/haverly/haverly.html
 
 
 Copyright © 2019 Gurobi Optimization, LLC
