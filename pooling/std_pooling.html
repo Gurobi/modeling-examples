@@ -13116,14 +13116,20 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Standard-Pooling-Problem">Standard Pooling Problem<a class="anchor-link" href="#Standard-Pooling-Problem">&#182;</a></h1><h2 id="Objective">Objective<a class="anchor-link" href="#Objective">&#182;</a></h2><p>One of the new features of Gurobi 9.0 is the addition of a bilinear solver, which enables finding the optimal solution of non-convex quadratic programming  problems (i.e. QPs, QCQPs, MIQPs and MIQCQPs). This notebook will show you how to use this feature by tackling an instance of the standard pooling problem, one of the most well-known bilinear programs. Moreover, we will present two alternative formulations, casted as Quadratically Constrained Quadratic Problems, to contrast their performance when calling the optimizer.</p>
+<h1 id="Standard-Pooling-Problem">Standard Pooling Problem<a class="anchor-link" href="#Standard-Pooling-Problem">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>One of the new features of Gurobi 9.0 is the addition of a bilinear solver, which enables finding the optimal solution of non-convex quadratic programming  problems (i.e. QPs, QCQPs, MIQPs, and MIQCQPs). This notebook will show you how to use this feature by tackling an instance of the Standard Pooling Problem, one of the most well-known Bilinear Programs. Moreover, we will present two alternative formulations, casted as Quadratically Constrained Quadratic Problems, to contrast their performance when calling the optimizer.</p>
+<p>To fully understand the content of this notebook, the reader should be familiar with the following:</p>
+<ul>
+<li>Python.</li>
+<li>Gurobi Python interface.</li>
+<li>Advanced knowledge of building mathematical optimization models. Typically, the constraints of these Jupyter Notebooks are complex or requires advanced features of the Gurobi Python Interface.</li>
+</ul>
 <hr>
 <h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>The pooling problem is a challenging problem in the petrochemical refining, wastewater treatment and mining industries. This problem can be regarded as a generalization of the minimum-cost flow problem and the blending problem. It is indeed important because of the significant savings it can generate, so it comes at no surprise that it has been studied extensively since Haverly pointed out the non-linear structure of this problem in 1978 [5].</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>The Minimum-Cost Flow Problem (MCFP) seeks to find the cheapest way of sending a certain amount of flow from a set of source nodes to a set of target nodes, possibily via transshipment nodes⁠, in a directed capacitated network. The Blending Problem is a type of MCFP with only source and target nodes, where raw materials with different attribute qualities are blended together to create end products in such a way that their attribute qualities are within tolerances.</p>
 <p>The Pooling Problem combines features of both problems, as flow streams from different sources are mixed at intermediate pools and blended again at the target nodes. The non-linearity is in fact the direct result of considering pools, as the quality of a given attribute at a pool —defined as the weighted average of the qualities of the incoming streams— is an unknown quantity and thus needs to be captured by a decision variable. We refer to this problem as the Standard Pooling Problem when the network can be represented by a tripartite graph, i.e. three disjoint sets of nodes such that no nodes within the same set are adjacent. In a nutshell, it can be stated as follows: Given a list of source nodes with raw materials containing known attribute qualities, what is the cheapest way of mixing these materials at intermediate pools so as to meet the demand and tolerances at multiple target nodes? (Gupte et al., 2017) [4]. Several different formulations for the Standard Pooling Problem and its extensions exist in the literature, which can be classified into two main categories: one that consists of flow and quality variables, and the other that uses flow proportions instead of quality variables. Both categories will be considered in this notebook.</p>
 <hr>
-<h2 id="Problem-Instance">Problem Instance<a class="anchor-link" href="#Problem-Instance">&#182;</a></h2><p>As an illustrative example, we will solve the second pooling problem posed by Rehfeldt and Tisljar in 1997 and cited by Audet et al. in 2004:</p>
+<h2 id="Problem-Instance">Problem Instance<a class="anchor-link" href="#Problem-Instance">&#182;</a></h2><p>As an illustrative example, we will solve the second Pooling Problem posed by Rehfeldt and Tisljar in 1997 and cited by Audet et al. in 2004:</p>
 <p><img src="rehfeldt_tisljar2_graph.png" alt="Graph"></p>
 <p><img src="rehfeldt_tisljar2_table.png" alt="Table"></p>
 <p>To that end, let's declare the required data structures to represent this problem instance:</p>
@@ -13178,7 +13184,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi optimizer solves such models using state-of-the-art mathematics and computer science.</p>
+<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi Optimizer solves such models using state-of-the-art mathematics and computer science.</p>
 <p>A mathematical optimization model has five components, namely:</p>
 <ul>
 <li>Sets and indices.</li>
@@ -13216,7 +13222,7 @@ div#notebook {
 \text{Max} \quad Z = \sum_{t \in \text{Targets}}{\sum_{i \in N(t)^-}{\text{Price}_t \cdot \text{flow}_{i,t}}} - \sum_{s \in \text{Sources}}{\sum_{j \in N(s)^+}{\text{Cost}_s \cdot \text{flow}_{s,j}}}
 \tag{0}
 \end{equation}<h4 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h4><ul>
-<li><strong>Flow conservation</strong>: Total inflow of pool $p$ must be equal to its toal outflow (nothing is stored in them).</li>
+<li><strong>Flow conservation</strong>: Total inflow of pool $p$ must be equal to its total outflow (nothing is stored in them).</li>
 </ul>
 \begin{equation}
 \sum_{t \in N(p)^+}{\text{flow}_{p,t}} - \sum_{s \in N(p)^-}{\text{flow}_{s,p}} = 0 \quad \forall p \in \text{Pools}

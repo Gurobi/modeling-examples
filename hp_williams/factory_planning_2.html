@@ -13116,8 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Factory-Planning-II">Factory Planning II<a class="anchor-link" href="#Factory-Planning-II">&#182;</a></h1><p>Both this model and Factory Planning I are examples of production planning problems. In production planning problems, choices must be made about how many of what products to produce using what resources in order to maximize profits or minimize costs, while meeting a range of constraints. These problems are common across a broad range of manufacturing situations.</p>
-<p>In this particular example, we’ll model and solve a production planning problem: during each period we can manufacture a range of products. Each of the products needs a different amount of time to manufacture on different machines, and yields a different profit.The aim is to create an optimal multi-period production plan to maximize the profit. Different from the Factory Planning I example, in this example the month where each machine is down will, instead of being fixed, be determined as part of the optimized plan. There is a upper limit on the sales of each product in each month due to market limitations and the storage capacity is also restricted.</p>
+<h1 id="Factory-Planning-II">Factory Planning II<a class="anchor-link" href="#Factory-Planning-II">&#182;</a></h1><p>Both this model and Factory Planning I are examples of production planning problems. In production planning problems, choices must be made about which products to produce, how much of those products to produce, and what resources to use in order to maximize profits or minimize costs, while meeting a range of constraints. These problems are common across a broad range of manufacturing situations.</p>
+<p>In this particular example, we’ll model and solve a production planning problem: during each period we can manufacture a range of products. Each of the products requires a different amount of time to manufacture on different machines, and yields a different profit. The aim is to create an optimal multi-period production plan to maximize the profit. Different from the Factory Planning I example, in this example the month where each machine is down will, instead of being fixed, be determined as part of the optimized plan. There is an upper limit on the sales of each product in each month due to market limitations and the storage capacity is also restricted.</p>
 <p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A factory makes seven products (Prod 1 to Prod 7) using a range of machines including:</p>
@@ -13128,7 +13128,7 @@ div#notebook {
 <li>One borer</li>
 <li>One planer</li>
 </ul>
-<p>Each product has a defined profit contribution per unit sold (defined as the sales price per unit minus the cost of raw materials). In addition, the manufacturing of each product requires a certain amount of time on each machine (in hours). The contribution and manufacturing time value are shown below. A dash indicates the manufacturing product for the given product does not require that machine.</p>
+<p>Each product has a defined profit contribution per unit sold (defined as the sales price per unit minus the cost of raw materials). In addition, the manufacturing of each product requires a certain amount of time on each machine (in hours). The contribution and manufacturing time value are shown below. A dash indicates that the manufacturing process for the given product does not require that machine.</p>
 <table>
 <thead><tr>
 <th><i></i></th>
@@ -13204,13 +13204,13 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>Instead of pre-defining a maintenance schedule for the machines, as was done in Factory Planning I, in this version of the model we will also optimize for the maintenance schedule.</p>
+<p>Instead of pre-defining a maintenance schedule for the machines, as was done in Factory Planning I, in this version of the model we will also optimize the maintenance schedule.</p>
 <p>The maintenance requirements are as follows:</p>
 <ul>
 <li>Each machine must be down for maintenance in one month of the six.</li>
-<li>The exception to the above are the grinding machines where only two of them need to be down during the six months.</li>
+<li>The exception to the above are the grinding machines as only two of them need to be down during the six months.</li>
 </ul>
-<p>There are limitations to how many of each product can be sold in a given month. These limits are shown below:</p>
+<p>There are limitations on how many of each product can be sold in a given month. These limits are shown below:</p>
 <table>
 <thead><tr>
 <th>Month</th>
@@ -13286,10 +13286,10 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>Up to 100 units of each product may be stored in inventory at a cost of $0.50 per unit per month. At the start of January there is no product inventory. However, by the end of June there should be 50 units of each product in inventory.</p>
-<p>The factory produces product six days a week using two eight-hour shifts per day. It may be assumed that each month consists of 24 working days. Also, for the purposes of this model, there are no production sequencing issues that need to be taken into account.</p>
-<p>What should the production and maintenance plans look like? Also, recommend any price increases and identify the value of acquiring any new machines.</p>
-<p>This problem is based on a larger model built for the Cornish engineering company of Holman Brother.</p>
+<p>Up to 100 units of each product may be stored in inventory at a cost of $0.50 per unit per month. At the start of January, there is no product inventory. However, by the end of June, there should be 50 units of each product in inventory.</p>
+<p>The factory produces products six days a week using two eight-hour shifts per day. It may be assumed that each month consists of 24 working days. Also, for the purposes of this model, there are no production sequencing issues that need to be taken into account.</p>
+<p>What should the production and maintenance plans look like? Also, is it possible to recommend any price increases and determine the value of acquiring any new machines?</p>
+<p>This problem is based on a larger model built for the Cornish engineering company of Holman Brothers.</p>
 <hr>
 <h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$t \in \text{Months}=\{\text{Jan},\text{Feb},\text{Mar},\text{Apr},\text{May},\text{Jun}\}$: Set of months.</p>
 <p>$p \in \text{Products}=\{1,2,\dots,7\}$: Set of products.</p>
@@ -13445,7 +13445,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create a model and the variables. We set the UpdateMode parameter to 1 (which simplifies the code – see the documentation for more details). For each product (seven kinds of products) and each time period (month) we will create variables for the amount of which products will get manufactured, held and sold. In each month there is an upper limit on the amount of each product that can be sold. This is due to market limitations. For each type of machine and each month we create a variable d, which tells us how many machines are down in this month of this type.</p>
+<p>Next, we create a model and the variables. We set the UpdateMode parameter to 1 (which simplifies the code – see the documentation for more details). For each product (seven kinds of products) and each time period (month), we will create variables for the amount of which products will get manufactured, held, and sold. In each month, there is an upper limit on the amount of each product that can be sold. This is due to market limitations. For each type of machine and each month we create a variable d, which tells us how many machines are down in this month of this type.</p>
 
 </div>
 </div>
@@ -13472,7 +13472,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, we insert the constraints.
-The balance constraints ensure that the amount of product that is in the storage in the prior month and the amount that gets manufactured equals the amount that is sold and held for each product in the current month. This makes sure that all products in the model are manufactured in some month. The initial storage is empty.</p>
+The balance constraints ensure that the amount of product that is in the storage in the prior month and the amount that gets manufactured equals the amount that is sold and held for each product in the current month. This ensures that all products in the model are manufactured in some month. The initial storage is empty.</p>
 
 </div>
 </div>
@@ -13603,7 +13603,7 @@ The balance constraints ensure that the amount of product that is in the storage
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The capacity constraints ensure that for each month the time all products need on a certain kind of machine is lower or equal than the available hours for that machine in that month multiplied by the number of available machines in that month. Each product needs some machine hours on different machines. Each machine is down in one or more months due to maintenance, so the number and types of available machines varies per month. There can be multiple machines per machine type.</p>
+<p>The capacity constraints ensure that for each month the time all products require on a certain kind of machine is lower or equal than the available hours for that machine in that month multiplied by the number of available machines in that month. Each product requires some machine hours on different machines. Each machine is down in one or more months due to maintenance, so the number and types of available machines varies per month. There can be multiple machines per machine type.</p>
 
 </div>
 </div>
@@ -13678,7 +13678,7 @@ The balance constraints ensure that the amount of product that is in the storage
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The Maintenance constraints ensure that the specified number and types of machines are down due maintaince in some month. Which month a machine is down is down is now part of the optimization.</p>
+<p>The maintenance constraints ensure that the specified number and types of machines are down due maintenance in some month. Which month a machine is down is now part of the optimization.</p>
 
 </div>
 </div>

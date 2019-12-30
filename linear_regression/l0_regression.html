@@ -13128,25 +13128,25 @@ div#notebook {
 <li>Linear regression analysis.</li>
 </ul>
 <hr>
-<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>Linear Regression was invented at the beginning of the 19th century and today, after more than 200 years, it is still used extensively in practical applications for description and prediction purposes:</p>
+<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>Linear regression was invented at the beginning of the 19th century and today, after more than 200 years, it is still used extensively in practical applications for description and prediction purposes:</p>
 <ul>
-<li>In econometrics, it is useful to estimate the price elasticity of a particular product by regressing sales revenue on price and possibly other features such as demographic, competitor and retail information.</li>
-<li>In health sciences, it can be applied to predict how long a patient will remain, i.e. length of stay, in the ER of a hospital based on patient information, triage assessment, medical test results and date/time of arrival.</li>
-<li>In social sciences, it may shed light on future academic performance of students, so proactive measures can be taken to improve their learning.</li>
+<li>In econometrics, it is useful to estimate the price elasticity of a particular product by regressing sales revenue on price and possibly other features such as demographics and competitor and retail information.</li>
+<li>In health sciences, it can be applied to predict how long a patient will remain (i.e. length of stay) in the ER of a hospital based on patient information, triage assessment, medical test results, and the date/time of arrival.</li>
+<li>In social sciences, it may shed light on future academic performance of students, so proactive measures can be taken to improve their learning outcomes.</li>
 </ul>
-<p>In general, Linear Regression is used to model the relationship between a continuous variable and other explanatory variables, which can be either continuous or categorical. When applying this technique, finding the subset of features that maximizes its perfomance is often of interest.</p>
+<p>In general, linear regression is used to model the relationship between a continuous variable and other explanatory variables, which can be either continuous or categorical. When applying this technique, finding the subset of features that maximizes its perfomance is often of interest.</p>
 <hr>
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Linear Regression is a supervised learning algorithm used to predict a quantitative response. It assumes that there is a linear relationship between the feature vector $x_i \in \mathbb{R}^d$ and the response $y_i \in \mathbb{R}$. Mathematically speaking, for sample $i$ we have $y_i = \beta^T x_i + \epsilon_i$, where $\beta \in \mathbb{R}^d$ is the vector of feature weights, including the intercept, and  $\epsilon_i$ is a normally-distributed random variable with zero mean and constant variance representing the error term. We can learn the weights from a training dataset with $n$ observations $\{X \in \mathbb{M}^{nxd},y \in \mathbb{R}^n\}$ by minimizing the Residual Sum of Squares (RSS): $e^Te =(y-X\beta)^T (y-X\beta)=\beta^T X^T X\beta- 2y^TX\beta+y^T y$. The Ordinary Least Squares (OLS) method achieves this by taking the derivative of this quadratic and convex function and then finding the stationary point: $\beta_{OLS}=(X^T X)^{-1} X^T y$.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Linear regression is a supervised learning algorithm used to predict a quantitative response. It assumes that there is a linear relationship between the feature vector $x_i \in \mathbb{R}^d$ and the response $y_i \in \mathbb{R}$. Mathematically speaking, for sample $i$ we have $y_i = \beta^T x_i + \epsilon_i$, where $\beta \in \mathbb{R}^d$ is the vector of feature weights, including the intercept, and  $\epsilon_i$ is a normally-distributed random variable with zero mean and constant variance representing the error term. We can learn the weights from a training dataset with $n$ observations $\{X \in \mathbb{M}^{nxd},y \in \mathbb{R}^n\}$ by minimizing the Residual Sum of Squares (RSS): $e^Te =(y-X\beta)^T (y-X\beta)=\beta^T X^T X\beta- 2y^TX\beta+y^T y$. The Ordinary Least Squares (OLS) method achieves this by taking the derivative of this quadratic and convex function and then finding the stationary point: $\beta_{OLS}=(X^T X)^{-1} X^T y$.</p>
 <p>In practice, some of the features are in fact not associated with the response. By including them, we only add unnecessary complexity to the model and increase variance to the weight estimates. However, finding the best performing model is no simple task as there is an exponential number of candidates, as one has to test $\sum_{s=1}^{d-1}{{d-1} \choose s}$ models. Since OLS rarely yields estimates that are exactly zero, thus discarding the features related to them, we need to resort to feature selection methods. Popular methods include:</p>
 <ul>
 <li>Subset selection, e.g. stepwise selection.</li>
 <li>Dimensionality reduction, e.g. principal component regression.</li>
 <li>Shrinkage, e.g. the Lasso.</li>
 </ul>
-<p>The lasso has undoubtedly been the method of choice for the last decade. Basically it fits a model containing all $d$ predictors, while incorporating a budget constraint based on the L1-norm of $\beta$, disregarding the intercept component. In fact, this method minimizes the RSS, subject to $\sum_{l=1}^{d-1}\mathopen|\beta_l\mathclose| \leq s$, where $s$ is a hyper-parameter representing the budget that is usually tuned via cross-validation. This constraint has the effect of shrinking all weight estimates, allowing some of them to be exactly zero when $s$ is small enough. Finally, it is worth noting that the unconstrained version of the Lasso is more frequently used. This version solves an unconstrained optimization problem where $RSS + \lambda \sum_{l=1}^{d-1}\mathopen|\beta_l\mathclose|$ is minimized, for a given value of the —modified— lagrangian multiplier $\lambda \in \mathbb{R}^+$.</p>
-<p>A similar formulation is now presented, where the L0-norm is used instead. We now seek to minimize the RSS, subject to $\sum_{l=1}^{d-1}I(\beta_l \neq 0) \leq s$, where $I(\beta_l \neq 0)$ is an indicator function taking on the value of 1 if $\beta_j \neq 0$ and 0 otherwise. In this setting, $s$ represents the number of features to consider in the model. This optimization problem may be casted as a Mixed Integer Quadratic Program (MIQP). Traditionally, the feature selection problem has not been tackled this way because of the common belief in the statistics community that large scale problems are intractable. But this is no longer the case, considering the computing power currently available and the performance of modern optimization solvers such as Gurobi.</p>
+<p>The Lasso has undoubtedly been the method of choice for the last decade. Basically it fits a model containing all $d$ predictors, while incorporating a budget constraint based on the L1-norm of $\beta$, disregarding the intercept component. In fact, this method minimizes the RSS, subject to $\sum_{l=1}^{d-1}\mathopen|\beta_l\mathclose| \leq s$, where $s$ is a hyper-parameter representing the budget that is usually tuned via cross-validation. This constraint has the effect of shrinking all weight estimates, allowing some of them to be exactly zero when $s$ is small enough. Finally, it is worth noting that the unconstrained version of the Lasso is more frequently used. This version solves an unconstrained optimization problem where $RSS + \lambda \sum_{l=1}^{d-1}\mathopen|\beta_l\mathclose|$ is minimized, for a given value of the —modified— lagrangian multiplier $\lambda \in \mathbb{R}^+$.</p>
+<p>A similar formulation is now presented, where the L0-norm is used instead. We now seek to minimize the RSS, subject to $\sum_{l=1}^{d-1}I(\beta_l \neq 0) \leq s$, where $I(\beta_l \neq 0)$ is an indicator function taking on the value of 1 if $\beta_j \neq 0$ and 0 otherwise. In this setting, $s$ represents the number of features to consider in the model. This optimization problem may be casted as a Mixed Integer Quadratic Program (MIQP). Traditionally, the feature selection problem has not been tackled this way because of the common belief in the statistics community that large-scale problems are intractable. But this is no longer the case, considering the computing power currently available and the performance of modern optimization solvers such as Gurobi.</p>
 <hr>
-<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi optimizer solves such models using state-of-the-art mathematics and computer science.</p>
+<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi Optimizer solves such models using state-of-the-art mathematics and computer science.</p>
 <p>A mathematical optimization model has five components, namely:</p>
 <ul>
 <li>Sets and indices.</li>
@@ -13185,7 +13185,7 @@ div#notebook {
 \begin{equation}
 \sum_{l \in L}iszero_l \geq |L| - s
 \tag{2}
-\end{equation}<p>This model, by means of constraint 2, implicitly considers all ${{d-1} \choose s}$ feature subsets at once. Notice that it defines the budget constraint as $\sum_{l=1}^{d-1}I(\beta_l \neq 0) = s$, provided that the training RSS decreases monotonically as more features are considered. Because of this, we need to adjust the number of features via cross-validation, using the Mean Square Error (MSE) as the performance metric.</p>
+\end{equation}<p>This model, by means of constraint 2, implicitly considers all ${{d-1} \choose s}$ feature subsets at once. Notice that it defines the budget constraint as $\sum_{l=1}^{d-1}I(\beta_l \neq 0) = s$, provided that the training RSS decreases monotonically as more features are considered. Because of this, we need to adjust the number of features via cross-validation, using the Mean Squared Error (MSE) as the performance metric. This metric is defined as $\text{MSE}=\sum_{i}{(y_i-\hat{y}_i)^2}$, where $y_i$ and $\hat{y}_i$ are the observed and predicted values for the ith observation, respectively.</p>
 <hr>
 <h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>In the following implementation, we make use of four main libraries:</p>
 <ul>
@@ -13355,7 +13355,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Benchmark">Benchmark<a class="anchor-link" href="#Benchmark">&#182;</a></h2><p>We now compare the performance of the aforementioned approach w.r.t. OLS regression on all features and the Lasso. The Boston dataset is used for this purpose. This dataset measures the prices of 506 houses, along with 13 features that provide insights about their neighbourhoods. We will use the original feature terminology, so the interested reader is referred to <a href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html">this website</a>.</p>
+<h2 id="Benchmark">Benchmark<a class="anchor-link" href="#Benchmark">&#182;</a></h2><p>We now compare the performance of the aforementioned approach w.r.t. OLS regression on all features and the Lasso. The Boston dataset is used for this purpose. This dataset measures the prices of 506 houses, along with 13 features that provide insights about their neighbourhoods. We will use the original feature terminology, so the interested reader can visit <a href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html">this website</a> for more information.</p>
 <p>Note that 20% of the samples are reserved for computing the out-of-sample MSE. The resulting metrics are displayed in a bar chart (shown below) to facilitate the comparison between models.</p>
 
 </div>
@@ -13445,7 +13445,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Notice that the Lasso performs poorly, as we did not standardized the features to be expressed in the same units (with an average of zero and variance of one). Contrary to OLS and L0-Regression, the Lasso is not scale-invariant because the budget constraint is based on the L1-norm. Remember that $\beta_l$ is interpreted as the change in the response per unit-change of feature $l$. Since the L1-norm takes the sum of absolute values, how much of the budget $\beta_l$ consumes depends on the units of measurement of the feature associated to it.</p>
+<p>Notice that the Lasso performs poorly, as we did not standardize the features to be expressed in the same units (with an average of zero and variance of one). Contrary to OLS and L0-Regression, the Lasso is not scale-invariant because the budget constraint is based on the L1-norm. Remember that $\beta_l$ is interpreted as the change in the response per unit-change of feature $l$. Since the L1-norm takes the sum of absolute values, how much of the budget $\beta_l$ consumes depends on the units of measurement of the feature associated to it.</p>
 <p>Let's now see the results when the features are preprocessed. Such preprocessing entails three steps, namely:</p>
 <p>For each feature $x_l$:</p>
 <ol>
@@ -13515,7 +13515,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As expected, the Lasso is better (although marginally) than OLS. This is due to the fact that the Lasso can retrieve the $\beta_{OLS}$ estimate when the budget $s$ is big enough (alternatively, when $\lambda$ is small enough). On the other hand, it is marginally worse than L0-regression, mainly because by shrinking $\beta$ we add bias to the estimates. Furthermore, observe that L0-regression achieved the best performance with the fewest number of features. This is convenient, as it leads to a more interpretable model.</p>
+<p>As expected, the Lasso is better (although marginally) than OLS. This is due to the fact that the Lasso can retrieve the $\beta_{OLS}$ estimate when the budget $s$ is big enough (alternatively, when $\lambda$ is small enough). On the other hand, it is marginally worse than L0-Regression, mainly because by shrinking $\beta$ we add bias to the estimates. Furthermore, observe that L0-Regression achieved the best performance with the fewest number of features. This is convenient, as it leads to a more interpretable model.</p>
 
 </div>
 </div>
@@ -13530,7 +13530,7 @@ div#notebook {
 <span class="n">l0_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">1e-8</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OLS regression kept </span><span class="si">{0}</span><span class="s2"> features.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ols_features</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The Lasso kept </span><span class="si">{0}</span><span class="s2"> features.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lasso_features</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L0-regression kept </span><span class="si">{0}</span><span class="s2"> features.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l0_features</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L0-Regression kept </span><span class="si">{0}</span><span class="s2"> features.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l0_features</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13549,7 +13549,7 @@ div#notebook {
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>OLS regression kept 13 features.
 The Lasso kept 12 features.
-L0-regression kept 11 features.
+L0-Regression kept 11 features.
 </pre>
 </div>
 </div>
@@ -13561,14 +13561,14 @@ L0-regression kept 11 features.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Final-Model">Final Model<a class="anchor-link" href="#Final-Model">&#182;</a></h3><p>The previous analysis indicates that the best candidate is the model suggested by L0-regression. The resulting equation is as follows:</p>
+<h3 id="Final-Model">Final Model<a class="anchor-link" href="#Final-Model">&#182;</a></h3><p>The previous analysis indicates that the best candidate is the model suggested by L0-Regression. The resulting equation is as follows:</p>
 \begin{equation}
 \text{medv} = 22.56-1.02\text{crim}+1.46\text{zn}+0.49\text{chas}-1.93\text{nox}+2.53\text{rm}
 \end{equation}\begin{equation}
 -3.48\text{dis}+2.65\text{rad}-2.22\text{tax}-1.87\text{ptratio}+1.00\text{b}-3.69\text{lstat}
-\end{equation}<p>Since we standardized the data, the intercept represents the estimated median value (in thousands) of a house with mean values across features. Likewise, we can interpret $\beta_1=-1.02$ as the decrease in the house value when the per-capita crime rate increases by one standard deviation from the average value, all other thing being equal (similar statements can be made for the rest of the features). Finally, if the main purpose of the analysis is to explain the variability in the response, having 11 features may be too much. However, remember that one can always set the number of active features to a more manageable number to ease the interpretation, perhaps at the expense of predictive power.</p>
+\end{equation}<p>Since we standardized the data, the intercept represents the estimated median value (in thousands) of a house with mean values across features. Likewise, we can interpret $\beta_1=-1.02$ as the decrease in the house value when the per-capita crime rate increases by one standard deviation from the average value, all other things being equal (similar statements can be made for the rest of the features). Finally, if the main purpose of the analysis is to explain the variability in the response, having 11 features may be too much. However, remember that one can always set the number of active features to a more manageable number to ease the interpretation, perhaps at the expense of predictive power.</p>
 <hr>
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>It has been shown how mathematical programming can be used to perform feature selection on linear regression problems. It is in fact a good alternative to the Lasso, given that L0-regression is scale invariant and does not add bias to the weight estimates. Furthermore, this approach is amenable to the specification of additional linear constraints (Bertsimas, 2015), such as:</p>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>It has been shown how mathematical programming can be used to perform feature selection on linear regression problems. It is in fact a good alternative to the Lasso, given that L0-Regression is scale invariant and does not add bias to the weight estimates. Furthermore, this approach is amenable to the specification of additional linear constraints (Bertsimas, 2015), such as:</p>
 <ul>
 <li>Enforcing group sparsity among features.</li>
 <li>Limiting pairwise multicollinearity.</li>

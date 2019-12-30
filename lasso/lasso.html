@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Shrinkage-Methods:-The-Lasso">Shrinkage Methods: The Lasso<a class="anchor-link" href="#Shrinkage-Methods:-The-Lasso">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this notebook you will learn how to:</p>
+<h1 id="Shrinkage-Methods:-The-Lasso">Shrinkage Methods: The Lasso<a class="anchor-link" href="#Shrinkage-Methods:-The-Lasso">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this notebook, you will learn how to:</p>
 <ol>
 <li>Apply the Lasso using mathematical programming.</li>
 <li>Perform hyper-parameter tuning using random search. </li>
@@ -13128,13 +13128,13 @@ div#notebook {
 <li>Linear regression analysis.</li>
 </ul>
 <hr>
-<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>For regression problems, the standard linear model is often used to describe the relationship between a response variable and a set of features. In fact, when applied to real-world problems, it is usually competitive in relation to non-linear methods. However, it may fall short when dealing with problems that have few observations with respect to the number of features considered. Particularly, and provided that the true relationship is approximately linear:</p>
+<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>For regression problems, the standard linear model is often used to describe the relationship between a response variable and a set of features. In fact, when applied to real-world problems, it is usually competitive in relation to non-linear methods. However, it may fall short when dealing with problems that have few observations with respect to the number of features considered. In particular, provided that the true relationship is approximately linear:</p>
 <ul>
 <li>If the number of observations $n$ is much larger than the number of features $d$, i.e. $n &gt;&gt; d$, then the Ordinary Least Squares (OLS) estimation will tend to have low variance. Hence, the linear model will perform well on unseen data.</li>
 <li>If $n$ is not much larger that $d$, then there can be a lot of variability in the fitting process, resulting in overfitting and thus a poor performance on new observations.</li>
 <li>If $n &lt; d$, there is no longer a unique solution to the OLS algorithm, as the variance is infinite.</li>
 </ul>
-<p>Use-cases that commonly have few observations per feature include:</p>
+<p>Use cases that commonly have few observations per feature include:</p>
 <ul>
 <li>Genome-scale data analysis.</li>
 <li>Clinical trials.</li>
@@ -13145,10 +13145,10 @@ div#notebook {
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Linear Regression is a supervised learning algorithm used to predict a quantitative response. It assumes that there is a linear relationship between the feature vector $x_i \in \mathbb{R}^d$ and the response $y_i \in \mathbb{R}$. Mathematically speaking, for sample $i$ we have $y_i = \beta^T x_i + \epsilon_i$, where $\beta \in \mathbb{R}^d$ is the vector of feature weights, including the intercept, and  $\epsilon_i$ is a normally-distributed random variable with zero mean and constant variance representing the error term. We can learn the weights from a training dataset with $n$ observations $\{X \in \mathbb{M}^{nxd},y \in \mathbb{R}^n\}$ by minimizing the Residual Sum of Squares (RSS): $e^Te =(y-X\beta)^T (y-X\beta)=\beta^T X^T X\beta- 2y^TX\beta+y^T y$. The Ordinary Least Squares (OLS) method achieves this by taking the derivative of this quadratic and convex function and then finding the stationary point: $\beta_{OLS}=(X^T X)^{-1} X^T y$.</p>
 <p>As previously discussed, Linear Regression does not perform well when the observations-per-feature ratio is low. Shrinkage methods, such as the Lasso, address this problem by constraining —or shrinking— the weight estimates, thus significantly reducing the variance at the expense of a slight increase in bias.</p>
-<p>Specifically, the Lasso fits a model containing all $d$ predictors, while incorporating a budget constraint based on the L1-norm of $\beta$, disregarding the intercept component. Mathematically speaking, this method minimizes the RSS, subject to $\sum_{l=1}^{d-1}\mathopen|\beta_l\mathclose| \leq s$, where $s$ is a hyper-parameter representing the budget that is usually tuned via cross-validation (because of this constraint, the procedure is no longer scale-invariant). This constraint has the effect of shrinking all weight estimates, also known as regularization, allowing some of them to be exactly zero when $s$ is small enough. In fact, when $s \rightarrow 0$ the null model (intercept only) is retrieved, and when $s \geq ||\beta_{OLS}||_1$ the OLS model is recovered (whenever the budget constraint is non-binding). In light of this, the Lasso implicitly assumes that some of the weights truly equal to zero, allowing it to perform feature selection.</p>
+<p>Specifically, the Lasso fits a model containing all $d$ predictors, while incorporating a budget constraint based on the L1-norm of $\beta$, disregarding the intercept component. Mathematically speaking, this method minimizes the RSS, subject to $\sum_{l=1}^{d-1}\mathopen|\beta_l\mathclose| \leq s$, where $s$ is a hyper-parameter representing the budget that is usually tuned via cross-validation (because of this constraint, the procedure is no longer scale-invariant). This constraint has the effect of shrinking all weight estimates, also known as regularization, allowing some of them to be exactly zero when $s$ is small enough. In fact, when $s \rightarrow 0$ the null model (intercept only) is retrieved, and when $s \geq ||\beta_{OLS}||_1$ the OLS model is recovered (whenever the budget constraint is non-binding). In light of this, the Lasso implicitly assumes that some of the weights are truly equal to zero, allowing it to perform feature selection.</p>
 <p>It is worth noting that the unconstrained version of the Lasso is more frequently used. This version solves an unconstrained optimization problem where $RSS + \lambda \sum_{l=1}^{d-1}\mathopen|\beta_l\mathclose|$ is minimized, for a given value of the —modified— lagrangian multiplier $\lambda \in \mathbb{R}^+$. However, this notebook will focus on the model presented in the previous paragraph, which may be casted as a Quadratic Program (quadratic and convex objective function with linear constraints).</p>
 <hr>
-<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi optimizer solves such models using state-of-the-art mathematics and computer science.</p>
+<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi Optimizer solves such models using state-of-the-art mathematics and computer science.</p>
 <p>A mathematical optimization model has five components, namely:</p>
 <ul>
 <li>Sets and indices.</li>
@@ -13157,7 +13157,7 @@ div#notebook {
 <li>Objective function(s).</li>
 <li>Constraints.</li>
 </ul>
-<p>Before delving into the mathematical model, Note that the budget constraint involves the L1-norm of the feature weights, which is defined as the sum of their absolute values. This constraint, in its current form, is not amenable to Quadratic Programming because it is nonlinear.  However, it is possible to linearize it using a variable transformation technique, at the expense of additional decision variables.</p>
+<p>Before delving into the mathematical model, note that the budget constraint involves the L1-norm of the feature weights, which is defined as the sum of their absolute values. This constraint, in its current form, is not amenable to Quadratic Programming because it is nonlinear.  However, it is possible to linearize it using a variable transformation technique, at the expense of additional decision variables.</p>
 <p>Let $\beta_j = \beta_j^+ - \beta_j^-$ and $|\beta_j| = \beta_j^+ + \beta_j^-$, where $\beta_j^+, \beta_j^- \geq 0 \quad \forall j \in \{1,2,\dots, d\}$ (for brevity, the intercept is also transformed). Then, the budget constraint can be re-expressed as $\sum_{l=1}^{d-1}(\beta_l^+ + \beta_l^-) \leq s$. Consequently, the RSS is modified as follows:</p>
 $$
 \begin{equation}
@@ -13289,7 +13289,7 @@ $$<p>As a side note, it can be shown from the definitions that $\beta_j^+ = \fra
 <hr>
 <h2 id="Hyper-parameter-Tuning">Hyper-parameter Tuning<a class="anchor-link" href="#Hyper-parameter-Tuning">&#182;</a></h2><p>Unlike Ordinary Least Squares (OLS), the Lasso produces a different set of weight estimates $\beta(s)$ for each value of the budget $s$. Thus, we require a method for selecting a value for that hyper-parameter. As $s \in \mathbb{R}^+$, we will:</p>
 <ol>
-<li>Try several values using random search and compute the cross-validated Mean Square Error (MSE) for each of them.</li>
+<li>Try several values using random search and compute the cross-validated Mean Squared Error (MSE) for each of them. This metric is defined as  $\text{MSE} = \sum_{i}{(y_i - \hat{y}_i)^2}$ , where $y_i$ and $\hat{y}_i$ are the observed and predicted values for the ith observation, respectively.</li>
 <li>Select the budget for which the cross-validated MSE is smallest.</li>
 <li>Fit a model using all of the available observations and the selected value for the budget.</li>
 </ol>
@@ -13378,7 +13378,7 @@ $$<p>As a side note, it can be shown from the definitions that $\beta_j^+ = \fra
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Benchmark">Benchmark<a class="anchor-link" href="#Benchmark">&#182;</a></h2><p>We will validate the output of the implementation presented above with the one provided by Scikit learn. The Boston dataset is used for this purpose. This dataset measures the prices of 506 houses, along with 13 features that provide insights about their neighbourhoods. We will use the original feature terminology, so the interested reader is referred to <a href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html">this website</a>.</p>
+<h2 id="Benchmark">Benchmark<a class="anchor-link" href="#Benchmark">&#182;</a></h2><p>We will validate the output of the implementation presented above with the one provided by Scikit learn. The Boston dataset is used for this purpose. This dataset measures the prices of 506 houses, along with 13 features that provide insights about their neighborhoods. We will use the original feature terminology, so the interested reader can visit <a href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html">this website</a> for more information.</p>
 <p>Note that 20% of the samples are reserved for computing the out-of-sample MSE. Furthermore, as the Lasso is not scale-invariant, we first standardize all features so they are expressed in the same units. Such preprocessing entails three steps, namely:</p>
 <p>For each feature $x_l$:</p>
 <ol>
@@ -13530,12 +13530,12 @@ $$
 \text{medv} = 22.56-1.00\text{crim}+1.41\text{zn}+0.49\text{chas}-1.84\text{nox}+2.57\text{rm}
 $$$$
 -1.84\text{age}-3.48\text{dis}+2.52\text{rad}-2.12\text{tax}-1.85\text{ptratio}+1.01\text{b}-3.64\text{lstat}
-$$<p>Since we standardized the data, the intercept represents the estimated median value (in thousands) of a house with mean values across features. Likewise, we can interpret $\beta_1=-1.00$ as the decrease in the house value when the per-capita crime rate increases by one standard deviation from the average value, <em>ceteris paribus</em> (similar statements can be made for the rest of the features).</p>
+$$<p>Since we standardized the data, the intercept represents the estimated median value (in thousands) of a house with mean values across features. Likewise, we can interpret $\beta_1=-1.00$ as the decrease in the house value when the per-capita crime rate increases by one standard deviation from the average value, all other things being equal (similar statements can be made for the rest of the features).</p>
 <hr>
 <h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>As already shown, the Lasso is especially useful when we have few observations for the learning process, or when we want to increase the interpretability of the model.</p>
 <p>Also, this notebook presented a mathematical model based on Quadratic Programming to find an optimal solution for the Lasso. While this approach may not be the fastest, it can easily accommodate additional linear constraints (Bertsimas, 2015), such as:</p>
 <ul>
-<li>Enforcing group sparcity among features.</li>
+<li>Enforcing group sparsity among features.</li>
 <li>Limiting pairwise multicollinearity.</li>
 <li>Limiting global multicollinearity.</li>
 <li>Considering a fixed set of nonlinear transformations.</li>

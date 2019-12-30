@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>RMO-FTE-Hire-budget</title>
+<title>rmo_fte_hire_budget</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,59 +13116,59 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Resource-Matching-Optimization-with-FTE-Requirements-and-Hiring-Budget">Resource Matching Optimization with FTE Requirements and Hiring Budget<a class="anchor-link" href="#Resource-Matching-Optimization-with-FTE-Requirements-and-Hiring-Budget">&#182;</a></h1><h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><h3 id="Introduction-to-Resource-Managagement">Introduction to Resource Managagement<a class="anchor-link" href="#Introduction-to-Resource-Managagement">&#182;</a></h3><p>A professional service organization provides an extensive range of services , for example</p>
+<h1 id="Resource-Matching-Optimization-with-FTE-Requirements-and-Hiring-Budget">Resource Matching Optimization with FTE Requirements and Hiring Budget<a class="anchor-link" href="#Resource-Matching-Optimization-with-FTE-Requirements-and-Hiring-Budget">&#182;</a></h1><h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><h3 id="Introduction-to-Resource-Management">Introduction to Resource Management<a class="anchor-link" href="#Introduction-to-Resource-Management">&#182;</a></h3><p>A professional service organization provides an extensive range of services, for example</p>
 <ul>
-<li>information technology outsourcing </li>
-<li>business process outsourcing </li>
-<li>accounting, </li>
-<li>legal, </li>
-<li>advertising, </li>
-<li>and other specialized services.</li>
+<li>Information technology outsourcing ,</li>
+<li>Business process outsourcing, </li>
+<li>Accounting, </li>
+<li>Legal, </li>
+<li>Advertising, </li>
+<li>Other specialized services.</li>
 </ul>
-<p>Professional service organizations tend to operate globally and must coordinate projects across organizational and geographic boundaries. These projects are characterized by a high degree of service customization, flexible processes, and high labor intensity. Professional service organizations tend to have a diverse workforce made of its own internal resources, contingent resources, and other partners. Large professional services companies employ thousands of professionals to deliver a wide variety of services, making labor the industry’s highest expense.</p>
-<p>A pipeline of projects at different stages of approval need to be staffed with a myriad of heterogeneous labor resources. With the standard work-breakdown-structure approach in project management, a project can be decomposed into sub-projects or jobs at arbitrary level of granularity. A resource manager must consider multiple attributes measuring the quality of matching project jobs and “White-Collar” personnel. To list a few, business domain refers to the application area of a project or a resource’s area of expertise, for example, manufacturing, aerospace, oil &amp; gas and telecommunications. Skill type represents a particular skill or technology, e.g., dot net, Java, SAP, etc. Job level defines a resource’s expertise level such as entry, intermediate and expert levels, which often corresponds with the efficiency or productivity, and pay grade of the resource, thus the cost of assigning the resource to a project. Location identifies a resource’s geographical location as well as whether the job needs to be performed onsite or offshore, which may incur different deployment cost. One may also consider workforce type which differentiates the source of a resource: regular/internal workforce or contingent workforce with different cost. In addition, a feasible plan requires that the available capacity of a resource cannot be exceeded.</p>
+<p>Professional service organizations tend to operate globally and must coordinate projects across organizational and geographic boundaries. These projects are characterized by a high degree of service customization, flexible processes, and high labor intensity. Professional service organizations tend to have a diverse workforce consisting of their own internal resources, contingent resources, and other partners. Large professional services companies employ thousands of professionals to deliver a wide variety of services, making labor the industry’s highest expense.</p>
+<p>A pipeline of projects at different stages of approval need to be staffed with a myriad of heterogeneous labor resources. With the standard work-breakdown-structure approach in project management, a project can be decomposed into sub-projects or jobs at an arbitrary level of granularity. A resource manager must consider multiple attributes measuring the quality of matching project jobs and “White-Collar” personnel. To list a few, business domain refers to the application area of a project or a resource’s area of expertise, for example, manufacturing, aerospace, oil and gas, and telecommunications. Skill type represents a particular skill or technology, e.g., dot net, Java, SAP, etc. Job level defines a resource’s expertise level ⁠— such as entry, intermediate and expert levels⁠ — which often corresponds with the efficiency or productivity, and pay grade of the resource, thus the cost of assigning the resource to a project. Location identifies a resource’s geographical location as well as whether the job needs to be performed onsite or offshore, which may incur different deployment cost. One may also consider workforce type which differentiates the source of a resource: regular/internal workforce or contingent workforce with different cost. In addition, a feasible plan requires that the available capacity of a resource cannot be exceeded.</p>
 <h3 id="Limitations-of-Resource-Management-Tools-and-Processes">Limitations of Resource Management Tools and Processes<a class="anchor-link" href="#Limitations-of-Resource-Management-Tools-and-Processes">&#182;</a></h3><p>Current labor resources management processes and tools present the following limitations:</p>
 <ul>
 <li>Projects staffing is done in a decentralized way. That is, a resource manager can look only at the resource requirements and search supply in a specific business domain, with little or no communication between other domains of service.</li>
-<li>There is uncertainty in the availability of both: resources and jobs. Projects at early stages of the approval process are often perceived as “project opportunities” with their availability, and the availability of the jobs associated with those projects, pending upon bidding process and outcome. A resource’s availability may also be uncertain due to attrition or unexpected disruption. Disruption may be caused by sick leave, vacation, reassignment, relocation or change of role.</li>
+<li>There is uncertainty in the availability of both resources and jobs. Projects at early stages of the approval process are often perceived as “project opportunities” with their availability, and the availability of the jobs associated with those projects, pending upon bidding process and outcome. A resource’s availability may also be uncertain due to attrition or unexpected disruption. Disruption may be caused by sick leave, vacation, reassignment, relocation or change of role.</li>
 <li>Manual allocation of project positions (jobs) to resources are done by queries where positions are satisfied on First-In/First-filled bases.</li>
 <li>The un-matched project positions remain un-matched unless a resource manager manually searches for resources to fill the positions.</li>
 <li>These limitations lead to:<ul>
-<li>Poor demand fulfillment and low labor resource utilization</li>
-<li>High project delivery costs</li>
-<li>Poor customer satisfaction</li>
+<li>Poor demand fulfillment and low labor resource utilization.</li>
+<li>High project delivery costs.</li>
+<li>Poor customer satisfaction.</li>
 </ul>
 </li>
 </ul>
 <h3 id="Resource-Management-Goals">Resource Management Goals<a class="anchor-link" href="#Resource-Management-Goals">&#182;</a></h3><p>The main goals of resource management are:</p>
 <ul>
-<li>Increase labor resources utilization</li>
-<li>Reduce overall labor costs</li>
-<li>Optimize the matching of job requirements with employees qualifications</li>
+<li>Increase labor resources utilization.</li>
+<li>Reduce overall labor costs.</li>
+<li>Optimize the matching of job requirements with employees' qualifications.</li>
 </ul>
 <p>The fundamental problem of resource management is to provide workforce resources:</p>
 <ul>
-<li>With the right skills and capabilities</li>
-<li>For the right job</li>
-<li>At the right time, location, and cost</li>
+<li>With the right skills and capabilities.</li>
+<li>For the right job.</li>
+<li>At the right time, location, and cost.</li>
 </ul>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Consider a professional service organization that has an important project to staff. This project has a set  of jobs that need to be filled by qualified labor resources. Each job needs a given amount  of qualified resources and a set of requirements defined by technology (skill and capabilities), role, job level, etc. Similarly, each resource has qualifications defined in terms of  technology (skill and capabilities), role, and job level. Also, the resource has a capacity available to fill a job.</p>
 <p>The amount of resource required by a job is defined in FTE (Full Time Equivalent) units, and measures the amount of effort required to perform a job.</p>
 <p>A matching score for resources and jobs is calculated based on how well the qualifications of a resource matches the requirements of a job, in terms of technology (skill and capabilities), role, job level, etc.</p>
-<p>If the capacity of a resource is not completely allocated, the remaning capacity not allocated is declared as idle capacity.</p>
-<p>In addition, if not enough internal resources are available, new resources can be hired. There is a fixed cost of hiring one resource of each type of job. Finally, there is a hiring budget that limits the number of new resources that can be hired. Also, jobs can have different priority. This job priority is considered to decide for which jobs we need to hire new resources, whenever there is not enough budget limiting the number of new resources we can hire. For the jobs that we could not hire, a gap is declared.</p>
-<p>The goal is to find an allocation of resources to jobs that maximizes the total matching score of resources and jobs, while satisfying jobs’ FTE requirements,  resources capacity constraints, and budget for hiring.</p>
-<h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization problem that captures the key features of a complex decision problem. The Gurobi optimizer solves the mathematical optimization problem using state of the art mathematics and computer science.</p>
-<p>A mathematical optimization model has five components.</p>
+<p>If the capacity of a resource is not completely allocated, the remaining capacity not allocated is declared as idle capacity.</p>
+<p>In addition, if not enough internal resources are available, new resources can be hired. There is a fixed cost of hiring one resource of each type of job. Finally, there is a hiring budget that limits the number of new resources that can be hired. Also, jobs can have different priorities. This job priority is a factor that needs to be considered when deciding for which jobs we need to hire new resources, whenever there is not enough budget limiting the number of new resources we can hire. For the jobs that we could not hire a resource, a gap is declared.</p>
+<p>The goal is to find an allocation of resources to jobs that maximizes the total matching score of resources and jobs, while satisfying jobs’ FTE requirements,  resources' capacity constraints, and budget for hiring.</p>
+<h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization problem that captures the key features of a complex decision problem. The Gurobi Optimizer solves the mathematical optimization problem using state-of-the-art mathematics and computer science.</p>
+<p>A mathematical optimization model has five components:</p>
 <ul>
-<li>Sets</li>
-<li>Parameters</li>
-<li>Decision variables</li>
-<li>Constraints</li>
-<li>Objective function(s)</li>
+<li>Sets.</li>
+<li>Parameters.</li>
+<li>Decision variables.</li>
+<li>Constraints.</li>
+<li>Objective function(s).</li>
 </ul>
 <h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>For this resource management optimization problem, we have a set of labor resources, $resources$, which corresponds to the internal resources available at the professional services organization. Also, we have a set of jobs, $jobs$, which are the jobs required by the important project we want to staff.</p>
-<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>The parameters maps the inidces of the sets to particular values that represent the input data of the mathematical optimization problem.</p>
+<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>The parameters map the indices of the sets to particular values that represent the input data of the mathematical optimization problem.</p>
 <p>Let $FTE_{j} \geq 0$ be the FTE job requirements of job $j \in jobs$.</p>
 <p>Let $CAP_{r} \; \in \; [0, 1]$ be the capacity available of resource $r \in resources$.</p>
 <p>Let $score_{r,\;j} \in [0, 100]$ be the matching score of resource  $r \in resources$  with respect to job  $j \in jobs$.</p>
@@ -13177,7 +13177,7 @@ reflects the priority of a job (Low = 100, medium = 150, high = 200 ).</p>
 <p>Let $idlePnlty_{r}$ be the penalty of idle capacity of resource $r \in resources$.</p>
 <p>Let $cst_{j}$ be the cost of hiring one resource for job $j \in jobs$.</p>
 <p>Let $B$ be the total budget available for hiring new resources.</p>
-<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>The decision variables represents the solution of the mathematical optimization model. That is, the optimal values of the decision variables are recommendations about the courses of action that optimize the business objective(s). The decision variables maps the inidces of the sets to particular values that represent the best course of action.</p>
+<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>The decision variables represents the solution of the mathematical optimization model. That is, the optimal values of the decision variables are recommendations about the courses of action that optimize the business objective(s). The decision variables map the indices of the sets to particular values that represent the best course of action.</p>
 <p>Let $assign_{r,\; j} \geq 0$ be the capacity of resource $r \in resources$ allocated to fill the FTE requirements of 
 job $j \in jobs$.</p>
 <p>Let $gap_{j}$ be the unfilled FTE requirements of job $j \in jobs$.</p>
@@ -13188,11 +13188,10 @@ job $j \in jobs$.</p>
 <p>Let $uh_{j } \in \{0, 1 \} $ be the indicator variable that flags that new employees have been hired for a job $j \in jobs$.</p>
 <p><strong>Note:</strong>
 We will use the variables $uh_{j }$ to ensure that $h_{j} &gt; 0$ if and only if $nh_{j}  \geq 1$.</p>
-<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p>The constraints of an optimization model are linear inequalities that combines parameters with the decisions variables to 
-represent certain characteristics of the problem we want to solve. For example, ensure that capacity of resources is not exceeded when resources are allocated to satisfy demand.</p>
-<p>For the resource management problem we want to solve, we have the following constraints.</p>
-<p>1) For each job $j \in jobs$, satisfy its FTE requirements, and whenever demand cannot be filled, declare a gap with the 
-amount of unfilled demand.</p>
+<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p>The constraints of an optimization model are linear inequalities that combine parameters with the decisions variables to 
+represent certain characteristics of the problem we want to solve. For example, ensuring that the capacity of resources is not exceeded when resources are allocated to satisfy demand.</p>
+<p>For the resource management problem we want to solve, we have the following constraints:</p>
+<p>1) For each job $j \in jobs$, satisfy its FTE requirements, and whenever demand cannot be filled, declare a gap with the amount of unfilled demand.</p>
 $$
 \sum_{r \: \in \: resources} assign_{r,\; j} \;+\; gap_{j} \;+\;  h_{j} = FTE_{j} \; \; \; \forall \; j \in jobs
 $$<p><strong>Note:</strong>
@@ -13207,8 +13206,8 @@ $$
 \sum_{j \in jobs} cst_{j}*nh_{j}  \leq B
 $$<h3 id="Auxiliary-Constraints">Auxiliary Constraints<a class="anchor-link" href="#Auxiliary-Constraints">&#182;</a></h3><p>For the resource management problem we want to solve, these auxiliary constraints ensures that
 $h_{j} &gt; 0$ if and only if $nh_{j}  \geq 1$.</p>
-<p>5) $\epsilon*uh_{j} \leq h_{j} \leq FTE_{j}*uh_{j}$, where $\epsilon = 0.01$</p>
-<p>6) $uh_{j} \leq nh_{j} \leq \lceil FTE_{j} \rceil*uh_{j}$</p>
+<p>4) $\epsilon*uh_{j} \leq h_{j} \leq FTE_{j}*uh_{j}$, where $\epsilon = 0.01$</p>
+<p>5) $uh_{j} \leq nh_{j} \leq \lceil FTE_{j} \rceil*uh_{j}$</p>
 <p><strong>Note:</strong>
 We now show how these auxiliary constraints ensures that
 $h_{j} &gt; 0$ if and only if $nh_{j}  \geq 1$.</p>
@@ -13222,23 +13221,23 @@ $h_{j} &gt; 0$ if and only if $nh_{j}  \geq 1$.</p>
 <li><p>If $nh_{j} = 0$ then, by constraint 6) ($uh_{j} \leq nh_{j}$), $uh_{j} = 0$. By constraint 5) ($h_{j} \leq FTE_{j}*uh_{j}$), we have that $ h_{j} = 0$.</p>
 </li>
 </ul>
-<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h3><p>The objective function of an optimization model is a function -typically linear, of the parameters and the decisions variables 
+<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h3><p>The objective function of an optimization model is a function, typically linear, of the parameters and the decisions variables 
 that represents the goal we want to optimize.</p>
-<p>For the resource management problem we want to solve, the goal is to maximize the total matching score derived from allocating internal resources considering the penalties associated to the gap of jobs and idle resources, while satisfying the constraints related to the FTE requirements of the jobs, the resources capacity available, and the hiring budget constraint.</p>
+<p>For the resource management problem we want to solve, the goal is to maximize the total matching score derived from allocating internal resources considering the penalties associated to the gap of jobs and idle resources, while satisfying the constraints related to the FTE requirements of the jobs, the resources' capacity available, and the hiring budget constraint.</p>
 $$
 Max \sum_{r \: \in \: resources} \sum_{j \: \in \: jobs}  score_{r,\;j}assign_{r,\; j} 
 \;\;- \sum_{j \: \in \: jobs} gapPnlty_{j}gap_{j} \;\; - \sum_{r \: \in \: resources} idlePnlty_{r}idle_{r}
-$$<h3 id="Resource-Matching-Optimization-Model">Resource Matching Optimization Model<a class="anchor-link" href="#Resource-Matching-Optimization-Model">&#182;</a></h3><p>The Resource Matching Optimization MIP model is summarized as follows.</p>
+$$<h3 id="Resource-Matching-Optimization-Model">Resource Matching Optimization Model<a class="anchor-link" href="#Resource-Matching-Optimization-Model">&#182;</a></h3><p>The Resource Matching Optimization MIP model is summarized as follows:</p>
 <p>0) <strong>Objective function:</strong> Maximize total matching score from internal resources allocation.
 $$
 Max \sum_{r \: \in \: resources} \sum_{j \: \in \: jobs}  score_{r,\;j}assign_{r,\; j} 
 \;\;- \sum_{j \: \in \: jobs} gapPnlty_{j}gap_{j} \;\; - \sum_{r \: \in \: resources} idlePnlty_{r}idle_{r}
 $$</p>
 <p>Subject to:</p>
-<p>1) <strong>Demand constraint:</strong> Satisfy jobs FTE requirements.</p>
+<p>1) <strong>Demand constraint:</strong> Satisfy jobs' FTE requirements.</p>
 $$
 \sum_{r \: \in \: resources} assign_{r,\; j} \;+\; gap_{j} \;+\;  h_{j} = FTE_{j} \; \; \; \forall \; j \in jobs
-$$<p>2) <strong>Resource constraint:</strong> Satisfy resources capacity available.</p>
+$$<p>2) <strong>Resource constraint:</strong> Satisfy resources' capacity available.</p>
 $$
 \sum_{j \: \in \: jobs} assign_{r,\; j} \;+\; idle_{r} = CAP_{r} \; \; \; \forall \; r \in resources 
 $$<p>3) <strong>Budget constraint:</strong> The total cost of hiring new resources should be less or equal than  the hiring budget.</p>
@@ -13246,20 +13245,20 @@ $$
 \sum_{j \in jobs} cst_{j}*nh_{j}  \leq B
 $$<p><strong>Auxiliary constraints:</strong> Ensure that when new resources are allocated to fill job FTE requirements, the proper number of new resources are hired.</p>
 $$
-5) \; \epsilon*uh_{j} \leq h_{j} \leq FTE_{j}*uh_{j},  \; where  \; \epsilon = 0.01  .
+4) \; \epsilon*uh_{j} \leq h_{j} \leq FTE_{j}*uh_{j},  \; where  \; \epsilon = 0.01  .
 $$$$
- \; \; 6) \;uh_{j} \leq nh_{j} \leq \lceil FTE_{j} \rceil*uh_{j}.
-$$<p>7) <strong>Non-negativity and integrality constraints:</strong></p>
+ \; \; 5) \;uh_{j} \leq nh_{j} \leq \lceil FTE_{j} \rceil*uh_{j}.
+$$<p>6) <strong>Non-negativity and integrality constraints:</strong></p>
 <p>Amount of resource capacity allocated to fill job FTE requirements.</p>
 $$
 assign_{r,\; j} \geq 0 \; \; \; \forall \; r \in resources \; and \;  j \in jobs
 $$<p>Amount of capacity of new resources hired allocated to fill job FTE requirements.</p>
 $$
 h_{j} \geq 0 \; \; \; \forall \; j \in jobs
-$$<p>Number of new resources hired to to fill job FTE requirements.</p>
+$$<p>Number of new resources hired to fill job FTE requirements.</p>
 $$
 nh_{j } \in \{0, 1, 2, .. , \lfloor \frac{B}{cst_{j}}  \rfloor \}
-$$<p>Indicator variable that flags that new employees have been hired for a job</p>
+$$<p>Indicator variable that flags that new employees have been hired for a job.</p>
 $$
 uh_{j } \in \{0, 1 \} \; \; \; \forall \; j \in jobs
 $$<p>Amount of idle capacity of a resource.</p>
@@ -13285,22 +13284,22 @@ $$</p>
 $$
 \frac{\sum_{j \; \in \; jobs} gap_{j} }{\sum_{j \; \in \; jobs} FTE_{j}}
 $$<h3 id="Resources-Utilization-KPIs">Resources Utilization KPIs<a class="anchor-link" href="#Resources-Utilization-KPIs">&#182;</a></h3><p><strong>Resources utilization metric</strong></p>
-<p>(Total resources allocated to fill jobs demand) / (total  resources capacity available) :
+<p>(Total resources allocated to fill jobs demand) / (total  resources' capacity available) :
 $$
 \frac{\sum_{j \; \in \; jobs} \sum_{r \; \in \; resources } assign_{r,\; j} + \sum_{j \; \in \; jobs} h_{j} }{\sum_{r \; \in \; resources } CAP_{r} + \sum_{j \; \in \; jobs} nh_{j}}
 $$</p>
 <p><strong>Internal resources utilization</strong></p>
-<p>(Total internal resources allocated to fill jobs demand) / (total  resources capacity available) :
+<p>(Total internal resources allocated to fill jobs demand) / (total  resources' capacity available) :
 $$
 \frac{\sum_{j \; \in \; jobs} \sum_{r \; \in \; resources } assign_{r,\; j} }{\sum_{r \; \in \; resources } CAP_{r} + \sum_{j \; \in \; jobs} nh_{j}}
 $$</p>
 <p><strong>Hired resources utilization</strong></p>
-<p>(Total hired resources allocated to fill jobs demand) / (total  resources capacity available) :
+<p>(Total hired resources allocated to fill jobs demand) / (total  resources' capacity available) :
 $$
 \frac{\sum_{j \; \in \; jobs} h_{j} }{\sum_{r \; \in \; resources } CAP_{r} + \sum_{j \; \in \; jobs} nh_{j}}
 $$</p>
 <p><strong>idle utilization metric</strong></p>
-<p>(Total idle resources (internal and hired)) / (total  resources capacity available) :
+<p>(Total idle resources (internal and hired)) / (total  resources' capacity available) :
 $$
 \frac{\sum_{r \; \in \; resources} idle_{r} + \sum_{j \; \in \; jobs} (nh_{j} - h_{j}) }{\sum_{r \; \in \; resources } CAP_{r} + \sum_{j \; \in \; jobs} nh_{j}}
 $$</p>
@@ -13310,7 +13309,7 @@ $$
 \frac{\sum_{j \; \in \; jobs} \sum_{r \; \in \; resources } score_{r,\;j}assign_{r,\; j} }{|jobs|}
 $$</p>
 <p><strong>Resources matching deficiency</strong></p>
-<p>Degree (%) in which resources allocated to fill jobs demand do not satisfy job requirements:</p>
+<p>Degree (%) to which resources allocated to fill jobs demand do not satisfy job requirements:</p>
 $$
 1-\frac{\sum_{j \; \in \; jobs} \sum_{r \; \in \; resources } score_{r,\;j}assign_{r,\; j} }{|jobs|}
 $$<h3 id="Hiring-Budget-KPIs">Hiring Budget KPIs<a class="anchor-link" href="#Hiring-Budget-KPIs">&#182;</a></h3><p><strong>Budget consumption metric</strong></p>
@@ -13323,9 +13322,9 @@ $$</p>
 $$
 1-\frac{\sum_{j \in jobs} cst_{j}*nh_{j} }{B}
 $$<h2 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h2><ul>
-<li>You will learn how to formulate the resource management problem as a mixed integer programming (MIP) model, called resource matching optimization, using the Gurobi Python API</li>
-<li>The resource matching optimization model has logical constraints to induce the proper behavior for the hiring variables, conequently you will learn how to use indicator (binary) variables and logical constraints to ensure that you hire the appropriate number of new resources and allocate the appropriate amount capacity to fill jobs FTE requirements.</li>
-<li>You will also learn how to create KPIs (Key Performance Metrics) that allows to compare different sceanario.</li>
+<li>You will learn how to formulate the resource management problem as a mixed-integer programming (MIP) model, called resource matching optimization, using the Gurobi Python API.</li>
+<li>The resource matching optimization model has logical constraints to induce the proper behavior for the hiring variables, consequently you will learn how to use indicator (binary) variables and logical constraints to ensure that you hire the appropriate number of new resources and allocate the appropriate amount capacity to fill jobs' FTE requirements.</li>
+<li>You will also learn how to create KPIs (Key Performance Metrics) that allows to compare different scenarios.</li>
 </ul>
 
 </div>
@@ -13546,7 +13545,7 @@ $$<h2 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>1) <strong>Demand constraint:</strong> Satisfy jobs FTE requirements.</p>
+<p>1) <strong>Demand constraint:</strong> Satisfy jobs' FTE requirements.</p>
 $$
 \sum_{r \: \in \: resources} assign_{r,\; j} \;+\; gap_{j} \;+\;  h_{j} = FTE_{j} \; \; \; \forall \; j \in jobs
 $$
@@ -13570,7 +13569,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>2) <strong>Resource constraint:</strong> Satisfy resources capacity available.</p>
+<p>2) <strong>Resource constraint:</strong> Satisfy resources' capacity available.</p>
 $$
 \sum_{j \: \in \: jobs} assign_{r,\; j} \;+\; idle_{r} = CAP_{r} \; \; \; \forall \; r \in resources 
 $$
@@ -13594,7 +13593,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>3) <strong>Budget constraint:</strong> The total cost of hiring new resources should be less or equal than  the hiring budget.</p>
+<p>3) <strong>Budget constraint:</strong> The total cost of hiring new resources should be less than or equal to the hiring budget.</p>
 $$
 \sum_{j \in jobs} cst_{j}*nh_{j}  \leq B
 $$
@@ -13649,7 +13648,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Objective function:</strong> Maximize total score of assignments considering jobs gap and idle resources penalties
+<p><strong>Objective function:</strong> Maximize total score of assignments considering job gaps and idle resources penalties.
 $$
 Max \sum_{r \: \in \: resources} \sum_{j \: \in \: jobs}  score_{r,\;j}assign_{r,\; j} 
 \;\;- \sum_{j \: \in \: jobs} gapPnlty_{j}gap_{j} \;\; - \sum_{r \: \in \: resources} idlePnlty_{r}idle_{r} 
@@ -14003,7 +14002,7 @@ Best objective 2.060000000000e+02, best bound 2.060000000000e+02, gap 0.0000%
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Total Matching score</strong>
+<p><strong>Total Matching Score</strong>
 $$
 \sum_{r \: \in \: resources} \sum_{j \: \in \: jobs}  score_{r,\;j}assign_{r,\; j} 
 $$</p>
@@ -14051,7 +14050,7 @@ $$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To help visualize the results, let's define a function that recieves</p>
+<p>To help visualize the results, let's define a function that receives:</p>
 <ol>
 <li>data values</li>
 <li>data labels</li>
@@ -14242,22 +14241,22 @@ Unfilled demand rate:  0.00 %
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Resources-Utilization-KPIs">Resources Utilization KPIs<a class="anchor-link" href="#Resources-Utilization-KPIs">&#182;</a></h3><p><strong>Resources utilization metric</strong></p>
-<p>(Total resources allocated to fill jobs demand) / (total  resources capacity available) :
+<p>(Total resources allocated to fill jobs demand) / (total  resources' capacity available) :
 $$
 \frac{\sum_{j \; \in \; jobs} \sum_{r \; \in \; resources } assign_{r,\; j} + \sum_{j \; \in \; jobs} h_{j} }{\sum_{r \; \in \; resources } CAP_{r} + \sum_{j \; \in \; jobs} nh_{j}}
 $$</p>
 <p><strong>Internal resources utilization</strong></p>
-<p>(Total internal resources allocated to fill jobs demand) / (total  resources capacity available) :
+<p>(Total internal resources allocated to fill jobs demand) / (total  resources' capacity available) :
 $$
 \frac{\sum_{j \; \in \; jobs} \sum_{r \; \in \; resources } assign_{r,\; j} }{\sum_{r \; \in \; resources } CAP_{r} + \sum_{j \; \in \; jobs} nh_{j}}
 $$</p>
 <p><strong>Hired resources utilization</strong></p>
-<p>(Total hired resources allocated to fill jobs demand) / (total  resources capacity available) :
+<p>(Total hired resources allocated to fill jobs demand) / (total  resources' capacity available) :
 $$
 \frac{\sum_{j \; \in \; jobs} h_{j} }{\sum_{r \; \in \; resources } CAP_{r} + \sum_{j \; \in \; jobs} nh_{j}}
 $$</p>
 <p><strong>idle utilization metric</strong></p>
-<p>(Total idle resources (internal and hired)) / (total  resources capacity available) :
+<p>(Total idle resources (internal and hired)) / (total  resources' capacity available) :
 $$
 \frac{\sum_{r \; \in \; resources} idle_{r} + \sum_{j \; \in \; jobs} (nh_{j} - h_{j}) }{\sum_{r \; \in \; resources } CAP_{r} + \sum_{j \; \in \; jobs} nh_{j}}
 $$</p>
@@ -14393,7 +14392,7 @@ $$
 \frac{\sum_{j \; \in \; jobs} \sum_{r \; \in \; resources } score_{r,\;j}assign_{r,\; j} }{|jobs|}
 $$</p>
 <p><strong>Resources matching deficiency</strong></p>
-<p>Degree (%) in which resources allocated to fill jobs demand do not satisfy job requirements:</p>
+<p>Degree (%) to which resources allocated to fill jobs demand do not satisfy job requirements:</p>
 $$
 1-\frac{\sum_{j \; \in \; jobs} \sum_{r \; \in \; resources } score_{r,\;j}assign_{r,\; j} }{|jobs|}
 $$

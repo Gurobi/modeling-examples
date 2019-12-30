@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Workforce scheduling</title>
+<title>workforce_scheduling</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,50 +13116,49 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Workforce-scheduling-problem">Workforce scheduling problem<a class="anchor-link" href="#Workforce-scheduling-problem">&#182;</a></h1><h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>People are the most important asset in the services industry and the largest cost.</p>
+<h1 id="Workforce-Scheduling-Problem">Workforce Scheduling Problem<a class="anchor-link" href="#Workforce-Scheduling-Problem">&#182;</a></h1><h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>People are the most important asset in the services industry and the largest cost.</p>
 <p>Workforce allocation and personnel scheduling deal with the arrangement of work schedules  and the assignment of personnel shifts in order to cover the demand for resources that vary over time.</p>
 <p>These problems are very important in services industries such as:</p>
 <ul>
-<li>Telephone operators</li>
-<li>Hospital nurses</li>
-<li>Policemen</li>
-<li>Transportation personnel (plane crews, bus drivers)</li>
-<li>Hospitality industry</li>
-<li>Restaurant industry</li>
-<li>etc.</li>
+<li>Telephone operators,</li>
+<li>Hospital nurses,</li>
+<li>Policemen,</li>
+<li>Transportation personnel (plane crews, bus drivers, etc.),</li>
+<li>Hospitality industry,</li>
+<li>Restaurant industry.</li>
 </ul>
-<h2 id="Problem-description">Problem description<a class="anchor-link" href="#Problem-description">&#182;</a></h2><p>Consider a service business, like a restaurant, that develops its workforce plans for the next two weeks -considering a (7-day) week. The service requires only one set of skills. There are a number of employed workers with the same set of skills and with identical productivity that are available to work on some of the days during the two-weeks planning horizon. There is only one shift per workday. Each shift may have different resource (workers) requirements on each workday. The service business may hire extra (temp) workers from an agency to satisfy shift requirements. The service business wants to minimize the number of extra workers that needs to hire, and as a secondary objective (fairness) it wants to balance the workload of employed workers.</p>
-<h2 id="Model-formulation">Model formulation<a class="anchor-link" href="#Model-formulation">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization problem that captures the key features of a complex decision problem. The Gurobi optimizer solves the mathematical optimization problem using state of the art mathematics and computer science.</p>
-<p>A mathematical optimization model has five components.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Consider a service business, like a restaurant, that develops its workforce plans for the next two weeks (considering a 7-day week). The service requires only one set of skills. There are a number of employed workers with the same set of skills and with identical productivity that are available to work on some of the days during the two-week planning horizon. There is only one shift per workday. Each shift may have different resource (workers) requirements on each workday. The service business may hire extra (temp) workers from an agency to satisfy shift requirements. The service business wants to minimize the number of extra workers that needs to hire, and as a secondary objective (fairness) it wants to balance the workload of employed workers.</p>
+<h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization problem that captures the key features of a complex decision problem. The Gurobi Optimizer solves the mathematical optimization problem using state-of-the-art mathematics and computer science.</p>
+<p>A mathematical optimization model has five components:</p>
 <ul>
-<li>Sets</li>
-<li>Parameters</li>
-<li>Decision variables</li>
-<li>Constraints</li>
-<li>Objective function(s)</li>
+<li>Sets.</li>
+<li>Parameters.</li>
+<li>Decision variables.</li>
+<li>Constraints.</li>
+<li>Objective function(s).</li>
 </ul>
-<h3 id="Sets-and-indices">Sets and indices<a class="anchor-link" href="#Sets-and-indices">&#182;</a></h3><p>For the workforce problem, we have two sets: the set of $workers$ which corresponds to the employed workers in the service business, and the set of $shifts$ which corresponds to each of the work days in the planning horizon. For example, the set of $workers = \{1:Amy, \; 2:Bob  \}$ maps the index 1 with the employed worker Amy, and the index 2 with the employed worker Bob. The set of $shifts = \{1:Mon1, \; 2:Tue2  \}$ maps the index 1 with the work day Mon1, and the index 2 with the work day Tue2.</p>
+<h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>For the workforce problem, we have two sets: the set of $workers$ which corresponds to the employed workers in the service business, and the set of $shifts$ which corresponds to each of the work days in the planning horizon. For example, the set of $workers = \{1:Amy, \; 2:Bob  \}$ maps the index 1 with the employed worker Amy, and the index 2 with the employed worker Bob. The set of $shifts = \{1:Mon1, \; 2:Tue2  \}$ maps the index 1 with the work day Mon1, and the index 2 with the work day Tue2.</p>
 <p>In general, for the workforce problem, we have:</p>
 <p>Let $s \in shifts$ be the index and set of shifts.</p>
 <p>Let $w \in workers$ be the index and set of workers.</p>
-<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>In general, the parameters maps the inidces of the sets to particular values that represent the input data of the mathematical optimization problem. For example, the shift requirement on the Mon1 work day is 3 workers. This can be represented by an array called shiftRequirements, where $shiftRequirements(Mon1) = 3$.</p>
-<p>The input data of the workforce problem is defined by the following paramters.</p>
+<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>In general, the parameters map the indices of the sets to particular values that represent the input data of the mathematical optimization problem. For example, the shift requirement on the Mon1 work day is 3 workers. This can be represented by an array called shiftRequirements, where $shiftRequirements(Mon1) = 3$.</p>
+<p>The input data of the workforce problem is defined by the following parameters.</p>
 <p>Let the parameter $shiftRequirements(s)$ be the number of workers required at shift $s$, for all $s \in shifts$.</p>
 <p>Let the parameter $pay(w)$ be the salary per day of a worker $w$, for all $w \in workers$.</p>
 <p>The parameter $availability(w,s)$ establishes that the employed worker  $w$ is available to work on shift $s$.</p>
-<p>Let $relTol$ be the relative tolerance paramater that allows to deviate from the optimal objective function value of the primary objective, when solving the model for the secondary objective. (See optimization process).</p>
-<h3 id="Computed-parameters">Computed parameters<a class="anchor-link" href="#Computed-parameters">&#182;</a></h3><p>These parameters are derived from the input parameters and/or from the optimization process.</p>
+<p>Let $relTol$ be the relative tolerance parameter that allows to deviate from the optimal objective function value of the primary objective, when solving the model for the secondary objective. (See optimization process).</p>
+<h3 id="Computed-Parameters">Computed Parameters<a class="anchor-link" href="#Computed-Parameters">&#182;</a></h3><p>These parameters are derived from the input parameters and/or from the optimization process.</p>
 <p>Let $Opt(totSlack)$ be the minimum value of extra workers required to fill demand.</p>
-<h3 id="Decision-variables">Decision variables<a class="anchor-link" href="#Decision-variables">&#182;</a></h3><p>The decision variables represents the solution of the mathematical optimization model. That is, the optimal values of the decision variables are recommendations about the courses of action that optimize the business objective(s). The decision variables maps the inidces of the sets to particular values that represent the best course of action. For example, if the  mathematical optimization model recommends that Amy works on Mon1 shift, this can be represented by a two dimensional array x, where the first dimension is the set of workers and the second dimension is the set of shifts. Hence, x(Amy, Mon1) = 1 means that Amy has been assigned to work the Mon1 shift.</p>
+<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>The decision variables represent the solution of the mathematical optimization model. That is, the optimal values of the decision variables are recommendations about the courses of action that optimize the business objective(s). The decision variables map the indices of the sets to particular values that represent the best course of action. For example, if the  mathematical optimization model recommends that Amy works on Mon1 shift, this can be represented by a two-dimensional array x, where the first dimension is the set of workers and the second dimension is the set of shifts. Hence, x(Amy, Mon1) = 1 means that Amy has been assigned to work the Mon1 shift.</p>
 <p>The best courses of action of the workforce problem is defined by the following decision variables.</p>
 <p>Let $x(w,s) = 1$ if worker $w$ is assigned to shift $s$ and 0 otherwise.</p>
 <p>Let $Slack(s)$ be the number of extra workers required to satisfy the requirements of shift $s$.</p>
-<h3 id="Auxiliary-variables">Auxiliary variables<a class="anchor-link" href="#Auxiliary-variables">&#182;</a></h3><p>Auxiliary variables are derived from the values of the decision variables.</p>
+<h3 id="Auxiliary-Variables">Auxiliary Variables<a class="anchor-link" href="#Auxiliary-Variables">&#182;</a></h3><p>Auxiliary variables are derived from the values of the decision variables.</p>
 <p>The variable $totSlack$ counts the total number of extra workers required to satisfy shift workers demand.</p>
 <p>The variable $totShifts(w)$ counts the total number of shifts worked by each worker.</p>
 <p>The variable $minShift$ determines the minimum number of shifts allocated to workers.</p>
 <p>The variable $maxShift$ determines the maximum number of shifts allocated to workers.</p>
-<h3 id="Optimization-process">Optimization process<a class="anchor-link" href="#Optimization-process">&#182;</a></h3><p>In this modeling example, we tackle a multi-objective model where the primary objective is to minimize the number of extra workers required to satisfy shift requirements, and the secondary objective is to minimize the maximum difference in the number of shifts worked between any pair of workers. This secondary objective balance the workload allocated to workers.</p>
+<h3 id="Optimization-Process">Optimization Process<a class="anchor-link" href="#Optimization-Process">&#182;</a></h3><p>In this modeling example, we tackle a multi-objective model where the primary objective is to minimize the number of extra workers required to satisfy shift requirements, and the secondary objective is to minimize the maximum difference in the number of shifts worked between any pair of workers. This secondary objective balances the workload allocated to workers.</p>
 <p>The hierarchical multi-objective optimization approach will first solve the following model where we minimize the number of extra workers allocated.</p>
 $$
 Min \; totSlack
@@ -13219,9 +13218,9 @@ $$$$
 minShift, maxShift    \geq 0
 $$<p>This optimization process is done automatically by the Gurobi Python API when using the following method:</p>
 <p>"Model.setObjectiveN()"</p>
-<h2 id="What-you-will-learn">What you will learn<a class="anchor-link" href="#What-you-will-learn">&#182;</a></h2><ul>
-<li>You will learn how to formulate the workforce scheduling problem as a mixed integer programming (MIP) problem using the Gurobi Python API</li>
-<li>The workforce scheduling problem is formulated as a multi-objective MIP, conequently you will learn how to configure the model objective method "Model.setObjectiveN()" that allows to handle multiple objectives hierarchically.</li>
+<h2 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h2><ul>
+<li>You will learn how to formulate the workforce scheduling problem as a mixed integer programming (MIP) problem using the Gurobi Python API.</li>
+<li>The workforce scheduling problem is formulated as a multi-objective MIP, consequently you will learn how to configure the model objective method "Model.setObjectiveN()" that allows to handle multiple objectives hierarchically.</li>
 </ul>
 
 </div>
@@ -13574,7 +13573,7 @@ $maxShift = Max \{totShifts(w): \ w \; in \; workers \} $</p>
 $$
 Min \; totSlack \; = \; \sum_{s \: \in \: shifts} Slack(s) 
 $$</p>
-<p>For this objective we allow a degration tolerance of up to certain percentage. If reltol = 0.2, then we allow a degradation
+<p>For this objective we allow a degradation tolerance of up to certain percentage. If reltol = 0.2, then we allow a degradation
 tolerance of 20%.</p>
 
 </div>

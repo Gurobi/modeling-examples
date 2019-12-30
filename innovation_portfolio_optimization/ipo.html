@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>ipoEM</title>
+<title>ipo</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13017,6 +13017,45 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
+<style type="text/css">
+    
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+
+    </style>
 
 
 <style type="text/css">
@@ -13077,49 +13116,49 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Innovation-Portfolio-Optimization">Innovation Portfolio Optimization<a class="anchor-link" href="#Innovation-Portfolio-Optimization">&#182;</a></h1><h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>Project and innovation Portfolio Optimization is a problem that is prevalent in many industries. For example</p>
+<h1 id="Innovation-Portfolio-Optimization">Innovation Portfolio Optimization<a class="anchor-link" href="#Innovation-Portfolio-Optimization">&#182;</a></h1><h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>Project and Innovation Portfolio Optimization is a problem that is prevalent in many industries. For example:</p>
 <ul>
-<li>Major global IT organizations have hundreds of IT projects impacting hundreds of applications. Typically, the budget for this global IT organizations are in the billions of dollars. </li>
+<li>Major global IT organizations have hundreds of IT projects impacting hundreds of applications. Typically, these global IT organizations have budgets that amount to billions of dollars. </li>
 <li>Major consulting and service providers need to manage a complex pipeline of clients’ project opportunities.</li>
 <li>Fortune 500 global companies need to manage a complex funnel of technology innovation opportunities.</li>
 <li>U.S county, state, and federal government organizations need to manage billions of dollars in projects that benefit U.S tax payers.</li>
 </ul>
-<p>Portfolio management requires removing operational inefficiencies to generate savings that can be invested to fuel innovation. Optimizing these investments is not just about cutting costs, but about investing the right amount to deliver value to the business. Portfolio management requires to frequently determine where to trim, where to invest, and where to shift to innovation. That is, it requires an efficient and repeatable approach to regularly adapt to changes in business requirements and the shifts of the technology landscape.</p>
-<p>Project and innovation Portfolio Optimization is an extremely difficult problem to solve. There are an astronomical number of combinations to select and schedule projects optimally within the scarce and limited resources available. In addition, there are several conflicting business objectives to be considered when creating a portfolio; consequently, there is a need to optimize the trade-offs between these conflicting objectives. Traditionally, the “optimization” of a portfolio is a very manual and time-consuming process, typically producing sub-optimal results that lead to waste and delays in projects and processes.</p>
-<h2 id="Problem-description">Problem description<a class="anchor-link" href="#Problem-description">&#182;</a></h2><p>How to optimize the selection and scheduling of a portfolio of projects such that the trade-offs among various conflicting business objectives  are optimized, while satisfying resource constraints (e.g. labor availability and budgets) and other business constraints (e.g. project precedence constraints)</p>
-<h2 id="Model-formulation">Model formulation<a class="anchor-link" href="#Model-formulation">&#182;</a></h2><p>Mathematical optimization or mathematical programming is a declarative approach where the modeler formulates a mathematical optimization problem that captures the key features of a complex decision problem. The Gurobi optimizer solves the mathematical optimization problem using state of the art mathematics and computer science.</p>
-<p>A mathematical optimization model has five components.</p>
+<p>Portfolio management requires removing operational inefficiencies to generate savings that can be invested to fuel innovation. But optimizing these investments is not just about cutting costs, it is also about making investment decisions that deliver value to the business. Portfolio management involves frequently determining where to trim, where to invest, and where to shift to innovation. That is, portfolio management requires an efficient and repeatable approach so that companies can rapidly adapt to changes in business requirements and the shifts of the technology landscape.</p>
+<p>Project and Innovation Portfolio Optimization is an extremely difficult problem to solve. There are an astronomical number of possible combinations from which to select, and companies must be able to schedule projects optimally with limited available resources. In addition, there are several conflicting business objectives that must be considered when creating a portfolio; consequently, there is a need to optimize the trade-offs between these conflicting objectives. Using traditional, manual tools and techniques, the “optimization” of a portfolio is a very time-consuming process that typically produces sub-optimal results and leads to delays in projects and processes.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>How to optimize the selection and scheduling of a portfolio of projects so that the trade-offs among various conflicting business objectives  are optimized, while satisfying resource constraints (e.g. labor availability and budgets) and other business constraints (e.g. project precedence constraints).</p>
+<h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><p>Mathematical optimization or mathematical programming is a declarative approach where the modeler formulates a mathematical optimization problem that captures the key features of a complex decision problem. The Gurobi Optimizer solves the mathematical optimization problem using state-of-the-art mathematics and computer science.</p>
+<p>A mathematical optimization model has five components:</p>
 <ul>
-<li>Sets</li>
-<li>Parameters</li>
-<li>Decision variables</li>
-<li>Constraints</li>
-<li>Objective function(s)</li>
+<li>Sets.</li>
+<li>Parameters.</li>
+<li>Decision variables.</li>
+<li>Constraints.</li>
+<li>Objective function(s).</li>
 </ul>
-<h3 id="MIP-model-description">MIP model description<a class="anchor-link" href="#MIP-model-description">&#182;</a></h3><ul>
-<li>The goal of this model is to optimize the selection and scheduling from a set of projects.</li>
+<h3 id="MIP-Model-Description">MIP Model Description<a class="anchor-link" href="#MIP-Model-Description">&#182;</a></h3><ul>
+<li>The goal of this model is to optimize the selection and scheduling of a set of projects.</li>
 <li>For each project, there is a benefit value and a customer satisfaction score.</li>
 <li>The primary objective is to maximize the total benefit generated by the selected projects.</li>
-<li>The secondary objective is to maximize the total customer satisfaction score generated by the selected projects. There is a threshold parameter (percentage) that allows degrading the optimal primary objective value in order to maximize the secondary objective while ensuring that at least the decreased value of the primary objective is achieved. To rank the impact of a project on customer satisfaction the following scale can be used:<ul>
+<li>The secondary objective is to maximize the total customer satisfaction score generated by the selected projects. There is a threshold parameter (percentage) that allows degrading the optimal primary objective value in order to maximize the secondary objective while ensuring that at least the decreased value of the primary objective is achieved. To rank the impact of a project on customer satisfaction, the following scale can be used:<ul>
 <li>100 means very high</li>
 <li>75 means high</li>
 <li>50 means average</li>
 <li>25 means low</li>
-<li>0 means none.</li>
+<li>0 means none</li>
 </ul>
 </li>
-<li>For each project, there is a cost of selecting each project and duration. Additionally each project has a release period which indicates the earliest period in which a project can start, and a due period which defines the latest period in which the project can be completed.</li>
+<li>For each project, there is a cost of selecting each project and a duration. Additionally, each project has a release period that indicates the earliest period in which a project can start, and a due period that defines the latest period in which the project can be completed.</li>
 <li>There is a constraint that establishes that the costs of the selected projects cannot exceed a global budget.</li>
 <li>There is a constraint that forces some projects to be selected.</li>
-<li>There is a constraint that forces some projects to be not selected.</li>
+<li>There is a constraint that forces some projects not to be selected.</li>
 <li>The value of the benefit and customer satisfaction that a project generates decreases over time.</li>
-<li>The constraint that forces some projects to be selected may violate the budget constraint. Hence an artifical variable is added to the budget to correct the budget to fund the projects that are forced in.</li>
+<li>The constraint that forces some projects to be selected may violate the budget constraint. Hence an artificial variable is added to the budget to correct the budget to fund the projects that are forced in.</li>
 </ul>
-<h3 id="Sets-and-indices">Sets and indices<a class="anchor-link" href="#Sets-and-indices">&#182;</a></h3><p>$p \in P$: index and set of projects.</p>
+<h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$p \in P$: index and set of projects.</p>
 <p>$IN \subseteq P$: set of projects forced to be selected.</p>
 <p>$OUT \subseteq P$: set of projects forced to be not selected.</p>
 <h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$\alpha$: a discount factor to decrease the value of a project benefit and customer satisfaction as a function of time.</p>
-<p>$BigM$: Large penalty number for exceding one unit of budget.</p>
+<p>$BigM$: large penalty number for exceeding one unit of budget.</p>
 <p>$\beta$: budget to fund the selected projects.</p>
 <p>$\lambda_p$: release date of project $p \in P$</p>
 <p>$\delta_p$: due date of project $p \in P$</p>
@@ -13127,21 +13166,21 @@ div#notebook {
 <p>$c_p$: cost of project $p \in P$</p>
 <p>$d_p$: duration of project $p \in P$</p>
 <p>${s_p}$: customer satisfaction of project $p \in P$</p>
-<h3 id="Computed-parameters">Computed parameters<a class="anchor-link" href="#Computed-parameters">&#182;</a></h3><p>$[ES_p, LS_p]$: defines the earliest start and latest start time window of project $p \in P$. This time window is calulated as follows.</p>
+<h3 id="Computed-Parameters">Computed Parameters<a class="anchor-link" href="#Computed-Parameters">&#182;</a></h3><p>$[ES_p, LS_p]$: defines the earliest start and latest start time window of project $p \in P$. This time window is calculated as follows.</p>
 <ul>
 <li>$ES_p = \lambda_p$</li>
 <li>$LS_p = \delta_p - d_p$.</li>
 </ul>
-<p>$[EF_p, LF_p]$: defines the earliest finish and latest finish time window of project $p \in P$. This time window is calulated as follows.</p>
+<p>$[EF_p, LF_p]$: defines the earliest finish and latest finish time window of project $p \in P$. This time window is calculated as follows.</p>
 <ul>
 <li>$EF_p = \lambda_p + d_p$</li>
 <li>$LF_p = \delta_p$.</li>
 </ul>
-<h3 id="Decision-variables">Decision variables<a class="anchor-link" href="#Decision-variables">&#182;</a></h3><p>$y_p = 1$ if project $p$ is selected in the portfolio; and 0 otherwise.</p>
+<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$y_p = 1$ if project $p$ is selected in the portfolio; and 0 otherwise.</p>
 <p>$x_{p,t} = 1$ if project $p$ starts at time period $t$; and 0 otherwise.</p>
 <p>$z_{p,t} = 1$ if project $p$ is completed at time period $t$; and 0 otherwise</p>
 <p>$ArtBudget$: takes a positive value in case the recommended budget does not cover the cost of all the selected projects.</p>
-<h3 id="MIP-model-formulation">MIP model formulation<a class="anchor-link" href="#MIP-model-formulation">&#182;</a></h3><p><strong>Primary objective</strong>: Maximize the total discounted benefit generated by the selected projects.</p>
+<h3 id="MIP-Model-Formulation">MIP Model Formulation<a class="anchor-link" href="#MIP-Model-Formulation">&#182;</a></h3><p><strong>Primary objective</strong>: Maximize the total discounted benefit generated by the selected projects.</p>
 $$ MAX \; Benefit = \sum_{p \in P} \sum_{t = EF_p}^{LF_p}  \; \frac{v_p\;z_{p,t}}{(1 + \alpha)^t} - BigM \; ArtBudget$$<p><strong>Secondary objective</strong>: Maximize the total discounted customer satisfaction score generated by the selected projects.</p>
 $$ MAX \; Score = \sum_{p \in P} \sum_{t = EF_p}^{LF_p}  \; \frac{s_p\;z_{p,t}}{(1 + \alpha)^t} - BigM \; ArtBudget$$<p>Remark: Notice that if the artificial variable $ArtBudget$ is positive, we penalize it with a large value coefficient. The idea is that the artificial variable will be positive only to make the problem feasible.</p>
 <p><strong>Subject to the following constraints</strong>:</p>
@@ -13177,7 +13216,7 @@ $$</p>
 $$
 \sum_{p \in P} c_{p} \; y_{p} \leq \beta + ArtBudget 
 $$</p>
-<p><strong>Non-negativity and integrality constraints</strong>.</p>
+<p><strong>Non-negativity and integrality constraints</strong></p>
 <p>The variables that select the projects as part of the optimal portfolio are binary.
 $$
 y_p \in \{0,1\} \;\;\;\; \forall p \in P
@@ -13190,7 +13229,7 @@ $$</p>
 $$
 ArtBudtet \geq 0
 $$</p>
-<h1 id="Script-output-and-KPI's">Script output and KPI's<a class="anchor-link" href="#Script-output-and-KPI's">&#182;</a></h1><p>When the optimization is completed, a simple report showing the list of selected projects and its start period is displayed. Also a variety of KPI's are computed to provide helpful information about the selected portfolio.</p>
+<h1 id="Script-Output-and-KPIs">Script Output and KPIs<a class="anchor-link" href="#Script-Output-and-KPIs">&#182;</a></h1><p>When the optimization is completed, a simple report showing the list of selected projects and its start period is displayed. Also, a variety of KPIs are computed to provide helpful information about the selected portfolio.</p>
 <p>$Projects\;selected = \sum_{p \in P} y_p$: number of projects selected.</p>
 <p>$Project \; selection \; performance = \frac{\sum_{p \in P} y_p}{|P|} $: ratio of selected projects respect to all projects in the portfolio.</p>
 <p>$Total\;cost = \sum_{p \in P} c_p \; y_p$: cost of selected projects.</p>
@@ -13203,14 +13242,14 @@ $$</p>
 <p>$ROI = \frac{Total\;benefit}{Total\;cost}$: ROI of selected portfolio.</p>
 <p>$Available\;budget = \beta$: Available budget for the optimization.</p>
 <p>$Extra\;budget\;required = ArtBudget$: extra budget required to execute selected portfolio.</p>
-<h2 id="Remark">Remark<a class="anchor-link" href="#Remark">&#182;</a></h2><p>Each project belongs to an investment area. KPIs can be calculated at the investment area level to understand the impact of the optimal portfolio on the investment areas.</p>
-<p>Moreover, constraints can be added to the MIP model formulation to reflect portfolio management strategy related to the investments areas. For example, for an IT organization, portfolio executives want to ensure that at least 30% of the total cost of the optimal portfolio is invested on IT projects of the R&amp;D investment area.</p>
-<h1 id="What-you-will-learn">What you will learn<a class="anchor-link" href="#What-you-will-learn">&#182;</a></h1><ul>
-<li><p>You will learn how to formulate the innovation portfolio optimization (IPO) problem as a mixed integer programming (MIP) problem using the Gurobi Python API</p>
+<h2 id="Remarks">Remarks<a class="anchor-link" href="#Remarks">&#182;</a></h2><p>Each project belongs to an investment area. KPIs can be calculated at the investment area level to understand the impact of the optimal portfolio on the investment areas.</p>
+<p>Moreover, constraints can be added to the MIP model formulation to reflect portfolio management strategy related to the investment areas. For example, for an IT organization, portfolio executives want to ensure that at least 30% of the total cost of the optimal portfolio is invested on IT projects of the R&amp;D investment area.</p>
+<h1 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h1><ul>
+<li><p>You will learn how to formulate the innovation portfolio optimization (IPO) problem as a mixed-integer programming (MIP) problem using the Gurobi Python API.</p>
 </li>
 <li><p>You will learn how to use gurobipy.multidict method to transform a dictionary into a set of dictionaries.</p>
 </li>
-<li><p>IPO is formulated as a multi-objective MIP, conequently you will learn how to configure the model objective method "Model.setObjectiveN() that allows to handle multiple objectives hierarchically.</p>
+<li><p>IPO is formulated as a multi-objective MIP, consequently you will learn how to configure the model objective method <code>Model.setObjectiveN()</code> that enables the handling of multiple objectives in a hierarchical fashion.</p>
 </li>
 </ul>
 
@@ -13482,7 +13521,7 @@ $$ y_p = 1 \;\;\;\; \forall p \in IN$$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Constraint to force project to NOT be selected</p>
+<p>Constraint to force project NOT to be selected</p>
 $$ y_p = 0 \;\;\;\; \forall p \in OUT$$
 </div>
 </div>
@@ -13628,7 +13667,7 @@ $$\sum_{t = EF(p)}^{LF(p)} t \; z_{p, t} = \sum_{t = ES(p)}^{LS(p)} (t + d_{p}) 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Constraint to ensure that if project $p$ is selected then it must be completed at some time period withing the finishing time window</p>
+<p>Constraint to ensure that if project $p$ is selected then it must be completed at some time period within the finishing time window</p>
 $$\sum_{t = EF(p)}^{LF(p)} z_{p, t} = y_{p} \;\;\;\; \forall p \in P$$
 </div>
 </div>
@@ -13658,7 +13697,7 @@ $$\sum_{t = EF(p)}^{LF(p)} z_{p, t} = y_{p} \;\;\;\; \forall p \in P$$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Constraint to ensure that the total cost of the selected projecs is withing the budget. In case there is a need of extra budget then the $ArtBudget$ takes a positive value and it is penalized in the objective function</p>
+<p>Constraint to ensure that the total cost of the selected projects is within the budget. In case there is a need of extra budget then the $ArtBudget$ takes a positive value and it is penalized in the objective function</p>
 $$ \sum_{p \in P} c_{p} \; y_{p} \leq \beta + ArtBudget $$
 </div>
 </div>
@@ -13705,7 +13744,7 @@ $$ \sum_{p \in P} c_{p} \; y_{p} \leq \beta + ArtBudget $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We have a primary and seconday objective, both are to maximize</p>
+<p>We have two objectives to be maximized:</p>
 <p>The primary objective is to maximize the total benefit of the selected projects</p>
 $$ MAX \; Benefit = \sum_{p \in P} \sum_{t = EF_p}^{LF_p}  \; \frac{v_p\;z_{p,t}}{(1 + \alpha)^t} - BigM \; ArtBudget$$
 </div>
@@ -13732,7 +13771,7 @@ $$ MAX \; Benefit = \sum_{p \in P} \sum_{t = EF_p}^{LF_p}  \; \frac{v_p\;z_{p,t}
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The seconday objective is to maximize the customer satisfaction</p>
+<p>The secondary objective is to maximize the customer satisfaction</p>
 $$ MAX \; Score = \sum_{p \in P} \sum_{t = EF_p}^{LF_p}  \; \frac{s_p\;z_{p,t}}{(1 + \alpha)^t} - BigM \; ArtBudget$$
 </div>
 </div>

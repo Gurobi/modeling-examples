@@ -2,11 +2,11 @@
 
 ## Motivation
 
-Linear regression was invented at the beginning of the XIX century and today, after more than 200 years, it is still used extensively in practical applications for description and prediction purposes:
+Linear regression was invented at the beginning of the 19th century and today, after more than 200 years, it is still used extensively in practical applications for description and prediction purposes:
 
-- In econometrics, it is useful to estimate the price elasticity of a particular product by regressing sales revenue on price and possibly other features such as demographic, competitor and retail information.
-- In health sciences, it can be applied to predict how long a patient will remain, i.e. length of stay, in the ER of a hospital based on patient information, triage assessment, medical test results and date/time of arrival.
-- In social sciences, it may shed light on future academic performance of students, so proactive measures can be taken to improve their learning.
+- In econometrics, it is useful to estimate the price elasticity of a particular product by regressing sales revenue on price and possibly other features such as demographics and competitor and retail information.
+- In health sciences, it can be applied to predict how long a patient will remain (i.e. length of stay) in the ER of a hospital based on patient information, triage assessment, medical test results, and the date/time of arrival.
+- In social sciences, it may shed light on future academic performance of students, so proactive measures can be taken to improve their learning outcomes.
 
 In general, linear regression is used to model the relationship between a continuous variable and other explanatory variables, which can be either continuous or categorical. When applying this technique, finding the subset of features that maximizes its perfomance is often of interest.
 
@@ -24,7 +24,7 @@ A Mixed Integer Quadratic Programming (MIQP) formulation that finds the weight e
 
 It is shown that, unlike the Lasso, L0-Regression is scale invariant and does not add bias to the weight estimates. Furthermore, this approach is amenable to the specification of additional linear constraints, such as:
 
-- Enforcing group sparcity among features.
+- Enforcing group sparsity among features.
 - Limiting pairwise multicollinearity.
 - Limiting global multicollinearity.
 - Considering a fixed set of nonlinear transformations.
