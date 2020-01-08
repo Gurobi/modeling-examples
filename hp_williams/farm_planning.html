@@ -13116,13 +13116,13 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Farm-Planning">Farm Planning<a class="anchor-link" href="#Farm-Planning">&#182;</a></h1><p>This model is an example of a production problem. In production planning problems, choices must be made regarding the what resources to use to produce what products. These problems are common across a broad range of industries.</p>
-<p>In this example we’ll model and solve a multi-period production planning problem: In this case the application is to optimize the operation of a farm over 5 years. The farmer has a certain number of farmable acres and cows. The cows can be sold or used to produce milk, which can also be sold for profit. The food for the cows is grown on the farmable acres. The aim is to create an optimal operation plan for the next 5 years to maximize the total profit. This includes figuring out what is the optimal cultivation of the acres, the optimal operations related to the cows, and the operations for the whole farm.</p>
+<h1 id="Farm-Planning">Farm Planning<a class="anchor-link" href="#Farm-Planning">&#182;</a></h1><p>This model is an example of a production planning problem. In production planning problems — which are common across a wide range of industries — choices must be made regarding which products to produce and which resources to use to produce these products.</p>
+<p>In this example we will model and solve a multi-period production planning problem. In this case, the purpose of the application is to optimize the operation of a farm over five years. The farmer has a certain number of farmable acres and cows. The cows can be sold or used to produce milk, which can also be sold for profit. The food for the cows is grown on the farmable acres. The aim is to create an optimal operation plan for the next five years to maximize the total profit of the farm. This includes figuring out what is the optimal cultivation of the acres, the optimal operations related to the cows, and the operations for the whole farm.</p>
 <p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
 <hr>
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A farmer with a 200 acre farm wishes to create a five-year production plan.</p>
-<p>Currently, he has a herd of 120 cows comprising 20 heifers (young female cows) and 100 adult dairy cows. Each heifer requires 2/3rds of an acre and each dairy cow requires one acre to support it.</p>
-<p>A dairy cow produces 1.1 calves per year on average. Half of these calves will be bullocks that are sold shortly after birth for an average of \$30 each. The remaining calves, heifers, can either be sold for \\$40 or raised until age two when they will be come dairy cows. For the current year, all heifers identified for sale have already been sold.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A farmer with a 200-acre farm wishes to create a five-year production plan.</p>
+<p>Currently, he has a herd of 120 cows comprising 20 heifers (young female cows) and 100 adult dairy cows. Each heifer requires 2/3 of an acre to support it and each dairy cow requires one acre.</p>
+<p>On average, a dairy cow produces 1.1 calves per year. Half of these calves will be bullocks that are sold shortly after birth for an average of \$30 each. The remaining calves, heifers, can either be sold for \\$40 or raised until age two when they will become dairy cows. For the current year, all heifers identified for sale have already been sold.</p>
 <p>The general practice is to sell all dairy cows at the age of 12 for an average of \$120 each. However, each year an average of 5\% of heifers and 2\% of dairy cows die. At present, the farmer’s herd of 120 cows is evenly distributed with 10 cows per age from newborn to 11 years old.</p>
 <p>The milk from a dairy cow can be sold for \$370 annually. The farmer can currently house up to 130 cows, but this capacity limit can be increased for \\$200 per additional cow.</p>
 <p>Each dairy cow requires 0.6 tons of grain and 0.7 tons of sugar beet per year. Both of these can be grown on the farm. Each acre can yield 1.5 tons of sugar beet. However, only 80 acres are suitable for growing grain, and those acres have different levels of productivity as follows:</p>
@@ -13210,7 +13210,7 @@ div#notebook {
 </tbody>
 </table>
 <p>Labor currently costs the farmer \$4000 per year and that cost provides 5500 hours of labor. Additional labor can be paid for at the rate of \\$1.20 per hour.</p>
-<p>Any capital expenditure can be financed with a 10-year loan at 15\% interest annually. The interest and principal are paid back in 10 equal annual payments. In no year can the cash flow be negative.</p>
+<p>Any capital expenditure can be financed with a 10-year loan at 15\% interest annually. The interest and principal are paid back in 10 equal annual payments. It is prohibited for the annual cash flow to be negative.</p>
 <p>The farmer does not want to reduce the total number of dairy cows at the end of the five-year period by more than 50\%, nor does he want to increase their number by more than 75\%.</p>
 <p>What plan should the farmer follow over the next five years in order to maximize profit?</p>
 <hr>
@@ -13231,7 +13231,7 @@ div#notebook {
 <p>$\text{HF_decay} \in [0,1] \subset \mathbb{R}^+$: Average proportion of heifers that die in a year.</p>
 <p>$\text{Cow_decay} \in [0,1] \subset \mathbb{R}^+$: Average proportion of dairy cows that die in a year.</p>
 <p>$\text{Birthrate} \in \mathbb{R}^+$: Expected number of calves produced by a dairy cow in a year.</p>
-<p>$\text{Min_final_cows} \in \mathbb{N}$: Mininum number of dairy cows at the end of the planning horizon.</p>
+<p>$\text{Min_final_cows} \in \mathbb{N}$: Minimum number of dairy cows at the end of the planning horizon.</p>
 <p>$\text{Max_final_cows} \in \mathbb{N}$: Maximum number of dairy cows at the end of the planning horizon.</p>
 <p>$\text{Initial_HF} \in \mathbb{R}^+$: Number of heifers of each age at the beginning of the planning horizon.</p>
 <p>$\text{Initial_cows} \in \mathbb{R}^+$: Number of dairy cows of each age at the beginning of the planning horizon.</p>
@@ -13253,7 +13253,7 @@ div#notebook {
 <p>$\text{GR_yield}_l \in \mathbb{R}^+$: Grain yield at land group $l$.</p>
 <p>$\text{GR_area}_l \in \mathbb{R}^+$: Number of acres suitable for growing grain in land group $l$.</p>
 <h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$\text{Outlay}_t \in \mathbb{R}^+$: Amount of money (in units of 200USD) spent on renting houses in year $t$.</p>
-<p>$\text{Overtime}_t \in \mathbb{R}^+$: Number of extra labour hours needed in year $t$.</p>
+<p>$\text{Overtime}_t \in \mathbb{R}^+$: Number of extra labor hours needed in year $t$.</p>
 <p>$\text{Newborn}_t \in \mathbb{R}^+$: Number of newborn heifers left in year $t$ to be raised.</p>
 <p>$\text{HF_sell}_t \in \mathbb{R}^+$: Number of newborn heifers to sell in year $t$.</p>
 <p>$\text{Profit}_t \in \mathbb{R}^+$: Profit attained in year $t$.</p>
@@ -13361,7 +13361,7 @@ div#notebook {
 \quad \forall t \in \text{Years}
 \tag{10}
 \end{equation}<hr>
-<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initalize the data structures:</p>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initialize the data structures:</p>
 
 </div>
 </div>
@@ -13427,8 +13427,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create a model and the variables. For each year we have continous variables, which tell us how much sugar beet is grown (in tons), how much grain is bought (in tons), how much grain is sold (in tons), how much sugar beet is bought (in tons), how much sugar beet is sold (in tons), how much extra labour is recruited, how much capital outlay there is, how many heifers are sold at birth, how much profit there is, and how many cows are newborns (age 0).</p>
-<p>For each year and each land group there is a continous variable which tells us how much grain is grown on that land group. For each year and each cow_age, there is a continuous which tells us how many cows exists in the current year of that age.</p>
+<p>Next, we create a model and the variables. For each, year we have continuous variables, which tell us how much sugar beet is grown (in tons), how much grain is bought (in tons), how much grain is sold (in tons), how much sugar beet is bought (in tons), how much sugar beet is sold (in tons), how much extra labor is recruited, how much capital outlay there is, how many heifers are sold at birth, how much profit there is, and how many cows are newborns (age 0).</p>
+<p>For each year and each land group, there is a continuous variable, which tells us how much grain is grown on that land group. For each year and each cow age, there is a continuous variable that tells us how many cows exists in the current year of that age.</p>
 
 </div>
 </div>
@@ -13462,7 +13462,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next we insert the constraints:</p>
-<p>There are only a housing capacities for 130 cows per year. It is possible that there are more than 130 cows, but they come with additional costs related to renting houses, which is covered with the <code>Outlay</code> variables.</p>
+<p>There is only a housing capacity for 130 cows per year. It is possible that there are more than 130 cows, but housing these additional cows will require additional costs related to renting houses, which is covered with the <code>Outlay</code> variables.</p>
 
 </div>
 </div>
@@ -13513,7 +13513,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After selling, buying and producing grains and sugar beet, there needs to be enough of them in the storage to feed all the cows.</p>
+<p>After selling, buying, and producing grains and sugar beet, there needs to be enough of them in the storage to feed all the cows.</p>
 
 </div>
 </div>
@@ -13630,7 +13630,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Each cow needs a certain number of acres to support it. The amount depends on the age of the cow. There are at most 200 acres available.</p>
+<p>Each cow needs a certain number of acres to support it. The amount depends on the age of the cow. At most, there are 200 acres available.</p>
 
 </div>
 </div>
@@ -13680,7 +13680,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Each cow and each acre requires a certain amount of worker time to maintain them. The farm is currently able to provide a fixed number of worker hours in a year. Any additional work that needs to be done can be bought externally at additional cost.</p>
+<p>Each cow and each acre requires a certain amount of worker time to maintain. The farm is currently able to provide a fixed number of worker hours in a year. Any additional work that needs to be done requires external workers, for which there will be an additional cost.</p>
 
 </div>
 </div>
@@ -13827,7 +13827,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To keep the number of cows correct, cows can come into/out of the model through buying them, selling them or through birth.</p>
+<p>To keep the number of cows correct, cows can come into/out of the model by being bought or sold or through birth.</p>
 
 </div>
 </div>
@@ -13920,7 +13920,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the first year, there are 9.5 one year old cows and 9.5 two year old cows. In addition, there are 9.8 cows for each age from three to 12. Note that we are solving a LP model to make the model computationally easier to calculate. This can lead to fractional values for variables, which are in reality integers. The implementation needs to take this into account.</p>
+<p>In the first year, there are 9.5 one-year-old cows and 9.5 two-year-old cows. In addition, there are 9.8 cows for each age from three to 12. Note that we are solving a LP model to make the model computationally easier to calculate. This can lead to fractional values for variables, which are in reality integers. The implementation needs to take this into account.</p>
 
 </div>
 </div>
@@ -13978,7 +13978,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The following constraints make sure that the variable <code>profit</code> takes the value of the profit in this year. The costs for labor current run \$4,000. The profit is influenced by the selling of bullocks and heifers, selling of 12-year-old-cows, selling of milk, selling of grain, selling of sugar beet, buying of grain, buying of sugar beet, labor costs, heifer costs, dairy cow costs, grain costs, sugar beet costs, and capital costs.</p>
+<p>The following constraints ensure that the variable <code>profit</code> takes the value of the profit in this year. The costs for labor currently total \$4,000. The profit is influenced by the selling of bullocks and heifers, selling of 12-year-old-cows, selling of milk, selling of grain, selling of sugar beet, buying of grain, buying of sugar beet, labor costs, heifer costs, dairy cow costs, grain costs, sugar beet costs, and capital costs.</p>
 
 </div>
 </div>

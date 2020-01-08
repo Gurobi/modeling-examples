@@ -13116,12 +13116,12 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Food-Manufacture-I">Food Manufacture I<a class="anchor-link" href="#Food-Manufacture-I">&#182;</a></h1><p>Both this model and Food Manufacture II are examples of a blending problem. In blending optimization problems, multiple raw materials are combined in a way that meets the stated constraints at the lowest cost. These problems are common in numerous industries including, for example, the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing food that meets the different nutritional requirements of different animals).</p>
-<p>In this particular example, we’ll model and solve a production planning problem where we must create a final product from a number of ingredients, each of which has different costs, restrictions and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation tabs below.</p>
-<p>In Food Manufacture II, we’ll extend this example with additional constraints that change the problem type from a linear program (LP) to a mixed integer program (MIP), which makes it harder to solve.</p>
+<h1 id="Food-Manufacture-I">Food Manufacture I<a class="anchor-link" href="#Food-Manufacture-I">&#182;</a></h1><p>Both this model and Food Manufacture II are examples of blending problems. In blending optimization problems, multiple raw materials are combined in a way that meets the stated constraints at the lowest cost. These problems are common in numerous industries including the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing food that meets the different nutritional requirements of different animals).</p>
+<p>In this particular example, we will model and solve a production planning problem where we must create a final product from a number of ingredients — each of which has different costs, restrictions, and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation tabs below.</p>
+<p>In Food Manufacture II, we will extend this example with additional constraints that change the problem type from linear programming (LP) to mixed-integer programming (MIP), making it harder to solve.</p>
 <p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
 <hr>
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A manufacturer needs to refine several raw oils and blend them together to produce a given food product that can be sold. The raw oils needed can be divided into two categories:</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A manufacturer needs to refine several raw oils and blend them together to produce a given food product that can be sold. The raw oils required can be divided into two categories:</p>
 <table>
 <thead><tr>
 <th>Category</th>
@@ -13139,7 +13139,7 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>The manufacturer can choose to buy raw oils for the current month and/or buy them on the futures market for delivery in a subsequent month. Prices for immediate deliver and in the futures market are given below in USD/ton:</p>
+<p>The manufacturer can choose to buy raw oils for the current month and/or buy them on the futures market for delivery in a subsequent month. Prices for immediate delivery and in the futures market are given below in USD/ton:</p>
 <table>
 <thead><tr>
 <th>Month</th>
@@ -13209,7 +13209,7 @@ div#notebook {
 <li>Also, there is no waste in the refinement process, so the sum of the raw oils refined will equal the amount of refined oils available.</li>
 <li>The cost of refining the oils may be ignored.</li>
 </ol>
-<p>In addition to the refining limits above, there are limits to the amount of raw oils that can be stored for future use, and there is a cost associated with each ton of oil stored. The limit is 1000 tons of each raw oil and the storage cost is \$5 per ton per month. The manufacturer can not store the produced food product or the refined oils.</p>
+<p>In addition to the refining limits above, there are limits to the amount of raw oils that can be stored for future use, and there is a cost associated with each ton of oil stored. The limit is 1,000 tons of each raw oil and the storage cost is \$5 per ton per month. The manufacturer cannot store the produced food product or the refined oils.</p>
 <p>The final food product must have a hardness between three and six on a given hardness scale. For the purposes of the model, hardness blends linearly and the hardness of each raw oil is:</p>
 <table>
 <thead><tr>
@@ -13240,7 +13240,7 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>At the start of January there are 500 tons of each type of raw oil in storage. For the purpose of the model, this should also be the level of raw oils in storage at the end of June.</p>
+<p>At the start of January, there are 500 tons of each type of raw oil in storage. For the purpose of the model, this should also be the level of raw oils in storage at the end of June.</p>
 <p>Given the above information, what monthly buying and manufacturing decisions should be made in order to maximize profit?</p>
 <p>This problem is based on a larger model built for the margarine producer Van den Bergs and Jurgens and discussed in Williams and Redwood (1974).</p>
 <hr>
@@ -13383,7 +13383,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create a model and the variables. For each period we create a variable which will take the value of the food produced. For each product (5 kinds of oils) and each period we will create variables for the amount, which get bought, used and stored.</p>
+<p>Next, we create a model and the variables. For each period, we create a variable which will take into account the value of the food produced. For each product (5 kinds of oils) and each period, we will create variables for the amount that gets bought, used and, stored.</p>
 
 </div>
 </div>
@@ -13412,8 +13412,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we insert the constraints:
-The balance constraints ensure that the amount of oil that is in the storage in the last period and the amount that gets purchased equals the amount that is used and stored for each oil in the current period.</p>
+<p>Next, we insert the constraints. The balance constraints ensure that the amount of oil that is in the storage in the last period and the amount that gets purchased equals the amount that is used and stored for each oil in the current period.</p>
 
 </div>
 </div>
@@ -13537,7 +13536,7 @@ The balance constraints ensure that the amount of oil that is in the storage in 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The capacity constraints restrict the amount of veg and non-veg oils, which can processed per period.</p>
+<p>The capacity constraints restrict the amount of veg and non-veg oils that can be processed per period.</p>
 
 </div>
 </div>
@@ -13686,7 +13685,7 @@ The balance constraints ensure that the amount of oil that is in the storage in 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The objective is to maximize the profit of the company. It includes the revenue as well as the costs for buying and storing of the used products.</p>
+<p>The objective is to maximize the profit of the company, which includes the revenue as well as the costs for buying and storing of the used products.</p>
 
 </div>
 </div>

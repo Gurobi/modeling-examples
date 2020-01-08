@@ -13116,9 +13116,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Food-Manufacture-II">Food Manufacture II<a class="anchor-link" href="#Food-Manufacture-II">&#182;</a></h1><p>Both this model and Food Manufacture I are examples of a blending problem. In blending optimization problems, multiple raw materials are combined in a way the meets the stated constraints for the lowest cost. These problems are common in numerous industries including, for example, the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing feed that meets the different nutritional requirements of different animals).</p>
-<p>In this particular example, we’ll model and solve a production planning problem where we must create a final product from a number of ingredients, each of which has different costs, restrictions and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation tabs below.</p>
-<p>Compared to Food Manufacturing I, this example has additional constraints that change the problem type from a linear program (LP) to a mixed integer program (MIP), which makes it harder to solve. You can see these additional constraints at the end of the Problem Description section below.</p>
+<h1 id="Food-Manufacture-II">Food Manufacture II<a class="anchor-link" href="#Food-Manufacture-II">&#182;</a></h1><p>Both this model and Food Manufacture I are examples of blending problems. In blending optimization problems, multiple raw materials are combined in a way the meets the stated constraints for the lowest cost. These problems are common in numerous industries including the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing feed that meets the different nutritional requirements of different animals).</p>
+<p>In this particular example, we will model and solve a production planning problem where we must create a final product from a number of ingredients — each of which has different costs, restrictions, and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation tabs below.</p>
+<p>Compared to Food Manufacturing I, this example has additional constraints that change the problem type from linear programming (LP) to mixed-integer programming (MIP), making it harder to solve. You can see these additional constraints at the end of the Problem Description section below.</p>
 <p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A manufacturer needs to refine several raw oils and blend them together to produce a given food product that can be sold. The raw oils needed can be divided into two categories:</p>
@@ -13139,7 +13139,7 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>The manufacturer can choose to buy raw oils for the current month and/or buy them on the futures market for delivery in a subsequent month. Prices for immediate deliver and in the futures market are given below in USD/ton:</p>
+<p>The manufacturer can choose to buy raw oils for the current month and/or buy them on the futures market for delivery in a subsequent month. Prices for immediate delivery and in the futures market are given below in USD/ton:</p>
 <table>
 <thead><tr>
 <th>Month</th>
@@ -13209,7 +13209,7 @@ div#notebook {
 <li>Also, there is no waste in the refinement process, so the sum of the raw oils refined will equal the amount of refined oils available.</li>
 <li>The cost of refining the oils may be ignored.</li>
 </ol>
-<p>In addition to the refining limits above, there are limits to the amount of raw oils that can be stored for future use, and there is a cost associated with each ton of oil stored. The limit is 1000 tons of each raw oil and the storage cost is \$5 per ton per month. The manufacturer can not store the produced food product or the refined oils.</p>
+<p>In addition to the refining limits above, there are limits to the amount of raw oils that can be stored for future use, and there is a cost associated with each ton of oil stored. The limit is 1,000 tons of each raw oil and the storage cost is \$5 per ton per month. The manufacturer cannot store the produced food product or the refined oils.</p>
 <p>The final food product must have a hardness between three and six on a given hardness scale. For the purposes of the model, hardness blends linearly and the hardness of each raw oil is:</p>
 <table>
 <thead><tr>
@@ -13240,8 +13240,8 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>At the start of January there are 500 tons of each type of raw oil in storage. For the purpose of the model, this should also be the level of raw oils in storage at the end of June.</p>
-<p>This version of the Food Manufacturing problem adds the following additional constraints to the first version:</p>
+<p>At the start of January, there are 500 tons of each type of raw oil in storage. For the purpose of the model, this should also be the level of raw oils in storage at the end of June.</p>
+<p>This version of the Food Manufacture problem adds the following additional constraints to the first version:</p>
 <ul>
 <li>If an oil is used during a month, the minimum quantity used must be 20 tons.</li>
 <li>The maximum number of oils used in a month is three.</li>
@@ -13317,7 +13317,7 @@ div#notebook {
 \sum_{o \in \text{Oils}}\text{consume}_{t,o} = \text{produce}_t \quad \forall t \in \text{Months}
 \tag{6}
 \end{equation}<ul>
-<li><strong>Consumption Range</strong>: Oil $o$ can be consumed in month $t$ iff we decide to use it in that month, and the Tons consumed should be between 20 and the refinement capacity for its type. </li>
+<li><strong>Consumption Range</strong>: Oil $o$ can be consumed in month $t$ if we decide to use it in that month, and the Tons consumed should be between 20 and the refinement capacity for its type. </li>
 </ul>
 \begin{equation}
 \text{min_consume}*\text{use}_{t,o} \leq \text{consume}_{t,o} \leq \text{veg_cap}*\text{use}_{t,o} \quad \forall (t,o) \in V \times \text{Months}
@@ -13417,8 +13417,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create a model and the variables. We set the UpdateMode parameter to 1 (which simplifies the code – see the documentation for more details). For each period we create a variable which will take the value of the food produced. For each product (five kinds of oils) and each period we will create variables for the amount, which get purchased, used and stored.</p>
-<p>For each period and each product we need a binary variable, which indicates if this product is used in the current period.</p>
+<p>Next, we create a model and the variables. We set the UpdateMode parameter to 1 (which simplifies the code – see the documentation for more details). For each period, we create a variable which will take into account the value of the food produced. For each product (five kinds of oils) and each period we will create variables for the amount that gets purchased, used, and stored.</p>
+<p>For each period and each product, we need a binary variable, which indicates if this product is used in the current period.</p>
 
 </div>
 </div>
@@ -13449,7 +13449,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we insert the constraints. The balance constraints ensure that the amount of oil that is in the storage in the last period and the amount that gets purchased equals the amount that is used and stored for each oil in the current period. This makes sure that all oil in the model was either in the initial storage or is purchased in some month.</p>
+<p>Next, we insert the constraints. The balance constraints ensure that the amount of oil that is in the storage in the last period and the amount that gets purchased equals the amount that is used and stored for each oil in the current period. This ensures that all oil in the model was either in the initial storage or is purchased in some month.</p>
 
 </div>
 </div>
@@ -13620,7 +13620,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The hardness constraints limit the hardness of the final product, which needs to remain between 3 and 6. Each oil has a certain hardness. The final product may be made up of different oils. The hardness of the final product is measured by the hardness of each ingredient multiplied by its share of the final product. It is assumed that the hardness blends linearily.</p>
+<p>The hardness constraints limit the hardness of the final product, which needs to remain between 3 and 6. Each oil has a certain hardness. The final product may be made up of different oils. The hardness of the final product is measured by the hardness of each ingredient multiplied by its share of the final product. It is assumed that the hardness blends linearly.</p>
 
 </div>
 </div>
@@ -13670,7 +13670,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The conserve constraints ensure that the amount of products used in each period equals the amount of food produced in that period. This makes sure that all oil that is used is also processed to the final product (food).</p>
+<p>The conserve constraints ensure that the amount of products used in each period equals the amount of food produced in that period. This ensures that all oil that is used is also processed into the final product (food).</p>
 
 </div>
 </div>
@@ -13718,7 +13718,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Condition 1 constraints force that if any product is used in any period then at least 20 tons is used. They also force that the binary variable for each product and each month is set to one if and only if the continuous variable used for the same product and the same month is non-zero. The binary variable is called an indicator variable since it is linked to a continuous variable and indicates if it is non-zero.</p>
-<p>It's relatively straight-forward to express Condition 1 as a pure MIP constraint set. Let's see how to model this set using Gurobi’s general constraints (from version 7.0 onwards):</p>
+<p>It's relatively straightforward to express Condition 1 as a pure MIP constraint set. Let's see how to model this set using Gurobi’s general constraints (from version 7.0 onwards):</p>
 
 </div>
 </div>
@@ -13909,7 +13909,7 @@ Best objective 1.002787037037e+05, best bound 1.002787037037e+05, gap 0.0000%
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>When originally designed, this model proved comparatively hard to solve (see Food manufacture I). The profit (revenue from sales − cost of raw oils) resulting from this plan is 100,278.7 USD. There are alternative, equally good, solutions.</p>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>When originally designed, this model proved comparatively hard to solve (see Food Manufacture I). The profit (revenue from sales minus cost of raw oils) resulting from this plan is 100,278.7 USD. There are alternative — and equally good — solutions.</p>
 <h3 id="Purchase-Plan">Purchase Plan<a class="anchor-link" href="#Purchase-Plan">&#182;</a></h3>
 </div>
 </div>

@@ -13116,12 +13116,12 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Mining">Mining<a class="anchor-link" href="#Mining">&#182;</a></h1><p>This model is an example of a production problem. In production planning problems, choices must be made regarding what resources to use to produce what products. These problems are common across a broad range of manufacturing and mining industries.</p>
-<p>In this example we’ll model and solve a multi-period production planning problem. In this case, the application is to optimize mine production across a number of mines over a five-year period. The company has different mines, which can be opened, working, or closed. Each mine varies in the quality of its ore and the amount of ore that can be extracted. The quality of ore required to meet production goals varies each year. The aim is to create an optimal production plan for the next 5 years to maximize the total profit, while considering all production capacity, mine restrictions and mine costs.</p>
+<h1 id="Mining">Mining<a class="anchor-link" href="#Mining">&#182;</a></h1><p>This model is an example of a production problem. In production planning problems, decisions must be made regarding which products to produce, and which resources to use to produce those products. These problems are common across a broad range of manufacturing and mining industries.</p>
+<p>In this example, we will model and solve a multi-period production planning problem. In this case, the aim of the application is to optimize mine production across a number of mines over a five-year period. The company has different mines, which can be opened, operational, or closed. Each mine varies in the quality of its ore and the amount of ore that can be extracted. The quality of ore required to meet production goals varies each year. The aim is to create an optimal production plan for the next five years to maximize the total profit, while considering all production capacity, mine restrictions, and mine costs.</p>
 <p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A mining company needs to create a five-year operating plan for a certain area with four mines in it.</p>
-<p>They can only operate a maximum of three mines in this area in any given year. However, even though a mine may not operate in a given year, the company still must pay royalties on that mine in that year, if there is the expectation it will operate again in a future year. If a mine is not going to be operated again, then it can be permanently closed down and no more royalties need to be paid.</p>
+<p>They can only operate a maximum of three mines in this area in any given year. However, even though a mine may not operate in a given year, the company still must pay royalties on that mine in that year, if there is the expectation it will operate again in a future year. If a mine is not going to be operational again, then it can be permanently closed down and no more royalties need to be paid.</p>
 <p>The yearly royalties due for each open mine (operating or not) are as follows:</p>
 <table>
 <thead><tr>
@@ -13174,7 +13174,7 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>Each mine produces a different grade of ore. This grade is measured on a scale such that blending ores together results in a linear combination of the quality requirements. For example, If equal quantities of ore from two different mines were combined, the resulting ore would have a grade that is the average of the grade for each of the two ores that were combined. The grade for each mine’s ore is as follows:</p>
+<p>Each mine produces a different grade of ore. This grade is measured on a scale such that blending ores together results in a linear combination of the quality requirements. For example, if equal quantities of ore from two different mines were combined, the resulting ore would have a grade that is the average of the grade for each of the two ores that were combined. The grade for each mine’s ore is as follows:</p>
 <table>
 <thead><tr>
 <th><i></i></th>
@@ -13231,8 +13231,8 @@ div#notebook {
 </tbody>
 </table>
 <p>The final blended ore sells for \$10/ton. Revenues and costs for future years are discounted at the rate of 10\% per annum.</p>
-<p>Which mines should be operated each year and how much ore should be extracted from each mine?</p>
-<p>This problem is based on a larger one arising in deciding which pits to work in the firm of English China Clays. In that problem (in the 1970s), their goal was to work up to 4 mines out of 20 in each year.</p>
+<p>The key question for the mining company is: Which mines should be operated each year and how much ore should be extracted from each mine?</p>
+<p>This problem is based on a larger one faced by the firm of English China Clays, which had to in decide which mines to work. In that problem (in the 1970s), the goal was to work up to four mines out of 20 in each year.</p>
 <hr>
 <h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$t \in \text{Years}=\{1,2,\dots,5\}$: Set of years.</p>
 <p>$m \in \text{Mines}=\{1,2,\dots,4\}$: Set of mines.</p>
@@ -13290,7 +13290,7 @@ div#notebook {
 \text{available}_{t+1,m} \leq \text{available}_{t,m} \quad \forall (t,m) \in \text{Years} \setminus \{5\} \times \text{Mines}
 \tag{6}
 \end{equation}<hr>
-<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initalize the datastructures.</p>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initialize the data structures.</p>
 
 </div>
 </div>
@@ -13328,7 +13328,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Note:</strong> The present value of a future amount at period $n$ is given by the formula: $\text{present_value} = \frac{1}{(1+\text{interest_rate})^n}*\text{future_value} $</p>
-<p>Next, we create a model and the variables. For each year and each mine we have a variable for the output in millions of tons the mine produces, a decision variable, which tells us if the mine is open and a decision variable, which tells us if the mine is working.</p>
+<p>Next, we create a model and the variables. For each year and each mine, we have a variable for the output in millions of tons the mine produces, a decision variable, which tells us if the mine is open, and a decision variable, which tells us if the mine is operational.</p>
 
 </div>
 </div>
@@ -13355,7 +13355,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, we insert the constraints.</p>
-<p>In each year only three mines can be working.</p>
+<p>In each year only three mines can be operational.</p>
 
 </div>
 </div>
@@ -13402,7 +13402,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The quality of the ore from the mines multiplied by the amount which is mined must equal the needed blend quality multiplied by the quantity of blended ore.
+<p>The quality of the ore from the mines multiplied by the amount that is mined must equal the needed blend quality multiplied by the quantity of blended ore.
 This ensures that the quality standards are satisfied.</p>
 
 </div>
@@ -13498,7 +13498,7 @@ This ensures that the quality standards are satisfied.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This constraint ensures that the mine can extract no more than the Extract limit and also that there is only an output if there the mine is working.</p>
+<p>This constraint ensures that the mine can extract no more than the extract limit and also that there is only an output if the mine is operational.</p>
 
 </div>
 </div>
@@ -13560,7 +13560,7 @@ This ensures that the quality standards are satisfied.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This constraint ensures that when the mine is working, it also needs to be open.</p>
+<p>This constraint ensures that when the mine is operational, it also needs to be open.</p>
 
 </div>
 </div>
@@ -13620,7 +13620,7 @@ This ensures that the quality standards are satisfied.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This constraint forces a mine to be closed in all years subsequent to that in which it is first closed. If the mine is closed, it can’t be re-opened later:</p>
+<p>This constraint forces a mine to be closed in all years subsequent to that in which it is first closed. If the mine is closed, it cannot be re-opened later:</p>
 
 </div>
 </div>
@@ -13701,7 +13701,7 @@ This ensures that the quality standards are satisfied.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, this starts the optimization and Gurobi tries to find the optimal solution.</p>
+<p>Next, the optimization process starts and Gurobi tries to find the optimal solution.</p>
 
 </div>
 </div>
