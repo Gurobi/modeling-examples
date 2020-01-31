@@ -53,6 +53,10 @@ The goal is to find an allocation of resources to jobs that maximizes the total 
 * The resource matching optimization model has logical constraints to induce the proper behavior for the hiring variables, conequently you will learn how to use indicator (binary) variables and logical constraints to ensure that you hire the appropriate number of new resources and allocate the appropriate amount capacity to fill jobs FTE requirements.
 * You will also learn how to create how KPIs (Key Performance Metrics) that allows to compare different sceanario.
 
+## Licensing
+
+In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
+
 ## HTML Example URL
 
 https://gurobi.github.io/modeling-examples/rmo_fte_budget/rmo_fte_hire_budget.html

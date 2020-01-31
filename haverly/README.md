@@ -20,6 +20,10 @@ A formulation based on Bilinear Programming, a subclass of non-convex Quadratic 
 
 It is shown that solving Bilinear Programs with Gurobi is as easy as configuring a single global parameter.
 
+## Licensing
+
+In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
+
 ## HTML Example URL
 
 https://gurobi.github.io/modeling-examples/haverly/haverly.html
