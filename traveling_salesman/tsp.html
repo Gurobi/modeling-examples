@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,7 +13116,113 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Traveling-Salesman-Problem">Traveling Salesman Problem<a class="anchor-link" href="#Traveling-Salesman-Problem">&#182;</a></h1><p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
+<h1 id="Traveling-Salesman-Problem">Traveling Salesman Problem<a class="anchor-link" href="#Traveling-Salesman-Problem">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this notebook, you will learn how to:</p>
+<ol>
+<li>Formulate the Traveling Salesman Problem (TSP) as a MIP model.</li>
+<li>Use lazy constraints to identify solutions of the TSP problem that are infeasible.</li>
+</ol>
+<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and you have  advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or required advanced features of the Gurobi Python API.</p>
+<p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>The Traveling Salesman Problem (TSP) is the most famous combinatorial optimization problem. This problem is very easy to explain, but at the same time, it is very complicated to solve, even for small instances.</p>
+<p>The origin of the traveling salesman problem is not very clear; it is mentioned in an 1832 manual for traveling salesman, which included example tours of 45 German cities but was not formulated as a mathematical problem. However, in the 1800s, mathematicians William Rowan Hamilton and Thomas Kirkman devised mathematical formulations of the problem.</p>
+<p>It seems that the general form of the Traveling Salesman Problem was first studied by Karl Menger in Vienna and Harvard in the 1930s.</p>
+<p>The problem became more and more popular in the 1950s and 1960s. In particular, George Dantzig, Delber R. Fulkerson, and Selmer M. Johnson at the RAND Corporation solved the 48-state problem by formulating it as a linear programming problem. The methods they described in their paper on this topic set the foundation for future work in combinatorial optimization, especially highlighting the importance of cutting planes.</p>
+<p>In the early 1970s, the concept of P vs. NP problems created excitement in the theoretical computer science community. In 1972, Richard Karp demonstrated that the Hamiltonian cycle problem was NP-complete, implying that the traveling salesman problem was NP-hard.</p>
+<p>Increasingly sophisticated codes led to rapid increases in the sizes of the traveling salesman problems solved. Dantzig, Fulkerson, and Johnson had solved a 48-city instance of the problem in 1954. Martin Grötechel more than doubled this 23 years later, solving a 120-city instance in 1977. Harlan Crowder and Manfred W. Padberg again more than doubled this in just 3 years, with a 318-city solution.</p>
+<p>In 1987, rapid improvements were made, culminating in a 2,392-city solution by Padberg and Giovanni Rinaldi. In the following two decades, David L. Appelgate, Robert E. Bixby, Vasek Chvátal, &amp; William J. Cook solved a 7,397-city instance in 1994, a 24,978-city instance in 2004, and up to the current largest solved problem of 85,900 cities in 2006.</p>
+<p>The continued interest in the TSP can be explained by its success as a general engine of discovery and a steady stream of new applications. Some of the general applications of the TSP are as follows:</p>
+<ul>
+<li>Scheduling and routing problems.</li>
+<li>Genome sequencing.</li>
+<li>Drilling problems.</li>
+<li>Aiming telescopes and x-rays.</li>
+<li>Data clustering.</li>
+<li>Machine scheduling.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>The TSP can be defined as follows: for a given list of cities and the distances between each pair of them, we want to find the shortest possible route that goes to each city once and returns to the origin city.</p>
+<p>There is a class of Traveling Salesman Problems that assumes that the distance of going from city $i$ to city $j$  is the same as going form city $j$ to city $i$, this type of Traveling Salesman Problem  is also known as the symmetric Traveling Salesman Problem.</p>
+<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi Optimizer solves such models using state-of-the-art mathematics and computer science.</p>
+<p>A mathematical optimization model has five components, namely:</p>
+<ul>
+<li>Sets and indices.</li>
+<li>Parameters.</li>
+<li>Decision variables.</li>
+<li>Objective function(s).</li>
+<li>Constraints.</li>
+</ul>
+<p>We now present a MIP formulation of the TSP that identifies the shortest route that goes to all the cities once and returns to the origin city.</p>
+<h2 id="TSP-Model-Formulation">TSP Model Formulation<a class="anchor-link" href="#TSP-Model-Formulation">&#182;</a></h2><h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$i, j \in Capitals $: indices and set of US capital cities.</p>
+<p>$\text{Pairings}= \{(i,j) \in Capitals \times Capitals \}$: Set of allowed pairings</p>
+<p>$S \subset Capitals$: A subset of the set of US capital cities.</p>
+<p>$G = (Capitals, Pairings)$: A graph where the set $Capitals$ defines the set of nodes and the set $Pairings$ defines the set of edges.</p>
+<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$d_{i, j} \in \mathbb{R}^+$: Distance from capital city $i$ to capital city $j$, for all $(i, j) \in Pairings$.</p>
+<p>Notice that the distance from capital city $i$ to capital city $j$ is the same as the distance from capital city $j$ to capital city $i$, i.e. $d_{i, j} = d_{j, i}$. For this reason, this TSP is also called the symmetric Traveling Salesman Problem.</p>
+<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$x_{i, j} \in \{0, 1\}$: This variable is equal to 1, if we decide to connect city $i$ with city $j$. Otherwise, the decision variable is equal to zero.</p>
+<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h3><ul>
+<li><strong>Shortest Route</strong>. Minimize the total distance of a route. A route is a sequence of capital cities where the salesperson visits each city only once and returns to the starting capital city.</li>
+</ul>
+\begin{equation}
+\text{Min} \quad Z = \sum_{(i,j) \in \text{Pairings}}d_{i,j} \cdot x_{i,j}
+\tag{0}
+\end{equation}<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><ul>
+<li><strong>Symmetry Constraints</strong>. For each edge $(i,j)$, ensure that the city capitals $i$ and $j$ are connected, if the former is visited immediately before or after visiting the latter.</li>
+</ul>
+\begin{equation}
+x_{i, j} = x_{j, i} \quad \forall (i, j) \in Pairings
+\tag{1}
+\end{equation}<ul>
+<li><strong>Entering and leaving a capital city</strong>. For each capital city $i$, ensure that this city is connected to two other cities. </li>
+</ul>
+\begin{equation}
+\sum_{(i,j) \in \text{Pairings}}x_{i,j} = 2 \quad \forall  i \in Capitals
+\tag{2}
+\end{equation}<ul>
+<li><strong>Subtour elimination</strong>. These constraints ensure that for any subset of cities $S$ of the set of $Capitals$, there is no cycle. That is, there is no route that visits all the cities in the subset and returns to the origin city.</li>
+</ul>
+\begin{equation}
+\sum_{(i \neq j) \in S}x_{i,j} \leq |S|-1 \quad \forall  S \subset  Capitals
+\tag{3}
+\end{equation}<ul>
+<li><strong>Remark</strong>. In general, if the number of cities of the TSP is $n$, then the possible number of routes is n!.
+Since there are an exponential number of constraints ($2^{n} - 2$) to eliminate cycles, we use lazy constraints to dynamically eliminate those cycles. </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>Consider a salesperson that needs to visit customers at each state capital of the continental US. The salesperson wants to identify the shortest route that goes to all the state capitals.</p>
+<p>This modeling example requires to import the following libraries.</p>
+<ul>
+<li><strong>math</strong> access to mathematical functions.</li>
+<li><strong>itertools</strong> implements a number of iterator building blocks.</li>
+<li><strong>folium</strong> creates maps.</li>
+<li><strong>gurobipy</strong> calls Gurobi algorithms to solve MIP models.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Reading-Input-Data">Reading Input Data<a class="anchor-link" href="#Reading-Input-Data">&#182;</a></h3><p>The capital names and coordinates are read from a json file.</p>
 
 </div>
 </div>
@@ -13144,6 +13250,14 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Preprocessing">Preprocessing<a class="anchor-link" href="#Preprocessing">&#182;</a></h3><p>The following function calculates the distance of each pair of state capitals combination.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
@@ -13167,6 +13281,14 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Callback-Definition">Callback Definition<a class="anchor-link" href="#Callback-Definition">&#182;</a></h3><p>The following function determines lazy constraints to eliminate sub-tours.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13193,6 +13315,14 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Finding-Shortest-Route">Finding Shortest Route<a class="anchor-link" href="#Finding-Shortest-Route">&#182;</a></h3><p>The following function determines the shortest route from a given set of edges.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13223,12 +13353,22 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Model-Deployment">Model Deployment<a class="anchor-link" href="#Model-Deployment">&#182;</a></h3><p>We now determine the model for the TSP, by defining decision variables, constraints, and objective function. Next, we start the optimization and Gurobi finds the optimal route for the TSP.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="c1"># tested with Python 3.7 &amp; Gurobi 9</span>
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
 
@@ -13263,9 +13403,13 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Changed value of parameter lazyConstraints to 1
+<pre>Using license file c:\gurobi\gurobi.lic
+Set parameter TokenServer to value SANTOS-SURFACE-
+Changed value of parameter lazyConstraints to 1
    Prev: 0  Min: 0  Max: 1  Default: 0
+Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
 Optimize a model with 2304 rows, 2256 columns and 6768 nonzeros
+Model fingerprint: 0x029d7617
 Variable types: 0 continuous, 2256 integer (2256 binary)
 Coefficient statistics:
   Matrix range     [1e+00, 1e+00]
@@ -13285,24 +13429,27 @@ Root relaxation: objective 3.223715e+02, 72 iterations, 0.00 seconds
      0     0  322.37153    0   12          -  322.37153      -     -    0s
      0     0  326.22035    0   18          -  326.22035      -     -    0s
      0     0  331.56424    0   16          -  331.56424      -     -    0s
-     0     0  332.99363    0   37          -  332.99363      -     -    0s
-     0     0  333.37575    0   10          -  333.37575      -     -    0s
-     0     0  333.64369    0   27          -  333.64369      -     -    0s
-     0     2  341.87663    0   15          -  341.87663      -     -    0s
-*   21     2               4     353.2844080  344.15644  2.58%   5.7    0s
-*   24     2               3     350.8980740  346.20617  1.34%   6.3    0s
+     0     0  333.00063    0   14          -  333.00063      -     -    0s
+     0     0  333.30514    0   33          -  333.30514      -     -    0s
+H    0     0                     440.4704950  333.30514  24.3%     -    0s
+H    0     0                     440.3973342  333.30514  24.3%     -    0s
+     0     2  342.89768    0    6  440.39733  342.89768  22.1%     -    0s
+*    3     0               1     350.9349184  347.49734  0.98%   8.0    0s
+*    4     0               1     350.8980740  350.89807  0.00%   8.8    0s
 
 Cutting planes:
-  Zero half: 8
-  Lazy constraints: 34
+  Zero half: 9
+  Lazy constraints: 26
 
-Explored 28 nodes (285 simplex iterations) in 0.23 seconds
+Explored 5 nodes (136 simplex iterations) in 0.32 seconds
 Thread count was 8 (of 8 available processors)
 
-Solution count 2: 350.898 353.284 
+Solution count 4: 350.898 350.935 440.397 440.47 
 
 Optimal solution found (tolerance 1.00e-04)
 Best objective 3.508980740395e+02, best bound 3.508980740395e+02, gap 0.0000%
+
+User-callback calls 203, time in user-callback 0.11 sec
 </pre>
 </div>
 </div>
@@ -13310,6 +13457,14 @@ Best objective 3.508980740395e+02, best bound 3.508980740395e+02, gap 0.0000%
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>We retrieve the optimal solution of the TSP and verify that the optimal route (or tour) goes to all the cities and returns to the origin city.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13329,6 +13484,14 @@ Best objective 3.508980740395e+02, best bound 3.508980740395e+02, gap 0.0000%
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The optimal route is displayed in the following map.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13366,7 +13529,7 @@ Best objective 3.508980740395e+02, best bound 3.508980740395e+02, gap 0.0000%
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgCiAgICAgICAgPHNjcmlwdD4KICAgICAgICAgICAgTF9OT19UT1VDSCA9IGZhbHNlOwogICAgICAgICAgICBMX0RJU0FCTEVfM0QgPSBmYWxzZTsKICAgICAgICA8L3NjcmlwdD4KICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS0xLjEyLjQubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5qcyI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vYm9vdHN0cmFwLzMuMi4wL2Nzcy9ib290c3RyYXAubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9mb250LWF3ZXNvbWUvNC42LjMvY3NzL2ZvbnQtYXdlc29tZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL0xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLzIuMC4yL2xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2Nkbi5naXRoYWNrLmNvbS9weXRob24tdmlzdWFsaXphdGlvbi9mb2xpdW0vbWFzdGVyL2ZvbGl1bS90ZW1wbGF0ZXMvbGVhZmxldC5hd2Vzb21lLnJvdGF0ZS5jc3MiLz4KICAgIDxzdHlsZT5odG1sLCBib2R5IHt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7bWFyZ2luOiAwO3BhZGRpbmc6IDA7fTwvc3R5bGU+CiAgICA8c3R5bGU+I21hcCB7cG9zaXRpb246YWJzb2x1dGU7dG9wOjA7Ym90dG9tOjA7cmlnaHQ6MDtsZWZ0OjA7fTwvc3R5bGU+CiAgICAKICAgICAgICAgICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwKICAgICAgICAgICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgICAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAgICAgI21hcF81OTIwYWE5YWEwYTc0MWQzYjNmMTBjNzllZjIwNTI5OSB7CiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgCjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfNTkyMGFhOWFhMGE3NDFkM2IzZjEwYzc5ZWYyMDUyOTkiID48L2Rpdj4KICAgICAgICAKPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFwXzU5MjBhYTlhYTBhNzQxZDNiM2YxMGM3OWVmMjA1Mjk5ID0gTC5tYXAoCiAgICAgICAgICAgICAgICAibWFwXzU5MjBhYTlhYTBhNzQxZDNiM2YxMGM3OWVmMjA1Mjk5IiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjZW50ZXI6IFs0MC4wLCAtOTUuMF0sCiAgICAgICAgICAgICAgICAgICAgY3JzOiBMLkNSUy5FUFNHMzg1NywKICAgICAgICAgICAgICAgICAgICB6b29tOiA0LAogICAgICAgICAgICAgICAgICAgIHpvb21Db250cm9sOiB0cnVlLAogICAgICAgICAgICAgICAgICAgIHByZWZlckNhbnZhczogZmFsc2UsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICk7CgogICAgICAgICAgICAKCiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHRpbGVfbGF5ZXJfYmQ2MmYyNTdiY2M2NGFhNWI3ZDU4NjNmZDA1MDMyNzUgPSBMLnRpbGVMYXllcigKICAgICAgICAgICAgICAgICJodHRwczovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZyIsCiAgICAgICAgICAgICAgICB7ImF0dHJpYnV0aW9uIjogIkRhdGEgYnkgXHUwMDI2Y29weTsgXHUwMDNjYSBocmVmPVwiaHR0cDovL29wZW5zdHJlZXRtYXAub3JnXCJcdTAwM2VPcGVuU3RyZWV0TWFwXHUwMDNjL2FcdTAwM2UsIHVuZGVyIFx1MDAzY2EgaHJlZj1cImh0dHA6Ly93d3cub3BlbnN0cmVldG1hcC5vcmcvY29weXJpZ2h0XCJcdTAwM2VPRGJMXHUwMDNjL2FcdTAwM2UuIiwgImRldGVjdFJldGluYSI6IGZhbHNlLCAibWF4TmF0aXZlWm9vbSI6IDE4LCAibWF4Wm9vbSI6IDE4LCAibWluWm9vbSI6IDAsICJub1dyYXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic3ViZG9tYWlucyI6ICJhYmMiLCAidG1zIjogZmFsc2V9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzU5MjBhYTlhYTBhNzQxZDNiM2YxMGM3OWVmMjA1Mjk5KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lX2UxYTBiNDE1ZWI5ZTQ3MTBhN2UxNWZmNGFmMzJlZGE3ID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbMzIuMzYxNTM4LCAtODYuMjc5MTE4XSwgWzMwLjQ1MTgsIC04NC4yNzI3N10sIFszMy43NiwgLTg0LjM5XSwgWzM0LjAsIC04MS4wMzVdLCBbMzUuNzcxLCAtNzguNjM4XSwgWzM3LjU0LCAtNzcuNDZdLCBbMzguOTcyOTQ1LCAtNzYuNTAxMTU3XSwgWzM5LjE2MTkyMSwgLTc1LjUyNjc1NV0sIFs0MC4yMjE3NDEsIC03NC43NTYxMzhdLCBbNDEuNzY3LCAtNzIuNjc3XSwgWzQxLjgyMzU1LCAtNzEuNDIyMTMyXSwgWzQyLjIzNTIsIC03MS4wMjc1XSwgWzQ0LjMyMzUzNSwgLTY5Ljc2NTI2MV0sIFs0My4yMjAwOTMsIC03MS41NDkxMjddLCBbNDQuMjY2MzksIC03Mi41NzE5NF0sIFs0Mi42NTk4MjksIC03My43ODEzMzldLCBbNDAuMjY5Nzg5LCAtNzYuODc1NjEzXSwgWzM4LjM0OTQ5NywgLTgxLjYzMzI5NF0sIFszOS45NjIyNDUsIC04My4wMDA2NDddLCBbNDIuNzMzNSwgLTg0LjU0NjddLCBbNDMuMDc0NzIyLCAtODkuMzg0NDQ0XSwgWzQ0Ljk1LCAtOTMuMDk0XSwgWzQxLjU5MDkzOSwgLTkzLjYyMDg2Nl0sIFszOS4wNCwgLTk1LjY5XSwgWzQwLjgwOTg2OCwgLTk2LjY3NTM0NV0sIFs0NC4zNjc5NjYsIC0xMDAuMzM2Mzc4XSwgWzQ2LjgxMzM0MywgLTEwMC43NzkwMDRdLCBbNDEuMTQ1NTQ4LCAtMTA0LjgwMjA0Ml0sIFszOS43MzkxNjY3LCAtMTA0Ljk4NDE2N10sIFs0MC43NTQ3LCAtMTExLjg5MjYyMl0sIFs0Ni41OTU4MDUsIC0xMTIuMDI3MDMxXSwgWzQzLjYxMzczOSwgLTExNi4yMzc2NTFdLCBbNDcuMDQyNDE4LCAtMTIyLjg5MzA3N10sIFs0NC45MzExMDksIC0xMjMuMDI5MTU5XSwgWzM4LjU1NTYwNSwgLTEyMS40Njg5MjZdLCBbMzkuMTYwOTQ5LCAtMTE5Ljc1Mzg3N10sIFszMy40NDg0NTcsIC0xMTIuMDczODQ0XSwgWzM1LjY2NzIzMSwgLTEwNS45NjQ1NzVdLCBbMzUuNDgyMzA5LCAtOTcuNTM0OTk0XSwgWzMwLjI2NjY2NywgLTk3Ljc1XSwgWzMwLjQ1ODA5LCAtOTEuMTQwMjI5XSwgWzMyLjMyLCAtOTAuMjA3XSwgWzM0LjczNjAwOSwgLTkyLjMzMTEyMl0sIFszOC41NzI5NTQsIC05Mi4xODkyODNdLCBbMzkuNzgzMjUsIC04OS42NTAzNzNdLCBbMzkuNzkwOTQyLCAtODYuMTQ3Njg1XSwgWzM4LjE5NzI3NCwgLTg0Ljg2MzExXSwgWzM2LjE2NSwgLTg2Ljc4NF0sIFszMi4zNjE1MzgsIC04Ni4yNzkxMThdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMzM4OGZmIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjMzM4OGZmIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEuMCwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF81OTIwYWE5YWEwYTc0MWQzYjNmMTBjNzllZjIwNTI5OSk7CiAgICAgICAgCjwvc2NyaXB0Pg==" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="about:blank" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" data-html=PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgCiAgICAgICAgPHNjcmlwdD4KICAgICAgICAgICAgTF9OT19UT1VDSCA9IGZhbHNlOwogICAgICAgICAgICBMX0RJU0FCTEVfM0QgPSBmYWxzZTsKICAgICAgICA8L3NjcmlwdD4KICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS0xLjEyLjQubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5qcyI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vYm9vdHN0cmFwLzMuMi4wL2Nzcy9ib290c3RyYXAubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9mb250LWF3ZXNvbWUvNC42LjMvY3NzL2ZvbnQtYXdlc29tZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL0xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLzIuMC4yL2xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2Nkbi5naXRoYWNrLmNvbS9weXRob24tdmlzdWFsaXphdGlvbi9mb2xpdW0vbWFzdGVyL2ZvbGl1bS90ZW1wbGF0ZXMvbGVhZmxldC5hd2Vzb21lLnJvdGF0ZS5jc3MiLz4KICAgIDxzdHlsZT5odG1sLCBib2R5IHt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7bWFyZ2luOiAwO3BhZGRpbmc6IDA7fTwvc3R5bGU+CiAgICA8c3R5bGU+I21hcCB7cG9zaXRpb246YWJzb2x1dGU7dG9wOjA7Ym90dG9tOjA7cmlnaHQ6MDtsZWZ0OjA7fTwvc3R5bGU+CiAgICAKICAgICAgICAgICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwKICAgICAgICAgICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgICAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAgICAgI21hcF9hNDA4N2MyYmI3MGI0MTk1YTg5NGY4M2Y0NTk4YzVjMSB7CiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgCjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfYTQwODdjMmJiNzBiNDE5NWE4OTRmODNmNDU5OGM1YzEiID48L2Rpdj4KICAgICAgICAKPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFwX2E0MDg3YzJiYjcwYjQxOTVhODk0ZjgzZjQ1OThjNWMxID0gTC5tYXAoCiAgICAgICAgICAgICAgICAibWFwX2E0MDg3YzJiYjcwYjQxOTVhODk0ZjgzZjQ1OThjNWMxIiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjZW50ZXI6IFs0MC4wLCAtOTUuMF0sCiAgICAgICAgICAgICAgICAgICAgY3JzOiBMLkNSUy5FUFNHMzg1NywKICAgICAgICAgICAgICAgICAgICB6b29tOiA0LAogICAgICAgICAgICAgICAgICAgIHpvb21Db250cm9sOiB0cnVlLAogICAgICAgICAgICAgICAgICAgIHByZWZlckNhbnZhczogZmFsc2UsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICk7CgogICAgICAgICAgICAKCiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHRpbGVfbGF5ZXJfOWMxZDc2NWQ2OGQwNGMyOGIzNjVjNjk3ODM0NGE2MmUgPSBMLnRpbGVMYXllcigKICAgICAgICAgICAgICAgICJodHRwczovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZyIsCiAgICAgICAgICAgICAgICB7ImF0dHJpYnV0aW9uIjogIkRhdGEgYnkgXHUwMDI2Y29weTsgXHUwMDNjYSBocmVmPVwiaHR0cDovL29wZW5zdHJlZXRtYXAub3JnXCJcdTAwM2VPcGVuU3RyZWV0TWFwXHUwMDNjL2FcdTAwM2UsIHVuZGVyIFx1MDAzY2EgaHJlZj1cImh0dHA6Ly93d3cub3BlbnN0cmVldG1hcC5vcmcvY29weXJpZ2h0XCJcdTAwM2VPRGJMXHUwMDNjL2FcdTAwM2UuIiwgImRldGVjdFJldGluYSI6IGZhbHNlLCAibWF4TmF0aXZlWm9vbSI6IDE4LCAibWF4Wm9vbSI6IDE4LCAibWluWm9vbSI6IDAsICJub1dyYXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic3ViZG9tYWlucyI6ICJhYmMiLCAidG1zIjogZmFsc2V9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2E0MDg3YzJiYjcwYjQxOTVhODk0ZjgzZjQ1OThjNWMxKTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lX2EzZDg2NzI2NjIwMDQ5YTA4MTk2ODQwZDIzNDA0OTE2ID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbMzIuMzYxNTM4LCAtODYuMjc5MTE4XSwgWzMwLjQ1MTgsIC04NC4yNzI3N10sIFszMy43NiwgLTg0LjM5XSwgWzM0LjAsIC04MS4wMzVdLCBbMzUuNzcxLCAtNzguNjM4XSwgWzM3LjU0LCAtNzcuNDZdLCBbMzguOTcyOTQ1LCAtNzYuNTAxMTU3XSwgWzM5LjE2MTkyMSwgLTc1LjUyNjc1NV0sIFs0MC4yMjE3NDEsIC03NC43NTYxMzhdLCBbNDEuNzY3LCAtNzIuNjc3XSwgWzQxLjgyMzU1LCAtNzEuNDIyMTMyXSwgWzQyLjIzNTIsIC03MS4wMjc1XSwgWzQ0LjMyMzUzNSwgLTY5Ljc2NTI2MV0sIFs0My4yMjAwOTMsIC03MS41NDkxMjddLCBbNDQuMjY2MzksIC03Mi41NzE5NF0sIFs0Mi42NTk4MjksIC03My43ODEzMzldLCBbNDAuMjY5Nzg5LCAtNzYuODc1NjEzXSwgWzM4LjM0OTQ5NywgLTgxLjYzMzI5NF0sIFszOS45NjIyNDUsIC04My4wMDA2NDddLCBbNDIuNzMzNSwgLTg0LjU0NjddLCBbNDMuMDc0NzIyLCAtODkuMzg0NDQ0XSwgWzQ0Ljk1LCAtOTMuMDk0XSwgWzQxLjU5MDkzOSwgLTkzLjYyMDg2Nl0sIFszOS4wNCwgLTk1LjY5XSwgWzQwLjgwOTg2OCwgLTk2LjY3NTM0NV0sIFs0NC4zNjc5NjYsIC0xMDAuMzM2Mzc4XSwgWzQ2LjgxMzM0MywgLTEwMC43NzkwMDRdLCBbNDEuMTQ1NTQ4LCAtMTA0LjgwMjA0Ml0sIFszOS43MzkxNjY3LCAtMTA0Ljk4NDE2N10sIFs0MC43NTQ3LCAtMTExLjg5MjYyMl0sIFs0Ni41OTU4MDUsIC0xMTIuMDI3MDMxXSwgWzQzLjYxMzczOSwgLTExNi4yMzc2NTFdLCBbNDcuMDQyNDE4LCAtMTIyLjg5MzA3N10sIFs0NC45MzExMDksIC0xMjMuMDI5MTU5XSwgWzM4LjU1NTYwNSwgLTEyMS40Njg5MjZdLCBbMzkuMTYwOTQ5LCAtMTE5Ljc1Mzg3N10sIFszMy40NDg0NTcsIC0xMTIuMDczODQ0XSwgWzM1LjY2NzIzMSwgLTEwNS45NjQ1NzVdLCBbMzUuNDgyMzA5LCAtOTcuNTM0OTk0XSwgWzMwLjI2NjY2NywgLTk3Ljc1XSwgWzMwLjQ1ODA5LCAtOTEuMTQwMjI5XSwgWzMyLjMyLCAtOTAuMjA3XSwgWzM0LjczNjAwOSwgLTkyLjMzMTEyMl0sIFszOC41NzI5NTQsIC05Mi4xODkyODNdLCBbMzkuNzgzMjUsIC04OS42NTAzNzNdLCBbMzkuNzkwOTQyLCAtODYuMTQ3Njg1XSwgWzM4LjE5NzI3NCwgLTg0Ljg2MzExXSwgWzM2LjE2NSwgLTg2Ljc4NF0sIFszMi4zNjE1MzgsIC04Ni4yNzkxMThdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMzM4OGZmIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjMzM4OGZmIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEuMCwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF9hNDA4N2MyYmI3MGI0MTk1YTg5NGY4M2Y0NTk4YzVjMSk7CiAgICAgICAgCjwvc2NyaXB0Pg== onload="this.contentDocument.open();this.contentDocument.write(atob(this.getAttribute('data-html')));this.contentDocument.close();" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
 </div>
 
 </div>
@@ -13378,10 +13541,40 @@ Best objective 3.508980740395e+02, best bound 3.508980740395e+02, gap 0.0000%
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Copyright © 2019 Gurobi Optimization, LLC</p>
+<h2 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h2><p>The Traveling Salesman Problem (TSP) is the most popular combinatorial optimization problem. This problem is very easy to explain, although it is very complicated to solve. The largest TSP problem solved has 85,900 cities. The TSP is a source of discovery for new approaches to solve complex combinatorial optimization problems and has led to many applications.</p>
+<p>In this modeling example, we have shown how to formulate the symmetric Traveling Salesman Problem as a MIP problem. We also showed how to dynamically eliminate subtours by using lazy constraints.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>[1] D. L. Applegate, R. E. Bixby, V. Chvatal and W. J. Cook , The Traveling Salesman Problem: A Computational Study, Princeton University Press, Princeton, 2006.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Copyright © 2020 Gurobi Optimization, LLC</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
