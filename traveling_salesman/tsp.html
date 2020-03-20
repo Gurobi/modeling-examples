@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13302,13 +13302,13 @@ Since there are an exponential number of constraints ($2^{n} - 2$) to eliminate 
     <span class="k">if</span> <span class="n">where</span> <span class="o">==</span> <span class="n">GRB</span><span class="o">.</span><span class="n">Callback</span><span class="o">.</span><span class="n">MIPSOL</span><span class="p">:</span>
         <span class="c1"># make a list of edges selected in the solution</span>
         <span class="n">vals</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">cbGetSolution</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_vars</span><span class="p">)</span>
-        <span class="n">selected</span> <span class="o">=</span> <span class="n">tuplelist</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">selected</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">tuplelist</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
                              <span class="k">if</span> <span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
         <span class="c1"># find the shortest cycle in the selected edge list</span>
         <span class="n">tour</span> <span class="o">=</span> <span class="n">subtour</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tour</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">capitals</span><span class="p">):</span>
             <span class="c1"># add subtour elimination constr. for every pair of cities in subtour</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">cbLazy</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_vars</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">tour</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">cbLazy</span><span class="p">(</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_vars</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">tour</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
                          <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tour</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
@@ -13367,11 +13367,12 @@ Since there are an exponential number of constraints ($2^{n} - 2$) to eliminate 
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="o">*</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="n">GRB</span>
 
-<span class="c1"># tested with Python 3.7 &amp; Gurobi 9</span>
+<span class="c1"># tested with Python 3.7 &amp; Gurobi 9.0.0</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
 
 <span class="c1"># Variables: is city &#39;i&#39; adjacent to city &#39;j&#39; on the tour?</span>
 
@@ -13404,13 +13405,11 @@ Since there are an exponential number of constraints ($2^{n} - 2$) to eliminate 
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
-Changed value of parameter lazyConstraints to 1
+<pre>Changed value of parameter lazyConstraints to 1
    Prev: 0  Min: 0  Max: 1  Default: 0
-Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (mac64)
 Optimize a model with 2304 rows, 2256 columns and 6768 nonzeros
-Model fingerprint: 0x029d7617
+Model fingerprint: 0x6beea9f9
 Variable types: 0 continuous, 2256 integer (2256 binary)
 Coefficient statistics:
   Matrix range     [1e+00, 1e+00]
@@ -13418,7 +13417,7 @@ Coefficient statistics:
   Bounds range     [1e+00, 1e+00]
   RHS range        [2e+00, 2e+00]
 Presolve removed 2256 rows and 1128 columns
-Presolve time: 0.01s
+Presolve time: 0.00s
 Presolved: 48 rows, 1128 columns, 2256 nonzeros
 Variable types: 0 continuous, 1128 integer (1128 binary)
 
@@ -13431,26 +13430,25 @@ Root relaxation: objective 3.223715e+02, 72 iterations, 0.00 seconds
      0     0  326.22035    0   18          -  326.22035      -     -    0s
      0     0  331.56424    0   16          -  331.56424      -     -    0s
      0     0  333.00063    0   14          -  333.00063      -     -    0s
-     0     0  333.30514    0   33          -  333.30514      -     -    0s
-H    0     0                     440.4704950  333.30514  24.3%     -    0s
-H    0     0                     440.3973342  333.30514  24.3%     -    0s
-     0     2  342.89768    0    6  440.39733  342.89768  22.1%     -    0s
-*    3     0               1     350.9349184  347.49734  0.98%   8.0    0s
-*    4     0               1     350.8980740  350.89807  0.00%   8.8    0s
+     0     0  333.37575    0   10          -  333.37575      -     -    0s
+     0     2  337.98502    0   17          -  337.98502      -     -    0s
+*   42    24               7     356.3924043  340.01723  4.59%   7.0    0s
+*   45    24               4     353.2844080  340.01723  3.76%   6.8    0s
+*   59     0               6     350.8980740  345.76196  1.46%   8.0    0s
 
 Cutting planes:
   Zero half: 9
-  Lazy constraints: 26
+  Lazy constraints: 28
 
-Explored 5 nodes (136 simplex iterations) in 0.22 seconds
+Explored 71 nodes (682 simplex iterations) in 0.19 seconds
 Thread count was 8 (of 8 available processors)
 
-Solution count 4: 350.898 350.935 440.397 440.47 
+Solution count 3: 350.898 353.284 356.392 
 
 Optimal solution found (tolerance 1.00e-04)
 Best objective 3.508980740395e+02, best bound 3.508980740395e+02, gap 0.0000%
 
-User-callback calls 179, time in user-callback 0.07 sec
+User-callback calls 319, time in user-callback 0.08 sec
 </pre>
 </div>
 </div>
@@ -13475,7 +13473,7 @@ User-callback calls 179, time in user-callback 0.07 sec
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Retrieve solution</span>
 
 <span class="n">vals</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">getAttr</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="nb">vars</span><span class="p">)</span>
-<span class="n">selected</span> <span class="o">=</span> <span class="n">tuplelist</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">selected</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">tuplelist</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
 
 <span class="n">tour</span> <span class="o">=</span> <span class="n">subtour</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
 <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">tour</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">capitals</span><span class="p">)</span>
@@ -13530,7 +13528,7 @@ User-callback calls 179, time in user-callback 0.07 sec
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="about:blank" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" data-html=PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgCiAgICAgICAgPHNjcmlwdD4KICAgICAgICAgICAgTF9OT19UT1VDSCA9IGZhbHNlOwogICAgICAgICAgICBMX0RJU0FCTEVfM0QgPSBmYWxzZTsKICAgICAgICA8L3NjcmlwdD4KICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS0xLjEyLjQubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5qcyI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vYm9vdHN0cmFwLzMuMi4wL2Nzcy9ib290c3RyYXAubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9mb250LWF3ZXNvbWUvNC42LjMvY3NzL2ZvbnQtYXdlc29tZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL0xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLzIuMC4yL2xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2Nkbi5naXRoYWNrLmNvbS9weXRob24tdmlzdWFsaXphdGlvbi9mb2xpdW0vbWFzdGVyL2ZvbGl1bS90ZW1wbGF0ZXMvbGVhZmxldC5hd2Vzb21lLnJvdGF0ZS5jc3MiLz4KICAgIDxzdHlsZT5odG1sLCBib2R5IHt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7bWFyZ2luOiAwO3BhZGRpbmc6IDA7fTwvc3R5bGU+CiAgICA8c3R5bGU+I21hcCB7cG9zaXRpb246YWJzb2x1dGU7dG9wOjA7Ym90dG9tOjA7cmlnaHQ6MDtsZWZ0OjA7fTwvc3R5bGU+CiAgICAKICAgICAgICAgICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwKICAgICAgICAgICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgICAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAgICAgI21hcF8xZWVlMWUwOTIyMjg0ZGU4OWNmYTYxYTc4MGUwZmRjNyB7CiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgCjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfMWVlZTFlMDkyMjI4NGRlODljZmE2MWE3ODBlMGZkYzciID48L2Rpdj4KICAgICAgICAKPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFwXzFlZWUxZTA5MjIyODRkZTg5Y2ZhNjFhNzgwZTBmZGM3ID0gTC5tYXAoCiAgICAgICAgICAgICAgICAibWFwXzFlZWUxZTA5MjIyODRkZTg5Y2ZhNjFhNzgwZTBmZGM3IiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjZW50ZXI6IFs0MC4wLCAtOTUuMF0sCiAgICAgICAgICAgICAgICAgICAgY3JzOiBMLkNSUy5FUFNHMzg1NywKICAgICAgICAgICAgICAgICAgICB6b29tOiA0LAogICAgICAgICAgICAgICAgICAgIHpvb21Db250cm9sOiB0cnVlLAogICAgICAgICAgICAgICAgICAgIHByZWZlckNhbnZhczogZmFsc2UsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICk7CgogICAgICAgICAgICAKCiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHRpbGVfbGF5ZXJfZmRmY2ZjZjIxMWMzNDhlYTlkMjY1ZTYwOGZhYTM1ZDUgPSBMLnRpbGVMYXllcigKICAgICAgICAgICAgICAgICJodHRwczovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZyIsCiAgICAgICAgICAgICAgICB7ImF0dHJpYnV0aW9uIjogIkRhdGEgYnkgXHUwMDI2Y29weTsgXHUwMDNjYSBocmVmPVwiaHR0cDovL29wZW5zdHJlZXRtYXAub3JnXCJcdTAwM2VPcGVuU3RyZWV0TWFwXHUwMDNjL2FcdTAwM2UsIHVuZGVyIFx1MDAzY2EgaHJlZj1cImh0dHA6Ly93d3cub3BlbnN0cmVldG1hcC5vcmcvY29weXJpZ2h0XCJcdTAwM2VPRGJMXHUwMDNjL2FcdTAwM2UuIiwgImRldGVjdFJldGluYSI6IGZhbHNlLCAibWF4TmF0aXZlWm9vbSI6IDE4LCAibWF4Wm9vbSI6IDE4LCAibWluWm9vbSI6IDAsICJub1dyYXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic3ViZG9tYWlucyI6ICJhYmMiLCAidG1zIjogZmFsc2V9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzFlZWUxZTA5MjIyODRkZTg5Y2ZhNjFhNzgwZTBmZGM3KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzgzYzBiM2E4ZmM5OTRkZmM4NTFkNmNhOWNlOTM1ZmM0ID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbMzIuMzYxNTM4LCAtODYuMjc5MTE4XSwgWzMwLjQ1MTgsIC04NC4yNzI3N10sIFszMy43NiwgLTg0LjM5XSwgWzM0LjAsIC04MS4wMzVdLCBbMzUuNzcxLCAtNzguNjM4XSwgWzM3LjU0LCAtNzcuNDZdLCBbMzguOTcyOTQ1LCAtNzYuNTAxMTU3XSwgWzM5LjE2MTkyMSwgLTc1LjUyNjc1NV0sIFs0MC4yMjE3NDEsIC03NC43NTYxMzhdLCBbNDEuNzY3LCAtNzIuNjc3XSwgWzQxLjgyMzU1LCAtNzEuNDIyMTMyXSwgWzQyLjIzNTIsIC03MS4wMjc1XSwgWzQ0LjMyMzUzNSwgLTY5Ljc2NTI2MV0sIFs0My4yMjAwOTMsIC03MS41NDkxMjddLCBbNDQuMjY2MzksIC03Mi41NzE5NF0sIFs0Mi42NTk4MjksIC03My43ODEzMzldLCBbNDAuMjY5Nzg5LCAtNzYuODc1NjEzXSwgWzM4LjM0OTQ5NywgLTgxLjYzMzI5NF0sIFszOS45NjIyNDUsIC04My4wMDA2NDddLCBbNDIuNzMzNSwgLTg0LjU0NjddLCBbNDMuMDc0NzIyLCAtODkuMzg0NDQ0XSwgWzQ0Ljk1LCAtOTMuMDk0XSwgWzQxLjU5MDkzOSwgLTkzLjYyMDg2Nl0sIFszOS4wNCwgLTk1LjY5XSwgWzQwLjgwOTg2OCwgLTk2LjY3NTM0NV0sIFs0NC4zNjc5NjYsIC0xMDAuMzM2Mzc4XSwgWzQ2LjgxMzM0MywgLTEwMC43NzkwMDRdLCBbNDEuMTQ1NTQ4LCAtMTA0LjgwMjA0Ml0sIFszOS43MzkxNjY3LCAtMTA0Ljk4NDE2N10sIFs0MC43NTQ3LCAtMTExLjg5MjYyMl0sIFs0Ni41OTU4MDUsIC0xMTIuMDI3MDMxXSwgWzQzLjYxMzczOSwgLTExNi4yMzc2NTFdLCBbNDcuMDQyNDE4LCAtMTIyLjg5MzA3N10sIFs0NC45MzExMDksIC0xMjMuMDI5MTU5XSwgWzM4LjU1NTYwNSwgLTEyMS40Njg5MjZdLCBbMzkuMTYwOTQ5LCAtMTE5Ljc1Mzg3N10sIFszMy40NDg0NTcsIC0xMTIuMDczODQ0XSwgWzM1LjY2NzIzMSwgLTEwNS45NjQ1NzVdLCBbMzUuNDgyMzA5LCAtOTcuNTM0OTk0XSwgWzMwLjI2NjY2NywgLTk3Ljc1XSwgWzMwLjQ1ODA5LCAtOTEuMTQwMjI5XSwgWzMyLjMyLCAtOTAuMjA3XSwgWzM0LjczNjAwOSwgLTkyLjMzMTEyMl0sIFszOC41NzI5NTQsIC05Mi4xODkyODNdLCBbMzkuNzgzMjUsIC04OS42NTAzNzNdLCBbMzkuNzkwOTQyLCAtODYuMTQ3Njg1XSwgWzM4LjE5NzI3NCwgLTg0Ljg2MzExXSwgWzM2LjE2NSwgLTg2Ljc4NF0sIFszMi4zNjE1MzgsIC04Ni4yNzkxMThdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMzM4OGZmIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjMzM4OGZmIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEuMCwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF8xZWVlMWUwOTIyMjg0ZGU4OWNmYTYxYTc4MGUwZmRjNyk7CiAgICAgICAgCjwvc2NyaXB0Pg== onload="this.contentDocument.open();this.contentDocument.write(atob(this.getAttribute('data-html')));this.contentDocument.close();" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgCiAgICAgICAgPHNjcmlwdD4KICAgICAgICAgICAgTF9OT19UT1VDSCA9IGZhbHNlOwogICAgICAgICAgICBMX0RJU0FCTEVfM0QgPSBmYWxzZTsKICAgICAgICA8L3NjcmlwdD4KICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS0xLjEyLjQubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5qcyI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjUuMS9kaXN0L2xlYWZsZXQuY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vYm9vdHN0cmFwLzMuMi4wL2Nzcy9ib290c3RyYXAubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9mb250LWF3ZXNvbWUvNC42LjMvY3NzL2ZvbnQtYXdlc29tZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL0xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLzIuMC4yL2xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2Nkbi5naXRoYWNrLmNvbS9weXRob24tdmlzdWFsaXphdGlvbi9mb2xpdW0vbWFzdGVyL2ZvbGl1bS90ZW1wbGF0ZXMvbGVhZmxldC5hd2Vzb21lLnJvdGF0ZS5jc3MiLz4KICAgIDxzdHlsZT5odG1sLCBib2R5IHt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7bWFyZ2luOiAwO3BhZGRpbmc6IDA7fTwvc3R5bGU+CiAgICA8c3R5bGU+I21hcCB7cG9zaXRpb246YWJzb2x1dGU7dG9wOjA7Ym90dG9tOjA7cmlnaHQ6MDtsZWZ0OjA7fTwvc3R5bGU+CiAgICAKICAgICAgICAgICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwKICAgICAgICAgICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgICAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAgICAgI21hcF82ZjA2NTlmZmRkN2M0Y2I5YmM5NWE1ODg4NDg2YmZmZSB7CiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgCjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfNmYwNjU5ZmZkZDdjNGNiOWJjOTVhNTg4ODQ4NmJmZmUiID48L2Rpdj4KICAgICAgICAKPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFwXzZmMDY1OWZmZGQ3YzRjYjliYzk1YTU4ODg0ODZiZmZlID0gTC5tYXAoCiAgICAgICAgICAgICAgICAibWFwXzZmMDY1OWZmZGQ3YzRjYjliYzk1YTU4ODg0ODZiZmZlIiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjZW50ZXI6IFs0MC4wLCAtOTUuMF0sCiAgICAgICAgICAgICAgICAgICAgY3JzOiBMLkNSUy5FUFNHMzg1NywKICAgICAgICAgICAgICAgICAgICB6b29tOiA0LAogICAgICAgICAgICAgICAgICAgIHpvb21Db250cm9sOiB0cnVlLAogICAgICAgICAgICAgICAgICAgIHByZWZlckNhbnZhczogZmFsc2UsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICk7CgogICAgICAgICAgICAKCiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHRpbGVfbGF5ZXJfMmU1NjMzMDAxMmZlNDkyNTkzODc5ZWFhYTdlZWYxMzkgPSBMLnRpbGVMYXllcigKICAgICAgICAgICAgICAgICJodHRwczovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZyIsCiAgICAgICAgICAgICAgICB7ImF0dHJpYnV0aW9uIjogIkRhdGEgYnkgXHUwMDI2Y29weTsgXHUwMDNjYSBocmVmPVwiaHR0cDovL29wZW5zdHJlZXRtYXAub3JnXCJcdTAwM2VPcGVuU3RyZWV0TWFwXHUwMDNjL2FcdTAwM2UsIHVuZGVyIFx1MDAzY2EgaHJlZj1cImh0dHA6Ly93d3cub3BlbnN0cmVldG1hcC5vcmcvY29weXJpZ2h0XCJcdTAwM2VPRGJMXHUwMDNjL2FcdTAwM2UuIiwgImRldGVjdFJldGluYSI6IGZhbHNlLCAibWF4TmF0aXZlWm9vbSI6IDE4LCAibWF4Wm9vbSI6IDE4LCAibWluWm9vbSI6IDAsICJub1dyYXAiOiBmYWxzZSwgIm9wYWNpdHkiOiAxLCAic3ViZG9tYWlucyI6ICJhYmMiLCAidG1zIjogZmFsc2V9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzZmMDY1OWZmZGQ3YzRjYjliYzk1YTU4ODg0ODZiZmZlKTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9seV9saW5lXzNiMWY3YzFmMGMyZTRjOGRiMWY0YWMxZTQ3NWY5ZmIzID0gTC5wb2x5bGluZSgKICAgICAgICAgICAgICAgIFtbMzIuMzYxNTM4LCAtODYuMjc5MTE4XSwgWzMwLjQ1MTgsIC04NC4yNzI3N10sIFszMy43NiwgLTg0LjM5XSwgWzM0LjAsIC04MS4wMzVdLCBbMzUuNzcxLCAtNzguNjM4XSwgWzM3LjU0LCAtNzcuNDZdLCBbMzguOTcyOTQ1LCAtNzYuNTAxMTU3XSwgWzM5LjE2MTkyMSwgLTc1LjUyNjc1NV0sIFs0MC4yMjE3NDEsIC03NC43NTYxMzhdLCBbNDEuNzY3LCAtNzIuNjc3XSwgWzQxLjgyMzU1LCAtNzEuNDIyMTMyXSwgWzQyLjIzNTIsIC03MS4wMjc1XSwgWzQ0LjMyMzUzNSwgLTY5Ljc2NTI2MV0sIFs0My4yMjAwOTMsIC03MS41NDkxMjddLCBbNDQuMjY2MzksIC03Mi41NzE5NF0sIFs0Mi42NTk4MjksIC03My43ODEzMzldLCBbNDAuMjY5Nzg5LCAtNzYuODc1NjEzXSwgWzM4LjM0OTQ5NywgLTgxLjYzMzI5NF0sIFszOS45NjIyNDUsIC04My4wMDA2NDddLCBbNDIuNzMzNSwgLTg0LjU0NjddLCBbNDMuMDc0NzIyLCAtODkuMzg0NDQ0XSwgWzQ0Ljk1LCAtOTMuMDk0XSwgWzQxLjU5MDkzOSwgLTkzLjYyMDg2Nl0sIFszOS4wNCwgLTk1LjY5XSwgWzQwLjgwOTg2OCwgLTk2LjY3NTM0NV0sIFs0NC4zNjc5NjYsIC0xMDAuMzM2Mzc4XSwgWzQ2LjgxMzM0MywgLTEwMC43NzkwMDRdLCBbNDEuMTQ1NTQ4LCAtMTA0LjgwMjA0Ml0sIFszOS43MzkxNjY3LCAtMTA0Ljk4NDE2N10sIFs0MC43NTQ3LCAtMTExLjg5MjYyMl0sIFs0Ni41OTU4MDUsIC0xMTIuMDI3MDMxXSwgWzQzLjYxMzczOSwgLTExNi4yMzc2NTFdLCBbNDcuMDQyNDE4LCAtMTIyLjg5MzA3N10sIFs0NC45MzExMDksIC0xMjMuMDI5MTU5XSwgWzM4LjU1NTYwNSwgLTEyMS40Njg5MjZdLCBbMzkuMTYwOTQ5LCAtMTE5Ljc1Mzg3N10sIFszMy40NDg0NTcsIC0xMTIuMDczODQ0XSwgWzM1LjY2NzIzMSwgLTEwNS45NjQ1NzVdLCBbMzUuNDgyMzA5LCAtOTcuNTM0OTk0XSwgWzMwLjI2NjY2NywgLTk3Ljc1XSwgWzMwLjQ1ODA5LCAtOTEuMTQwMjI5XSwgWzMyLjMyLCAtOTAuMjA3XSwgWzM0LjczNjAwOSwgLTkyLjMzMTEyMl0sIFszOC41NzI5NTQsIC05Mi4xODkyODNdLCBbMzkuNzgzMjUsIC04OS42NTAzNzNdLCBbMzkuNzkwOTQyLCAtODYuMTQ3Njg1XSwgWzM4LjE5NzI3NCwgLTg0Ljg2MzExXSwgWzM2LjE2NSwgLTg2Ljc4NF0sIFszMi4zNjE1MzgsIC04Ni4yNzkxMThdXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMzM4OGZmIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiBmYWxzZSwgImZpbGxDb2xvciI6ICIjMzM4OGZmIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm5vQ2xpcCI6IGZhbHNlLCAib3BhY2l0eSI6IDEuMCwgInNtb290aEZhY3RvciI6IDEuMCwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF82ZjA2NTlmZmRkN2M0Y2I5YmM5NWE1ODg4NDg2YmZmZSk7CiAgICAgICAgCjwvc2NyaXB0Pg==" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
 </div>
 
 </div>
@@ -13566,19 +13564,6 @@ User-callback calls 179, time in user-callback 0.07 sec
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
