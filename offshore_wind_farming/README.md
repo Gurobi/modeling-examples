@@ -75,7 +75,7 @@ as an *academic user*.
 
 ## HTML Example URL
 
-TBA
+https://gurobi.github.io/modeling-examples/offshore_wind_farming/offshore_wind_farming.html
 
 
 Copyright © 2020 Gurobi Optimization, LLC
