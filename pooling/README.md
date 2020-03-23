@@ -2,7 +2,14 @@
 
 ## Motivation
 
-The Pooling Problem is a challenging problem in the petrochemical refining, wastewater treatment and mining industries. This problem can be regarded as a generalization of the minimum-cost flow problem and the blending problem. It is indeed important because of the significant savings it can generate, so it comes as no surprise that it has been studied extensively since Haverly pointed out the non-linear structure of this problem in 1978.
+The Pooling Problem is a challenging problem in the petrochemical refining, wastewater treatment and mining industries. 
+This problem can be regarded as a generalization of the minimum-cost flow problem and the blending problem. 
+It is indeed important because of the significant savings it can generate, so it comes as no surprise that it has been 
+studied extensively since Haverly pointed out the non-linear structure of this problem in 1978.
+
+This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and 
+that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or 
+constraints of these examples are complex or required advanced features of the Gurobi Python API.
 
 ## Proposed Solution
 
@@ -30,4 +37,4 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 https://gurobi.github.io/modeling-examples/pooling/std_pooling.html
 
 
-Copyright © 2019 Gurobi Optimization, LLC
+Copyright © 2020 Gurobi Optimization, LLC
