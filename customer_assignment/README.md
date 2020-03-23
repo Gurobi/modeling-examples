@@ -7,7 +7,13 @@ Many companies in various industries must, at some point, make strategic decisio
 - Producers of goods need to decide how to design their supply chains – which encompass factories, distribution centers, warehouses, and retail stores.
 - Healthcare providers need to determine where to build hospitals to maximize their population coverage.
 
-These are strategic decisions that are difficult to implement and costly to change because they entail long-term investments. Furthermore, these decisions have a significant impact, both in terms of customer satisfaction and cost management. One of the critical factors to consider in this process is the location of the customers that the company is planning to serve.
+These are strategic decisions that are difficult to implement and costly to change because they entail long-term 
+investments. Furthermore, these decisions have a significant impact, both in terms of customer satisfaction and cost 
+management. One of the critical factors to consider in this process is the location of the customers that the company is 
+planning to serve.
+
+This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the 
+Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.
 
 ## Proposed Solution
 
