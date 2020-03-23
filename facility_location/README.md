@@ -58,7 +58,7 @@ as an *academic user*.
 
 ## HTML Example URL
 
-TBA
+https://gurobi.github.io/modeling-examples/facility_location/facility_location.html
 
 
 Copyright © 2020 Gurobi Optimization, LLC
