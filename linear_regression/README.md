@@ -8,7 +8,12 @@ Linear regression was invented at the beginning of the 19th century and today, a
 - In health sciences, it can be applied to predict how long a patient will remain (i.e. length of stay) in the ER of a hospital based on patient information, triage assessment, medical test results, and the date/time of arrival.
 - In social sciences, it may shed light on future academic performance of students, so proactive measures can be taken to improve their learning outcomes.
 
-In general, linear regression is used to model the relationship between a continuous variable and other explanatory variables, which can be either continuous or categorical. When applying this technique, finding the subset of features that maximizes its perfomance is often of interest.
+In general, linear regression is used to model the relationship between a continuous variable and other explanatory 
+variables, which can be either continuous or categorical. When applying this technique, finding the subset of features 
+that maximizes its perfomance is often of interest.
+
+This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi 
+Python API. In addition, you should have some knowledge about building mathematical optimization models.
 
 ## Proposed Solution
 
@@ -42,4 +47,4 @@ In order to run this Jupyter Notebook properly, you must have a valid Gurobi lic
 https://gurobi.github.io/modeling-examples/linear_regression/l0_regression.html
 
 
-Copyright © 2019 Gurobi Optimization, LLC
+Copyright © 2020 Gurobi Optimization, LLC
