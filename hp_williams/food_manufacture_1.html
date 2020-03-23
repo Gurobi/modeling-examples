@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,10 +13116,11 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Food-Manufacture-I">Food Manufacture I<a class="anchor-link" href="#Food-Manufacture-I">&#182;</a></h1><p>Both this model and Food Manufacture II are examples of blending problems. In blending optimization problems, multiple raw materials are combined in a way that meets the stated constraints at the lowest cost. These problems are common in numerous industries including the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing food that meets the different nutritional requirements of different animals).</p>
-<p>In this particular example, we will model and solve a production planning problem where we must create a final product from a number of ingredients — each of which has different costs, restrictions, and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation tabs below.</p>
-<p>In Food Manufacture II, we will extend this example with additional constraints that change the problem type from linear programming (LP) to mixed-integer programming (MIP), making it harder to solve.</p>
+<h1 id="Food-Manufacture-I">Food Manufacture I<a class="anchor-link" href="#Food-Manufacture-I">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Food Manufacture II are examples of blending problems. In blending optimization problems, multiple raw materials are combined in a way that meets the stated constraints at the lowest cost. These problems are common in numerous industries including the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing feed that meets the different nutritional requirements of different animals).</p>
+<h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this particular example, we will model and solve a production planning problem where we must create a final product from a number of ingredients — each of which has different costs, restrictions, and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation below.</p>
+<p>In Food Manufacture II, we will extend this example with additional constraints that change the problem type from a linear program (LP) to a mixed-integer program (MIP), making it harder to solve.</p>
 <p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
+<p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A manufacturer needs to refine several raw oils and blend them together to produce a given food product that can be sold. The raw oils required can be divided into two categories:</p>
@@ -13204,13 +13205,13 @@ div#notebook {
 </table>
 <p>There are a number of additional factors that must be taken into account. These include:</p>
 <ol>
-<li>The final food product sells for \$150 per ton.</li>
+<li>The final food product sells for $\$150$ per ton.</li>
 <li>Each category of oil (vegetable and non-vegetable) needs to be refined on a different production line.</li>
 <li>There is limited refinement capacity such that in any given month a maximum of 200 tons of vegetable oils and 250 tons of non-vegetable oils can be refined.</li>
 <li>Also, there is no waste in the refinement process, so the sum of the raw oils refined will equal the amount of refined oils available.</li>
 <li>The cost of refining the oils may be ignored.</li>
 </ol>
-<p>In addition to the refining limits above, there are limits to the amount of raw oils that can be stored for future use, and there is a cost associated with each ton of oil stored. The limit is 1,000 tons of each raw oil and the storage cost is \$5 per ton per month. The manufacturer cannot store the produced food product or the refined oils.</p>
+<p>In addition to the refining limits above, there are limits to the amount of raw oils that can be stored for future use, and there is a cost associated with each ton of oil stored. The limit is 1,000 tons of each raw oil and the storage cost is $\$5$ per ton per month. The manufacturer cannot store the produced food product or the refined oils.</p>
 <p>The final food product must have a hardness between three and six on a given hardness scale. For the purposes of the model, hardness blends linearly and the hardness of each raw oil is:</p>
 <table>
 <thead><tr>
@@ -13243,7 +13244,6 @@ div#notebook {
 </table>
 <p>At the start of January, there are 500 tons of each type of raw oil in storage. For the purpose of the model, this should also be the level of raw oils in storage at the end of June.</p>
 <p>Given the above information, what monthly buying and manufacturing decisions should be made in order to maximize profit?</p>
-<p>This problem is based on a larger model built for the margarine producer Van den Bergs and Jurgens and discussed in Williams and Redwood (1974).</p>
 <hr>
 <h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$t \in \text{Months}=\{\text{Jan},\text{Feb},\text{Mar},\text{Apr},\text{May},\text{Jun}\}$: Set of months.</p>
 <p>$V=\{\text{VEG1},\text{VEG2}\}$: Set of vegetable oils.</p>
@@ -13309,7 +13309,7 @@ div#notebook {
 \sum_{o \in \text{Oils}}\text{consume}_{t,o} = \text{produce}_t \quad \forall t \in \text{Months}
 \tag{6}
 \end{equation}<hr>
-<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initialize the data structures with the given data.</p>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>We import the Gurobi Python Module and other Python libraries.</p>
 
 </div>
 </div>
@@ -13321,9 +13321,32 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="o">*</span>
 
-<span class="c1"># tested with Python 3.7 &amp; Gurobi 8</span>
+<span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="n">GRB</span>
+
+<span class="c1"># tested with Python 3.7 &amp; Gurobi 9</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Input-Data">Input Data<a class="anchor-link" href="#Input-Data">&#182;</a></h2><p>We define all the input data of the model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Parameters</span>
 
 <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Jan&quot;</span><span class="p">,</span> <span class="s2">&quot;Feb&quot;</span><span class="p">,</span> <span class="s2">&quot;Mar&quot;</span><span class="p">,</span> <span class="s2">&quot;Apr&quot;</span><span class="p">,</span> <span class="s2">&quot;May&quot;</span><span class="p">,</span> <span class="s2">&quot;Jun&quot;</span><span class="p">]</span>
 
@@ -13384,17 +13407,17 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create a model and the variables. For each period, we create a variable which will take into account the value of the food produced. For each product (5 kinds of oils) and each period, we will create variables for the amount that gets bought, used and, stored.</p>
+<h2 id="Model-Deployment">Model Deployment<a class="anchor-link" href="#Model-Deployment">&#182;</a></h2><p>We create a model and the variables. For each period, we create a variable which will take into account the value of the food produced. For each product (5 kinds of oils) and each period, we will create variables for the amount that gets bought, used and, stored.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">food</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Food Manufacture I&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">food</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Food Manufacture I&#39;</span><span class="p">)</span>
 <span class="c1"># Quantity of food produced in each period</span>
 <span class="n">produce</span> <span class="o">=</span> <span class="n">food</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Produce&quot;</span><span class="p">)</span>
 <span class="c1"># Quantity bought of each product in each period</span>
@@ -13409,79 +13432,20 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we insert the constraints. The balance constraints ensure that the amount of oil that is in the storage in the last period and the amount that gets purchased equals the amount that is used and stored for each oil in the current period.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#1. Initial Balance</span>
-<span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">init_store</span> <span class="o">+</span> <span class="n">buy</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span>
-                 <span class="o">==</span> <span class="n">consume</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span> <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span>
-                 <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span><span class="p">),</span> <span class="s2">&quot;Initial_Balance&quot;</span><span class="p">)</span>
-
-<span class="c1">#2. Balance</span>
-<span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="n">months</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">month</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span> <span class="o">+</span> <span class="n">buy</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span>
-                 <span class="o">==</span> <span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span>
-                 <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span> <span class="k">if</span> <span class="n">month</span> <span class="o">!=</span> <span class="n">month</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;Balance&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt"></div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(&#39;VEG1&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG1&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG1&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG1&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG1&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG1&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG2&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG2&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG2&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG2&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG2&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;VEG2&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL1&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL1&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL1&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL1&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL1&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL1&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL2&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL2&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL2&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL2&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL2&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL2&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL3&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL3&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL3&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL3&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL3&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;OIL3&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Using license file c:\gurobi\gurobi.lic
+Set parameter TokenServer to value SANTOS-SURFACE-
+</pre>
 </div>
-
 </div>
 
 </div>
@@ -13491,7 +13455,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The endstore constraints force that at the end of the last period the storage contains the initial amount of each product.</p>
+<p>Next, we insert the constraints. The balance constraints ensure that the amount of oil that is in the storage in the previous period plus the amount that gets purchased equals the amount that is used plus the amount that is stored in the current period (for each oil).</p>
 
 </div>
 </div>
@@ -13501,35 +13465,40 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#3. Inventory Target</span>
-<span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_store</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span><span class="p">),</span><span class="s2">&quot;End_Balance&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#1. Initial Balance</span>
+<span class="n">Balance0</span> <span class="o">=</span> <span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">init_store</span> <span class="o">+</span> <span class="n">buy</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span>
+                 <span class="o">==</span> <span class="n">consume</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span> <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span>
+                 <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span><span class="p">),</span> <span class="s2">&quot;Initial_Balance&quot;</span><span class="p">)</span>
+
+<span class="c1">#2. Balance</span>
+<span class="n">Balance</span> <span class="o">=</span> <span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="n">months</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">month</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span> <span class="o">+</span> <span class="n">buy</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span>
+                 <span class="o">==</span> <span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span>
+                 <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span> <span class="k">if</span> <span class="n">month</span> <span class="o">!=</span> <span class="n">month</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;Balance&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;VEG1&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;VEG2&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;OIL1&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;OIL2&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;OIL3&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Inventory Target constraints force that at the end of the last period the storage contains the initial amount of each product.</p>
 
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#3. Inventory Target</span>
+<span class="n">TargetInv</span> <span class="o">=</span> <span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">oil</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_store</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span><span class="p">),</span><span class="s2">&quot;End_Balance&quot;</span><span class="p">)</span>
+</pre></div>
 
+    </div>
 </div>
 </div>
 
@@ -13544,44 +13513,19 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#4.1 Vegetable Oil Capacity</span>
-<span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span> <span class="k">if</span> <span class="s2">&quot;VEG&quot;</span> <span class="ow">in</span> <span class="n">oil</span><span class="p">)</span>
+<span class="n">VegCapacity</span> <span class="o">=</span> <span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span> <span class="k">if</span> <span class="s2">&quot;VEG&quot;</span> <span class="ow">in</span> <span class="n">oil</span><span class="p">)</span>
                  <span class="o">&lt;=</span> <span class="n">veg_cap</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">),</span> <span class="s2">&quot;Capacity_Veg&quot;</span><span class="p">)</span>
 
 <span class="c1">#4.2 Non-vegetable Oil Capacity</span>
-<span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span> <span class="k">if</span> <span class="s2">&quot;OIL&quot;</span> <span class="ow">in</span> <span class="n">oil</span><span class="p">)</span>
+<span class="n">NonVegCapacity</span> <span class="o">=</span> <span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span> <span class="k">if</span> <span class="s2">&quot;OIL&quot;</span> <span class="ow">in</span> <span class="n">oil</span><span class="p">)</span>
                  <span class="o">&lt;=</span> <span class="n">oil_cap</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">),</span> <span class="s2">&quot;Capacity_Oil&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Jan&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Feb&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Mar&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Apr&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;May&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Jun&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13596,13 +13540,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#5. Hardness</span>
-<span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">hardness</span><span class="p">[</span><span class="n">oil</span><span class="p">]</span><span class="o">*</span><span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span><span class="p">)</span>
+<span class="n">HardnessMin</span> <span class="o">=</span> <span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">hardness</span><span class="p">[</span><span class="n">oil</span><span class="p">]</span><span class="o">*</span><span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span><span class="p">)</span>
                  <span class="o">&gt;=</span> <span class="n">min_hardness</span><span class="o">*</span><span class="n">produce</span><span class="p">[</span><span class="n">month</span><span class="p">]</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">),</span> <span class="s2">&quot;Hardness_lower&quot;</span><span class="p">)</span>
-<span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">hardness</span><span class="p">[</span><span class="n">oil</span><span class="p">]</span><span class="o">*</span><span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span><span class="p">)</span>
+<span class="n">HardnessMax</span> <span class="o">=</span> <span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">hardness</span><span class="p">[</span><span class="n">oil</span><span class="p">]</span><span class="o">*</span><span class="n">consume</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">oil</span><span class="p">]</span> <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">oils</span><span class="p">)</span>
                  <span class="o">&lt;=</span> <span class="n">max_hardness</span><span class="o">*</span><span class="n">produce</span><span class="p">[</span><span class="n">month</span><span class="p">]</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">),</span> <span class="s2">&quot;Hardness_upper&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -13610,83 +13554,11 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Jan&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Feb&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Mar&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Apr&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;May&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Jun&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The conserve constraints ensure that the amount of oil used in each period equals the food produced in this period.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#6. Mass Conservation</span>
-<span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">consume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">month</span><span class="p">)</span> <span class="o">==</span> <span class="n">produce</span><span class="p">[</span><span class="n">month</span><span class="p">]</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">),</span> <span class="s2">&quot;Mass_conservation&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Jan&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Feb&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Mar&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Apr&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;May&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Jun&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The objective is to maximize the profit of the company, which includes the revenue as well as the costs for buying and storing of the used products.</p>
+<p>The Mass Conservation constraints ensure that the amount of oil used in each period equals the food produced in this period.</p>
 
 </div>
 </div>
@@ -13694,6 +13566,28 @@ div#notebook {
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#6. Mass Conservation</span>
+<span class="n">MassConservation</span> <span class="o">=</span> <span class="n">food</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">consume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">month</span><span class="p">)</span> <span class="o">==</span> <span class="n">produce</span><span class="p">[</span><span class="n">month</span><span class="p">]</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">),</span> <span class="s2">&quot;Mass_conservation&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The objective is to maximize the profit of the company, which includes the revenue as well as the costs for buying and storing the used products.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#0. Objective Function</span>
@@ -13709,14 +13603,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we start the optimization and Gurobi tries to find the optimal solution.</p>
+<p>Next, we start the optimization and Gurobi finds the optimal solution.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">food</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
@@ -13736,21 +13630,23 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Optimize a model with 70 rows, 96 columns and 278 nonzeros
+<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+Optimize a model with 70 rows, 96 columns and 278 nonzeros
+Model fingerprint: 0xd588eb19
 Coefficient statistics:
   Matrix range     [1e+00, 9e+00]
   Objective range  [5e+00, 2e+02]
   Bounds range     [0e+00, 0e+00]
   RHS range        [2e+02, 5e+02]
 Presolve removed 33 rows and 45 columns
-Presolve time: 0.01s
+Presolve time: 0.00s
 Presolved: 37 rows, 51 columns, 149 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    3.7375000e+05   1.703125e+03   0.000000e+00      0s
-      32    1.0784259e+05   0.000000e+00   0.000000e+00      0s
+      29    1.0784259e+05   0.000000e+00   0.000000e+00      0s
 
-Solved in 32 iterations and 0.01 seconds
+Solved in 29 iterations and 0.01 seconds
 Optimal objective  1.078425926e+05
 </pre>
 </div>
@@ -13764,14 +13660,15 @@ Optimal objective  1.078425926e+05
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The highest profit we can hope for is 107,842.6 USD. Let's see an optimal solution needed to achieve that figure (there are alternative optimal solutions):</p>
-<h3 id="Purchase-Plan">Purchase Plan<a class="anchor-link" href="#Purchase-Plan">&#182;</a></h3>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The highest profit we can hope for is $\$107,842.6$. Let's see an optimal solution needed to achieve that figure (there are alternative optimal solutions):</p>
+<h3 id="Purchase-Plan">Purchase Plan<a class="anchor-link" href="#Purchase-Plan">&#182;</a></h3><p>This plan defines the amount of vegetable oil (VEG) and non-vegetable oil (OIL) that we need to purchase during the planning horizon. For example, 659.3 tons of vegetable oil of type VEG1 needs to be bought in June.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">months</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13794,7 +13691,7 @@ Optimal objective  1.078425926e+05
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -13887,13 +13784,14 @@ Optimal objective  1.078425926e+05
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Monthly-Consumption">Monthly Consumption<a class="anchor-link" href="#Monthly-Consumption">&#182;</a></h3>
+<h3 id="Monthly-Consumption">Monthly Consumption<a class="anchor-link" href="#Monthly-Consumption">&#182;</a></h3><p>This plan determines the amount of vegetable oil (VEG) and non-vegetable oil (OIL) consumed during the planning horizon. For example, 200 tons of vegetable oil of type VEG2 is consumed in January.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">months</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13916,7 +13814,7 @@ Optimal objective  1.078425926e+05
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -14009,13 +13907,14 @@ Optimal objective  1.078425926e+05
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Inventory-Plan">Inventory Plan<a class="anchor-link" href="#Inventory-Plan">&#182;</a></h3>
+<h3 id="Inventory-Plan">Inventory Plan<a class="anchor-link" href="#Inventory-Plan">&#182;</a></h3><p>This plan reflects the amount of vegetable oil (VEG) and non-vegetable oil (OIL) in inventory at the end of each period of  the planning horizon. For example, at the end of February we have 500 tons of Non-vegetable oil of type OIL1.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">months</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -14038,7 +13937,7 @@ Optimal objective  1.078425926e+05
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -14135,10 +14034,23 @@ Optimal objective  1.078425926e+05
 <p><code>food.write("food-manufacture-1-output.sol")</code></p>
 <hr>
 <h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Page 253-254, 296-298, 349-350)</p>
-<p>Copyright © 2019 Gurobi Optimization, LLC</p>
+<p>Copyright © 2020 Gurobi Optimization, LLC</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>

@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,16 +13116,18 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Farm-Planning">Farm Planning<a class="anchor-link" href="#Farm-Planning">&#182;</a></h1><p>This model is an example of a production planning problem. In production planning problems — which are common across a wide range of industries — choices must be made regarding which products to produce and which resources to use to produce these products.</p>
-<p>In this example we will model and solve a multi-period production planning problem. In this case, the purpose of the application is to optimize the operation of a farm over five years. The farmer has a certain number of farmable acres and cows. The cows can be sold or used to produce milk, which can also be sold for profit. The food for the cows is grown on the farmable acres. The aim is to create an optimal operation plan for the next five years to maximize the total profit of the farm. This includes figuring out what is the optimal cultivation of the acres, the optimal operations related to the cows, and the operations for the whole farm.</p>
+<h1 id="Farm-Planning">Farm Planning<a class="anchor-link" href="#Farm-Planning">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a production planning problem. In such  problems — which are common across a wide range of industries — choices must be made regarding which products to produce and which resources to use to produce these products.</p>
+<p>In this example, we will model and solve a multi-period production planning problem. In this case, the purpose of the application is to optimize the operation of a farm over five years. The farmer has a certain number of farmable acres and cows. The cows can be sold or used to produce milk, which can also be sold for profit. Food for the cows is grown on the farmable acres. The aim is to create an optimal operational plan for the next five years to maximize the total profit of the farm. 
+This includes determining optimal strategies for cultivation, for managing the cows, and for the overall operation of the farm</p>
 <p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
+<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or required advanced features of the Gurobi Python API.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A farmer with a 200-acre farm wishes to create a five-year production plan.</p>
 <p>Currently, he has a herd of 120 cows comprising 20 heifers (young female cows) and 100 adult dairy cows. Each heifer requires 2/3 of an acre to support it and each dairy cow requires one acre.</p>
-<p>On average, a dairy cow produces 1.1 calves per year. Half of these calves will be bullocks that are sold shortly after birth for an average of \$30 each. The remaining calves, heifers, can either be sold for \\$40 or raised until age two when they will become dairy cows. For the current year, all heifers identified for sale have already been sold.</p>
-<p>The general practice is to sell all dairy cows at the age of 12 for an average of \$120 each. However, each year an average of 5\% of heifers and 2\% of dairy cows die. At present, the farmer’s herd of 120 cows is evenly distributed with 10 cows per age from newborn to 11 years old.</p>
-<p>The milk from a dairy cow can be sold for \$370 annually. The farmer can currently house up to 130 cows, but this capacity limit can be increased for \\$200 per additional cow.</p>
+<p>On average, a dairy cow produces 1.1 calves per year. Half of these calves will be bullocks that are sold shortly after birth for an average of $\$30$ each. The remaining calves, heifers, can either be sold for $\$40$ or raised until age two when they will become dairy cows. For the current year, all heifers identified for sale have already been sold.</p>
+<p>The general practice is to sell all dairy cows at the age of 12 for an average of $\$120$ each. However, each year an average of $5\%$ of heifers and $2\%$ of dairy cows die. At present, the farmer’s herd of 120 cows is evenly distributed with 10 cows per age from newborn to 11 years old.</p>
+<p>The milk from a dairy cow can be sold for $\$370$ annually. The farmer can currently house up to 130 cows, but this capacity limit can be increased for $\$200$ per additional cow.</p>
 <p>Each dairy cow requires 0.6 tons of grain and 0.7 tons of sugar beet per year. Both of these can be grown on the farm. Each acre can yield 1.5 tons of sugar beet. However, only 80 acres are suitable for growing grain, and those acres have different levels of productivity as follows:</p>
 <table>
 <thead><tr>
@@ -13157,7 +13159,7 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>Sugar beet can be bought for \$70 a ton and sold for \\$58 a ton. Grain can be bought for \$90 a ton and sold for \\$75 a ton.</p>
+<p>Sugar beet can be bought for $\$70$ a ton and sold for $\$58$ a ton. Grain can be bought for $\$90$ a ton and sold for $\$75$ a ton.</p>
 <p>The annual labor requirements for cows as well as grain and sugar beet production are as follows:</p>
 <table>
 <thead><tr>
@@ -13210,15 +13212,18 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>Labor currently costs the farmer \$4000 per year and that cost provides 5500 hours of labor. Additional labor can be paid for at the rate of \\$1.20 per hour.</p>
-<p>Any capital expenditure can be financed with a 10-year loan at 15\% interest annually. The interest and principal are paid back in 10 equal annual payments. It is prohibited for the annual cash flow to be negative.</p>
-<p>The farmer does not want to reduce the total number of dairy cows at the end of the five-year period by more than 50\%, nor does he want to increase their number by more than 75\%.</p>
+<p>Labor currently costs the farmer $\$4000$ per year and that cost provides 5,500 hours of labor. Additional labor can be paid for at the rate of $\$1.20$ per hour.</p>
+<p>Any capital expenditure can be financed with a 10-year loan at $15\%$ interest annually. The interest and principal are paid back in 10 equal annual payments. It is prohibited for the annual cash flow to be negative.</p>
+<p>The farmer does not want to reduce the total number of dairy cows at the end of the five-year period by more than $50\%$, nor does he want to increase their number by more than $75\%$.</p>
 <p>What plan should the farmer follow over the next five years in order to maximize profit?</p>
 <hr>
 <h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$t \in \text{Years}=\{1,2,\dots,5\}$: Set of years.</p>
 <p>$l \in \text{Lands}=\{1,2,3,4\}$: Set of land groups.</p>
 <p>$k \in \text{Ages}=\{1,2,\dots,12\}$: Set of cow ages.</p>
-<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$\text{Installment} \in \mathbb{R}^+$: Annual payment for each \$200 loan. It can be computed as $\text{Installment}= \text{Loan}<em>r</em>\frac{(1+r)^n}{(1+r)^n-1}$, where $\text{Loan}$ is the loan amount of \\$200, $r$ is the interest rate of 15\%, and $n$ represents the ten-year period. Note that the book reports a value of \$39.71 instead of \\$39.85.</p>
+<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$\text{Installment} \in \mathbb{R}^+$: Annual payment for each $\$200$ loan. It can be computed as follows.</p>
+$$
+\text{Installment}= \text{Loan}*r*\frac{(1+r)^n}{(1+r)^n-1},
+$$<p>where $\text{Loan}$ is the loan amount of $\$200$, $r$ is the interest rate of $15\%$, and $n$ represents the ten-year period. Note that the book reports a value of $\$39.71$ instead of $\$39.85$.</p>
 <p>$\text{Housing_cap} \in \mathbb{N}$: Number of cows that can be housed.</p>
 <p>$\text{Land_cap} \in \mathbb{R}^+$: Land available (in Acres).</p>
 <p>$\text{Labor_cap} \in \mathbb{R}^+$: Regular labor available (in hours) in a year.</p>
@@ -13228,7 +13233,7 @@ div#notebook {
 <p>$\text{HF_labor} \in \mathbb{R}^+$: Hours of labor required in a year by each heifer.</p>
 <p>$\text{Cow_labor} \in \mathbb{R}^+$: Hours of labor required in a year by each dairy cow.</p>
 <p>$\text{GR_labor} \in \mathbb{R}^+$: Hours of labor required in a year by each acre of land devoted to grains.</p>
-<p>$\text{SB_labor} \in \mathbb{R}^+$: Hours of labor required in a year by each acre of land devoted to sugar beets.</p>
+<p>$\text{SB_labor} \in \mathbb{R}^+$: Hours of labor required in a year by each acre of land devoted to sugar beet.</p>
 <p>$\text{HF_decay} \in [0,1] \subset \mathbb{R}^+$: Average proportion of heifers that die in a year.</p>
 <p>$\text{Cow_decay} \in [0,1] \subset \mathbb{R}^+$: Average proportion of dairy cows that die in a year.</p>
 <p>$\text{Birthrate} \in \mathbb{R}^+$: Expected number of calves produced by a dairy cow in a year.</p>
@@ -13253,7 +13258,7 @@ div#notebook {
 <p>$\text{SB_yield} \in \mathbb{R}^+$: Sugar beet yield.</p>
 <p>$\text{GR_yield}_l \in \mathbb{R}^+$: Grain yield at land group $l$.</p>
 <p>$\text{GR_area}_l \in \mathbb{R}^+$: Number of acres suitable for growing grain in land group $l$.</p>
-<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$\text{Outlay}_t \in \mathbb{R}^+$: Amount of money (in units of 200USD) spent on renting houses in year $t$.</p>
+<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$\text{Outlay}_t \in \mathbb{R}^+$: Amount of money (in units of $\$200$) spent on renting houses in year $t$.</p>
 <p>$\text{Overtime}_t \in \mathbb{R}^+$: Number of extra labor hours needed in year $t$.</p>
 <p>$\text{Newborn}_t \in \mathbb{R}^+$: Number of newborn heifers left in year $t$ to be raised.</p>
 <p>$\text{HF_sell}_t \in \mathbb{R}^+$: Number of newborn heifers to sell in year $t$.</p>
@@ -13263,106 +13268,112 @@ div#notebook {
 <p>$\text{GR_buy}_t \in \mathbb{R}^+$: Number of tons of grain to buy in year $t$.</p>
 <p>$\text{GR_sell}_t \in \mathbb{R}^+$: Number of tons of grain to sell in year $t$.</p>
 <p>$\text{SB}_t \in \mathbb{R}^+$: Number of tons of sugar beet to grow in year $t$.</p>
-<p>$\text{GR}_{t,l} \in \mathbb{R}^+$: Number of tons of sugar beet to grow in year $t$ at land group $l$.</p>
+<p>$\text{GR}_{t,l} \in \mathbb{R}^+$: Number of tons of grain to grow in year $t$ at land group $l$.</p>
 <p>$\text{Cows}_{t,k} \in \mathbb{R}^+$: Number of cows of age $k$ available in year $t$.</p>
 <h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h3><ul>
-<li><strong>Profit</strong>: Maximize the total profit (in USD) of the planning horizon. Notice that, to make capital expenditure as costly in latter years as in former ones, it is necessary to subtract the loan payments that remain pending.</li>
+<li><strong>Profit</strong>: Maximize the total profit (in USD) of the planning horizon. Notice that, to make capital expenditure as costly in latter years as in former ones, it is necessary to subtract pending loan payments.</li>
 </ul>
 \begin{equation}
 \text{Maximize} \quad Z = \sum_{t \in \text{Years}}{\text{Profit}_t - installment*(t+4)*\text{Outlay}_t}
-\tag{0}
 \end{equation}<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><ul>
 <li><strong>Housing Capacity</strong>: Livestock cannot exceed the installed capacity plus house rental in year $t$.</li>
 </ul>
 \begin{equation}
 \text{Newborn}_t + \sum_{k \in \text{Ages} \setminus \{12\}}{\text{Cows}_{t,k}} \leq \text{Housing_cap} + \sum_{d \in \text{Years}: d \leq t}{\text{Outlay}_d} \quad \forall t \in \text{Years}
-\tag{1}
 \end{equation}<ul>
-<li><strong>Food Consumption</strong>: There must be enough food to feed the livestock in year $t$.</li>
+<li><p><strong>Food Consumption</strong>: There must be enough food to feed the livestock in year $t$.</p>
+</li>
+<li><p>Grain.</p>
+</li>
 </ul>
 \begin{equation}
 \sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{GR_intake}*\text{Cows}_{t,k}} \leq \text{GR_buy}_t - \text{GR_sell}_t + \sum_{l \in \text{Lands}}{\text{GR}_{t,l}} \quad \forall t \in \text{Years}
-\tag{2.1}
-\end{equation}\begin{equation}
+\end{equation}<ul>
+<li>Sugar beet.</li>
+</ul>
+\begin{equation}
 \sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{SB_intake}*\text{Cows}_{t,k}} \leq \text{SB_buy}_t - \text{SB_sell}_t + \text{SB}_t \quad \forall t \in \text{Years}
-\tag{2.2}
 \end{equation}<ul>
 <li><strong>Grain Growing</strong>: Grain produced on land $l$ cannot exceed the production capacity of year $t$.</li>
 </ul>
 \begin{equation}
 \text{GR}_{t,l} \leq \text{GR_yield}_l*\text{GR_area}_l \quad \forall (t,l) \in \text{Years} \times \text{Lands}
-\tag{3}
 \end{equation}<ul>
 <li><strong>Land Capacity</strong>: Use of space in year $t$ cannot exceed available land.</li>
 </ul>
 \begin{equation}
-\frac{1}{\text{SB_yield}}*\text{SB}_t + \text{HF_land}*(\text{Newborn}_t + \text{Cow}_{t,1}) + \sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cows}_{t,k}} + \sum_{l \in \text{Lands}}{\frac{\text{GR}_{t,l}}{\text{GR_yield}_l}} \leq \text{Land_cap} \quad \forall t \in \text{Years}
-\tag{4}
+\frac{1}{\text{SB_yield}}*\text{SB}_t + \text{HF_land}*(\text{Newborn}_t + \text{Cow}_{t,1}) + 
+\end{equation}\begin{equation}
+\sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cows}_{t,k}} + 
+\end{equation}\begin{equation}
+\sum_{l \in \text{Lands}}{\frac{\text{GR}_{t,l}}{\text{GR_yield}_l}} \leq \text{Land_cap} \quad \forall t \in \text{Years}
 \end{equation}<ul>
-<li><strong>Labor</strong>: labor required to run the farm in year $t$ cannot exceed contracted time plus overtime.</li>
+<li><strong>Labor</strong>: Labor required to run the farm in year $t$ cannot exceed contracted time plus overtime.</li>
 </ul>
 \begin{equation}
-\text{HF_labor}*(\text{Newborn}_t + \text{Cow}_{t,1}) + \sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cow_labor}*\text{Cow}_{t,k}} \\ + \sum_{l \in \text{Lands}}{\frac{\text{GR_labor}*\text{GR}_{t,l}}{\text{GR_yield}_l}} + \frac{\text{SB_labor}*\text{SB}_t}{\text{SB_yield}} \leq \text{Labor_cap} + \text{Overtime}_t \qquad \forall t \in \text{Years}
-\tag{5}
+\text{HF_labor}*(\text{Newborn}_t + \text{Cow}_{t,1}) + 
+\end{equation}\begin{equation}
+\sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cow_labor}*\text{Cow}_{t,k}} + 
+\end{equation}\begin{equation}
+\sum_{l \in \text{Lands}}{\frac{\text{GR_labor}*\text{GR}_{t,l}}{\text{GR_yield}_l}} + 
+\end{equation}\begin{equation}
+\frac{\text{SB_labor}*\text{SB}_t}{\text{SB_yield}} \leq \text{Labor_cap} + \text{Overtime}_t \qquad \forall t \in \text{Years}
 \end{equation}<ul>
 <li><strong>Continuity</strong>: Livestock in year $t$ have to survive the previous year.</li>
 </ul>
 \begin{equation}
 \text{Cows}_{t,1} = (1-\text{HF_decay})*\text{Newborn}_{t-1} \quad \forall t \in \text{Years} \setminus \{1\}
-\tag{6.1}
 \end{equation}\begin{equation}
 \text{Cows}_{t,2} = (1-\text{HF_decay})*\text{Cows}_{t-1,1} \quad \forall t \in \text{Years} \setminus \{1\}
-\tag{6.2}
 \end{equation}\begin{equation}
 \text{Cows}_{t,k+1} = (1-\text{Cow_decay})*\text{Cows}_{t-1,k} \quad \forall (t,k) \in \text{Years} \setminus \{1\} \times \text{Ages} \setminus \{1,12\}
-\tag{6.3}
 \end{equation}<ul>
 <li><strong>Heifers Birth</strong>: Heifers born in year $t$ depend on the number of dairy cows.</li>
 </ul>
 \begin{equation}
 \text{Newborn}_t + \text{HF_sell}_t = \sum_{k \in \text{Ages} \setminus \{1,12\}}{\frac{\text{Birthrate}}{2}*\text{Cows}_{t,k}} \quad \forall t \in \text{Years}
-\tag{7}
 \end{equation}<ul>
 <li><strong>Final Dairy Cows</strong>: The number of dairy cows at the end of the planning horizon must be within tolerances.</li>
 </ul>
 \begin{equation}
 \text{Min_final_cows} \leq \sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cows}_{5,k}} \leq \text{Max_final_cows}
-\tag{8}
 \end{equation}<ul>
 <li><strong>Initial Conditions</strong>: Set the number of livestock available at the beginning of the planning horizon.</li>
 </ul>
 \begin{equation}
 \text{Cows}_{1,1} = \text{Initial_HF}
-\tag{9.1}
 \end{equation}\begin{equation}
 \text{Cows}_{1,2} = \text{Initial_HF}
-\tag{9.2}
 \end{equation}\begin{equation}
 \text{Cows}_{1,k} = \text{Initial_cows} \quad \forall k \in \text{Ages} \setminus \{1,2\}
-\tag{9.3}
 \end{equation}<ul>
 <li><strong>Yearly Profit</strong>: Profit in year $t$ is driven by operations from crops and livestock, after accounting for labor, land and financial costs.</li>
 </ul>
 \begin{equation}
 \text{Profit}_t = \frac{\text{BL_price}*\text{Birthrate}}{2}*\sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cows}_{t,k}}
 + \text{HF_price}*\text{HF_sell}_t
-+ \text{Cow_price}*\text{Cows}_{t,12} \\
-+ \text{Milk_price}*\sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cows}_{t,k}} \\
++ \text{Cow_price}*\text{Cows}_{t,12}
+\end{equation}\begin{equation}
++ \text{Milk_price}*\sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cows}_{t,k}}
+\end{equation}\begin{equation}
 + \text{GR_price}*\text{GR_sell}_t
-+ \text{SB_price}*\text{SB_sell}_t \\
++ \text{SB_price}*\text{SB_sell}_t
+\end{equation}\begin{equation}
 - \text{GR_cost}*\text{GR_buy}_t
-- \text{SB_cost}*\text{SB_buy}_t \\
+- \text{SB_cost}*\text{SB_buy}_t
+\end{equation}\begin{equation}
 - \text{Overtime_cost}*\text{Overtime}_t
-- \text{Regular_time_cost} \\
+- \text{Regular_time_cost}
+\end{equation}\begin{equation}
 - \text{HF_cost}*(\text{Newborn}_t + \text{Cows}_{t,1})
-- \text{Cow_cost}*\sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cows}_{t,k}} \\
+- \text{Cow_cost}*\sum_{k \in \text{Ages} \setminus \{1,12\}}{\text{Cows}_{t,k}}
+\end{equation}\begin{equation}
 - \text{GR_land_cost}*\sum_{l \in \text{Lands}}{\frac{\text{GR}_{t,l}}{\text{GR_yield}_l}}
 - \text{SB_land_cost}*\frac{\text{SB}_t}{\text{SB_yield}} \\
 - \text{Installment}*\sum_{d \in \text{Years}:d \leq t}{\text{Outlay}_d}
 \quad \forall t \in \text{Years}
-\tag{10}
 \end{equation}<hr>
-<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initialize the data structures:</p>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>We import the Gurobi Python Module and other Python libraries.</p>
 
 </div>
 </div>
@@ -13374,9 +13385,32 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="o">*</span>
 
-<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 8.1.1</span>
+<span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="n">GRB</span>
+
+<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 9.0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Input-Data">Input Data<a class="anchor-link" href="#Input-Data">&#182;</a></h2><p>We define all the input data of the model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Parameters</span>
 
 <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="n">lands</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
@@ -13428,7 +13462,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create a model and the variables. For each, year we have continuous variables, which tell us how much sugar beet is grown (in tons), how much grain is bought (in tons), how much grain is sold (in tons), how much sugar beet is bought (in tons), how much sugar beet is sold (in tons), how much extra labor is recruited, how much capital outlay there is, how many heifers are sold at birth, how much profit there is, and how many cows are newborns (age 0).</p>
+<h2 id="Model-Deployment">Model Deployment<a class="anchor-link" href="#Model-Deployment">&#182;</a></h2><p>We create a model and the variables. For each, year we have continuous variables, which tell us how much sugar beet is grown (in tons), how much grain is bought (in tons), how much grain is sold (in tons), how much sugar beet is bought (in tons), how much sugar beet is sold (in tons), how much extra labor is recruited, how much capital outlay there is, how many heifers are sold at birth, how much profit there is, and how many cows are newborns (age 0).</p>
 <p>For each year and each land group, there is a continuous variable, which tells us how much grain is grown on that land group. For each year and each cow age, there is a continuous variable that tells us how many cows exists in the current year of that age.</p>
 
 </div>
@@ -13436,10 +13470,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Farming&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Farming&#39;</span><span class="p">)</span>
 <span class="n">sb</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SB&quot;</span><span class="p">)</span>
 <span class="n">gr_buy</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;GR_buy&quot;</span><span class="p">)</span>
 <span class="n">gr_sell</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;GR_sell&quot;</span><span class="p">)</span>
@@ -13458,6 +13492,25 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Using license file c:\gurobi\gurobi.lic
+Set parameter TokenServer to value SANTOS-SURFACE-
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13470,15 +13523,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Housing capacity</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span>
+<span class="n">HousingCap</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span>
                     <span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
-                    <span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span> <span class="o">-</span>
-                    <span class="n">quicksum</span><span class="p">(</span><span class="n">outlay</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">year</span><span class="p">)</span>
+                    <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span> <span class="o">-</span>
+                    <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">outlay</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">year</span><span class="p">)</span>
                     <span class="o">&lt;=</span> <span class="n">housing_cap</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Housing_cap&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -13486,89 +13539,11 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After selling, buying, and producing grains and sugar beet, there needs to be enough of them in the storage to feed all the cows.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2.1 Food consumption (Grain)</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">gr_intake</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
-                  <span class="o">&lt;=</span> <span class="n">gr_buy</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">gr_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
-                  <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Grain_consumption&quot;</span><span class="p">)</span>
-
-<span class="c1"># 2.1 Food consumption (Sugar beet)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">sb_intake</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
-                  <span class="o">&lt;=</span> <span class="n">sb_buy</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">sb_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">sb</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
-                  <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sugar_beet_consumption&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The grain produced on each land group cannot exceed the specified production capacity of each land group.</p>
+<p>After selling, buying, and producing grains and sugar beet, there needs to be enough of them in storage to feed all the cows.</p>
 
 </div>
 </div>
@@ -13578,52 +13553,19 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 3. Grain growing</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2.1 Food consumption (Grain)</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gr</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">land</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">gr_yield</span><span class="p">[</span><span class="n">land</span><span class="p">]</span><span class="o">*</span><span class="n">gr_area</span><span class="p">[</span><span class="n">land</span><span class="p">]</span>
-                  <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">for</span> <span class="n">land</span> <span class="ow">in</span> <span class="n">lands</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Grain_growing&quot;</span><span class="p">)</span>
+<span class="n">GrainConsumption</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">gr_intake</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
+                  <span class="o">&lt;=</span> <span class="n">gr_buy</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">gr_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">gr</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
+                  <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Grain_consumption&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2.1 Food consumption (Sugar beet)</span>
+<span class="n">SugarbeetConsumption</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">sb_intake</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
+                  <span class="o">&lt;=</span> <span class="n">sb_buy</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">sb_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">sb</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
+                  <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sugar_beet_consumption&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(1, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13631,7 +13573,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Each cow needs a certain number of acres to support it. The amount depends on the age of the cow. At most, there are 200 acres available.</p>
+<p>The grain produced on a land group cannot exceed the specified production capacity of that land group.</p>
 
 </div>
 </div>
@@ -13641,39 +13583,39 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4. Land capacity</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 3. Grain growing</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">sb</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">/</span><span class="n">sb_yield</span> <span class="o">+</span> <span class="n">hf_land</span><span class="o">*</span><span class="p">(</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-                  <span class="o">+</span> <span class="n">quicksum</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">gr_yield</span><span class="p">[</span><span class="n">land</span><span class="p">])</span><span class="o">*</span><span class="n">gr</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">land</span><span class="p">]</span> <span class="k">for</span> <span class="n">land</span> <span class="ow">in</span> <span class="n">lands</span><span class="p">)</span>
-                  <span class="o">+</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
-                  <span class="o">&lt;=</span> <span class="n">land_cap</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Land_capacity&quot;</span><span class="p">)</span>
+<span class="n">GrainGrowing</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gr</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">land</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">gr_yield</span><span class="p">[</span><span class="n">land</span><span class="p">]</span><span class="o">*</span><span class="n">gr_area</span><span class="p">[</span><span class="n">land</span><span class="p">]</span>
+                  <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">for</span> <span class="n">land</span> <span class="ow">in</span> <span class="n">lands</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Grain_growing&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Each cow needs a certain number of acres to support it. The amount depends on the age of the cow. There are 200 acres available at most.</p>
 
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4. Land capacity</span>
 
+<span class="n">LandCap</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">sb</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">/</span><span class="n">sb_yield</span> <span class="o">+</span> <span class="n">hf_land</span><span class="o">*</span><span class="p">(</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+                  <span class="o">+</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">gr_yield</span><span class="p">[</span><span class="n">land</span><span class="p">])</span><span class="o">*</span><span class="n">gr</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">land</span><span class="p">]</span> <span class="k">for</span> <span class="n">land</span> <span class="ow">in</span> <span class="n">lands</span><span class="p">)</span>
+                  <span class="o">+</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
+                  <span class="o">&lt;=</span> <span class="n">land_cap</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Land_capacity&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -13688,43 +13630,19 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 5. Labor</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">hf_labor</span><span class="o">*</span><span class="p">(</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-                  <span class="o">+</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">cow_labor</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
-                  <span class="o">+</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">gr_labor</span><span class="o">/</span><span class="n">gr_yield</span><span class="p">[</span><span class="n">land</span><span class="p">]</span><span class="o">*</span><span class="n">gr</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">land</span><span class="p">]</span> <span class="k">for</span> <span class="n">land</span> <span class="ow">in</span> <span class="n">lands</span><span class="p">)</span>
+<span class="n">Labor</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">hf_labor</span><span class="o">*</span><span class="p">(</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+                  <span class="o">+</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cow_labor</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
+                  <span class="o">+</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">gr_labor</span><span class="o">/</span><span class="n">gr_yield</span><span class="p">[</span><span class="n">land</span><span class="p">]</span><span class="o">*</span><span class="n">gr</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">land</span><span class="p">]</span> <span class="k">for</span> <span class="n">land</span> <span class="ow">in</span> <span class="n">lands</span><span class="p">)</span>
                   <span class="o">+</span> <span class="n">sb_labor</span><span class="o">/</span><span class="n">sb_yield</span><span class="o">*</span><span class="n">sb</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> 
                   <span class="o">&lt;=</span> <span class="n">labor_cap</span> <span class="o">+</span> <span class="n">overtime</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Labor&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13739,24 +13657,24 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 6.1 Continuity</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">hf_decay</span><span class="p">)</span><span class="o">*</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+<span class="n">Continuity1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">hf_decay</span><span class="p">)</span><span class="o">*</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
                   <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">year</span> <span class="o">&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">years</span><span class="p">)),</span>
                  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Continuity_a&quot;</span><span class="p">)</span>
 
 <span class="c1"># 6.2 Continuity</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">hf_decay</span><span class="p">)</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> 
+<span class="n">Continuity2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">hf_decay</span><span class="p">)</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> 
                   <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">year</span> <span class="o">&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">years</span><span class="p">)),</span>
                  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Continuity_b&quot;</span><span class="p">)</span>
 
 <span class="c1"># 6.3 Continuity</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">age</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">cow_decay</span><span class="p">)</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">age</span><span class="p">]</span> 
+<span class="n">Continuity3</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">age</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">cow_decay</span><span class="p">)</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">age</span><span class="p">]</span> 
                   <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span> <span class="k">if</span> <span class="n">year</span> <span class="o">&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">years</span><span class="p">)),</span>
                  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Continuity_c&quot;</span><span class="p">)</span>
 </pre></div>
@@ -13765,111 +13683,28 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(2, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 5): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 6): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 7): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 8): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 9): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 10): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 11): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 5): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 6): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 7): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 8): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 9): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 10): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 11): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 5): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 6): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 7): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 8): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 9): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 10): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 11): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 5): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 6): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 7): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 8): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 9): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 10): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 11): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To keep the number of cows correct, cows can come into/out of the model by being bought or sold or through birth.</p>
+<p>Keep track of the number of cows; cows can come into/out of the model by being bought or sold or through birth.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 7. Heifers birth</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">hf_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> 
-                  <span class="o">==</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">birthrate</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">)</span>
+<span class="n">HeifersBirth</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">hf_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> 
+                  <span class="o">==</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">birthrate</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">)</span>
                  <span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Heifers_birth&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13884,94 +13719,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 8. Final dairy cows</span>
-<span class="n">model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">min_final_cows</span>
-                <span class="o">&lt;=</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">years</span><span class="p">),</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
-                <span class="o">&lt;=</span> <span class="n">max_final_cows</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Final_dairy_cows&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In the first year, there are 9.5 one-year-old cows and 9.5 two-year-old cows. In addition, there are 9.8 cows for each age from three to 12. Note that we are solving a LP model to make the model computationally easier to calculate. This can lead to fractional values for variables, which are in reality integers. The implementation needs to take this into account.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 9.1-9.2 Initial conditions</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">initial_hf</span> <span class="o">==</span> <span class="n">cows</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">),</span>
-                 <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Initial_conditions&quot;</span><span class="p">)</span>
-
-<span class="c1"># 9.3 Initial conditions</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">initial_cows</span> <span class="o">==</span> <span class="n">cows</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">),</span>
-                 <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Initial_condition_cows&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 8. Final dairy cows</span>
+<span class="n">FinalDairyCows</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addRange</span><span class="p">(</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">years</span><span class="p">),</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">),</span> <span class="n">min_final_cows</span><span class="p">,</span> <span class="n">max_final_cows</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Final_dairy_cows&quot;</span> <span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 6: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 7: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 8: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 9: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 10: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 11: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 12: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13979,7 +13734,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The following constraints ensure that the variable <code>profit</code> takes the value of the profit in this year. The costs for labor currently total \$4,000. The profit is influenced by the selling of bullocks and heifers, selling of 12-year-old-cows, selling of milk, selling of grain, selling of sugar beet, buying of grain, buying of sugar beet, labor costs, heifer costs, dairy cow costs, grain costs, sugar beet costs, and capital costs.</p>
+<p>In the first year, there are 9.5 one-year-old cows and 9.5 two-year-old cows. In addition, there are 9.8 cows for each age from three to 12. Note that we are solving this as an LP model to make it easier to solve. This can lead to fractional values for variables, which are in reality integers.</p>
 
 </div>
 </div>
@@ -13989,48 +13744,53 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 10. Yearly profit</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 9.1-9.2 Initial conditions</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">profit</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
-                  <span class="o">==</span> <span class="n">bl_price</span><span class="o">*</span><span class="n">birthrate</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
-                  <span class="o">+</span> <span class="n">hf_price</span><span class="o">*</span><span class="n">hf_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">cow_price</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
-                  <span class="o">+</span> <span class="n">milk_price</span><span class="o">*</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
-                  <span class="o">+</span> <span class="n">gr_price</span><span class="o">*</span><span class="n">gr_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">sb_price</span><span class="o">*</span><span class="n">sb_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
-                  <span class="o">-</span> <span class="n">gr_cost</span><span class="o">*</span><span class="n">gr_buy</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">sb_cost</span><span class="o">*</span><span class="n">sb_buy</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
-                  <span class="o">-</span> <span class="n">overtime_cost</span><span class="o">*</span><span class="n">overtime</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">regular_time_cost</span>
-                  <span class="o">-</span> <span class="n">hf_cost</span><span class="o">*</span><span class="p">(</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-                  <span class="o">-</span> <span class="n">cow_cost</span><span class="o">*</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
-                  <span class="o">-</span> <span class="n">gr_land_cost</span><span class="o">*</span><span class="n">quicksum</span><span class="p">(</span><span class="n">gr</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">land</span><span class="p">]</span><span class="o">/</span><span class="n">gr_yield</span><span class="p">[</span><span class="n">land</span><span class="p">]</span> <span class="k">for</span> <span class="n">land</span> <span class="ow">in</span> <span class="n">lands</span><span class="p">)</span>
-                  <span class="o">-</span> <span class="n">sb_land_cost</span><span class="o">*</span><span class="n">sb</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">/</span><span class="n">sb_yield</span>
-                  <span class="o">-</span> <span class="n">installment</span><span class="o">*</span><span class="n">quicksum</span><span class="p">(</span><span class="n">outlay</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">year</span><span class="p">)</span>
-                  <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Yearly_profit&quot;</span><span class="p">)</span>
+<span class="n">InitialHeifers</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">initial_hf</span> <span class="o">==</span> <span class="n">cows</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">),</span>
+                 <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Initial_conditions&quot;</span><span class="p">)</span>
+
+<span class="c1"># 9.3 Initial conditions</span>
+
+<span class="n">InitialCows</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">initial_cows</span> <span class="o">==</span> <span class="n">cows</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">),</span>
+                 <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Initial_condition_cows&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[12]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following constraints determine yearly profits. The costs for labor currently total $\$4,000$. The profit is influenced by the selling of bullocks and heifers, selling of 12-year-old-cows, selling of milk, selling of grain, selling of sugar beet, buying of grain, buying of sugar beet, labor costs, heifer costs, dairy cow costs, grain costs, sugar beet costs, and capital costs.</p>
 
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 10. Yearly profit</span>
 
+<span class="n">YearlyProfit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">profit</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
+                  <span class="o">==</span> <span class="n">bl_price</span><span class="o">*</span><span class="n">birthrate</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
+                  <span class="o">+</span> <span class="n">hf_price</span><span class="o">*</span><span class="n">hf_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">cow_price</span><span class="o">*</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+                  <span class="o">+</span> <span class="n">milk_price</span><span class="o">*</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
+                  <span class="o">+</span> <span class="n">gr_price</span><span class="o">*</span><span class="n">gr_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">sb_price</span><span class="o">*</span><span class="n">sb_sell</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
+                  <span class="o">-</span> <span class="n">gr_cost</span><span class="o">*</span><span class="n">gr_buy</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">sb_cost</span><span class="o">*</span><span class="n">sb_buy</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
+                  <span class="o">-</span> <span class="n">overtime_cost</span><span class="o">*</span><span class="n">overtime</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">regular_time_cost</span>
+                  <span class="o">-</span> <span class="n">hf_cost</span><span class="o">*</span><span class="p">(</span><span class="n">newborn</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">+</span> <span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+                  <span class="o">-</span> <span class="n">cow_cost</span><span class="o">*</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cows</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">age</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">cow_ages</span><span class="p">)</span>
+                  <span class="o">-</span> <span class="n">gr_land_cost</span><span class="o">*</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">gr</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">land</span><span class="p">]</span><span class="o">/</span><span class="n">gr_yield</span><span class="p">[</span><span class="n">land</span><span class="p">]</span> <span class="k">for</span> <span class="n">land</span> <span class="ow">in</span> <span class="n">lands</span><span class="p">)</span>
+                  <span class="o">-</span> <span class="n">sb_land_cost</span><span class="o">*</span><span class="n">sb</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">/</span><span class="n">sb_yield</span>
+                  <span class="o">-</span> <span class="n">installment</span><span class="o">*</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">outlay</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">year</span><span class="p">)</span>
+                  <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Yearly_profit&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -14045,12 +13805,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 0. Total profit</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">quicksum</span><span class="p">(</span><span class="n">profit</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">installment</span><span class="o">*</span><span class="p">(</span><span class="n">year</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">outlay</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">profit</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">-</span> <span class="n">installment</span><span class="o">*</span><span class="p">(</span><span class="n">year</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">outlay</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14061,14 +13821,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we start the optimization and Gurobi tries to find the optimal solution.</p>
+<p>Next, we start the optimization and Gurobi finds the optimal solution.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
@@ -14088,21 +13848,23 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Optimize a model with 116 rows, 130 columns and 733 nonzeros
+<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+Optimize a model with 116 rows, 131 columns and 734 nonzeros
+Model fingerprint: 0x1612a027
 Coefficient statistics:
   Matrix range     [4e-02, 3e+02]
   Objective range  [1e+00, 4e+02]
-  Bounds range     [0e+00, 0e+00]
-  RHS range        [6e+00, 4e+03]
-Presolve removed 84 rows and 66 columns
-Presolve time: 0.01s
+  Bounds range     [1e+02, 1e+02]
+  RHS range        [7e+00, 4e+03]
+Presolve removed 84 rows and 67 columns
+Presolve time: 0.00s
 Presolved: 32 rows, 64 columns, 252 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    5.1200000e+32   5.000000e+30   5.120000e+02      0s
-      22    1.2171917e+05   0.000000e+00   0.000000e+00      0s
+      24    1.2171917e+05   0.000000e+00   0.000000e+00      0s
 
-Solved in 22 iterations and 0.01 seconds
+Solved in 24 iterations and 0.01 seconds
 Optimal objective  1.217191729e+05
 </pre>
 </div>
@@ -14116,14 +13878,15 @@ Optimal objective  1.217191729e+05
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The optimal plan results in a total profit of 121,719.17 USD over the five-year period the model covers. The detailed plan for each year is as follows.</p>
-<h3 id="Financial-Plan">Financial Plan<a class="anchor-link" href="#Financial-Plan">&#182;</a></h3>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The optimal plan results in a total profit of $\$121,719.17$ over the five-year period the model covers. The detailed plan for each year is as follows.</p>
+<h3 id="Financial-Plan">Financial Plan<a class="anchor-link" href="#Financial-Plan">&#182;</a></h3><p>This plan determines the profit and outlay at each period of the planning horizon. For example, the profit in year 1 is $\$21,906.1$ and the outlay is zero dollars.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Profit&quot;</span><span class="p">,</span> <span class="s2">&quot;Outlay&quot;</span><span class="p">]</span>
@@ -14148,7 +13911,7 @@ Optimal objective  1.217191729e+05
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[15]:</div>
+    <div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -14209,13 +13972,14 @@ Optimal objective  1.217191729e+05
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Plan-for-Grains">Plan for Grains<a class="anchor-link" href="#Plan-for-Grains">&#182;</a></h3>
+<h3 id="Plan-for-Grains">Plan for Grains<a class="anchor-link" href="#Plan-for-Grains">&#182;</a></h3><p>This plan defines the number of tons of grain to grow for each type of land group (rows) at each year of the planning horizon (columns). It also defines the number of tons of grain to buy and sell at each year of the planning horizon. For example, we are going to grow 22 tons of grain at land group 1 during year 2 . In addition, we are going to buy 35.1 tons of grain during year 2.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">lands</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;Buy&quot;</span><span class="p">,</span> <span class="s2">&quot;Sell&quot;</span><span class="p">]</span>
@@ -14243,7 +14007,7 @@ Optimal objective  1.217191729e+05
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[16]:</div>
+    <div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -14336,13 +14100,14 @@ Optimal objective  1.217191729e+05
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Plan-for-Sugar-Beet">Plan for Sugar Beet<a class="anchor-link" href="#Plan-for-Sugar-Beet">&#182;</a></h3>
+<h3 id="Plan-for-Sugar-Beet">Plan for Sugar Beet<a class="anchor-link" href="#Plan-for-Sugar-Beet">&#182;</a></h3><p>This plan defines the number of tons of sugar beet to grow at each year of the planning horizon (columns). It also defines the number of tons of sugar beet to buy and sell at each year of the planning horizon. For example, we are going to grow 94 tons of sugar beet during year 2 . In addition, we are going to sell 27.4 tons of sugar beet during year 2.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Grow&quot;</span><span class="p">,</span> <span class="s2">&quot;Buy&quot;</span><span class="p">,</span> <span class="s2">&quot;Sell&quot;</span><span class="p">]</span>
@@ -14369,7 +14134,7 @@ Optimal objective  1.217191729e+05
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -14438,13 +14203,14 @@ Optimal objective  1.217191729e+05
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Plan-for-Heifers">Plan for Heifers<a class="anchor-link" href="#Plan-for-Heifers">&#182;</a></h3>
+<h3 id="Plan-for-Heifers">Plan for Heifers<a class="anchor-link" href="#Plan-for-Heifers">&#182;</a></h3><p>This plan shows number of heifers to sell and raise at each period of the planning horizon. For example, we are going to sell 40.8 heifers and raise 11.6 heifers during year 2.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Sell&quot;</span><span class="p">,</span> <span class="s2">&quot;Raise&quot;</span><span class="p">]</span>
@@ -14469,7 +14235,7 @@ Optimal objective  1.217191729e+05
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[18]:</div>
+    <div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -14532,10 +14298,23 @@ Optimal objective  1.217191729e+05
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Page 262-263, 358-359)</p>
-<p>Copyright © 2019 Gurobi Optimization, LLC</p>
+<p>Copyright © 2020 Gurobi Optimization, LLC</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>

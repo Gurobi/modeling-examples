@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,9 +13116,10 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Manpower-Planning">Manpower Planning<a class="anchor-link" href="#Manpower-Planning">&#182;</a></h1><p>This model is an example of a staffing problem. In staffing planning problems, choices must be made regarding the recruitment, training, layoffs (redundancy), and scheduling of workers. Staffing problems are common across a broad range of both manufacturing and service industries.</p>
-<p>In this example, we will model and solve a manpower planning problem. We have three type of workers with different skills levels. For each year in the planning horizon, the forecasted number of required workers with specific skills is given. It is possible to recruit new people, train workers to improve/decrease their skills, or shift them to a part-time working arrangement. The aim is to create an optimal multi-period operation plan that achieves one of the following two objectives: minimizing the total number of layoffs over the whole horizon or minimizing total costs.</p>
+<h1 id="Manpower-Planning">Manpower Planning<a class="anchor-link" href="#Manpower-Planning">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a staffing problem. In staffing planning problems, choices must be made regarding the recruitment, training, layoffs (redundancy), and scheduling of workers. Staffing problems are common across a broad range of both manufacturing and service industries.</p>
+<h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this example, we will model and solve a manpower planning problem. We have three types of workers with different skills levels. For each year in the planning horizon, the forecasted number of required workers with specific skills is given. It is possible to recruit new people, train workers to improve their skills, or shift them to a part-time working arrangement. The aim is to create an optimal multi-period operation plan that achieves one of the following two objectives: minimizing the total number of layoffs over the whole horizon or minimizing total costs.</p>
 <p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
+<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have  advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or required advanced features of the Gurobi Python API.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A company is changing how it runs its business, and therefore its staffing needs are expected to change.</p>
@@ -13207,11 +13208,11 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<h3 id="Retraining">Retraining<a class="anchor-link" href="#Retraining">&#182;</a></h3><p>Each year, it is possible to train up to 200 unskilled workers to make them into semi-skilled workers. This training costs the company \$400 per worker.</p>
-<p>In addition, it is possible train semi-skilled workers to make them into skilled workers. However, this number can not exceed 25% of the current skilled labor force and this training costs \$500 per worker.</p>
+<h3 id="Retraining">Retraining<a class="anchor-link" href="#Retraining">&#182;</a></h3><p>Each year, it is possible to train up to 200 unskilled workers to make them into semi-skilled workers. This training costs the company $\$400$ per worker.</p>
+<p>In addition, it is possible train semi-skilled workers to make them into skilled workers. However, this number can not exceed 25% of the current skilled labor force and this training costs $\$500$ per worker.</p>
 <p>Lastly, downgrading workers to a lower skill level can be done. However, 50% of the downgraded workers will leave the company, increasing the natural attrition rate described above.</p>
-<h3 id="Layoffs">Layoffs<a class="anchor-link" href="#Layoffs">&#182;</a></h3><p>Each laid-off worker is entitled to a separation payment at the rate of \$200 per unskilled worker and \\$500 per semi-skilled or skilled worker.</p>
-<h3 id="Excess-Employees">Excess Employees<a class="anchor-link" href="#Excess-Employees">&#182;</a></h3><p>It is possible to have workers in excess of the actual number needed, up to 150 workers in total at any given year, but this will result in the following additional cost per excess employee per year.</p>
+<h3 id="Layoffs">Layoffs<a class="anchor-link" href="#Layoffs">&#182;</a></h3><p>Each laid-off worker is entitled to a separation payment at the rate of $\$200$ per unskilled worker and $\$500$ per semi-skilled or skilled worker.</p>
+<h3 id="Excess-Employees">Excess Employees<a class="anchor-link" href="#Excess-Employees">&#182;</a></h3><p>It is possible to have workers in excess of the actual number needed, up to 150 workers in total in any given year, but this will result in the following additional cost per excess employee per year.</p>
 <table>
 <thead><tr>
 <th>Unskilled</th>
@@ -13221,9 +13222,9 @@ div#notebook {
 </thead>
 <tbody>
 <tr>
-<td>\$1500</td>
-<td>\$2000</td>
-<td>\$3000</td>
+<td>$\$1500$</td>
+<td>$\$2000$</td>
+<td>$\$3000$</td>
 </tr>
 </tbody>
 </table>
@@ -13237,9 +13238,9 @@ div#notebook {
 </thead>
 <tbody>
 <tr>
-<td>\$500</td>
-<td>\$400</td>
-<td>\$400</td>
+<td>$\$500$</td>
+<td>$\$400$</td>
+<td>$\$400$</td>
 </tr>
 </tbody>
 </table>
@@ -13262,7 +13263,7 @@ div#notebook {
 <p>$\text{training_cost}_s \in \mathbb{R}^+$: Cost for training a worker of skill $s$ to the next level.</p>
 <p>$\text{layoff_cost}_s \in \mathbb{R}^+$: Cost for laying off a worker of skill $s$.</p>
 <p>$\text{parttime_cost}_s \in \mathbb{R}^+$: Cost for assigning a worker of skill $s$ to part-time work.</p>
-<p>$\text{overmanning_cost}_s \in \mathbb{R}^+$: Yearly Cost for having excess manpower of skill $s$.</p>
+<p>$\text{overmanning_cost}_s \in \mathbb{R}^+$: Yearly cost for having excess manpower of skill $s$.</p>
 <p>$\text{curr_workforce}_s \in \mathbb{N}$: Current manpower of skill $s$ at the beginning of the planning horizon.</p>
 <p>$\text{demand}_{t,s} \in \mathbb{N}$: Required manpower of skill $s$ in year $t$.</p>
 <h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$\text{hire}_{t,s} \in [0,\text{max_hiring}_s] \subset \mathbb{R}^+$: Number of workers of skill $s$ to hire in year $t$.</p>
@@ -13276,51 +13277,55 @@ div#notebook {
 </ul>
 \begin{equation}
 \text{Minimize} \quad Z = \sum_{t \in \text{Years}}\sum_{s \in \text{Skills}}{\text{layoff}_{t,s}}
-\tag{0.1}
 \end{equation}<ul>
 <li><strong>Cost:</strong> Minimize the total cost (in USD) incurred by training, overmanning, part-time workers, and layoffs in the planning horizon.</li>
 </ul>
 \begin{equation}
-\text{Minimize} \quad W = \sum_{t \in \text{Years}}{\{\text{training_cost}_{s_1}*\text{train}_{t,s1,s2} + \text{training_cost}_{s_2}*\text{train}_{t,s2,s3}\}} + \sum_{t \in \text{Years}}\sum_{s \in \text{Skills}}{\{\text{parttime_cost}*\text{part_time}_{t,s} + \text{layoff_cost}_s*\text{layoff}_{t,s} + \text{overmanning_cost}_s*\text{excess}_{t,s}\}}
-\tag{0.2}
+\text{Minimize} \quad W = \sum_{t \in \text{Years}}{\{\text{training_cost}_{s_1}*\text{train}_{t,s1,s2} + \text{training_cost}_{s_2}*\text{train}_{t,s2,s3}\}}
+\end{equation}\begin{equation}
++ \sum_{t \in \text{Years}}\sum_{s \in \text{Skills}}{\{\text{parttime_cost}*\text{part_time}_{t,s} + \text{layoff_cost}_s*\text{layoff}_{t,s} + \text{overmanning_cost}_s*\text{excess}_{t,s}\}}
 \end{equation}<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><ul>
-<li><strong>Balance:</strong> Workforce $s$ available in year $t$ is equal to the workforce of the previous year, recent hires, promoted and demoted workers (after accounting for attrition), minus layoffs and transferred workers.</li>
+<li><strong>Initial Balance:</strong> Workforce $s$ available in year $t=1$ is equal to the workforce of the previous year, recent hires, promoted and demoted workers (after accounting for attrition), minus layoffs and transferred workers.</li>
 </ul>
 \begin{equation}
-\text{workforce}_{1,s} = (1-\text{veteran_attrition}_s)*\text{curr_workforce} + (1-\text{rookie_attrition}_s)*\text{hire}_{1,s} + \sum_{s' \in \text{Skills} | s' &lt; s}{\{(1-\text{veteran_attrition})*\text{train}_{1,s',s} - \text{train}_{1,s,s'}\}} + \sum_{s' \in \text{Skills} | s' &gt; s}{\{(1-\text{demoted_attrition})*\text{train}_{1,s',s} - \text{train}_{1,s,s'}\}} - \text{layoff}_{1,s} \qquad \forall s \in \text{Skills}
-\tag{1.1}
+\text{workforce}_{1,s} = (1-\text{veteran_attrition}_s)*\text{curr_workforce} + (1-\text{rookie_attrition}_s)*\text{hire}_{1,s} 
 \end{equation}\begin{equation}
-\text{workforce}_{t,s} = (1-\text{veteran_attrition}_s)*\text{workforce}_{t-1,s} + (1-\text{rookie_attrition}_s)*\text{hire}_{t,s} + \sum_{s' \in \text{Skills} | s' &lt; s}{\{(1-\text{veteran_attrition})*\text{train}_{t,s',s} - \text{train}_{t,s,s'}\}} + \sum_{s' \in \text{Skills} | s' &gt; s}{\{(1-\text{demotion_attrition})*\text{train}_{t,s',s} - \text{train}_{t,s,s'}\}} - \text{layoff}_{t,s} \quad \forall (t,s) \in \text{Years} \setminus \{1\} \times \text{Skills}
-\tag{1.2}
++ \sum_{s' \in \text{Skills} | s' &lt; s}{\{(1-\text{veteran_attrition})*\text{train}_{1,s',s} - \text{train}_{1,s,s'}\}} 
+\end{equation}\begin{equation}
++ \sum_{s' \in \text{Skills} | s' &gt; s}{\{(1-\text{demoted_attrition})*\text{train}_{1,s',s} - \text{train}_{1,s,s'}\}} - \text{layoff}_{1,s} \qquad \forall s \in \text{Skills}
+\end{equation}<ul>
+<li><strong>Balance:</strong> Workforce $s$ available in year $t &gt; 1$ is equal to the workforce of the previous year, recent hires, promoted and demoted workers (after accounting for attrition), minus layoffs and transferred workers.</li>
+</ul>
+\begin{equation}
+\text{workforce}_{t,s} = (1-\text{veteran_attrition}_s)*\text{workforce}_{t-1,s} + (1-\text{rookie_attrition}_s)*\text{hire}_{t,s} 
+\end{equation}\begin{equation}
++ \sum_{s' \in \text{Skills} | s' &lt; s}{\{(1-\text{veteran_attrition})*\text{train}_{t,s',s} - \text{train}_{t,s,s'}\}}
+\end{equation}\begin{equation}
++ \sum_{s' \in \text{Skills} | s' &gt; s}{\{(1-\text{demotion_attrition})*\text{train}_{t,s',s} - \text{train}_{t,s,s'}\}} - \text{layoff}_{t,s} \quad \forall (t &gt; 1,s) \in \text{Years} \times \text{Skills}
 \end{equation}<ul>
 <li><strong>Unskilled Training:</strong> Unskilled workers trained in year $t$ cannot exceed the maximum allowance. Unskilled workers cannot be immediately transformed into skilled workers.</li>
 </ul>
 \begin{equation}
 \text{train}_{t,s_1,s_2} \leq 200 \quad \forall t \in \text{Years}
-\tag{2.1}
 \end{equation}\begin{equation}
 \text{train}_{t,s_1,s_3} = 0 \quad \forall t \in \text{Years}
-\tag{2.2}
 \end{equation}<ul>
 <li><strong>Semi-skilled Training:</strong> Semi-skilled workers trained in year $t$ cannot exceed the maximum allowance.</li>
 </ul>
 \begin{equation}
 \text{train}_{t,s_2,s_3} \leq 0.25*\text{available}_{t,s_3} \quad \forall t \in \text{Years}
-\tag{3}
 \end{equation}<ul>
 <li><strong>Overmanning:</strong> Excess workers in year $t$ cannot exceed the maximum allowance.</li>
 </ul>
 \begin{equation}
 \sum_{s \in \text{Skills}}{\text{excess}_{t,s}} \leq \text{max_overmanning} \quad \forall t \in \text{Years}
-\tag{4}
 \end{equation}<ul>
-<li><strong>Demand:</strong> Workforce $s$ available in year $t$ equals the required amount of workers plus the excess workers and the part-time workers.</li>
+<li><strong>Demand:</strong> Workforce $s$ available in year $t$ equals the required number of workers plus the excess workers and the part-time workers.</li>
 </ul>
 \begin{equation}
 \text{available}_{t,s} = \text{demand}_{t,s} + \text{excess}_{t,s} + \text{parttime_cap}*\text{part_time}_{t,s} \quad \forall (t,s) \in \text{Years} \times \text{Skills}
-\tag{5}
 \end{equation}<hr>
-<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initialize the data structures with the given data.</p>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>We import the Gurobi Python Module and other Python libraries.</p>
 
 </div>
 </div>
@@ -13332,8 +13337,32 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="o">*</span>
-<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 8.1.1</span>
+
+<span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="n">GRB</span>
+
+<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 9.0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Input-Data">Input Data<a class="anchor-link" href="#Input-Data">&#182;</a></h2><p>We define all the input data of the model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Parameters</span>
 
 <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">skills</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">]</span>
@@ -13384,17 +13413,17 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create a model and the variables. For each of the three skill levels and for each year, we will create variables for the amount of workers that get recruited, transferred into part-time work, are available as workers, are redundant, or are overmanned. For each pair of skill levels and each year, we have a variable for the amount of workers that get retrained to a higher/lower skill level. The amount of people who are part-time and can be recruited is limited.</p>
+<h2 id="Model-Deployment">Model Deployment<a class="anchor-link" href="#Model-Deployment">&#182;</a></h2><p>We create a model and the variables. For each of the three skill levels and for each year, we will create variables for the number of workers that get recruited, transferred into part-time work, are available as workers, are redundant, or are overmanned. For each pair of skill levels and each year, we have a variable for the amount of workers that get retrained to a higher/lower skill level. The number of people who are part-time and can be recruited is limited.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">manpower</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Manpower planning&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">manpower</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Manpower planning&#39;</span><span class="p">)</span>
 
 <span class="n">hire</span> <span class="o">=</span> <span class="n">manpower</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">skills</span><span class="p">,</span> <span class="n">ub</span><span class="o">=</span><span class="n">max_hiring</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Hire&quot;</span><span class="p">)</span>
 <span class="n">part_time</span> <span class="o">=</span> <span class="n">manpower</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">skills</span><span class="p">,</span> <span class="n">ub</span><span class="o">=</span><span class="n">max_parttime</span><span class="p">,</span>
@@ -13409,57 +13438,20 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we insert the constraints. The continuity constraints ensure that per skill level and per year the workers who are currently required (LaborForce) and the people who get laid off, and the people who get retrained to the current level, minus the people who get retrained from the current level to a different skill, equals the LaborForce of the last year (or the CurrentStrength in the first year) plus the recruited people. A certain amount of people leave the company each year, so this is also considered to be a factor. This constraint describes the change in the total amount of employed workers.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#1.1 &amp; 1.2 Balance</span>
-
-<span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">workforce</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">veteran_attrition</span><span class="p">[</span><span class="n">level</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">curr_workforce</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="k">if</span> <span class="n">year</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">workforce</span><span class="p">[</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">level</span><span class="p">])</span>
-    <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">rookie_attrition</span><span class="p">[</span><span class="n">level</span><span class="p">])</span><span class="o">*</span><span class="n">hire</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksum</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span> <span class="n">veteran_attrition</span><span class="p">[</span><span class="n">level</span><span class="p">])</span><span class="o">*</span> <span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level2</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span>
-                                                        <span class="o">-</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">level2</span><span class="p">]</span> <span class="k">for</span> <span class="n">level2</span> <span class="ow">in</span> <span class="n">skills</span> <span class="k">if</span> <span class="n">level2</span> <span class="o">&lt;</span> <span class="n">level</span><span class="p">)</span>
-    <span class="o">+</span> <span class="n">quicksum</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span> <span class="n">demoted_attrition</span><span class="p">)</span><span class="o">*</span> <span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level2</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="o">-</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">level2</span><span class="p">]</span> <span class="k">for</span> <span class="n">level2</span> <span class="ow">in</span> <span class="n">skills</span> <span class="k">if</span> <span class="n">level2</span> <span class="o">&gt;</span> <span class="n">level</span><span class="p">)</span>
-    <span class="o">-</span> <span class="n">layoff</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">skills</span><span class="p">),</span> <span class="s2">&quot;Balance&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt"></div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(1, &#39;s1&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, &#39;s2&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, &#39;s3&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, &#39;s1&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, &#39;s2&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, &#39;s3&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, &#39;s1&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, &#39;s2&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, &#39;s3&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Using license file c:\gurobi\gurobi.lic
+Set parameter TokenServer to value SANTOS-SURFACE-
+</pre>
 </div>
-
 </div>
 
 </div>
@@ -13469,7 +13461,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The Unskilled training constraints force that per year only 200 workers can be retrained from Unskilled to Semiskilled due to capacity limitations. Also, no one can be trained in one year from Unskilled to Skilled.</p>
+<p>Next, we insert the constraints. The balance constraints ensure that per skill level and per year the workers who are currently required (LaborForce) and the people who get laid off, and the people who get retrained to the current level, minus the people who get retrained from the current level to a different skill, equals the LaborForce of the last year (or the CurrentStrength in the first year) plus the recruited people. A certain amount of people leave the company each year, so this is also considered to be a factor. This constraint describes the change in the total amount of employed workers.</p>
 
 </div>
 </div>
@@ -13479,34 +13471,17 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#2.1 &amp; 2.2  Unskilled training</span>
-<span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_train_unskilled</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Unskilled_training1&quot;</span><span class="p">)</span>
-<span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Unskilled_training2&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#1.1 &amp; 1.2 Balance</span>
+
+<span class="n">Balance</span> <span class="o">=</span> <span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">workforce</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">veteran_attrition</span><span class="p">[</span><span class="n">level</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">curr_workforce</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="k">if</span> <span class="n">year</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">workforce</span><span class="p">[</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">level</span><span class="p">])</span>
+    <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">rookie_attrition</span><span class="p">[</span><span class="n">level</span><span class="p">])</span><span class="o">*</span><span class="n">hire</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="o">+</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span> <span class="n">veteran_attrition</span><span class="p">[</span><span class="n">level</span><span class="p">])</span><span class="o">*</span> <span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level2</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span>
+                                                        <span class="o">-</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">level2</span><span class="p">]</span> <span class="k">for</span> <span class="n">level2</span> <span class="ow">in</span> <span class="n">skills</span> <span class="k">if</span> <span class="n">level2</span> <span class="o">&lt;</span> <span class="n">level</span><span class="p">)</span>
+    <span class="o">+</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span> <span class="n">demoted_attrition</span><span class="p">)</span><span class="o">*</span> <span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level2</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="o">-</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">level2</span><span class="p">]</span> <span class="k">for</span> <span class="n">level2</span> <span class="ow">in</span> <span class="n">skills</span> <span class="k">if</span> <span class="n">level2</span> <span class="o">&gt;</span> <span class="n">level</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">layoff</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">skills</span><span class="p">),</span> <span class="s2">&quot;Balance&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13514,7 +13489,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The Semi-skilled training states that the retraining of semiskilled workers to skilled workers is limited to no more than one quarter of the skilled labor force at this time. This is due to capacity limitations.</p>
+<p>The Unskilled training constraints force that per year only 200 workers can be retrained from Unskilled to Semi-skilled due to capacity limitations. Also, no one can be trained in one year from Unskilled to Skilled.</p>
 
 </div>
 </div>
@@ -13524,34 +13499,35 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#3. Semi-skilled training</span>
-
-<span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_train_semiskilled</span> <span class="o">*</span> <span class="n">workforce</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="s1">&#39;s3&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Semiskilled_training&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#2.1 &amp; 2.2  Unskilled training</span>
+<span class="n">UnskilledTrain1</span> <span class="o">=</span> <span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s2&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_train_unskilled</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Unskilled_training1&quot;</span><span class="p">)</span>
+<span class="n">UnskilledTrain2</span> <span class="o">=</span> <span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Unskilled_training2&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Semi-skilled training states that the retraining of Semi-skilled workers to skilled workers is limited to no more than one quarter of the skilled labor force at this time. This is due to capacity limitations.</p>
 
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#3. Semi-skilled training</span>
 
+<span class="n">SemiskilledTrain</span> <span class="o">=</span> <span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">train</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="s1">&#39;s3&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">max_train_semiskilled</span> <span class="o">*</span> <span class="n">workforce</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="s1">&#39;s3&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Semiskilled_training&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -13566,36 +13542,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#4. Overmanning</span>
-<span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">excess</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_overmanning</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Overmanning&quot;</span><span class="p">)</span>
+<span class="n">Overmanning</span> <span class="o">=</span> <span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">excess</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_overmanning</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Overmanning&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13603,18 +13557,18 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The demand constraints ensure that the amount of workers of each level and year equals the required amount of workers plus the Overmanned workers and the amount of workers who are working part-time.</p>
+<p>The demand constraints ensure that the number of workers of each level and year equals the required number of workers plus the Overmanned workers and the number of workers who are working part-time.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#5. Demand</span>
-<span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">workforce</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="o">==</span>
+<span class="n">Demand</span> <span class="o">=</span> <span class="n">manpower</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">workforce</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="o">==</span>
      <span class="n">demand</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">level</span><span class="p">]</span> <span class="o">+</span> <span class="n">excess</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span> <span class="o">+</span> <span class="n">parttime_cap</span> <span class="o">*</span> <span class="n">part_time</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">level</span><span class="p">]</span>
                      <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">skills</span><span class="p">),</span> <span class="s2">&quot;Requirements&quot;</span><span class="p">)</span>
 </pre></div>
@@ -13623,46 +13577,18 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(1, &#39;s1&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, &#39;s2&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, &#39;s3&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, &#39;s1&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, &#39;s2&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, &#39;s3&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, &#39;s1&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, &#39;s2&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, &#39;s3&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first objective is to minimize the total number of laidoff workers. This can be stated as:</p>
+<p>The first objective is to minimize the total number of laid off workers. This can be stated as:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#0.1 Objective Function: Minimize layoffs</span>
@@ -13684,14 +13610,14 @@ div#notebook {
                 + layoff_cost[level]*layoff[year, level]
                 + parttime_cost[level]*part_time[year, level]
                 + overmanning_cost[level] * excess[year, level] for year in years for level in skills)</code></pre>
-<p>Next we start the optimization, and Gurobi tries to find the optimal solution.</p>
+<p>Next we start the optimization with the objective function of minimizing layoffs, and Gurobi finds the optimal solution.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">manpower</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
@@ -13711,12 +13637,14 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Optimize a model with 30 rows, 72 columns and 117 nonzeros
+<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+Optimize a model with 30 rows, 72 columns and 117 nonzeros
+Model fingerprint: 0x06ec5b66
 Coefficient statistics:
-  Matrix range     [2e-01, 1e+00]
+  Matrix range     [3e-01, 1e+00]
   Objective range  [1e+00, 1e+00]
   Bounds range     [5e+01, 8e+02]
-  RHS range        [2e+02, 2e+03]
+  RHS range        [2e+02, 3e+03]
 Presolve removed 18 rows and 44 columns
 Presolve time: 0.01s
 Presolved: 12 rows, 28 columns, 56 nonzeros
@@ -13738,14 +13666,15 @@ Optimal objective  8.417968750e+02
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>With the objective of minimizing layoffs at 841.80, the optimal policies to pursue are given below:</p>
-<h3 id="Hiring">Hiring<a class="anchor-link" href="#Hiring">&#182;</a></h3>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The minimum number of layoffs is 841.80. The optimal policies to achieve this minimum number of layoffs are given below.</p>
+<h3 id="Hiring-Plan">Hiring Plan<a class="anchor-link" href="#Hiring-Plan">&#182;</a></h3><p>This plan determines the number of new workers to hire at each year of the planning horizon (rows) and each skill level (columns). For example, at year 2 we are going to hire 649.3 Semi-skilled workers.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13768,7 +13697,7 @@ Optimal objective  8.417968750e+02
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -13829,13 +13758,14 @@ Optimal objective  8.417968750e+02
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Training-and-Demotions">Training and Demotions<a class="anchor-link" href="#Training-and-Demotions">&#182;</a></h3>
+<h3 id="Training-and-Demotions-Plan">Training and Demotions Plan<a class="anchor-link" href="#Training-and-Demotions-Plan">&#182;</a></h3><p>This plan defines the number of workers to promote by training (or demote) at each year of the planning horizon. For example, in year 1 we are going to demote 168.4 skilled (s3) workers to the level of semi-skilled (s2).</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13859,7 +13789,7 @@ Optimal objective  8.417968750e+02
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13932,13 +13862,14 @@ Optimal objective  8.417968750e+02
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Layoffs">Layoffs<a class="anchor-link" href="#Layoffs">&#182;</a></h3>
+<h3 id="Layoffs-Plan">Layoffs Plan<a class="anchor-link" href="#Layoffs-Plan">&#182;</a></h3><p>This plan determines the number of workers to  layoff of each skill level at each year of the planning horizon. For example, we are going to layoff 232.5 Unskilled workers in year 3.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13961,7 +13892,7 @@ Optimal objective  8.417968750e+02
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -14022,13 +13953,14 @@ Optimal objective  8.417968750e+02
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Part-time">Part-time<a class="anchor-link" href="#Part-time">&#182;</a></h3>
+<h3 id="Part-time-Plan">Part-time Plan<a class="anchor-link" href="#Part-time-Plan">&#182;</a></h3><p>This plan defines the number of part-time workers of each skill level working at each year of the planning horizon. For example, in year 1, we have 50 part-time skilled workers.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -14051,7 +13983,7 @@ Optimal objective  8.417968750e+02
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[13]:</div>
+    <div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -14112,13 +14044,14 @@ Optimal objective  8.417968750e+02
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Overmanning">Overmanning<a class="anchor-link" href="#Overmanning">&#182;</a></h3>
+<h3 id="Overmanning-Plan">Overmanning Plan<a class="anchor-link" href="#Overmanning-Plan">&#182;</a></h3><p>This plan determines the number of excess workers of each skill level working at each year of the planning horizon. For example, we have 150 Unskilled excess workers in year 3.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -14141,7 +14074,7 @@ Optimal objective  8.417968750e+02
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -14202,15 +14135,28 @@ Optimal objective  8.417968750e+02
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>By minimizing the cost instead, we could implement policies that would cost 498,677.29 USD over the three-year period and result in 1,423.7 layoffs. Alternative optimal solutions could be considered, if necessary, to ensure that the layoffs are as few as possible for this minimum level of cost. Clearly, minimizing costs instead of layoffs saves 942,712.51 USD at the expense of 581.9 additional layoffs. Thus, the cost of saving each job, when minimizing layoffs, could be regarded as 1,620.06 USD.</p>
+<p>By minimizing the cost instead, we could implement policies that would cost $\$498,677.29$ over the three-year period and result in 1,423.7 layoffs. Alternative optimal solutions could be considered to reduce layoffs without increasing cost. If we minimize costs instead of layoffs, we can save $\$942,712.51$ at the expense of 581.9 additional layoffs. Thus, the cost of saving each job, when minimizing layoffs, could be regarded as $\$1,620.06$.</p>
 <p><strong>Note:</strong> If you want to write your solution to a file, rather than print it to the terminal, you can use the model.write() command. An example implementation is:</p>
 <p><code>manpower.write("manpower-planning-output.sol")</code></p>
 <hr>
 <h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Page 255-256, 354-356)</p>
-<p>Copyright &copy; 2019 Gurobi Optimization, LLC</p>
+<p>Copyright &copy; 2020 Gurobi Optimization, LLC</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>

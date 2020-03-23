@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,13 +13116,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Mining">Mining<a class="anchor-link" href="#Mining">&#182;</a></h1><p>This model is an example of a production problem. In production planning problems, decisions must be made regarding which products to produce, and which resources to use to produce those products. These problems are common across a broad range of manufacturing and mining industries.</p>
-<p>In this example, we will model and solve a multi-period production planning problem. In this case, the aim of the application is to optimize mine production across a number of mines over a five-year period. The company has different mines, which can be opened, operational, or closed. Each mine varies in the quality of its ore and the amount of ore that can be extracted. The quality of ore required to meet production goals varies each year. The aim is to create an optimal production plan for the next five years to maximize the total profit, while considering all production capacity, mine restrictions, and mine costs.</p>
+<h1 id="Mining">Mining<a class="anchor-link" href="#Mining">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a production planning problem. In such problems, decisions must be made regarding which products to produce, and which resources to use to produce those products. These problems are common across a broad range of manufacturing and mining industries.</p>
+<h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this example, we will model and solve a multi-period production planning problem. In this case, the aim of the application is to optimize mine production across a number of mines over a five-year period. The company has different mines, which can be opened, operational, or closed. Each mine varies in the quality of its ore and the amount of ore that can be extracted. The quality of ore required to meet production goals varies each year. The aim is to create an optimal production plan for the next five years to maximize the total profit, while considering production capacity, mine restrictions, and mine costs.</p>
 <p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
+<p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A mining company needs to create a five-year operating plan for a certain area with four mines in it.</p>
-<p>They can only operate a maximum of three mines in this area in any given year. However, even though a mine may not operate in a given year, the company still must pay royalties on that mine in that year, if there is the expectation it will operate again in a future year. If a mine is not going to be operational again, then it can be permanently closed down and no more royalties need to be paid.</p>
+<p>They can only operate a maximum of three mines in this area in any given year. However, even though a mine may not operate in a given year, the company still must pay royalties on that mine if there is an expectation that it will operate again in the future. Otherwise, it can be permanently closed and no more royalties need to be paid.</p>
 <p>The yearly royalties due for each open mine (operating or not) are as follows:</p>
 <table>
 <thead><tr>
@@ -13133,19 +13134,19 @@ div#notebook {
 <tbody>
 <tr>
 <td>Mine 1</td>
-<td>\$5 Million</td>
+<td>$\$5 Million$</td>
 </tr>
 <tr>
 <td>Mine 2</td>
-<td>\$4 Million</td>
+<td>$\$4 Million$</td>
 </tr>
 <tr>
 <td>Mine 3</td>
-<td>\$4 Million</td>
+<td>$\$4 Million$</td>
 </tr>
 <tr>
 <td>Mine 4</td>
-<td>\$5 Million</td>
+<td>$\$5 Million$</td>
 </tr>
 </tbody>
 </table>
@@ -13175,7 +13176,7 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>Each mine produces a different grade of ore. This grade is measured on a scale such that blending ores together results in a linear combination of the quality requirements. For example, if equal quantities of ore from two different mines were combined, the resulting ore would have a grade that is the average of the grade for each of the two ores that were combined. The grade for each mine’s ore is as follows:</p>
+<p>Each mine produces a different grade of ore. This grade is measured on a scale such that blending ores together results in a linear combination of the quality requirements. For example, if equal quantities of ore from two different mines were combined, the resulting ore would have a grade that is the average of the grade for each of the two ores. The grade for each mine’s ore is as follows:</p>
 <table>
 <thead><tr>
 <th><i></i></th>
@@ -13231,7 +13232,7 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>The final blended ore sells for \$10/ton. Revenues and costs for future years are discounted at the rate of 10\% per annum.</p>
+<p>The final blended ore sells for $\$10$/ton. Revenues and costs for future years are discounted at the rate of $10\%$ per annum.</p>
 <p>The key question for the mining company is: Which mines should be operated each year and how much ore should be extracted from each mine?</p>
 <p>This problem is based on a larger one faced by the firm of English China Clays, which had to in decide which mines to work. In that problem (in the 1970s), the goal was to work up to four mines out of 20 in each year.</p>
 <hr>
@@ -13267,10 +13268,10 @@ div#notebook {
 \sum_{m \in \text{Mines}}{\text{quality}_m*\text{extract}_{t,m}} = \text{target}_t*\text{blended}_t \quad \forall t \in \text{Years}
 \tag{2}
 \end{equation}<ul>
-<li><strong>Mass Conservation</strong>: Total Tons of ore extracted in year $t$ should be equal to the Tons of the ore blended in that year.</li>
+<li><strong>Mass Conservation</strong>: Total tons of ore extracted in year $t$ should be equal to the Tons of the ore blended in that year.</li>
 </ul>
 \begin{equation}
-\sum_{m \in \text{Mines}}{\text{extract}_{t,m}} = \text{blended}_t \quad \forall t \in \text{Years}
+\sum_{m \in \text{Mines}}{\text{extract}_{t,m}} = \text{blend}_t \quad \forall t \in \text{Years}
 \tag{3}
 \end{equation}<ul>
 <li><strong>Mine Capacity</strong>: Total tons of ore extracted from mine $m$ in year $t$ cannot exceed the yearly capacity of that mine.</li>
@@ -13288,24 +13289,47 @@ div#notebook {
 <li><strong>Shut Down</strong>: If mine $m$ is closed in year $t$, it cannot be opened again in the future.</li>
 </ul>
 \begin{equation}
-\text{available}_{t+1,m} \leq \text{available}_{t,m} \quad \forall (t,m) \in \text{Years} \setminus \{5\} \times \text{Mines}
+\text{available}_{t+1,m} \leq \text{available}_{t,m} \quad \forall (t &lt; 5,m) \in \text{Years} \times \text{Mines}
 \tag{6}
 \end{equation}<hr>
-<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initialize the data structures.</p>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>We import the Gurobi Python Module and other Python libraries.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="o">*</span>
 
-<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 8.1.1</span>
+<span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="n">GRB</span>
+
+<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 9.0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Input-Data">Input Data<a class="anchor-link" href="#Input-Data">&#182;</a></h2><p>We define all the input data of the model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Parameters</span>
 
 <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="n">mines</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -13329,17 +13353,17 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Note:</strong> The present value of a future amount at period $n$ is given by the formula: $\text{present_value} = \frac{1}{(1+\text{interest_rate})^n}*\text{future_value} $</p>
-<p>Next, we create a model and the variables. For each year and each mine, we have a variable for the output in millions of tons the mine produces, a decision variable, which tells us if the mine is open, and a decision variable, which tells us if the mine is operational.</p>
+<h2 id="Model-Deployment">Model Deployment<a class="anchor-link" href="#Model-Deployment">&#182;</a></h2><p>We create a model and the variables. For each year and each mine, we have (i) a variable that captures production, in millions of tons, (ii) a decision variable which tells us if the mine is open, and (iii) a decision variable which tells us if the mine is operational.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mining</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Mining&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mining</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Mining&#39;</span><span class="p">)</span>
 
 <span class="n">blend</span> <span class="o">=</span> <span class="n">mining</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Blend&quot;</span><span class="p">)</span>
 <span class="n">extract</span> <span class="o">=</span> <span class="n">mining</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">mines</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Extract&quot;</span><span class="p">)</span>
@@ -13348,6 +13372,25 @@ div#notebook {
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Using license file c:\gurobi\gurobi.lic
+Set parameter TokenServer to value SANTOS-SURFACE-
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -13363,39 +13406,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#1. Operating Mines</span>
 
-<span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">working</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_mines</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Operating_mines&quot;</span><span class="p">)</span>
+<span class="n">OperatingMines</span> <span class="o">=</span> <span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">working</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_mines</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Operating_mines&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[26]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13411,12 +13430,12 @@ This ensures that the quality standards are satisfied.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#2. Quality</span>
 
-<span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">quality</span><span class="p">[</span><span class="n">mine</span><span class="p">]</span><span class="o">*</span><span class="n">extract</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="k">for</span> <span class="n">mine</span> <span class="ow">in</span> <span class="n">mines</span><span class="p">)</span>
+<span class="n">Quality</span> <span class="o">=</span> <span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">quality</span><span class="p">[</span><span class="n">mine</span><span class="p">]</span><span class="o">*</span><span class="n">extract</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="k">for</span> <span class="n">mine</span> <span class="ow">in</span> <span class="n">mines</span><span class="p">)</span>
                    <span class="o">==</span> <span class="n">target</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">*</span><span class="n">blend</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Quality&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -13424,74 +13443,26 @@ This ensures that the quality standards are satisfied.</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[27]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This constraint ensures that the tonnage of blended ore in each year equals the combined tonnage of the constituents.</p>
+<p>The following constraint ensures that the tonnage of blended ore in each year equals the combined tonnage of the constituents.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#3. Mass Conservation</span>
 
-<span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">extract</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">blend</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Mass Conservation&quot;</span><span class="p">)</span>
+<span class="n">MassConservation</span> <span class="o">=</span> <span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">extract</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">blend</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">),</span> <span class="s2">&quot;Mass Conservation&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[28]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{1: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 2: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 3: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 4: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- 5: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13499,61 +13470,22 @@ This ensures that the quality standards are satisfied.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This constraint ensures that the mine can extract no more than the extract limit and also that there is only an output if the mine is operational.</p>
+<p>The following constraint ensures that the mine can extract no more than the extract limit and also that there is only an output if the mine is operational.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#4. Mine Capacity</span>
 
-<span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">extract</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">capacity</span><span class="p">[</span><span class="n">mine</span><span class="p">]</span><span class="o">*</span><span class="n">working</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">mine</span> <span class="ow">in</span> <span class="n">extract</span><span class="p">),</span> <span class="s2">&quot;Capacity&quot;</span><span class="p">)</span>
+<span class="n">MineCapacity</span> <span class="o">=</span> <span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">extract</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">capacity</span><span class="p">[</span><span class="n">mine</span><span class="p">]</span><span class="o">*</span><span class="n">working</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">mine</span> <span class="ow">in</span> <span class="n">extract</span><span class="p">),</span> <span class="s2">&quot;Capacity&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[44]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(1, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13561,59 +13493,21 @@ This ensures that the quality standards are satisfied.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This constraint ensures that when the mine is operational, it also needs to be open.</p>
+<p>The following constraint ensures that when the mine is operational, it also needs to be open.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">working</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">available</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">mine</span> <span class="ow">in</span> <span class="n">available</span><span class="p">),</span> <span class="s2">&quot;Open to Operate&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Open to operate</span>
+<span class="n">OpenToOperate</span> <span class="o">=</span> <span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">working</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">available</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">mine</span> <span class="ow">in</span> <span class="n">available</span><span class="p">),</span> <span class="s2">&quot;Open to Operate&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[30]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(1, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (5, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13621,56 +13515,22 @@ This ensures that the quality standards are satisfied.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This constraint forces a mine to be closed in all years subsequent to that in which it is first closed. If the mine is closed, it cannot be re-opened later:</p>
+<p>The following constraint forces a mine to be closed in all years subsequent to that in which it is first closed. If the mine is closed, it cannot be re-opened later:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">available</span><span class="p">[</span><span class="n">year</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">available</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Shutdown Mine</span>
+<span class="n">ShutdownMine</span> <span class="o">=</span> <span class="n">mining</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">available</span><span class="p">[</span><span class="n">year</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">available</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span>
                    <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">mine</span> <span class="ow">in</span> <span class="n">available</span> <span class="k">if</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="n">years</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s2">&quot;Shut down&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[31]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(1, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (1, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (2, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (3, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 1): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 2): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 3): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (4, 4): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13685,12 +13545,12 @@ This ensures that the quality standards are satisfied.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#0. Objective function</span>
-<span class="n">obj</span> <span class="o">=</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">price</span><span class="o">*</span><span class="n">time_discount</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">*</span><span class="n">blend</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">)</span> \
-<span class="o">-</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">royalties</span><span class="p">[</span><span class="n">mine</span><span class="p">]</span> <span class="o">*</span> <span class="n">time_discount</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">*</span> <span class="n">available</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">mine</span> <span class="ow">in</span> <span class="n">available</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">price</span><span class="o">*</span><span class="n">time_discount</span><span class="p">[</span><span class="n">year</span><span class="p">]</span><span class="o">*</span><span class="n">blend</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">)</span> \
+<span class="o">-</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">royalties</span><span class="p">[</span><span class="n">mine</span><span class="p">]</span> <span class="o">*</span> <span class="n">time_discount</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">*</span> <span class="n">available</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="n">mine</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">mine</span> <span class="ow">in</span> <span class="n">available</span><span class="p">)</span>
 <span class="n">mining</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
 </pre></div>
 
@@ -13702,14 +13562,14 @@ This ensures that the quality standards are satisfied.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, the optimization process starts and Gurobi tries to find the optimal solution.</p>
+<p>Next, the optimization process starts and Gurobi finds the optimal solution.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">mining</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
@@ -13729,7 +13589,9 @@ This ensures that the quality standards are satisfied.</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Optimize a model with 71 rows, 65 columns and 182 nonzeros
+<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+Optimize a model with 71 rows, 65 columns and 182 nonzeros
+Model fingerprint: 0xb3698537
 Variable types: 25 continuous, 40 integer (40 binary)
 Coefficient statistics:
   Matrix range     [5e-01, 3e+06]
@@ -13750,18 +13612,21 @@ Root relaxation: objective 1.577309e+08, 40 iterations, 0.00 seconds
      0     0 1.5773e+08    0    4   -0.00000 1.5773e+08      -     -    0s
 H    0     0                    1.189074e+08 1.5773e+08  32.7%     -    0s
 H    0     0                    1.302711e+08 1.5773e+08  21.1%     -    0s
-H    0     0                    1.393620e+08 1.5773e+08  13.2%     -    0s
-     0     0 1.5694e+08    0    6 1.3936e+08 1.5694e+08  12.6%     -    0s
-H    0     0                    1.468620e+08 1.5694e+08  6.86%     -    0s
-     0     0 1.5609e+08    0    6 1.4686e+08 1.5609e+08  6.29%     -    0s
-     0     0 1.5238e+08    0    1 1.4686e+08 1.5238e+08  3.76%     -    0s
-     0     0 infeasible    0      1.4686e+08 1.4686e+08 -0.00%     -    0s
+H    0     0                    1.393620e+08 1.5524e+08  11.4%     -    0s
+     0     0 1.5462e+08    0    4 1.3936e+08 1.5462e+08  10.9%     -    0s
+H    0     0                    1.468620e+08 1.5462e+08  5.28%     -    0s
 
-Explored 1 nodes (65 simplex iterations) in 0.03 seconds
+Cutting planes:
+  Implied bound: 4
+  MIR: 3
+  Flow cover: 1
+  RLT: 3
+  Relax-and-lift: 3
+
+Explored 1 nodes (48 simplex iterations) in 0.06 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 5: 1.46862e+08 1.39362e+08 1.30271e+08 ... -0
-No other solutions better than 1.46862e+08
 
 Optimal solution found (tolerance 1.00e-04)
 Best objective 1.468619743642e+08, best bound 1.468619743642e+08, gap 0.0000%
@@ -13777,14 +13642,15 @@ Best objective 1.468619743642e+08, best bound 1.468619743642e+08, gap 0.0000%
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The optimal solution results in a profit of 146.8620 million USD with the following production plan for each mine in each year (quantities expressed in millions of tons):</p>
-<h3 id="Extraction">Extraction<a class="anchor-link" href="#Extraction">&#182;</a></h3>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The optimal solution results in a profit of $\$146.8620$ million with the following production plan for each mine in each year (quantities expressed in millions of tons):</p>
+<h3 id="Extraction-Plan">Extraction Plan<a class="anchor-link" href="#Extraction-Plan">&#182;</a></h3><p>This plan determines the millions of tons of ore extracted from each mine (columns)  in each year (rows) of the planning horizon. For example, 1.3 millions of tons of ore will be extracted from mine 3 during the year 2.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13807,7 +13673,7 @@ Best objective 1.468619743642e+08, best bound 1.468619743642e+08, gap 0.0000%
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[42]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13886,13 +13752,14 @@ Best objective 1.468619743642e+08, best bound 1.468619743642e+08, gap 0.0000%
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sales">Sales<a class="anchor-link" href="#Sales">&#182;</a></h3>
+<h3 id="Sales-Plan">Sales Plan<a class="anchor-link" href="#Sales-Plan">&#182;</a></h3><p>This plan defines the millions of tons of blended ore to sell during each year of the planning horizon. For example, we plan to sell 5.62 million tons of blended ore during year 4.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13914,7 +13781,7 @@ Best objective 1.468619743642e+08, best bound 1.468619743642e+08, gap 0.0000%
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[43]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -13979,10 +13846,23 @@ Best objective 1.468619743642e+08, best bound 1.468619743642e+08, gap 0.0000%
 <p><code>mining.write("mining-output.sol")</code></p>
 <hr>
 <h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Page 261-262, 357)</p>
-<p>Copyright © 2019 Gurobi Optimization, LLC</p>
+<p>Copyright © 2020 Gurobi Optimization, LLC</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>

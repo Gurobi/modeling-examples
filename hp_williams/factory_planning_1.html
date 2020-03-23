@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,10 +13116,11 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Factory-Planning-I">Factory Planning I<a class="anchor-link" href="#Factory-Planning-I">&#182;</a></h1><p>Both this model and Factory Planning II are examples of production planning problems. In production planning problems, choices must be made about which products to produce, how much of those products to produce, and what resources to use in order to maximize profits or minimize costs, while meeting a range of constraints. These problems are common across a broad range of manufacturing situations.</p>
-<p>In this particular example, we’ll model and solve a production mix problem: during each period we can manufacture a range of products. Each of the products requires a different amount of time to manufacture on different machines, and yields a different profit.The aim is to create an optimal multi-period production plan to maximize the profit. Some machines are not available in particular periods due to maintenance. There is an upper limit on the sales of each product in each month due to market limitations and the storage capacity is also restricted.</p>
-<p>In Factory Planning II, we’ll add more complexity to this example whereby the month where each machine is down will, instead of being fixed, be determined as a part of the optimized plan.</p>
+<h1 id="Factory-Planning-I">Factory Planning I<a class="anchor-link" href="#Factory-Planning-I">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Factory Planning II are examples of production planning problems. In production planning problems, choices must be made about which products to produce, how much of those products to produce, and what resources to use in order to maximize profits or minimize costs, while meeting a range of constraints. These problems are common across a broad range of manufacturing situations.</p>
+<h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this particular example, we’ll model and solve a production mix problem: During each period we can manufacture a range of products. Each of the products requires a different amount of time to manufacture on different machines, and yields a different profit.The aim is to create an optimal multi-period production plan to maximize the profit. Some machines are not available in particular periods due to maintenance. There is an upper limit on the sales of each product in each month due to market limitations and the storage capacity is also restricted.</p>
+<p>In Factory Planning II, we’ll add more complexity to this example; the month in which each machine is down for maintenance will be chosen as a part of the optimized plan.</p>
 <p>More information on this type of model can be found in in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
+<p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A factory makes seven products (Prod 1 to Prod 7) using a range of machines including:</p>
@@ -13195,7 +13196,7 @@ div#notebook {
 <td>0.08</td>
 </tr>
 <tr>
-<td>Planing</td>
+<td>Planning</td>
 <td>-</td>
 <td>-</td>
 <td>0.01</td>
@@ -13316,7 +13317,7 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>Up to 100 units of each product may be stored in inventory at a cost of $0.50 per unit per month. At the start of January, there is no product inventory. However, by the end of June, there should be 50 units of each product in inventory.</p>
+<p>Up to 100 units of each product may be stored in inventory at a cost of $\$0.50$ per unit per month. At the start of January, there is no product inventory. However, by the end of June, there should be 50 units of each product in inventory.</p>
 <p>The factory produces products six days a week using two eight-hour shifts per day. It may be assumed that each month consists of 24 working days. Also, for the purposes of this model, there are no production sequencing issues that need to be taken into account.</p>
 <p>What should the production plan look like? Also, is it possible to recommend any price increases and determine the value of acquiring any new machines?</p>
 <p>This problem is based on a larger model built for the Cornish engineering company of Holman Brothers.</p>
@@ -13325,7 +13326,7 @@ div#notebook {
 <p>$p \in \text{Products}=\{1,2,\dots,7\}$: Set of products.</p>
 <p>$m \in \text{Machines}=\{\text{Grinder},\text{VertDrill},\text{horiDrill},\text{Borer},\text{Planer}\}$: Set of machines.</p>
 <h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$\text{hours_per_month} \in \mathbb{R}^+$: Time (in hours/month) available at any machine on a monthly basis. It results from multiplying the number of working days (24 days) by the number of shifts per day (2) by the duration of a shift (8 hours).</p>
-<p>$\text{max_inventory} \in \mathbb{N}$: Maximum number of units of a single product type that can be stored in the inventory at any given month.</p>
+<p>$\text{max_inventory} \in \mathbb{N}$: Maximum number of units of a single product type that can be stored in inventory at any given month.</p>
 <p>$\text{holding_cost} \in \mathbb{R}^+$: Monthly cost (in USD/unit/month) of keeping in inventory a unit of any product type.</p>
 <p>$\text{store_target} \in \mathbb{N}$: Number of units of each product type to keep in inventory at the end of the planning horizon.</p>
 <p>$\text{profit}_p \in \mathbb{R}^+$: Profit (in USD/unit) of product $p$.</p>
@@ -13345,7 +13346,7 @@ div#notebook {
 (\text{profit}_p*\text{make}_{t,p} - \text{holding_cost}*\text{store}_{t,p})
 \tag{0}
 \end{equation}<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><ul>
-<li><strong>Initial Balance:</strong> For each product $p$, the number of units produced should be equal to the number of units sold and stored (in units of product).</li>
+<li><strong>Initial Balance:</strong> For each product $p$, the number of units produced should be equal to the number of units sold plus the number stored (in units of product).</li>
 </ul>
 \begin{equation}
 \text{make}_{\text{Jan},p} = \text{sell}_{\text{Jan},p} + \text{store}_{\text{Jan},p} \quad \forall p \in \text{Products}
@@ -13369,7 +13370,7 @@ div#notebook {
 \sum_{p \in \text{Products}}\text{time_req}_{m,p}*\text{make}_{t,p} \leq \text{hours_per_month}*(\text{installed}_m - \text{down}_{t,m}) \quad \forall (t,m) \in \text{Months} \times \text{Machines}
 \tag{4}
 \end{equation}<hr>
-<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initialize the data structures with the given data.</p>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>We import the Gurobi Python Module and other Python libraries.</p>
 
 </div>
 </div>
@@ -13381,9 +13382,32 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="o">*</span>
 
-<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 8.1.1</span>
+<span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="n">GRB</span>
+
+<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 9.0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Input-Data">Input Data<a class="anchor-link" href="#Input-Data">&#182;</a></h3><p>We define all the input data of the model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Parameters</span>
 
 <span class="n">products</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Prod1&quot;</span><span class="p">,</span> <span class="s2">&quot;Prod2&quot;</span><span class="p">,</span> <span class="s2">&quot;Prod3&quot;</span><span class="p">,</span> <span class="s2">&quot;Prod4&quot;</span><span class="p">,</span> <span class="s2">&quot;Prod5&quot;</span><span class="p">,</span> <span class="s2">&quot;Prod6&quot;</span><span class="p">,</span> <span class="s2">&quot;Prod7&quot;</span><span class="p">]</span>
 <span class="n">machines</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;grinder&quot;</span><span class="p">,</span> <span class="s2">&quot;vertDrill&quot;</span><span class="p">,</span> <span class="s2">&quot;horiDrill&quot;</span><span class="p">,</span> <span class="s2">&quot;borer&quot;</span><span class="p">,</span> <span class="s2">&quot;planer&quot;</span><span class="p">]</span>
@@ -13471,17 +13495,17 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create a model and the variables. For each product (seven kinds of products) and each time period (month), we will create variables for the amount of which products get manufactured, held, and sold. In each month, there is an upper limit on the amount of each product that can be sold. This is due to market limitations.</p>
+<h2 id="Model-Deployment">Model Deployment<a class="anchor-link" href="#Model-Deployment">&#182;</a></h2><p>We create a model and the variables. For each product (seven kinds of products) and each time period (month), we will create variables for the amount of which products get manufactured, held, and sold. In each month, there is an upper limit on the amount of each product that can be sold. This is due to market limitations.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">factory</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory Planning I&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">factory</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Factory Planning I&#39;</span><span class="p">)</span>
 
 <span class="n">make</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Make&quot;</span><span class="p">)</span> <span class="c1"># quantity manufactured</span>
 <span class="n">store</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">ub</span><span class="o">=</span><span class="n">max_inventory</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Store&quot;</span><span class="p">)</span> <span class="c1"># quantity stored</span>
@@ -13492,84 +13516,20 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we insert the constraints. The balance constraints ensure that the amount of product that is in the storage in the prior month and the amount that gets manufactured equals the amount that is sold and held for each product in the current month. This ensures that all products in the model are manufactured in some month. The initial storage is empty.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#1. Initial Balance</span>
-<span class="n">factory</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">make</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> <span class="o">==</span> <span class="n">sell</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> 
-                  <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Initial_Balance&quot;</span><span class="p">)</span>
-    
-<span class="c1">#2. Balance</span>
-<span class="n">factory</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="n">months</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">month</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> <span class="o">+</span> 
-                <span class="n">make</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span> <span class="o">==</span> <span class="n">sell</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span> <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span> 
-                <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span> 
-                <span class="k">if</span> <span class="n">month</span> <span class="o">!=</span> <span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Balance&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt"></div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(&#39;Prod1&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod1&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod1&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod1&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod1&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod2&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod2&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod2&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod2&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod2&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod3&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod3&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod3&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod3&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod3&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod4&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod4&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod4&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod4&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod4&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod5&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod5&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod5&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod5&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod5&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod6&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod6&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod6&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod6&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod6&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod7&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod7&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod7&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod7&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;Prod7&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Using license file c:\gurobi\gurobi.lic
+Set parameter TokenServer to value SANTOS-SURFACE-
+</pre>
 </div>
-
 </div>
 
 </div>
@@ -13579,7 +13539,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The endstore constraints force that at the end of the last month the storage contains the specified amount of each product.</p>
+<p>Next, we insert the constraints. The balance constraints ensure that the amount of product that is in  storage in the prior month plus the amount that gets manufactured equals the amount that is sold and held for each product in the current month. This ensures that all products in the model are manufactured in some month. The initial storage is empty.</p>
 
 </div>
 </div>
@@ -13589,37 +13549,18 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#3. Inventory Target</span>
-<span class="n">factory</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> <span class="o">==</span> <span class="n">store_target</span> <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">),</span>  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;End_Balance&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#1. Initial Balance</span>
+<span class="n">Balance0</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">make</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> <span class="o">==</span> <span class="n">sell</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> 
+                  <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Initial_Balance&quot;</span><span class="p">)</span>
+    
+<span class="c1">#2. Balance</span>
+<span class="n">Balance</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="n">months</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">month</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> <span class="o">+</span> 
+                <span class="n">make</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span> <span class="o">==</span> <span class="n">sell</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span> <span class="o">+</span> <span class="n">store</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span> 
+                <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span> 
+                <span class="k">if</span> <span class="n">month</span> <span class="o">!=</span> <span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Balance&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Prod1&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Prod2&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Prod3&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Prod4&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Prod5&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Prod6&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Prod7&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13627,7 +13568,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The capacity constraints ensure that, for each month, the time all products require on a certain kind of machine is lower or equal than the available hours for that type of machine in that month multiplied by the number of available machines in that period. Each product requires some machine hours on different machines. Each machine is down in one or more months due to maintenance, so the number and type of available machines varies per month. There can be multiple machines per machine type.</p>
+<p>The Inventory Target constraints force that at the end of the last month the storage contains the specified amount of each product.</p>
 
 </div>
 </div>
@@ -13637,9 +13578,31 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#3. Inventory Target</span>
+<span class="n">TargetInv</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">store</span><span class="p">[</span><span class="n">months</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">product</span><span class="p">]</span> <span class="o">==</span> <span class="n">store_target</span> <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">),</span>  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;End_Balance&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The capacity constraints ensure that, for each month, the time all products require on a certain kind of machine is less than or equal to the available hours for that type of machine in that month multiplied by the number of available machines in that period. Each product requires some machine hours on different machines. Each machine is down in one or more months due to maintenance, so the number and type of available machines varies per month. There can be multiple machines per machine type.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#4. Machine Capacity</span>
 
-<span class="n">factory</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">time_req</span><span class="p">[</span><span class="n">machine</span><span class="p">][</span><span class="n">product</span><span class="p">]</span> <span class="o">*</span> <span class="n">make</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span>
+<span class="n">MachineCap</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">time_req</span><span class="p">[</span><span class="n">machine</span><span class="p">][</span><span class="n">product</span><span class="p">]</span> <span class="o">*</span> <span class="n">make</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span>
                              <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">time_req</span><span class="p">[</span><span class="n">machine</span><span class="p">])</span>
                     <span class="o">&lt;=</span> <span class="n">hours_per_month</span> <span class="o">*</span> <span class="p">(</span><span class="n">installed</span><span class="p">[</span><span class="n">machine</span><span class="p">]</span> <span class="o">-</span> <span class="n">down</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">month</span><span class="p">,</span> <span class="n">machine</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
                     <span class="k">for</span> <span class="n">machine</span> <span class="ow">in</span> <span class="n">machines</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span><span class="p">),</span>
@@ -13650,71 +13613,23 @@ div#notebook {
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{(&#39;grinder&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;grinder&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;grinder&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;grinder&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;grinder&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;grinder&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;vertDrill&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;vertDrill&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;vertDrill&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;vertDrill&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;vertDrill&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;vertDrill&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;horiDrill&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;horiDrill&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;horiDrill&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;horiDrill&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;horiDrill&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;horiDrill&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;borer&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;borer&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;borer&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;borer&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;borer&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;borer&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;planer&#39;, &#39;Jan&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;planer&#39;, &#39;Feb&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;planer&#39;, &#39;Mar&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;planer&#39;, &#39;Apr&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;planer&#39;, &#39;May&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- (&#39;planer&#39;, &#39;Jun&#39;): &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The objective is to maximize the profit of the company. It consists of the profit for each product minus cost for storing the unsold products. This can be stated as:</p>
+<p>The objective is to maximize the profit of the company, which consists of
+the profit for each product minus the cost for storing the unsold products. This can be stated as:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#0. Objective Function</span>
-<span class="n">obj</span> <span class="o">=</span> <span class="n">quicksum</span><span class="p">(</span><span class="n">profit</span><span class="p">[</span><span class="n">product</span><span class="p">]</span> <span class="o">*</span> <span class="n">sell</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span> <span class="o">-</span>  <span class="n">holding_cost</span> <span class="o">*</span> <span class="n">store</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span>  
+<span class="n">obj</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">profit</span><span class="p">[</span><span class="n">product</span><span class="p">]</span> <span class="o">*</span> <span class="n">sell</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span> <span class="o">-</span>  <span class="n">holding_cost</span> <span class="o">*</span> <span class="n">store</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">product</span><span class="p">]</span>  
                <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">months</span> <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">)</span>
 
 <span class="n">factory</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
@@ -13728,14 +13643,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we start the optimization and Gurobi tries to find the optimal solution.</p>
+<p>Next, we start the optimization and Gurobi finds the optimal solution.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">factory</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
@@ -13755,7 +13670,9 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Optimize a model with 79 rows, 126 columns and 288 nonzeros
+<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+Optimize a model with 79 rows, 126 columns and 288 nonzeros
+Model fingerprint: 0xead11e9d
 Coefficient statistics:
   Matrix range     [1e-02, 1e+00]
   Objective range  [5e-01, 1e+01]
@@ -13769,7 +13686,7 @@ Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    1.2466500e+05   3.640000e+02   0.000000e+00      0s
        2    9.3715179e+04   0.000000e+00   0.000000e+00      0s
 
-Solved in 2 iterations and 0.01 seconds
+Solved in 2 iterations and 0.03 seconds
 Optimal objective  9.371517857e+04
 </pre>
 </div>
@@ -13783,14 +13700,16 @@ Optimal objective  9.371517857e+04
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The highest revenue we can hope for is 93,715.18 USD.  Let's see the optimal solution needed to achieve that figure:</p>
-<h3 id="Production-Plan">Production Plan<a class="anchor-link" href="#Production-Plan">&#182;</a></h3>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The result of the optimization model shows that the maximum profit we can achieve is $\$93,715.18$.
+Let's see the solution that achieves that optimal result.</p>
+<h3 id="Production-Plan">Production Plan<a class="anchor-link" href="#Production-Plan">&#182;</a></h3><p>This plan determines the amount of each product to make at each period of the planning horizon. For example, in February we make 700 units of product Prod1.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">months</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13813,7 +13732,7 @@ Optimal objective  9.371517857e+04
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[8]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -13920,13 +13839,14 @@ Optimal objective  9.371517857e+04
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Sales-Plan">Sales Plan<a class="anchor-link" href="#Sales-Plan">&#182;</a></h3>
+<h3 id="Sales-Plan">Sales Plan<a class="anchor-link" href="#Sales-Plan">&#182;</a></h3><p>This plan defines the amount of each product to sell at each period of the planning horizon. For example, in February we sell 600 units of product Prod1.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">months</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13949,7 +13869,7 @@ Optimal objective  9.371517857e+04
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -14056,13 +13976,14 @@ Optimal objective  9.371517857e+04
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Inventory-Plan">Inventory Plan<a class="anchor-link" href="#Inventory-Plan">&#182;</a></h3>
+<h3 id="Inventory-Plan">Inventory Plan<a class="anchor-link" href="#Inventory-Plan">&#182;</a></h3><p>This plan reflects the amount of product in inventory at the end of each period of the planning horizon. For example, at the end of February we have 100 units of Prod1 in inventory.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">months</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -14085,7 +14006,7 @@ Optimal objective  9.371517857e+04
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -14196,10 +14117,23 @@ Optimal objective  9.371517857e+04
 <p><code>factory.write("factory-planning-1-output.sol")</code></p>
 <hr>
 <h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Pages 255-256, 350-352)</p>
-<p>Copyright &copy; 2019 Gurobi Optimization, LLC</p>
+<p>Copyright &copy; 2020 Gurobi Optimization, LLC</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>

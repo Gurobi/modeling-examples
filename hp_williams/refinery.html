@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,14 +13116,15 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Refinery">Refinery<a class="anchor-link" href="#Refinery">&#182;</a></h1><p>This model is an example of a production problem. In production planning problems, decisions must be made regarding which products to produce, and which resources to use to produce those products. These problems are common across a broad range of manufacturing and mining industries.</p>
-<p>In this example, we will model and solve a production planning problem. In this case, the aim of application is to optimize the output of a refinery. The company can buy a restricted amount of two different kinds of crude oils, which can be processed to gasoline (motor fuel), jet fuel, or oil. The aim is to create an optimal production plan that maximizes the total profit, while considering production capacity and other restrictions.</p>
+<h1 id="Refinery">Refinery<a class="anchor-link" href="#Refinery">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a production planning problem. In such problems, decisions must be made regarding which products to produce, and which resources to use to produce those products. These problems are common across a broad range of manufacturing and mining industries. In this example, we will build a model to optimize the output of a refinery.</p>
+<p>The company can buy a restricted amount of two different kinds of crude oils, which can be processed to gasoline (motor fuel), jet fuel, or oil. The aim is to create an optimal production plan that maximizes the total profit, while considering production capacity and other restrictions.</p>
 <p>Note: More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
+<p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>An oil refinery purchases two types of crude oil (Crude 1 and Crude 2) and refines them through a four-step process (distillation, reforming, cracking, and blending) to produce gas and fuels that are sold.</p>
 <h3 id="Step-One:-Distillation">Step One: Distillation<a class="anchor-link" href="#Step-One:-Distillation">&#182;</a></h3><p>The distillation process separates each crude oil into six fractions according to their boiling points. These fractions are: light naphtha, medium naphtha, heavy naphtha, light oil, heavy oil, and residuum. The octane numbers for the light, medium and heavy naphthas are, respectively, 90, 80, and 70.</p>
-<p>The fractions into which one barrel of each type of crude separates into are as follows:</p>
+<p>One barrel of crude separates into following fractions:</p>
 <table>
 <thead><tr>
 <th><i></i></th>
@@ -13156,7 +13157,7 @@ div#notebook {
 </tr>
 </tbody>
 </table>
-<p>There is a small amount of waste in distillation (5% and 3%, respectively).</p>
+<p>There is a small amount of waste in distillation (5% and 3% for Crude 1 and 2, respectively).</p>
 <h3 id="Step-Two:-Reforming">Step Two: Reforming<a class="anchor-link" href="#Step-Two:-Reforming">&#182;</a></h3><p>After distillation, the resulting naphthas can be blended into different grades of gas, or they can go through a process called reforming. The output of the reforming process is a product known as reformed gasoline with an octane number of 115.</p>
 <p>The yields of reformed gasoline from each barrel of the different naphthas are given as follows:</p>
 <ul>
@@ -13176,7 +13177,7 @@ div#notebook {
 </ul>
 <h3 id="Step-Four:-Blending">Step Four: Blending<a class="anchor-link" href="#Step-Four:-Blending">&#182;</a></h3><h4 id="Gasoline">Gasoline<a class="anchor-link" href="#Gasoline">&#182;</a></h4><p>There are two kinds of gasoline — regular and premium — made by blending naphtha, reformed gasoline, and cracked gasoline. The only requirement is that regular gasoline must have an octane of at least 84 and premium gasoline must have an octane number of at least 94. It is assumed that octane numbers blend linearly by volume.</p>
 <h4 id="Jet-Fuel">Jet Fuel<a class="anchor-link" href="#Jet-Fuel">&#182;</a></h4><p>Jet fuel must have a vapor pressure that does not exceed $1.0 \frac{\text{kg}}{\text{cm}^2}$. The vapor pressures for light, heavy, cracked oils and residuum are, respectively, 1.0, 0.6, 1.5 and 0.05 $\frac{\text{kg}}{\text{cm}^2}$. It is assumed that vapor pressures blend linearly by volume.</p>
-<h4 id="Fuel-Oil">Fuel Oil<a class="anchor-link" href="#Fuel-Oil">&#182;</a></h4><p>To produce fuel oil, light oil, cracked oil, heavy oil and residuum must be blended in the ratio of 10:4:3:1.</p>
+<h4 id="Fuel-Oil">Fuel Oil<a class="anchor-link" href="#Fuel-Oil">&#182;</a></h4><p>To produce fuel oil, you must blend light oil, cracked oil, heavy oil and residuum in the ratio of 10:4:3:1.</p>
 <p>The availability and capacity limitations are as follows:</p>
 <ul>
 <li>The daily availability of crude 1 is 20 000 barrels.</li>
@@ -13357,7 +13358,7 @@ div#notebook {
 \text{RGPMF} + \text{RGRMF} = \text{RG}
 \tag{5.9}
 \end{equation}<ul>
-<li><strong>Premium-to-Regular Proportion:</strong> Production ratio between premium and regular gasoline must satisfy the minimum requirement.</li>
+<li><strong>Premium-to-Regular Proportion:</strong> The production ratio between premium and regular gasoline must satisfy the minimum requirement.</li>
 </ul>
 \begin{equation}
 \text{PMF} \geq 0.40*\text{RMF}
@@ -13378,7 +13379,7 @@ div#notebook {
 1.0*\text{LOJF} + 0.6*\text{HOJF} + 1.5*\text{COJF} + 0.05*\text{RJF} \leq 1.0*\text{JF}
 \tag{8}
 \end{equation}<hr>
-<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>First, we import the Gurobi Python Module and initialize the data structures.</p>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>We import the Gurobi Python Module and other Python libraries.</p>
 
 </div>
 </div>
@@ -13389,9 +13390,32 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="o">*</span>
 
-<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 8.1.1</span>
+<span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="n">GRB</span>
+
+<span class="c1"># tested with Python 3.7.0 &amp; Gurobi 9.0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Input-Data">Input Data<a class="anchor-link" href="#Input-Data">&#182;</a></h2><p>We define all the input data of the model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Parameters</span>
 
 <span class="n">crude_numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">petrols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Premium_fuel&quot;</span><span class="p">,</span> <span class="s2">&quot;Regular_fuel&quot;</span><span class="p">]</span>
@@ -13452,17 +13476,17 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create a model and the variables.</p>
+<h2 id="Model-Deployment">Model Deployment<a class="anchor-link" href="#Model-Deployment">&#182;</a></h2><p>We create a model and the variables.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">refinery</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Refinery_Optimization&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">refinery</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s1">&#39;Refinery_Optimization&#39;</span><span class="p">)</span>
 
 <span class="c1"># Variables</span>
 <span class="n">crudes</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">crude_numbers</span><span class="p">,</span> <span class="n">ub</span><span class="o">=</span><span class="n">buy_limit</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cr&quot;</span><span class="p">)</span>    
@@ -13484,6 +13508,25 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Using license file c:\gurobi\gurobi.lic
+Set parameter TokenServer to value SANTOS-SURFACE-
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13496,34 +13539,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Distillation capacity</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">crudes</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">distill_cap</span><span class="p">,</span> <span class="s2">&quot;Distill_cap&quot;</span><span class="p">)</span>
+<span class="n">DistillationCap</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">crudes</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">distill_cap</span><span class="p">,</span> <span class="s2">&quot;Distill_cap&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13538,34 +13561,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2. Reforming capacity</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">reform_usage</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">reform_cap</span><span class="p">,</span> <span class="s2">&quot;Reform_cap&quot;</span><span class="p">)</span>
+<span class="n">ReformingCap</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">reform_usage</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">reform_cap</span><span class="p">,</span> <span class="s2">&quot;Reform_cap&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13580,34 +13583,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 3. Cracking capacity</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">cracking_usage</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">crack_cap</span><span class="p">,</span> <span class="s2">&quot;Crack_cap&quot;</span><span class="p">)</span>
+<span class="n">CrackingCap</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">cracking_usage</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">crack_cap</span><span class="p">,</span> <span class="s2">&quot;Crack_cap&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13622,40 +13605,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4.1-4.6 Yield (Crude oil products)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">distillation_splitting_coefficients</span><span class="p">[</span><span class="n">dpn</span><span class="p">][</span><span class="n">crude</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">crudes</span><span class="p">[</span><span class="n">crude</span><span class="p">]</span> <span class="k">for</span> <span class="n">crude</span> <span class="ow">in</span> <span class="n">crudes</span><span class="p">)</span>
+<span class="n">YieldCrudeOil</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">distillation_splitting_coefficients</span><span class="p">[</span><span class="n">dpn</span><span class="p">][</span><span class="n">crude</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">crudes</span><span class="p">[</span><span class="n">crude</span><span class="p">]</span> <span class="k">for</span> <span class="n">crude</span> <span class="ow">in</span> <span class="n">crudes</span><span class="p">)</span>
                   <span class="o">==</span> <span class="n">distillation_products</span><span class="p">[</span><span class="n">dpn</span><span class="p">]</span> <span class="k">for</span> <span class="n">dpn</span> <span class="ow">in</span> <span class="n">distillation_products_names</span><span class="p">),</span> <span class="s2">&quot;Splitting_distillation&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Light_naphtha&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Medium_naphtha&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Heavy_naphtha&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Light_oil&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Heavy_oil&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Residuum&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13670,34 +13628,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4.7 Yield (Reforming of Naphthas)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">reform_usage</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">reforming_splitting_coefficients</span><span class="p">)</span> <span class="o">==</span> <span class="n">reformed_gasoline</span><span class="p">,</span> <span class="s2">&quot;Splitting_reforming&quot;</span><span class="p">)</span>
+<span class="n">YieldNaphthas</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">reform_usage</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">reforming_splitting_coefficients</span><span class="p">)</span> <span class="o">==</span> <span class="n">reformed_gasoline</span><span class="p">,</span> <span class="s2">&quot;Splitting_reforming&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13712,38 +13650,17 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4.8-4.9 Yield (Cracking of oils)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cracking_splitting_coefficients</span><span class="p">[</span><span class="n">oil</span><span class="p">,</span> <span class="n">crack_prod</span><span class="p">]</span><span class="o">*</span><span class="n">cracking_usage</span><span class="p">[</span><span class="n">oil</span><span class="p">]</span>
+<span class="n">YieldCrackingOil</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">cracking_splitting_coefficients</span><span class="p">[</span><span class="n">oil</span><span class="p">,</span> <span class="n">crack_prod</span><span class="p">]</span><span class="o">*</span><span class="n">cracking_usage</span><span class="p">[</span><span class="n">oil</span><span class="p">]</span>
                            <span class="k">for</span> <span class="n">oil</span> <span class="ow">in</span> <span class="n">intermediate_oils</span><span class="p">)</span> <span class="o">==</span> <span class="n">cracking_products</span><span class="p">[</span><span class="n">crack_prod</span><span class="p">]</span>
                   <span class="k">for</span> <span class="n">crack_prod</span> <span class="ow">in</span> <span class="n">cracking_products_names</span><span class="p">),</span>
                  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Splitting_cracking&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Cracked_gasoline&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Cracked_oil&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13758,35 +13675,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4.10 Yield (Lube oil)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">lube_oil_factor</span><span class="o">*</span><span class="n">used_for_lube_oil</span> <span class="o">==</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Lube_oil&quot;</span><span class="p">],</span>
+<span class="n">YieldLubeOil</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">lube_oil_factor</span><span class="o">*</span><span class="n">used_for_lube_oil</span> <span class="o">==</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Lube_oil&quot;</span><span class="p">],</span>
                 <span class="s2">&quot;Splitting_lube_oil&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13801,40 +13698,20 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 4.11 Yield (Premium gasoline)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_premium_motor_fuel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Premium_fuel&quot;</span><span class="p">],</span> <span class="s2">&quot;Blending_premium_fuel&quot;</span><span class="p">)</span>
+<span class="n">YieldPremium</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_premium_motor_fuel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Premium_fuel&quot;</span><span class="p">],</span> <span class="s2">&quot;Blending_premium_fuel&quot;</span><span class="p">)</span>
 
 <span class="c1"># 4.12 Yield (Regular gasoline)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_regular_motor_fuel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Regular_fuel&quot;</span><span class="p">],</span> <span class="s2">&quot;Blending_regular_fuel&quot;</span><span class="p">)</span>
+<span class="n">YieldRegular</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_regular_motor_fuel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Regular_fuel&quot;</span><span class="p">],</span> <span class="s2">&quot;Blending_regular_fuel&quot;</span><span class="p">)</span>
 
 <span class="c1"># 4.13 Yield (Jet fuel)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_jet_fuel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Jet_fuel&quot;</span><span class="p">],</span> <span class="s2">&quot;Continuity_jet_fuel&quot;</span><span class="p">)</span>
+<span class="n">YieldJetFuel</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_jet_fuel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Jet_fuel&quot;</span><span class="p">],</span> <span class="s2">&quot;Continuity_jet_fuel&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13849,39 +13726,17 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 5.1-5.3 Mass conservation (Naphthas)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">reform_usage</span><span class="p">[</span><span class="n">naphtha</span><span class="p">]</span> <span class="o">+</span>
+<span class="n">MassBalNaphthas</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">reform_usage</span><span class="p">[</span><span class="n">naphtha</span><span class="p">]</span> <span class="o">+</span>
                     <span class="n">used_for_regular_motor_fuel</span><span class="p">[</span><span class="n">naphtha</span><span class="p">]</span> <span class="o">+</span>
                     <span class="n">used_for_premium_motor_fuel</span><span class="p">[</span><span class="n">naphtha</span><span class="p">]</span> <span class="o">==</span>
                     <span class="n">distillation_products</span><span class="p">[</span><span class="n">naphtha</span><span class="p">]</span> <span class="k">for</span> <span class="n">naphtha</span> <span class="ow">in</span> <span class="n">naphthas</span><span class="p">),</span> <span class="s2">&quot;Continuity_napththa&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Light_naphtha&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Medium_naphtha&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;,
- &#39;Heavy_naphtha&#39;: &lt;gurobi.Constr *Awaiting Model Update*&gt;}</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13896,64 +13751,44 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 5.4 Mass Conservation (Light oil)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">cracking_usage</span><span class="p">[</span><span class="s2">&quot;Light_oil&quot;</span><span class="p">]</span><span class="o">+</span>
+<span class="n">MassBalLightOil</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">cracking_usage</span><span class="p">[</span><span class="s2">&quot;Light_oil&quot;</span><span class="p">]</span><span class="o">+</span>
                 <span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Light_oil&quot;</span><span class="p">]</span><span class="o">+</span>
                 <span class="n">blending_coefficients</span><span class="p">[</span><span class="s2">&quot;Light_oil&quot;</span><span class="p">]</span><span class="o">*</span><span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Fuel_oil&quot;</span><span class="p">]</span> <span class="o">==</span>
                 <span class="n">distillation_products</span><span class="p">[</span><span class="s2">&quot;Light_oil&quot;</span><span class="p">],</span> <span class="s2">&quot;Fixed_proportion_light_oil_for_blending&quot;</span><span class="p">)</span>
 
 <span class="c1"># 5.5 Mass Conservation (Heavy oil)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">cracking_usage</span><span class="p">[</span><span class="s2">&quot;Heavy_oil&quot;</span><span class="p">]</span><span class="o">+</span>
+<span class="n">MassBalHeavyOil</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">cracking_usage</span><span class="p">[</span><span class="s2">&quot;Heavy_oil&quot;</span><span class="p">]</span><span class="o">+</span>
                 <span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Heavy_oil&quot;</span><span class="p">]</span><span class="o">+</span>
                 <span class="n">blending_coefficients</span><span class="p">[</span><span class="s2">&quot;Heavy_oil&quot;</span><span class="p">]</span><span class="o">*</span><span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Fuel_oil&quot;</span><span class="p">]</span> <span class="o">==</span>
                 <span class="n">distillation_products</span><span class="p">[</span><span class="s2">&quot;Heavy_oil&quot;</span><span class="p">],</span> <span class="s2">&quot;Fixed_proportion_heavy_oil_for_blending&quot;</span><span class="p">)</span>
 
 <span class="c1"># 5.6 Mass Conservation (Cracked oil)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Cracked_oil&quot;</span><span class="p">]</span><span class="o">+</span>
+<span class="n">MassBalCrackedOil</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Cracked_oil&quot;</span><span class="p">]</span><span class="o">+</span>
                 <span class="n">blending_coefficients</span><span class="p">[</span><span class="s2">&quot;Cracked_oil&quot;</span><span class="p">]</span><span class="o">*</span><span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Fuel_oil&quot;</span><span class="p">]</span> <span class="o">==</span>
                 <span class="n">cracking_products</span><span class="p">[</span><span class="s2">&quot;Cracked_oil&quot;</span><span class="p">],</span> <span class="s2">&quot;Fixed_proportion_cracked_oil_for_blending&quot;</span><span class="p">)</span>
 
 <span class="c1"># 5.7 Mass Conservation (Residuum)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_lube_oil</span> <span class="o">+</span>
+<span class="n">MassBalResiduum</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_lube_oil</span> <span class="o">+</span>
                 <span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Residuum&quot;</span><span class="p">]</span><span class="o">+</span>
                 <span class="n">blending_coefficients</span><span class="p">[</span><span class="s2">&quot;Residuum&quot;</span><span class="p">]</span><span class="o">*</span><span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Fuel_oil&quot;</span><span class="p">]</span> <span class="o">==</span>
                 <span class="n">distillation_products</span><span class="p">[</span><span class="s2">&quot;Residuum&quot;</span><span class="p">],</span> <span class="s2">&quot;Fixed_proportion_residuum_for_blending&quot;</span><span class="p">)</span>
 
 <span class="c1"># 5.8 Mass conservation (Cracked gasoline)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_regular_motor_fuel</span><span class="p">[</span><span class="s2">&quot;Cracked_gasoline&quot;</span><span class="p">]</span> <span class="o">+</span>
+<span class="n">MassBalCrackedGas</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_regular_motor_fuel</span><span class="p">[</span><span class="s2">&quot;Cracked_gasoline&quot;</span><span class="p">]</span> <span class="o">+</span>
                 <span class="n">used_for_premium_motor_fuel</span><span class="p">[</span><span class="s2">&quot;Cracked_gasoline&quot;</span><span class="p">]</span> <span class="o">==</span>
                 <span class="n">cracking_products</span><span class="p">[</span><span class="s2">&quot;Cracked_gasoline&quot;</span><span class="p">],</span> <span class="s2">&quot;Continuity_cracked_gasoline&quot;</span><span class="p">)</span>
 
 <span class="c1"># 5.9 Mass conservation (Reformed gasoline)</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_regular_motor_fuel</span><span class="p">[</span><span class="s2">&quot;Reformed_gasoline&quot;</span><span class="p">]</span> <span class="o">+</span>
+<span class="n">MassBalReformedGas</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_regular_motor_fuel</span><span class="p">[</span><span class="s2">&quot;Reformed_gasoline&quot;</span><span class="p">]</span> <span class="o">+</span>
                 <span class="n">used_for_premium_motor_fuel</span><span class="p">[</span><span class="s2">&quot;Reformed_gasoline&quot;</span><span class="p">]</span> <span class="o">==</span>
                 <span class="n">reformed_gasoline</span><span class="p">,</span> <span class="s2">&quot;Continuity_reformed_gasoline&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[12]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13968,35 +13803,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 7. Premium-to-regular proportion</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Premium_fuel&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pmf_rmf_ratio</span><span class="o">*</span><span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Regular_fuel&quot;</span><span class="p">],</span>
+<span class="n">Premium2Regular</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Premium_fuel&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pmf_rmf_ratio</span><span class="o">*</span><span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Regular_fuel&quot;</span><span class="p">],</span>
                 <span class="s2">&quot;Prem2reg_prop&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[13]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -14011,40 +13826,20 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 8.1-8.2 Octane tolerance</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_regular_motor_fuel</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">octance_number_coefficients</span><span class="p">)</span> <span class="o">&gt;=</span>
+<span class="n">OctaneRegular</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_regular_motor_fuel</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">octance_number_coefficients</span><span class="p">)</span> <span class="o">&gt;=</span>
                 <span class="n">octance_number_fuel</span><span class="p">[</span><span class="s2">&quot;Regular_fuel&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Regular_fuel&quot;</span><span class="p">],</span>
                 <span class="s2">&quot;Octane_tol_regular_fuel&quot;</span><span class="p">)</span>
 
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_premium_motor_fuel</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">octance_number_coefficients</span><span class="p">)</span> <span class="o">&gt;=</span>
+<span class="n">OctanePremium</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_premium_motor_fuel</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">octance_number_coefficients</span><span class="p">)</span> <span class="o">&gt;=</span>
                 <span class="n">octance_number_fuel</span><span class="p">[</span><span class="s2">&quot;Premium_fuel&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Premium_fuel&quot;</span><span class="p">],</span>
                 <span class="s2">&quot;Octane_tol_premium_fuel&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -14059,11 +13854,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 9. Vapor-pressure tolerance</span>
-<span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Light_oil&quot;</span><span class="p">]</span> <span class="o">+</span>
+<span class="n">VaporPressure</span> <span class="o">=</span> <span class="n">refinery</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Light_oil&quot;</span><span class="p">]</span> <span class="o">+</span>
                 <span class="n">vapor_pressure_constants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Heavy_oil&quot;</span><span class="p">]</span> <span class="o">+</span>
                 <span class="n">vapor_pressure_constants</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Cracked_oil&quot;</span><span class="p">]</span> <span class="o">+</span>
                 <span class="n">vapor_pressure_constants</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">used_for_jet_fuel</span><span class="p">[</span><span class="s2">&quot;Residuum&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">end_products</span><span class="p">[</span><span class="s2">&quot;Jet_fuel&quot;</span><span class="p">],</span>
@@ -14071,26 +13866,6 @@ div#notebook {
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[15]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;gurobi.Constr *Awaiting Model Update*&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -14107,7 +13882,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 0. Profit</span>
@@ -14122,14 +13897,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, the optimization process starts and Gurobi tries to find the optimal solution.</p>
+<p>Next, the optimization process starts and Gurobi finds the optimal solution.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">refinery</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
@@ -14149,12 +13924,14 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Optimize a model with 29 rows, 36 columns and 106 nonzeros
+<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+Optimize a model with 29 rows, 36 columns and 106 nonzeros
+Model fingerprint: 0xe30699e6
 Coefficient statistics:
   Matrix range     [5e-02, 1e+02]
   Objective range  [2e+00, 7e+00]
   Bounds range     [5e+02, 3e+04]
-  RHS range        [8e+03, 4e+04]
+  RHS range        [8e+03, 5e+04]
 Presolve removed 13 rows and 14 columns
 Presolve time: 0.01s
 Presolved: 16 rows, 22 columns, 72 nonzeros
@@ -14177,14 +13954,14 @@ Optimal objective  2.113651348e+05
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The optimal solution results in a profit of 211,365.13 USD. The optimal values of the variables are given below:</p>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The optimal solution results in a profit of $\$211,365.13$. The optimal values of the variables are given below:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">refinery</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
@@ -14248,10 +14025,23 @@ residuum_used_for_lube_oil = 1000.0
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Page 258-260, 356-357)</p>
-<p>Copyright © 2019 Gurobi Optimization, LLC</p>
+<p>Copyright © 2020 Gurobi Optimization, LLC</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
