@@ -41,7 +41,7 @@ as an *academic user*.
 
 ## HTML Example URL
 
-https://gurobi.github.io/modeling-examples/cell_tower_coverage/cell_tower_coverage.html
+https://gurobi.github.io/modeling-examples/cell_tower_coverage/cell_tower.html
 
 
 Copyright © 2020 Gurobi Optimization, LLC
