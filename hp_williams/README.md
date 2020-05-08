@@ -13,8 +13,6 @@ As a result, while not including the overview information in the H.P. Williams b
 - Python implementation
 - Gurobi output and analysis
 
-Please note: these examples should be viewed as beta at this point. Feel free to read the information and try them out. Your feedback on what could be clearer, done better, or is missing/should be added is appreciated.
-
 ## Contents
 
 ---
