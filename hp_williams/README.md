@@ -1,4 +1,6 @@
-# Modeling Examples
+# Examples from “Model Building in Mathematical Programming” by H. Paul Williams
+
+## Modeling Examples
 
 We know many people like to start out by looking for examples of models that, even though not exact to their situation, give them a starting point that they can work from to build their own model.
 
