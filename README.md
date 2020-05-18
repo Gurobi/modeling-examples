@@ -20,7 +20,7 @@ show how the modeling objects of Gurobi and the typical type of constraints can 
 
 ## Index of modeling examples
 
-- [Cell Tower] (https://github.com/Gurobi/modeling-examples/tree/master/cell_tower_coverage)
+- [Cell Tower](https://github.com/Gurobi/modeling-examples/tree/master/cell_tower_coverage)
 
 - [Customer Assignment](https://github.com/Gurobi/modeling-examples/tree/master/customer_assignment)
 - [Haverly's Pooling Problem](https://github.com/Gurobi/modeling-examples/tree/master/haverly)
