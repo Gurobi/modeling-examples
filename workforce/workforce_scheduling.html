@@ -13535,8 +13535,7 @@ This decision variable is defined over the $availability$ set.</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Constraint: All shifts requirements most be satisfied.</span>
 
-<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="n">slacks</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">==</span> <span class="n">shiftRequirements</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shifts</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;shiftRequirement&#39;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="n">shift_reqmts</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="n">slacks</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">==</span> <span class="n">shiftRequirements</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shifts</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;shiftRequirement&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13558,8 +13557,8 @@ This decision variable is defined over the $availability$ set.</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Constraint: set the auxiliary variable (totSlack) equal to the total number of extra workers </span>
 <span class="c1"># required to satisfy shift requirements</span>
-<span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">totSlack</span> <span class="o">==</span> <span class="n">slacks</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;totSlack&#39;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+ 
+<span class="n">num_temps</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">totSlack</span> <span class="o">==</span> <span class="n">slacks</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;totSlack&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13580,8 +13579,8 @@ This decision variable is defined over the $availability$ set.</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Constraint: compute the total number of shifts for each worker</span>
-<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">totShifts</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">workers</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;totShifts&#39;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+<span class="n">num_shifts</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">totShifts</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">workers</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;totShifts&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13623,14 +13622,13 @@ $\text{maxShift} = Max \{\text{totShifts}(w): \ w \; in \; workers \} $</p>
 <span class="c1"># Recall that the totShifts variable is defined over the set of worker and determines the number of </span>
 <span class="c1"># shifts that an employed worker will work. The third argument is the name of this constraint.</span>
 
-<span class="n">m</span><span class="o">.</span><span class="n">addGenConstrMin</span><span class="p">(</span><span class="n">minShift</span><span class="p">,</span> <span class="n">totShifts</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;minShift&#39;</span><span class="p">)</span>
+<span class="n">min_constr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addGenConstrMin</span><span class="p">(</span><span class="n">minShift</span><span class="p">,</span> <span class="n">totShifts</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;minShift&#39;</span><span class="p">)</span>
 
 <span class="c1"># Constraint: </span>
 <span class="c1"># Similarly, the addGenConstrMax() method of the model object m adds a new general </span>
 <span class="c1"># constraint that determines the maximum value among a set of variables.</span>
 
-<span class="n">m</span><span class="o">.</span><span class="n">addGenConstrMax</span><span class="p">(</span><span class="n">maxShift</span><span class="p">,</span> <span class="n">totShifts</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;maxShift&#39;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="n">max_constr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addGenConstrMax</span><span class="p">(</span><span class="n">maxShift</span><span class="p">,</span> <span class="n">totShifts</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;maxShift&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13854,7 +13852,7 @@ Cutting planes:
   RLT: 6
   Relax-and-lift: 1
 
-Explored 1 nodes (89 simplex iterations) in 0.07 seconds
+Explored 1 nodes (89 simplex iterations) in 0.08 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 2: 1 10 
