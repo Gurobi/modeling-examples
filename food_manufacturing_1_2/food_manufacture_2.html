@@ -13119,8 +13119,8 @@ div#notebook {
 <h1 id="Food-Manufacture-II">Food Manufacture II<a class="anchor-link" href="#Food-Manufacture-II">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Food Manufacture I are examples of blending problems. In blending optimization problems, multiple raw materials are combined in a way the meets the stated constraints for the lowest cost. These problems are common in numerous industries including the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing feed that meets the different nutritional requirements of different animals).</p>
 <h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this particular example, we will model and solve a production planning problem where we must create a final product from a number of ingredients — each of which has different costs, restrictions, and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation  below.</p>
 <p>Compared to Food Manufacturing I, this example has additional constraints that change the problem type from a linear program (LP) to a mixed-integer program (MIP), making it harder to solve. You can see these additional constraints at the end of the Problem Description section below.</p>
-<p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
-<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or required advanced features of the Gurobi Python API.</p>
+<p>More information on this type of model can be found in example #2 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 255 and 299-300.</p>
+<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A manufacturer needs to refine several raw oils and blend them together to produce a given food product that can be sold. The raw oils needed can be divided into two categories:</p>
@@ -13759,7 +13759,7 @@ Coefficient statistics:
   RHS range        [3e+00, 5e+02]
 Presolve added 24 rows and 0 columns
 Presolve removed 0 rows and 66 columns
-Presolve time: 0.02s
+Presolve time: 0.05s
 Presolved: 95 rows, 60 columns, 272 nonzeros
 Variable types: 35 continuous, 25 integer (25 binary)
 Found heuristic solution: objective 35250.000000
@@ -13791,7 +13791,7 @@ Cutting planes:
   Inf proof: 3
   Relax-and-lift: 1
 
-Explored 388 nodes (2078 simplex iterations) in 0.20 seconds
+Explored 388 nodes (2078 simplex iterations) in 0.19 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 5: 100279 100054 96875 ... 35250
@@ -14183,7 +14183,7 @@ Best objective 1.002787037037e+05, best bound 1.002787037037e+05, gap 0.0000%
 <p>Note: If you want to write your solution to a file, rather than print it to the terminal, you can use the model.write() command. An example implementation is:</p>
 <p><code>food.write("food-manufacture-2-output.sol")</code></p>
 <hr>
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Pages 255, 298-300, 349-350)</p>
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition.</p>
 <p>Copyright © 2020 Gurobi Optimization, LLC</p>
 
 </div>

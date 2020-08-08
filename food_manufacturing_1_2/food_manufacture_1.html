@@ -13119,7 +13119,7 @@ div#notebook {
 <h1 id="Food-Manufacture-I">Food Manufacture I<a class="anchor-link" href="#Food-Manufacture-I">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Food Manufacture II are examples of blending problems. In blending optimization problems, multiple raw materials are combined in a way that meets the stated constraints at the lowest cost. These problems are common in numerous industries including the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing feed that meets the different nutritional requirements of different animals).</p>
 <h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this particular example, we will model and solve a production planning problem where we must create a final product from a number of ingredients — each of which has different costs, restrictions, and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation below.</p>
 <p>In Food Manufacture II, we will extend this example with additional constraints that change the problem type from a linear program (LP) to a mixed-integer program (MIP), making it harder to solve.</p>
-<p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
+<p>More information on this type of model can be found in example #1 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 253-254 and 296-298.</p>
 <p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
@@ -13639,14 +13639,14 @@ Coefficient statistics:
   Bounds range     [0e+00, 0e+00]
   RHS range        [2e+02, 5e+02]
 Presolve removed 33 rows and 45 columns
-Presolve time: 0.00s
+Presolve time: 0.02s
 Presolved: 37 rows, 51 columns, 149 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    3.7375000e+05   1.703125e+03   0.000000e+00      0s
       29    1.0784259e+05   0.000000e+00   0.000000e+00      0s
 
-Solved in 29 iterations and 0.01 seconds
+Solved in 29 iterations and 0.03 seconds
 Optimal objective  1.078425926e+05
 </pre>
 </div>
@@ -14033,7 +14033,7 @@ Optimal objective  1.078425926e+05
 <p><strong>Note:</strong> If you want to write your solution to a file, rather than print it to the terminal, you can use the model.write() command. An example implementation is:</p>
 <p><code>food.write("food-manufacture-1-output.sol")</code></p>
 <hr>
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Page 253-254, 296-298, 349-350)</p>
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition.</p>
 <p>Copyright © 2020 Gurobi Optimization, LLC</p>
 
 </div>
