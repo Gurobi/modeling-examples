@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>electrical_power</title>
+<title>electrical_power_1</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13217,7 +13217,8 @@ div#notebook {
 <hr>
 <h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$t \in \text{Types}=\{0,1,2\}$: Types of generators.</p>
 <p>$p \in \text{Periods}=\{0,1,2,3,4\}$: Time periods.</p>
-<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$\text{generators}_t \in \mathbb{N}^+$: Number of generators of type $t$.</p>
+<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$\text{period_hours}_p \in \mathbb{N}^+$: Number of hours in each time period.</p>
+<p>$\text{generators}_t \in \mathbb{N}^+$: Number of generators of type $t$.</p>
 <p>$\text{demand}_p \in \mathbb{R}^+$: Total power demand for time period $p$.</p>
 <p>$\text{start0} \in \mathbb{N}^+$: Number of generators that are on at the beginning of the time horizon (and available in time period 0 without paying a startup cost).</p>
 <p>$\text{min_output}_t \in \mathbb{R}^+$: Minimum output for generator type $t$ (when on).</p>
@@ -13243,7 +13244,7 @@ Z_{startup} = \sum_{(t,p) \in \text{Types} \times \text{Periods}}{\text{startup_
 <li><strong>Available generators</strong>: Number of generators used must be less than or equal to the number available.</li>
 </ul>
 \begin{equation}
-\text{ngen}_{t,p} \leq \text{available_gen}_{t} \quad \forall (t,p) \in \text{Types} \times \text{Periods}
+\text{ngen}_{t,p} \leq \text{generators}_{t} \quad \forall (t,p) \in \text{Types} \times \text{Periods}
 \end{equation}<ul>
 <li><strong>Demand</strong>: Total power generated across all generator types must meet anticipated demand for each time period $p$.</li>
 </ul>
@@ -13591,7 +13592,7 @@ Cutting planes:
   MIR: 4
   StrongCG: 1
 
-Explored 1 nodes (27 simplex iterations) in 0.03 seconds
+Explored 1 nodes (27 simplex iterations) in 0.04 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 7: 1.00254e+06 1.00329e+06 1.00597e+06 ... 1.12391e+06
