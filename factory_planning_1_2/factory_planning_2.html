@@ -13118,7 +13118,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Factory-Planning-II">Factory Planning II<a class="anchor-link" href="#Factory-Planning-II">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Factory Planning I are examples of production planning problems. In production planning problems, choices must be made about which products to produce, how much of those products to produce, and what resources to use in order to maximize profits or minimize costs, while meeting a range of constraints. These problems are common across a broad range of manufacturing situations.</p>
 <h2 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h2><p>In this particular example, we’ll model and solve a production planning problem: During each period we can manufacture a range of products. Each of the products requires a different amount of time to manufacture on different machines, and yields a different profit. The aim is to create an optimal multi-period production plan to maximize the profit. In contrast to the Factory Planning I example, in this example the optimization model will choose the month in which each machine is down for maintenance. There is an upper limit on the sales of each product in each month due to market limitations and the storage capacity is also restricted.</p>
-<p>More information on this type of model can be found in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
+<p>More information on this type of model can be found in example # 4 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 256 and 302-303.</p>
 <p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
@@ -13679,7 +13679,7 @@ Coefficient statistics:
   RHS range        [1e+00, 2e+03]
 Found heuristic solution: objective -175.0000000
 Presolve removed 22 rows and 27 columns
-Presolve time: 0.00s
+Presolve time: 0.01s
 Presolved: 62 rows, 129 columns, 278 nonzeros
 Variable types: 105 continuous, 24 integer (12 binary)
 
@@ -13699,7 +13699,7 @@ Cutting planes:
   MIR: 3
   Relax-and-lift: 12
 
-Explored 1 nodes (25 simplex iterations) in 0.03 seconds
+Explored 1 nodes (25 simplex iterations) in 0.11 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 4: 108855 95975 92755 -175 
@@ -14256,7 +14256,7 @@ Best objective 1.088550000000e+05, best bound 1.088550000000e+05, gap 0.0000%
 <p><strong>Note:</strong> If you want to write your solution to a file, rather than print it to the terminal, you can use the model.write() command. An example implementation is:</p>
 <p><code>factory.write("factory-planning-2-output.sol")</code></p>
 <hr>
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Page 255-256, 350-352)</p>
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition.</p>
 <p>Copyright &copy; 2020 Gurobi Optimization, LLC</p>
 
 </div>

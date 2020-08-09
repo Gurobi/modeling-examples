@@ -13119,7 +13119,7 @@ div#notebook {
 <h1 id="Factory-Planning-I">Factory Planning I<a class="anchor-link" href="#Factory-Planning-I">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Factory Planning II are examples of production planning problems. In production planning problems, choices must be made about which products to produce, how much of those products to produce, and what resources to use in order to maximize profits or minimize costs, while meeting a range of constraints. These problems are common across a broad range of manufacturing situations.</p>
 <h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this particular example, we’ll model and solve a production mix problem: During each period we can manufacture a range of products. Each of the products requires a different amount of time to manufacture on different machines, and yields a different profit.The aim is to create an optimal multi-period production plan to maximize the profit. Some machines are not available in particular periods due to maintenance. There is an upper limit on the sales of each product in each month due to market limitations and the storage capacity is also restricted.</p>
 <p>In Factory Planning II, we’ll add more complexity to this example; the month in which each machine is down for maintenance will be chosen as a part of the optimized plan.</p>
-<p>More information on this type of model can be found in in the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams.</p>
+<p>More information on this type of model can be found in example # 3 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 255-256 and 300-302.</p>
 <p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
 <hr>
@@ -13686,7 +13686,7 @@ Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    1.2466500e+05   3.640000e+02   0.000000e+00      0s
        2    9.3715179e+04   0.000000e+00   0.000000e+00      0s
 
-Solved in 2 iterations and 0.03 seconds
+Solved in 2 iterations and 0.01 seconds
 Optimal objective  9.371517857e+04
 </pre>
 </div>
@@ -14116,7 +14116,7 @@ Let's see the solution that achieves that optimal result.</p>
 <p><strong>Note:</strong> If you want to write your solution to a file, rather than print it to the terminal, you can use the model.write() command. An example implementation is:</p>
 <p><code>factory.write("factory-planning-1-output.sol")</code></p>
 <hr>
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition (Pages 255-256, 350-352)</p>
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition.</p>
 <p>Copyright &copy; 2020 Gurobi Optimization, LLC</p>
 
 </div>
