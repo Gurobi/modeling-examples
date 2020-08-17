@@ -13330,7 +13330,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">p_pooling</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Pooling&quot;</span><span class="p">)</span>
@@ -13421,7 +13421,7 @@ Changed value of parameter timelimit to 300.0
    Prev: inf  Min: 0.0  Max: inf  Default: inf
 Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
 Optimize a model with 10 rows, 24 columns and 38 nonzeros
-Model fingerprint: 0x00ee69bf
+Model fingerprint: 0x59d32e14
 Model has 20 quadratic constraints
 Coefficient statistics:
   Matrix range     [1e+00, 1e+00]
@@ -13434,12 +13434,12 @@ Coefficient statistics:
 Continuous model is non-convex -- solving as a MIP.
 
 Presolve removed 1 rows and 0 columns
-Presolve time: 0.01s
+Presolve time: 0.02s
 Presolved: 125 rows, 49 columns, 311 nonzeros
 Presolved model has 24 bilinear constraint(s)
 Variable types: 49 continuous, 0 integer (0 binary)
 
-Root relaxation: objective 9.577646e+05, 56 iterations, 0.00 seconds
+Root relaxation: objective 9.577646e+05, 56 iterations, 0.01 seconds
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
@@ -13450,30 +13450,96 @@ Root relaxation: objective 9.577646e+05, 56 iterations, 0.00 seconds
      0     0 878230.977    0   21          - 878230.977      -     -    0s
      0     0 878230.977    0   20          - 878230.977      -     -    0s
      0     2 878230.977    0   20          - 878230.977      -     -    0s
-* 7873  5079             249    277284.23384 827937.298   199%   7.3    0s
-* 7888  5079             252    277284.23395 827937.298   199%   7.3    0s
-*10467  6066              91    278571.85074 793253.570   185%   7.5    0s
-*10469  6062              92    279359.10634 793253.570   184%   7.5    0s
-*10470  6060              92    279683.79210 793253.570   184%   7.5    0s
-*11515  6436              83    280085.61433 771299.515   175%   7.4    0s
-*11562  6404              66    281421.77879 771299.515   174%   7.4    1s
-*11822  6969              90    281641.40745 766583.692   172%   7.4    1s
-*11827  6963              90    281955.97549 766583.692   172%   7.4    1s
-H12644  6207                    323395.64753 765317.146   137%   7.4    1s
-*16365  6747             112    334755.95871 744185.592   122%   8.1    1s
-*16367  6738             113    335228.72035 744185.592   122%   8.1    1s
-*17685  7451             131    341924.84359 743319.536   117%   7.9    1s
- 62497 39207 656195.258   68   16 341924.844 707134.231   107%   7.0    5s
- 135052 88943 550489.119   62   20 341924.844 706866.255   107%   6.7   10s
- 221912 143325 706636.575  142   16 341924.844 706818.673   107%   6.1   15s
- 295404 190560     cutoff   63      341924.844 706779.198   107%   6.0   20s
- 375871 242231 647413.185   67   24 341924.844 706747.994   107%   5.8   25s
- 461903 296077 706642.507   82   19 341924.844 706723.917   107%   5.7   30s
- 531200 336594 706714.555   80   11 341924.844 706714.634   107%   5.5   35s
- 599833 377457     cutoff  104      341924.844 706703.719   107%   5.5   40s
- 674791 421024 572553.361   89   20 341924.844 706693.407   107%   5.4   45s
- 754953 470038 706636.690  145   12 341924.844 706685.365   107%   5.3   50s
- 834440 516339 659433.065   66   18 341924.844 706679.970   107%   5.2   55s
+* 1927  1907             134    263730.11967 837698.434   218%   7.3    0s
+* 5021  3355              54    266377.71782 724146.388   172%   6.8    0s
+* 5593  3432              95    308249.57852 716081.192   132%   6.9    0s
+* 5599  3345              95    308249.57856 716081.192   132%   6.9    0s
+* 5609  3262              95    308249.57860 716081.192   132%   6.9    0s
+* 6033  3469             130    322769.88783 712632.245   121%   6.8    0s
+* 6047  3367             136    323738.64180 712632.245   120%   6.8    0s
+* 7343  3714              62    324011.27928 709866.667   119%   6.9    0s
+* 8515  4213              92    325287.96968 709866.667   118%   7.0    0s
+* 8517  4213              93    325287.96973 709866.667   118%   7.0    0s
+* 8521  4213              95    325287.96977 709866.667   118%   7.0    0s
+*12548  6096              83    325315.73755 707517.455   117%   7.7    1s
+*20116  7853             195    328873.95358 705636.713   115%   7.8    2s
+*20117  7849             195    329060.83777 705636.713   114%   7.8    2s
+*20118  7849             194    329070.27690 705636.713   114%   7.8    2s
+*20119  7839             193    329080.21283 705636.713   114%   7.8    2s
+*20120  7839             192    329090.67171 705636.713   114%   7.8    2s
+*20121  7839             191    329101.68105 705636.713   114%   7.8    2s
+*23551  6770             121    346978.40032 700617.165   102%   8.9    2s
+*23552  6770             121    346978.40257 700617.165   102%   8.9    2s
+*23557  6770             120    346978.40681 700617.165   102%   8.9    2s
+ 64724 36164 infeasible   56      346978.407 666107.243  92.0%   7.4    5s
+ 146554 98426 573450.731   61   10 346978.407 665919.393  91.9%   6.4   10s
+ 217069 148294 infeasible   62      346978.407 665907.668  91.9%   6.4   15s
+ 286106 196549 588780.141  100    7 346978.407 665905.832  91.9%   6.7   20s
+ 367033 255876 470531.514   85    6 346978.407 665905.506  91.9%   6.7   25s
+ 446831 315965 665905.382   75    9 346978.407 665905.463  91.9%   6.6   30s
+ 523723 373196 574337.483  129   10 346978.407 665905.454  91.9%   6.7   35s
+ 596512 430108 587451.543  157   10 346978.407 665905.452  91.9%   6.7   40s
+ 669032 487207 588752.309  114    8 346978.407 665905.451  91.9%   6.7   45s
+ 735697 539826 infeasible  147      346978.407 665905.450  91.9%   6.8   50s
+ 804933 594427 587243.791  132   12 346978.407 665905.450  91.9%   6.8   55s
+ 869363 644240 infeasible   91      346978.407 665905.449  91.9%   6.8   60s
+ 925972 688706 587453.210  153   11 346978.407 665905.449  91.9%   6.8   65s
+ 987758 737398 508376.862  143   12 346978.407 665905.449  91.9%   6.8   70s
+ 1045671 782955 587448.100  162   13 346978.407 665905.448  91.9%   6.8   75s
+ 1099488 824053 597466.701   81   13 346978.407 665905.448  91.9%   6.9   80s
+ 1145517 860103     cutoff  100      346978.407 665905.448  91.9%   6.9   85s
+ 1185587 891503 587466.790  119    9 346978.407 665905.448  91.9%   6.9   90s
+ 1234648 929817 429795.325   96   13 346978.407 665905.448  91.9%   6.9   95s
+ 1278698 965633 587456.630  149    9 346978.407 665905.448  91.9%   6.9  100s
+ 1325849 1002349 493064.825   93   13 346978.407 665905.447  91.9%   6.9  105s
+ 1372171 1038902 574392.037  150   18 346978.407 665905.447  91.9%   6.9  110s
+ 1415976 1073276 587453.870  178    8 346978.407 665905.447  91.9%   6.9  115s
+ 1452666 1102042 587408.017  185   13 346978.407 665905.447  91.9%   6.9  120s
+ 1494087 1135484 518491.257   99   11 346978.407 665905.447  91.9%   6.9  125s
+ 1533746 1166382 587455.978  158   11 346978.407 665905.447  91.9%   6.9  130s
+ 1569354 1195994 591156.447   85    8 346978.407 665905.447  91.9%   6.9  135s
+ 1602435 1223016 infeasible   90      346978.407 665905.447  91.9%   6.9  140s
+ 1629176 1244050 592746.319   90   15 346978.407 665905.447  91.9%   6.9  145s
+ 1658759 1266971 587503.448  111    9 346978.407 665905.447  91.9%   6.9  150s
+ 1691677 1293037 infeasible  198      346978.407 665905.447  91.9%   6.9  155s
+ 1721818 1317169 587452.069  164   14 346978.407 665905.447  91.9%   6.9  160s
+ 1751223 1340185 infeasible  192      346978.407 665905.446  91.9%   6.9  165s
+ 1780045 1363452 585006.800  122    8 346978.407 665905.446  91.9%   6.9  170s
+ 1808104 1386855 665905.446   85   15 346978.407 665905.446  91.9%   6.9  175s
+ 1829333 1403671 589411.413  133    9 346978.407 665905.446  91.9%   6.9  180s
+ 1853880 1422918 594834.193   85   14 346978.407 665905.446  91.9%   6.9  185s
+ 1878017 1441690 587460.140  128    5 346978.407 665905.446  91.9%   6.9  190s
+ 1897993 1457668 553412.444  143    7 346978.407 665905.446  91.9%   6.9  195s
+ 1918186 1473566 587551.973  108   10 346978.407 665905.446  91.9%   6.9  200s
+ 1935433 1487525 infeasible   86      346978.407 665905.446  91.9%   6.9  205s
+ 1951817 1500274     cutoff   95      346978.407 665905.446  91.9%   6.9  210s
+ 1966580 1512279 594738.299  103    6 346978.407 665905.446  91.9%   6.9  215s
+ 1984393 1526167 588701.419  117    6 346978.407 665905.446  91.9%   6.9  220s
+ 2003743 1541428 587107.111  117    8 346978.407 665905.446  91.9%   6.9  225s
+ 2026379 1559255 587456.458  172    7 346978.407 665905.446  91.9%   6.9  230s
+ 2047413 1576413 588788.175  104    8 346978.407 665905.446  91.9%   6.9  235s
+ 2068624 1593485 665905.444   90   11 346978.407 665905.446  91.9%   6.9  240s
+ 2090768 1610499 587457.490  137    8 346978.407 665905.446  91.9%   6.9  245s
+ 2111937 1627414 infeasible  203      346978.407 665905.446  91.9%   6.9  250s
+ 2125245 1638227 418041.761   87    9 346978.407 665905.446  91.9%   6.9  255s
+ 2144493 1652753 587415.379  140   13 346978.407 665905.446  91.9%   6.9  260s
+ 2164972 1669513 588880.129  107    8 346978.407 665905.446  91.9%   6.9  265s
+ 2186542 1685907 infeasible  211      346978.407 665905.446  91.9%   6.9  270s
+ 2207633 1701919 577032.735  107   15 346978.407 665905.446  91.9%   6.9  275s
+ 2229326 1719066 587624.771  134    9 346978.407 665905.446  91.9%   6.9  280s
+ 2249495 1735417 587458.057  137    9 346978.407 665905.445  91.9%   6.9  285s
+ 2272006 1753436 589725.738   99    6 346978.407 665905.445  91.9%   6.9  290s
+ 2294769 1771504 infeasible   94      346978.407 665905.445  91.9%   6.9  295s
+ 2312724 1786109 597466.046   93   17 346978.407 665905.445  91.9%   6.9  300s
+
+Explored 2313831 nodes (16012361 simplex iterations) in 300.01 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 10: 346978 346978 346978 ... 325316
+
+Time limit reached
+Warning: max constraint violation (1.6281e-06) exceeds tolerance
+Best objective 3.469784068080e+05, best bound 6.659054453585e+05, gap 91.9155%
 </pre>
 </div>
 </div>
@@ -13500,7 +13566,7 @@ H12644  6207                    323395.64753 765317.146   137%   7.4    1s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">q_pooling</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Pooling&quot;</span><span class="p">)</span>
@@ -13571,6 +13637,77 @@ H12644  6207                    323395.64753 765317.146   137%   7.4    1s
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Changed value of parameter nonConvex to 2
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter timelimit to 300.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+Optimize a model with 7 rows, 16 columns and 22 nonzeros
+Model fingerprint: 0xfc755c91
+Model has 18 quadratic objective terms
+Model has 15 quadratic constraints
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  QMatrix range    [6e-01, 1e+02]
+  QLMatrix range   [1e-02, 1e+02]
+  Objective range  [9e+01, 2e+02]
+  QObjective range [1e+02, 6e+02]
+  Bounds range     [1e+00, 8e+02]
+  RHS range        [1e+00, 2e+03]
+  QRHS range       [5e+02, 2e+04]
+
+Continuous model is non-convex -- solving as a MIP.
+
+Presolve time: 0.01s
+Presolved: 95 rows, 35 columns, 315 nonzeros
+Presolved model has 18 bilinear constraint(s)
+Variable types: 35 continuous, 0 integer (0 binary)
+
+Root relaxation: objective 1.810743e+06, 36 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 1810743.26    0   13          - 1810743.26      -     -    0s
+     0     0 865587.763    0   13          - 865587.763      -     -    0s
+     0     0 595135.123    0   13          - 595135.123      -     -    0s
+     0     0 564193.525    0   15          - 564193.525      -     -    0s
+     0     0 556780.563    0   15          - 556780.563      -     -    0s
+     0     0 549889.932    0   15          - 549889.932      -     -    0s
+     0     0 549889.932    0   18          - 549889.932      -     -    0s
+     0     0 549889.932    0   18          - 549889.932      -     -    0s
+     0     2 549889.932    0   18          - 549889.932      -     -    0s
+*   47    54               8    404852.41910 476226.236  17.6%   7.3    0s
+H   62    52                    433077.56632 476226.236  10.0%   7.1    0s
+H   65    52                    439182.58928 476226.236  8.43%   6.9    0s
+
+Cutting planes:
+  RLT: 18
+
+Explored 131 nodes (684 simplex iterations) in 0.20 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 439183 433078 404852 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 4.391825892775e+05, best bound 4.392081187464e+05, gap 0.0058%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13592,7 +13729,7 @@ H12644  6207                    323395.64753 765317.146   137%   7.4    1s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">sources</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13609,6 +13746,69 @@ H12644  6207                    323395.64753 765317.146   137%   7.4    1s
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t1</th>
+      <th>t2</th>
+      <th>t3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>s1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>s2</th>
+      <td>966.7</td>
+      <td>0.0</td>
+      <td>200.0</td>
+    </tr>
+    <tr>
+      <th>s3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13620,7 +13820,7 @@ H12644  6207                    323395.64753 765317.146   137%   7.4    1s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">pools</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13637,6 +13837,63 @@ H12644  6207                    323395.64753 765317.146   137%   7.4    1s
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t1</th>
+      <th>t2</th>
+      <th>t3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>p1</th>
+      <td>92.8</td>
+      <td>990.6</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>p2</th>
+      <td>1450.0</td>
+      <td>0.0</td>
+      <td>300.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13648,7 +13905,7 @@ H12644  6207                    323395.64753 765317.146   137%   7.4    1s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">sources</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -13663,6 +13920,65 @@ H12644  6207                    323395.64753 765317.146   137%   7.4    1s
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>p1</th>
+      <th>p2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>s1</th>
+      <td>325.0</td>
+      <td>1750.0</td>
+    </tr>
+    <tr>
+      <th>s2</th>
+      <td>258.3</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>s3</th>
+      <td>500.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
