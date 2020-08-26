@@ -13119,7 +13119,10 @@ div#notebook {
 <h1 id="Supply-Network-Design-2">Supply Network Design 2<a class="anchor-link" href="#Supply-Network-Design-2">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an extension of the supply network design problem considered in example 19. Given a set of factories, depots, and customers, the goal of this example is to determine which depots to open in order to minimize overall costs. This extenstion allows the possibility to close some depots and open new ones.</p>
 <p>This model is example 20 from the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on pages 275-276 and 332-333.</p>
 <p>This example is of beginning difficulty; we assume that you know Python and have some knowledge of the Gurobi Python API and building mathematical optimization models.</p>
-<p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
+<p><strong>Download the Repository</strong> <br />
+You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
+<p><strong>Gurobi License</strong> <br />
+In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-LOG-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_supply-network-design_2_COM_EVAL_GITHUB_&amp;utm_term=supply-network-design&amp;utm_content=C_JPM">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-LOG-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_supply-network-design_2_ACADEMIC_EVAL_GITHUB_&amp;utm_term=supply-network-design&amp;utm_content=C_JPM">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>In this problem, we have six end customers, each with a known demand for a product.  Customer demand can be satisfied from a set of six depots, or directly from a set of two factories.  Each depot can support a maximum volume of product moving through it, and each factory can produce a maximum amount of product.  There are known costs associated with transporting the product, from a factory to a depot, from a depot to a customer, or from a factory directly to a customer. This extension provides the opportunity to choose which four of the six possible depots to open.  It also provides an option of expanding capacity at one specific depot.</p>
 <p>Our supply network has two factories, in Liverpool and Brighton, that produce a product.  Each has a maximum production capacity:</p>
@@ -13754,7 +13757,7 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
 Optimize a model with 21 rows, 49 columns and 119 nonzeros
-Model fingerprint: 0x745b631a
+Model fingerprint: 0xf838fba4
 Variable types: 42 continuous, 7 integer (7 binary)
 Coefficient statistics:
   Matrix range     [1e+00, 1e+05]
