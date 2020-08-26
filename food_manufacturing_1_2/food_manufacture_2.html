@@ -13121,7 +13121,10 @@ div#notebook {
 <p>Compared to Food Manufacturing I, this example has additional constraints that change the problem type from a linear program (LP) to a mixed-integer program (MIP), making it harder to solve. You can see these additional constraints at the end of the Problem Description section below.</p>
 <p>More information on this type of model can be found in example #2 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 255 and 299-300.</p>
 <p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
-<p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
+<p><strong>Download the Repository</strong> <br /> 
+You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
+<p><strong>Gurobi License</strong> <br />
+In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-MFG-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_food-manufacturing_2_COM_EVAL_GITHUB_&amp;utm_term=food-manufacturing-problem&amp;utm_content=C_JPM">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-MFG-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_food-manufacturing_2_ACADEMIC_EVAL_GITHUB_&amp;utm_term=food-manufacturing-problem&amp;utm_content=C_JPM">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A manufacturer needs to refine several raw oils and blend them together to produce a given food product that can be sold. The raw oils needed can be divided into two categories:</p>
 <table>
@@ -13759,7 +13762,7 @@ Coefficient statistics:
   RHS range        [3e+00, 5e+02]
 Presolve added 24 rows and 0 columns
 Presolve removed 0 rows and 66 columns
-Presolve time: 0.05s
+Presolve time: 0.01s
 Presolved: 95 rows, 60 columns, 272 nonzeros
 Variable types: 35 continuous, 25 integer (25 binary)
 Found heuristic solution: objective 35250.000000
@@ -13791,7 +13794,7 @@ Cutting planes:
   Inf proof: 3
   Relax-and-lift: 1
 
-Explored 388 nodes (2078 simplex iterations) in 0.19 seconds
+Explored 388 nodes (2078 simplex iterations) in 0.12 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 5: 100279 100054 96875 ... 35250
