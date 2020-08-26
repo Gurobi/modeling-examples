@@ -13120,7 +13120,10 @@ div#notebook {
 <h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this example, we will model and solve a multi-period production planning problem. In this case, the aim of the application is to optimize mine production across a number of mines over a five-year period. The company has different mines, which can be opened, operational, or closed. Each mine varies in the quality of its ore and the amount of ore that can be extracted. The quality of ore required to meet production goals varies each year. The aim is to create an optimal production plan for the next five years to maximize the total profit, while considering production capacity, mine restrictions, and mine costs.</p>
 <p>More information on this type of model can be found in example # 7 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 261-262 and 310-312.</p>
 <p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
-<p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
+<p><strong>Download the Repository</strong> <br />
+You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
+<p><strong>Gurobi License</strong> <br />
+In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-MTM-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_mining_COM_EVAL_GITHUB_&amp;utm_term=mining-optimization&amp;utm_content=C_JPM">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-MTM-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_mining_ACADEMIC_EVAL_GITHUB_&amp;utm_term=mining-optimization&amp;utm_content=C_JPM">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A mining company needs to create a five-year operating plan for a certain area with four mines in it.</p>
 <p>They can only operate a maximum of three mines in this area in any given year. However, even though a mine may not operate in a given year, the company still must pay royalties on that mine if there is an expectation that it will operate again in the future. Otherwise, it can be permanently closed and no more royalties need to be paid.</p>
@@ -13623,7 +13626,7 @@ Cutting planes:
   RLT: 3
   Relax-and-lift: 3
 
-Explored 1 nodes (48 simplex iterations) in 0.07 seconds
+Explored 1 nodes (48 simplex iterations) in 0.06 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 5: 1.46862e+08 1.39362e+08 1.30271e+08 ... -0
