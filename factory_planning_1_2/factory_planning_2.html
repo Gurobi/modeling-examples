@@ -13120,7 +13120,10 @@ div#notebook {
 <h2 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h2><p>In this particular example, we’ll model and solve a production planning problem: During each period we can manufacture a range of products. Each of the products requires a different amount of time to manufacture on different machines, and yields a different profit. The aim is to create an optimal multi-period production plan to maximize the profit. In contrast to the Factory Planning I example, in this example the optimization model will choose the month in which each machine is down for maintenance. There is an upper limit on the sales of each product in each month due to market limitations and the storage capacity is also restricted.</p>
 <p>More information on this type of model can be found in example # 4 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 256 and 302-303.</p>
 <p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
-<p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
+<p><strong>Download the Repository</strong> <br />
+You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
+<p><strong>Gurobi License</strong> <br />
+In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-MFG-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_factory-planning_2_COM_EVAL_GITHUB_&amp;utm_term=factory-%20planning-problem&amp;utm_content=C_JPM">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-MFG-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_factory-planning_2_ACADEMIC_EVAL_GITHUB_&amp;utm_term=factory-planning-problem&amp;utm_content=C_JPM">free license</a> as an <em>academic user</em>.</p>
 <hr>
 <h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A factory makes seven products (Prod 1 to Prod 7) using a range of machines including:</p>
 <ul>
@@ -13679,7 +13682,7 @@ Coefficient statistics:
   RHS range        [1e+00, 2e+03]
 Found heuristic solution: objective -175.0000000
 Presolve removed 22 rows and 27 columns
-Presolve time: 0.01s
+Presolve time: 0.00s
 Presolved: 62 rows, 129 columns, 278 nonzeros
 Variable types: 105 continuous, 24 integer (12 binary)
 
@@ -13699,7 +13702,7 @@ Cutting planes:
   MIR: 3
   Relax-and-lift: 12
 
-Explored 1 nodes (25 simplex iterations) in 0.11 seconds
+Explored 1 nodes (25 simplex iterations) in 0.03 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 4: 108855 95975 92755 -175 
