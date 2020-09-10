@@ -13349,9 +13349,33 @@ y_{d,c,d2,c2} \leq \text{locate}_{d2,c2} \quad \forall (d,c,d2,c2) \in dcd2c2
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
 Set parameter TokenServer to value SANTOS-SURFACE-
-Changed value of parameter nonConvex to 2
-   Prev: -1  Min: -1  Max: 2  Default: -1
 </pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">GurobiError</span>                               Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-3-7dce11f9e0f6&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>model <span class="ansi-yellow-intense-fg ansi-bold">=</span> gp<span class="ansi-yellow-intense-fg ansi-bold">.</span>Model<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;decentralization&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      2</span> 
+<span class="ansi-green-fg">      3</span> <span class="ansi-red-intense-fg ansi-bold"># Set global parameters</span>
+<span class="ansi-green-fg">      4</span> model<span class="ansi-yellow-intense-fg ansi-bold">.</span>params<span class="ansi-yellow-intense-fg ansi-bold">.</span>nonConvex <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">2</span>
+<span class="ansi-green-fg">      5</span> 
+
+<span class="ansi-green-intense-fg ansi-bold">model.pxi</span> in <span class="ansi-cyan-fg">gurobipy.Model.__init__</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+
+<span class="ansi-green-intense-fg ansi-bold">gurobi.pxi</span> in <span class="ansi-cyan-fg">gurobipy.gurobi._getdefaultenv</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+
+<span class="ansi-green-intense-fg ansi-bold">env.pxi</span> in <span class="ansi-cyan-fg">gurobipy.Env.__init__</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+
+<span class="ansi-red-intense-fg ansi-bold">GurobiError</span>: Request denied: use limit (1) exceeded</pre>
 </div>
 </div>
 
@@ -13369,7 +13393,7 @@ Changed value of parameter nonConvex to 2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Department location constraint</span>
@@ -13393,7 +13417,7 @@ Changed value of parameter nonConvex to 2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Limit on number of departments</span>
@@ -13417,7 +13441,7 @@ Changed value of parameter nonConvex to 2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">setObjective</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">benefit</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">locate</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="n">d2c</span><span class="p">)</span> 
@@ -13432,7 +13456,7 @@ Changed value of parameter nonConvex to 2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Verify model formulation</span>
@@ -13448,68 +13472,10 @@ Changed value of parameter nonConvex to 2
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
-Optimize a model with 8 rows, 15 columns and 30 nonzeros
-Model fingerprint: 0x2ad3c449
-Model has 54 quadratic objective terms
-Variable types: 0 continuous, 15 integer (15 binary)
-Coefficient statistics:
-  Matrix range     [1e+00, 1e+00]
-  Objective range  [5e+00, 2e+01]
-  QObjective range [7e+00, 6e+01]
-  Bounds range     [1e+00, 1e+00]
-  RHS range        [1e+00, 3e+00]
-Found heuristic solution: objective -73.9000000
-Presolve time: 0.00s
-Presolved: 62 rows, 69 columns, 192 nonzeros
-Variable types: 0 continuous, 69 integer (69 binary)
-
-Root relaxation: objective -6.750000e+01, 14 iterations, 0.00 seconds
-
-    Nodes    |    Current Node    |     Objective Bounds      |     Work
- Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
-
-     0     0   67.50000    0   10  -73.90000   67.50000   191%     -    0s
-H    0     0                     -33.9000000   67.50000   299%     -    0s
-H    0     0                     -16.3000000   67.50000   514%     -    0s
-H    0     0                      14.9000000   67.50000   353%     -    0s
-     0     0   30.00000    0   22   14.90000   30.00000   101%     -    0s
-
-Cutting planes:
-  Gomory: 3
-  MIR: 16
-  Zero half: 4
-  Mod-K: 2
-  RLT: 25
-
-Explored 1 nodes (43 simplex iterations) in 0.04 seconds
-Thread count was 8 (of 8 available processors)
-
-Solution count 4: 14.9 -16.3 -33.9 -73.9 
-
-Optimal solution found (tolerance 1.00e-04)
-Best objective 1.490000000000e+01, best bound 1.490000000000e+01, gap 0.0000%
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Output reports</span>
@@ -13551,54 +13517,15 @@ Best objective 1.490000000000e+01, best bound 1.490000000000e+01, gap 0.0000%
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-
-_________________________________________________________________________________
-The optimal relocation plan is:
-_________________________________________________________________________________
-Locate department A at Bristol
-Locate department D at Bristol
-Locate department B at Brighton
-Locate department C at Brighton
-Locate department E at Brighton
-
-
-_________________________________________________________________________________
-Financial report
-_________________________________________________________________________________
-The yearly total benefit is $80,000.00 dollars
-The yearly total communication cost is $65,100.00 dollars
-The yearly total gross margin is $14,900.00 dollars
-</pre>
 </div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>H. Paul Williams, Model Building in Mathematical Programming, fifth edition.</p>
+<p>Copyright © 2020 Gurobi Optimization, LLC</p>
 
 </div>
 </div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
