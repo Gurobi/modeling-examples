@@ -1,8 +1,8 @@
 # Curve Fitting
 
-This Jupyter Notebook describes an example of fitting a function to a set of observations. A quantity $y$ is known to 
-depend on another quantity $x$. A set of corresponding values have been collected for $y$ and $x$. We want to identify 
-a function of $x$ that explains the values of $y$. This problem is formulated as a linear programming problem using 
+This Jupyter Notebook describes an example of fitting a function to a set of observations. A quantity y is known to 
+depend on another quantity x. A set of corresponding values have been collected for y and x. We want to identify 
+a function of x that explains the values of y. This problem is formulated as a linear programming problem using 
 the Gurobi Python API and solved with the Gurobi Optimizer.
 
 This model is example 11 from the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on 
