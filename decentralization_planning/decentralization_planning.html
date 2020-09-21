@@ -13119,7 +13119,10 @@ div#notebook {
 <h1 id="Decentralization-Planning">Decentralization Planning<a class="anchor-link" href="#Decentralization-Planning">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a facility location problem. Given a set of departments of a company, and potential cities where these departments can be located, we want to determine the "best" location of each department in order to maximize gross margins. This problem is formulated as a quadratic assignment problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
 <p>This model is example 10 from the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on pages 265 and 317-319.</p>
 <p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
-<p><strong>Note:</strong> You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>. In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=CommercialDataScience">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&amp;utm_medium=website_JupyterME&amp;utm_campaign=AcademicDataScience">free license</a> as an <em>academic user</em>.</p>
+<p><strong>Download the Repository</strong> <br /> 
+You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
+<p><strong>Gurobi License</strong> <br /> 
+In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-MUI-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_DECENTRALIZATION_COM_EVAL_GitHub&amp;utm_term=Decentralization_Planning&amp;utm_content=C_JPM">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-MUI-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_DECENTRALIZATION_ACADEMIC_EVAL_GitHub&amp;utm_term=Decentralization_Planning&amp;utm_content=C_JPM">free license</a> as an <em>academic user</em>.</p>
 
 </div>
 </div>
@@ -13473,7 +13476,7 @@ Coefficient statistics:
   Bounds range     [1e+00, 1e+00]
   RHS range        [1e+00, 3e+00]
 Found heuristic solution: objective -73.9000000
-Presolve time: 0.00s
+Presolve time: 0.01s
 Presolved: 62 rows, 69 columns, 192 nonzeros
 Variable types: 0 continuous, 69 integer (69 binary)
 
@@ -13495,7 +13498,7 @@ Cutting planes:
   Mod-K: 2
   RLT: 25
 
-Explored 1 nodes (43 simplex iterations) in 0.05 seconds
+Explored 1 nodes (43 simplex iterations) in 0.08 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 4: 14.9 -16.3 -33.9 -73.9 
