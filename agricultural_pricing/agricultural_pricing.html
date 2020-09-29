@@ -13225,15 +13225,15 @@ Last year's price index is 1.939 (measured in thousand dollars).</p>
 <h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$d \in \text{Dairy}=\{\text{milk}, \text{butter}, \text{cheese1}, \text{cheese2} \}$</p>
 <p>$c \in \text{Components}=\{\text{fat}, \text{dry_matter} \}$</p>
 <h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$\text{capacity}_{c} \in \mathbb{R}^+$: Yearly availability of component $c$ (1000 tons).</p>
-<p>$\text{qtyper}_{c,d} \in [0,1]$: Percentage of component $c$ in diary product $d$.</p>
-<p>$\text{consumption}_{d} \in \mathbb{R}^+$: Last year domestic consumption of diary product  $d$ (1000 tons).</p>
-<p>$\text{price}_{d} \in \mathbb{R}^+$: Last year price of diary product $d$ (dollars/1000 tons).</p>
-<p>$\text{elasticity}_{d} \in \mathbb{R}^+$: Last year price elasticity of domestic consumption of diary product $d$.</p>
+<p>$\text{qtyper}_{c,d} \in [0,1]$: Percentage of component $c$ in dairy product $d$.</p>
+<p>$\text{consumption}_{d} \in \mathbb{R}^+$: Last year domestic consumption of dairy product  $d$ (1000 tons).</p>
+<p>$\text{price}_{d} \in \mathbb{R}^+$: Last year price of dairy product $d$ (dollars/1000 tons).</p>
+<p>$\text{elasticity}_{d} \in \mathbb{R}^+$: Last year price elasticity of domestic consumption of dairy product $d$.</p>
 <p>$\text{elasticity12} \in \mathbb{R}^+$: Last year price cross-elasticity of domestic consumption of cheese 1 and cheese 2.</p>
 <p>$\text{elasticity21} \in \mathbb{R}^+$: Last year price cross-elasticity of domestic consumption of cheese 2 and cheese 1.</p>
 <p>$\text{prcIndex} \in \mathbb{R}^+$: Price index reflecting last year total consumption cost.</p>
-<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$\text{p}_{d} \in \mathbb{R}^+$: Price of diary product $d$ (dollars/1000 tons).</p>
-<p>$\text{q}_{d} \in \mathbb{R}^+$: Demand of diary product $d$ (1000 tons).</p>
+<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$\text{p}_{d} \in \mathbb{R}^+$: Price of dairy product $d$ (dollars/1000 tons).</p>
+<p>$\text{q}_{d} \in \mathbb{R}^+$: Demand of dairy product $d$ (1000 tons).</p>
 <h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p><strong>Capacity</strong>: The limited availabilities of fat and dry matter are enforced by the following constraints.</p>
 \begin{equation}
 \sum_{d \in \text{Dairy}}{\text{qtyper}_{c,d}*\text{q}_{d} } \leq \text{capacity}_{c} \quad \forall c \in \text{Components}
@@ -13368,10 +13368,10 @@ $$<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Ob
 <span class="c1"># Set global parameters. </span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">nonConvex</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="c1"># Quantity of diary products.</span>
+<span class="c1"># Quantity of dairy products.</span>
 <span class="n">qvar</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">dairy</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;qvar&quot;</span><span class="p">)</span>
 
-<span class="c1"># Price of diary products.</span>
+<span class="c1"># Price of dairy products.</span>
 <span class="n">pvar</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">dairy</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;pvar&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -13607,7 +13607,7 @@ H    0     0                       2.0626717    2.15391  4.42%     -    0s
 Cutting planes:
   RLT: 9
 
-Explored 581 nodes (655 simplex iterations) in 0.16 seconds
+Explored 581 nodes (655 simplex iterations) in 0.14 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 10: 2.06641 2.06641 2.06641 ... 2.06639
