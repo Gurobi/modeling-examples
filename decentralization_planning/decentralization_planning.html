@@ -13320,7 +13320,7 @@ y_{d,c,d2,c2} \leq \text{locate}_{d2,c2} \quad \forall (d,c,d2,c2) \in dcd2c2
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Model-Deployment">Model Deployment<a class="anchor-link" href="#Model-Deployment">&#182;</a></h2><p>We create a model and the variables. These binary decision variables define the city at which each department will be located.</p>
-<p>Solving Bilinear problems with Gurobi is as easy as configuring the global parameter <code>nonConvex</code>, and setting this parameter to the value of 2.</p>
+<p>Solving quadratic assignment problems  with Gurobi is as easy as configuring the global parameter <code>nonConvex</code>, and setting this parameter to the value of 2.</p>
 
 </div>
 </div>
@@ -13476,7 +13476,7 @@ Coefficient statistics:
   Bounds range     [1e+00, 1e+00]
   RHS range        [1e+00, 3e+00]
 Found heuristic solution: objective -73.9000000
-Presolve time: 0.01s
+Presolve time: 0.00s
 Presolved: 62 rows, 69 columns, 192 nonzeros
 Variable types: 0 continuous, 69 integer (69 binary)
 
@@ -13498,7 +13498,7 @@ Cutting planes:
   Mod-K: 2
   RLT: 25
 
-Explored 1 nodes (43 simplex iterations) in 0.08 seconds
+Explored 1 nodes (43 simplex iterations) in 0.06 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 4: 14.9 -16.3 -33.9 -73.9 
