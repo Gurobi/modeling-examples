@@ -13406,7 +13406,7 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 <span class="n">externalInputsA</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span> <span class="p">(</span> <span class="n">NOR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">inputA</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;externalInputsA&#39;</span><span class="p">)</span>
 
-<span class="n">externalInputsB</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span> <span class="p">(</span> <span class="n">NOR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">inputB</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;externalInputsA&#39;</span><span class="p">)</span>
+<span class="n">externalInputsB</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span> <span class="p">(</span> <span class="n">NOR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">inputB</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">gates</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;externalInputsB&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13568,8 +13568,7 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Warning: linear constraint 0 and linear constraint 7 have the same name &#34;externalInputsA[1]&#34;
-Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
 Optimize a model with 225 rows, 49 columns and 696 nonzeros
 Model fingerprint: 0x9adba516
 Variable types: 0 continuous, 49 integer (49 binary)
