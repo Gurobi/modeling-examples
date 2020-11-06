@@ -13299,7 +13299,7 @@ assign_{i,j} \leq select_{j} \quad \forall i \in I \quad \forall j \in J
 <span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
 <span class="kn">from</span> <span class="nn">gurobipy</span> <span class="k">import</span> <span class="n">GRB</span>
 
-<span class="c1"># tested with Gurobi v9.0.0 and Python 3.7.0</span>
+<span class="c1"># tested with Gurobi v9.1.0 and Python 3.7.0</span>
 
 <span class="c1"># Parameters</span>
 <span class="n">customers</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">1.2</span><span class="p">)]</span>
@@ -13393,7 +13393,8 @@ assign_{i,j} \leq select_{j} \quad \forall i \in I \quad \forall j \in J
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
 Set parameter TokenServer to value SANTOS-SURFACE-
-Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 20 rows, 27 columns and 54 nonzeros
 Model fingerprint: 0x0939f503
 Variable types: 18 continuous, 9 integer (9 binary)
