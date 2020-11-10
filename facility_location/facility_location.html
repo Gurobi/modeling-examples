@@ -13282,7 +13282,7 @@ assign_{i,j} \leq select_{j} \quad \forall i \in I \quad \forall j \in J
 </tr>
 </tbody>
 </table>
-<p>The cost per mile is $\$1$ million GBP.</p>
+<p>The cost per mile is one million GBP.</p>
 <h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>We now import the Gurobi Python Module and other Python libraries. Then, we initialize the data structures with the given data.</p>
 
 </div>
@@ -13491,7 +13491,7 @@ Best objective 4.723712908962e+00, best bound 4.723712908962e+00, gap 0.0000%
 
 <span class="k">for</span> <span class="n">customer</span><span class="p">,</span> <span class="n">facility</span> <span class="ow">in</span> <span class="n">assign</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">assign</span><span class="p">[</span><span class="n">customer</span><span class="p">,</span> <span class="n">facility</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-6</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Supermarket {customer + 1} recieves from Warehouse {facility + 1} {round(100*assign[customer, facility].x, 2)} </span><span class="si">% o</span><span class="s2">f its demand.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Supermarket {customer + 1} receives {round(100*assign[customer, facility].x, 2)} </span><span class="si">% o</span><span class="s2">f its demand  from Warehouse {facility + 1} .&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13509,9 +13509,9 @@ Best objective 4.723712908962e+00, best bound 4.723712908962e+00, gap 0.0000%
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
- Supermarket 1 recieves from Warehouse 4 100.0 % of its demand.
+ Supermarket 1 receives 100.0 % of its demand  from Warehouse 4 .
 
- Supermarket 2 recieves from Warehouse 4 100.0 % of its demand.
+ Supermarket 2 receives 100.0 % of its demand  from Warehouse 4 .
 </pre>
 </div>
 </div>
