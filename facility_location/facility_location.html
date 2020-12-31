@@ -13123,7 +13123,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this example, we will solve a facility location problem where we want to build warehouses to supply a certain number of supermarkets. We will construct a mixed-integer programming (MIP) model of this problem, implement this model in the Gurobi Python interface, and compute an optimal solution.</p>
+<h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this example, we will solve a facility location problem. Our objective is to determine how many warehouses to open and in which locations to build them in order to supply a certain number of supermarkets while minimizing the fixed total costs of building warehouses and the total variable shipping costs from warehouses to supermarkets. We will construct a mixed-integer programming (MIP) model of this problem, implement this model in the Gurobi Python interface, and compute an optimal solution.</p>
 <p>This modeling example is at the beginner level, where we assume that you know Python and that you have some knowledge about building mathematical optimization models.</p>
 <p><strong>Download the Repository</strong> <br />
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
@@ -13136,9 +13136,9 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>The study of facility location problems -also known as location analysis [1]- is a branch of operations research and computational geometry concerned with the optimal placement of facilities to minimize transportation costs while considering factors like avoiding placing hazardous materials near housing, and the location of  competitors' facilities.</p>
-<p>The Fermat-Weber problem, formulated in the 17'th century, was one of the first facility location problems ever proposed. 
-The Fermat-Weber problem can be described as follows: Given three points in a plane, find a fourth point such that the sum of its distances to the three given points is minimal. This problem can be interpreted as a version of the facility location problem, where the assumption is made that the transportation costs per distance are the same for all destinations.</p>
+<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>The study of facility location problems - also known as "location analysis" [1] - is a branch of operations research and computational geometry concerned with the optimal placement of facilities to minimize transportation costs while considering factors like safety (e.g. by avoiding placing hazardous materials near housing) and the location of  competitors' facilities.</p>
+<p>The Fermat-Weber problem, formulated in the 17'th century, was one of the first facility location problems ever devised. 
+The Fermat-Weber problem can be described as follows: Given three points in a plane, find a fourth point such that the sum of its distances to the three given points is minimal. This problem can be viewed as a variation of the facility location problem, where the assumption is made that the transportation costs per distance are the same for all destinations.</p>
 <p>Facility location problems have applications in a wide variety of industries. For supply chain management and logistics, this problem  can be used to find the optimal location for stores, factories, warehouses, etc. Other applications range from public policy (e.g. positioning  police officers in a city), telecommunications (e.g. cell towers in a network), and even particle physics (e.g. separation distance between repulsive charges). Another application of the facility location problem is to determine the locations for natural gas transmission equipment. Finally, facility location problems can be applied to cluster analysis.</p>
 
 </div>
@@ -13147,11 +13147,11 @@ The Fermat-Weber problem can be described as follows: Given three points in a pl
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A large supermarket chain in the UK needs to build warehouses for a set of supermarkets it is opening in Northern England. The locations of the supermarkets have been decided, but the locations of the warehouses have yet to be determined.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A large supermarket chain in the UK needs to build warehouses for a set of supermarkets it is opening in Northern England. The locations of the supermarkets have been identified, but the locations of the warehouses have yet to be determined.</p>
 <p>Several good candidate locations for the warehouses have been identified, but decisions must be made regarding 
 how many warehouses to open and at which candidate locations to build them.</p>
 <p>Opening many warehouses would be advantageous as this would reduce the average distance a truck has to drive from the warehouse to the supermarket, and hence reduce the delivery cost. However, opening a warehouse has a fixed cost associated with it.</p>
-<p>In this example, our goal is to find the optimal tradeoff between delivery cost and the cost of building new facilities.</p>
+<p>In this example, our goal is to find the optimal tradeoff between delivery costs and the costs of building new facilities.</p>
 
 </div>
 </div>
@@ -13159,7 +13159,7 @@ how many warehouses to open and at which candidate locations to build them.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi Optimizer solves such models using state-of-the-art mathematics and computer science.</p>
+<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex business problem. The Gurobi Optimizer solves such models using state-of-the-art mathematics and computer science.</p>
 <p>A mathematical optimization model has five components, namely:</p>
 <ul>
 <li>Sets and indices.</li>
@@ -13187,7 +13187,7 @@ how many warehouses to open and at which candidate locations to build them.</p>
 <li><strong>Total costs</strong>. We want to minimize the total cost to open and operate the facilities. This is the sum of the cost of opening facilities and the cost related to shipping between facilities and customers. This total cost measures the tradeoff between the cost of building a new facility and the total delivery cost over a five year period.</li>
 </ul>
 \begin{equation}
-\text{Max} \quad Z = \sum_{j \in J} f_{j} \cdot select_{j} + \sum_{j \in J} \sum_{i \in I} c_{i,j} \cdot assign_{i,j}
+\text{Min} \quad Z = \sum_{j \in J} f_{j} \cdot select_{j} + \sum_{j \in J} \sum_{i \in I} c_{i,j} \cdot assign_{i,j}
 \tag{0}
 \end{equation}<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><ul>
 <li><strong>Demand</strong>. For each customer  $i \in I$ ensure that its demand is fulfilled. That is, the sum of the fraction received from each facility for each customer must be equal to 1:</li>
@@ -13392,7 +13392,6 @@ assign_{i,j} \leq select_{j} \quad \forall i \in I \quad \forall j \in J
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
 Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 20 rows, 27 columns and 54 nonzeros
