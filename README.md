@@ -11,7 +11,7 @@ Data scientists, engineers, computer scientists, economists, and in general, pro
 
 These modeling examples are coded using the Gurobi Python API and distributed in Jupyter Notebooks.
 
-The modeling examples illustrate important capabilities of the Gurobi Python API, including adding decision 
+These modeling examples illustrate important capabilities of the Gurobi Python API, including adding decision 
 variables, building linear expressions, adding constraints, and adding an objective function.
 They touch on more advanced features such as generalized constraints, piecewise-linear functions, and 
 multi-objective hierarchical optimization.  They also illustrate common constraint types such as “allocation constraints”, 
