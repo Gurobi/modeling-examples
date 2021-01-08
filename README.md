@@ -9,7 +9,7 @@ Data scientists, engineers, computer scientists, economists, and in general, pro
 + Illustrate the broad applicability of mathematical optimization.
 + Show how to build mathematical optimization models.
 
-These modeling examples are coded using the Gurobi Python API and distributed in Jupyter Notebooks.
+These modeling examples are coded using the Gurobi Python API and distributed as Jupyter Notebooks.
 
 These modeling examples illustrate important capabilities of the Gurobi Python API, including adding decision 
 variables, building linear expressions, adding constraints, and adding an objective function.
