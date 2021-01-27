@@ -13390,7 +13390,6 @@ $$<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Ob
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 Changed value of parameter nonConvex to 2
    Prev: -1  Min: -1  Max: 2  Default: -1
 </pre>
@@ -13536,7 +13535,8 @@ Changed value of parameter nonConvex to 2
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 7 rows, 8 columns and 22 nonzeros
 Model fingerprint: 0x4fffdf2e
 Model has 4 quadratic objective terms
@@ -13551,69 +13551,57 @@ Presolve removed 2 rows and 0 columns
 Continuous model is non-convex -- solving as a MIP.
 
 Presolve removed 2 rows and 0 columns
-Presolve time: 0.00s
+Presolve time: 0.01s
 Presolved: 14 rows, 13 columns, 36 nonzeros
 Presolved model has 4 bilinear constraint(s)
 Variable types: 13 continuous, 0 integer (0 binary)
 
-Root relaxation: objective 2.791207e+00, 11 iterations, 0.00 seconds
+Root relaxation: objective 2.791205e+00, 11 iterations, 0.00 seconds
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
 
      0     0    2.79121    0    4          -    2.79121      -     -    0s
-H    0     0                       2.0422943    2.79121  36.7%     -    0s
-     0     0    2.23683    0    4    2.04229    2.23683  9.53%     -    0s
-     0     0    2.18216    0    4    2.04229    2.18216  6.85%     -    0s
-H    0     0                       2.0596850    2.18216  5.95%     -    0s
+H    0     0                       2.0422947    2.79121  36.7%     -    0s
+     0     0    2.23682    0    4    2.04229    2.23682  9.53%     -    0s
+     0     0    2.18215    0    4    2.04229    2.18215  6.85%     -    0s
+H    0     0                       2.0596849    2.18215  5.95%     -    0s
      0     0    2.17036    0    4    2.05968    2.17036  5.37%     -    0s
      0     0    2.16917    0    4    2.05968    2.16917  5.32%     -    0s
      0     0    2.16441    0    4    2.05968    2.16441  5.08%     -    0s
      0     0    2.16252    0    4    2.05968    2.16252  4.99%     -    0s
      0     0    2.15497    0    4    2.05968    2.15497  4.63%     -    0s
-H    0     0                       2.0598297    2.15497  4.62%     -    0s
+H    0     0                       2.0598300    2.15497  4.62%     -    0s
      0     0    2.15391    0    4    2.05983    2.15391  4.57%     -    0s
-H    0     0                       2.0626177    2.15391  4.43%     -    0s
-H    0     0                       2.0626717    2.15391  4.42%     -    0s
-     0     2    2.15391    0    4    2.06267    2.15391  4.42%     -    0s
-*   24    22               5       2.0630153    2.09607  1.60%   1.8    0s
-*   39    32               7       2.0631383    2.08439  1.03%   1.5    0s
-*   48    38               8       2.0631594    2.08439  1.03%   1.4    0s
-*   49    38               9       2.0631614    2.08439  1.03%   1.4    0s
-*   72    56              10       2.0656071    2.08439  0.91%   1.5    0s
-*   74    56              11       2.0657765    2.08439  0.90%   1.4    0s
-*  112    64              12       2.0661200    2.07903  0.62%   1.3    0s
-*  133    70              14       2.0661344    2.07903  0.62%   1.3    0s
-*  134    70              14       2.0661346    2.07903  0.62%   1.3    0s
-*  137    70              15       2.0661465    2.07903  0.62%   1.3    0s
-*  141    70              20       2.0663670    2.07903  0.61%   1.3    0s
-*  142    70              21       2.0663670    2.07903  0.61%   1.3    0s
-*  251    72              22       2.0663877    2.07053  0.20%   1.3    0s
-*  296    50              23       2.0663878    2.06861  0.11%   1.3    0s
-*  331    50              20       2.0663882    2.06861  0.11%   1.2    0s
-*  340    41              21       2.0663884    2.06784  0.07%   1.2    0s
-*  343    41              22       2.0663890    2.06784  0.07%   1.2    0s
-*  344    41              22       2.0663896    2.06784  0.07%   1.2    0s
-*  346    41              22       2.0663898    2.06784  0.07%   1.2    0s
-*  347    41              22       2.0663901    2.06784  0.07%   1.2    0s
-*  439    70              26       2.0664033    2.06683  0.02%   1.2    0s
-*  502    33              25       2.0664036    2.06652  0.01%   1.1    0s
-*  523    33              25       2.0664040    2.06648  0.00%   1.1    0s
-*  537    33              24       2.0664051    2.06645  0.00%   1.1    0s
-*  539    33              25       2.0664079    2.06645  0.00%   1.1    0s
-*  540    33              25       2.0664084    2.06645  0.00%   1.1    0s
-*  554    33              26       2.0664084    2.06645  0.00%   1.1    0s
+H    0     0                       2.0626181    2.15391  4.43%     -    0s
+H    0     0                       2.0653760    2.15391  4.29%     -    0s
+H    0     0                       2.0656667    2.15391  4.27%     -    0s
+     0     2    2.15391    0    4    2.06567    2.15391  4.27%     -    0s
+*   85    35              18       2.0658550    2.07220  0.31%   1.6    0s
+*  103    33              16       2.0658649    2.06832  0.12%   1.6    0s
+*  139    49              18       2.0663278    2.06781  0.07%   1.5    0s
+*  161    53              19       2.0663286    2.06781  0.07%   1.4    0s
+*  164    53              18       2.0663408    2.06781  0.07%   1.4    0s
+*  165    53              18       2.0663409    2.06781  0.07%   1.4    0s
+*  209    59              21       2.0663474    2.06758  0.06%   1.4    0s
+*  210    59              21       2.0663482    2.06758  0.06%   1.4    0s
+*  211    59              20       2.0663508    2.06758  0.06%   1.4    0s
+*  226    53              27       2.0663906    2.06712  0.04%   1.3    0s
+*  339    58              24       2.0663946    2.06654  0.01%   1.2    0s
+*  341    58              25       2.0663954    2.06654  0.01%   1.2    0s
+*  368    58              22       2.0663973    2.06649  0.00%   1.2    0s
+*  371    58              23       2.0663990    2.06649  0.00%   1.2    0s
 
 Cutting planes:
   RLT: 9
 
-Explored 581 nodes (655 simplex iterations) in 0.14 seconds
+Explored 397 nodes (484 simplex iterations) in 0.16 seconds
 Thread count was 8 (of 8 available processors)
 
-Solution count 10: 2.06641 2.06641 2.06641 ... 2.06639
+Solution count 10: 2.0664 2.0664 2.0664 ... 2.06634
 
 Optimal solution found (tolerance 1.00e-04)
-Best objective 2.066407339147e+00, best bound 2.066454234042e+00, gap 0.0023%
+Best objective 2.066398260370e+00, best bound 2.066493116553e+00, gap 0.0046%
 </pre>
 </div>
 </div>
@@ -13625,7 +13613,7 @@ Best objective 2.066407339147e+00, best bound 2.066454234042e+00, gap 0.0023%
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The table below shows the price (dollars/ton) and demand (tons) at equilibrium, for each dairy product. The total revenue generated is $\$ 2,067,170,173$.</p>
+<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>The table below shows the price (dollars/ton) and demand (tons) at equilibrium, for each dairy product. The total revenue generated is $\$ 2,066,398,260$.</p>
 
 </div>
 </div>
@@ -13685,26 +13673,26 @@ Best objective 2.066407339147e+00, best bound 2.066454234042e+00, gap 0.0023%
     <tr>
       <th></th>
       <td>milk</td>
-      <td>$322.00</td>
-      <td>4,658,539.00</td>
+      <td>$321.00</td>
+      <td>4,661,067.00</td>
     </tr>
     <tr>
       <th></th>
       <td>butter</td>
       <td>$422.00</td>
-      <td>677,741.00</td>
+      <td>677,334.00</td>
     </tr>
     <tr>
       <th></th>
       <td>cheese1</td>
-      <td>$832.00</td>
-      <td>265,745.00</td>
+      <td>$839.00</td>
+      <td>264,129.00</td>
     </tr>
     <tr>
       <th></th>
       <td>cheese2</td>
-      <td>$1,113.00</td>
-      <td>53,921.00</td>
+      <td>$1,116.00</td>
+      <td>54,042.00</td>
     </tr>
   </tbody>
 </table>
