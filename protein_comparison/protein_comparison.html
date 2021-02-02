@@ -13336,7 +13336,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>$G_{1}$ matching constraint</strong>: No node in $G_{1}$ can be matched with more than one  in $G_{2}$.</p>
+<p><strong>$G_{2}$ matching</strong>: For each node in $G_{2}$, at most one node of $G_{1}$  can be matched.</p>
 $$
 \sum_{i \in N_{1} } x_{i,j} \leq 1 \quad \forall j \in N_{2}
 $$
@@ -13348,7 +13348,7 @@ $$
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># At most one node in G1 is matched with a node in G2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 𝐺2  matching</span>
 
 <span class="n">node1_match</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">map_nodes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">nodes2</span> <span class="p">)</span> <span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;node1_match&#39;</span><span class="p">)</span>
 </pre></div>
@@ -13361,7 +13361,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>$G_{2}$ matching constraint</strong>: No node in $G_{2}$ can be matched with more than one  in $G_{1}$.</p>
+<p><strong>$G_{1}$ matching</strong>: For each node in $G_{1}$, at most one node of $G_{2}$ can be matched.</p>
 $$
 \sum_{j \in N_{2} } x_{i,j} \leq 1 \quad \forall i \in N_{1}
 $$
@@ -13373,7 +13373,7 @@ $$
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># At most one node in G2 is matched with a node in G1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 𝐺1  matching</span>
 
 <span class="n">node2_match</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">map_nodes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">nodes2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes1</span> <span class="p">)</span> <span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;node2_match&#39;</span><span class="p">)</span>
 </pre></div>
@@ -13476,11 +13476,11 @@ Coefficient statistics:
   RHS range        [1e+00, 1e+00]
 Found heuristic solution: objective -0.0000000
 Presolve removed 1876 rows and 17 columns
-Presolve time: 0.03s
+Presolve time: 0.02s
 Presolved: 204 rows, 162 columns, 2026 nonzeros
 Variable types: 0 continuous, 162 integer (162 binary)
 
-Root relaxation: objective -6.923077e+00, 178 iterations, 0.01 seconds
+Root relaxation: objective -6.923077e+00, 178 iterations, 0.00 seconds
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
@@ -13495,7 +13495,7 @@ Cutting planes:
   Zero half: 20
   RLT: 17
 
-Explored 1 nodes (267 simplex iterations) in 0.14 seconds
+Explored 1 nodes (267 simplex iterations) in 0.10 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 3: 5 -0 -0 
