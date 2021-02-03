@@ -17,7 +17,7 @@ Subject To
  elasCheese1: 4.761904761904762 qvar[cheese1]
    + 1.047619047619048 pvar[cheese1] - 0.1226993865030675 pvar[cheese2]
    = 2
- elasCheese2: 14.28571428571429 qvar[cheese2]
+ elasCheese2: 14.28571428571428 qvar[cheese2]
    - 0.3809523809523809 pvar[cheese1] + 0.49079754601227 pvar[cheese2] = 1
 Bounds
 End
