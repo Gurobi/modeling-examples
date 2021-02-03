@@ -13131,10 +13131,9 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A company has obtained permission to conduct opencast mining within a square plot 200 ft $\times$ 200 ft. The angle of slip of the soil is such that it is not possible for the sides of the excavation to be steeper than 45 degrees. The company has obtained estimates for the value of the ore in various places at various depths. Bearing in mind the restrictions imposed by the angle of slip, the company decides to consider the problem as one of the extracting of rectangular blocks. Each block has horizontal dimensions 50 ft $\times$ 50 ft and a vertical dimension of 25 ft. If the blocks are chosen to lie above one another then it is only possible to excavate blocks forming an upturned pyramid. 
-The three dimensional representation below shows four levels of excavation. We have numbered, in black, each block at each level, and the number in red represents the block underneath the four blocks of the level. For example, block 17 of level 2 lies underneath the blocks 1,2,5,and 6 of level 1.
-<img src="extractionPyramid.PNG" alt="pyramid"></p>
-<p>The profit for the extraction of ore at each block has been estimated. The goal is to find an ore extraction plan that maximizes total profit.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A mining enterprise has permission to conduct opencast mining within a square plot 200 ft $\times$ 200 ft. The opencast mining operation has a constraint that the excavation sides can't be steeper than 45 degrees. There are estimates for the value of the ore in various places at various depths. Given the restrictions imposed by the slip angle, the mining enterprise decides to address the problem as one of the extracting of rectangular blocks. Each block has horizontal dimensions of 50 ft $\times$ 50 ft and a vertical dimension of 25 ft. Since the blocks should lie above one another, it is only possible to excavate blocks forming an upturned pyramid. The three-dimensional representation below shows four levels of excavation. We have numbered, in black, each block at each level, and the number in red represents the block underneath the four blocks of the level. For example, block 17 of level 2 lies underneath blocks 1,2,5 and 6 of level 1.</p>
+<p><img src="extractionPyramid.PNG" alt="pyramid"></p>
+<p>We estimate the profit for the extraction of ore at each block. The goal is to find an ore extraction plan that maximizes total profit.</p>
 
 </div>
 </div>
@@ -13146,7 +13145,7 @@ The three dimensional representation below shows four levels of excavation. We h
 <h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$\text{profit}_{b} \in \mathbb{R}^+$: Profit from extracting ore from block $b$.</p>
 <p>$(b,b2) \in Arcs = Blocks \times Blocks$: This parameter represent the arcs in the series-parallel graph describing the rules of extraction. The arc $(b,b2)$ in the adjacency matrix of this series-parallel graph has a value of 1 if block b2 is one of the four blocks above block b, and 0 otherwise. For example, arc $(29,24)$ represents that block 24 is one of the four blocks above block 29.</p>
 <h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$\text{extract}_{b} \in \{0,1\}$: This binary variable is equal 1, if block $b$ is selected, and 0 otherwise.</p>
-<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p><strong>Extraction</strong>: If a block is extracted, then the four blocks above it must also be extracted..</p>
+<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p><strong>Extraction</strong>: If a block is selected, then the four blocks above it must also be selected.</p>
 \begin{equation}
 \text{extract}_{b2} \geq \text{extract}_{b} \quad \forall (b,b2) \in \text{Arcs}
 \end{equation}<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h3><p><strong>Profits</strong>: Maximize profits from the extraction of ore.</p>
@@ -13333,7 +13332,6 @@ The three dimensional representation below shows four levels of excavation. We h
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13345,7 +13343,7 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The following constraints ensure that if a block is extracted, then the four blocks above it must also be extracted.</p>
+<p>The following constraints ensure that if a block is selected, then the four blocks above it must also be selected.</p>
 
 </div>
 </div>
@@ -13418,7 +13416,8 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 56 rows, 30 columns and 112 nonzeros
 Model fingerprint: 0x83427493
 Coefficient statistics:
