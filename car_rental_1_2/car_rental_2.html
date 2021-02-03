@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Car-Rental-2">Car Rental 2<a class="anchor-link" href="#Car-Rental-2">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an extension of the Car Rental problem. In this problem, the car rental company wants to determine 
+<h1 id="Car-Rental-2">Car Rental 2<a class="anchor-link" href="#Car-Rental-2">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an extension of the Car Rental problem. In this problem, the car rental enterprise wants to determine 
 in which locations it should expand  repair capacity. This problem is formulated as a mixed integer linear programming problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
 <p>This model is example 26 from the fifth edition of Model Building in Mathematical Programming by H. Paul Williams on pages 287 and 342-343.</p>
 <p>This example is at the intermediate level, where we assume that you know Python and the Gurobi Python API and that you have some knowledge of building mathematical optimization models.</p>
@@ -13132,24 +13132,18 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A small car rental company
-(which rents only one type of car) 
-has depots in Glasgow, Manchester, Birmingham and Plymouth. There is an estimated demand for each day of the week except Sunday (when the company is closed). These estimates are given in the following table. It is not necessary to meet all demand.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A car rental enterprise (which rents only one type of car) has depots in Glasgow, Manchester, Birmingham, and Plymouth. We estimate the demand for each day of the week except Sunday (when the enterprise is closed). The following table shows these estimates. We assume that it is not necessary to meet all the demand.</p>
 <p><img src="weeklyDemand.PNG" alt="weeklyDemand"></p>
-<p>Cars can be rented for one, two or three days and returned to either the
-depot from which they were rented or another depot at the start of the next morning. For
-example, a 2-day rental on Thursday means that the car has to be returned on
-Saturday morning; a 3-day rental on Friday means that the car has to be returned
-on Tuesday morning. A 1-day rental on Saturday means that the car has to be
-returned on Monday morning, and a 2-day rental on Tuesday morning.</p>
-<p>The rental period is independent of the origin and destination. From historical
-data, the company knows the distribution of rental periods: 55% of cars are rented
-for one day, 20% for two days and 25% for three days. The current estimates
-of percentages of cars rented from each depot and returned to a given depot
-(independent of the day) are given in the following table.</p>
+<p>There are three options to rent a car: one, two, or three days rental. A customer can return the vehicle at the start of the next morning to either the depot from which it was rented or another depot. For example, let’s consider a customer that rents a vehicle for two days on a Thursday, then the vehicle has to be returned on Saturday morning. If a customer rents a vehicle on Friday for three days, the vehicle has to be returned on Tuesday morning. Another example is that the customer rents the vehicle for one day on Saturday. In this case, the vehicle has to be returned on Monday morning;  or if the vehicle is rented for two days, the vehicle has to be returned on Tuesday morning.</p>
+<p>The time period to rent a car is independent of the origin and destination. We know from historical data that the distribution of rental periods is as follows:</p>
+<ul>
+<li>55% of the vehicles are rented for one day,</li>
+<li>20% for two days,</li>
+<li>and 25% for three days.</li>
+</ul>
+<p>The following table shows the estimates of percentages of vehicles rented from each depot and returned to a given depot (independent of the day).</p>
 <p><img src="FromToPct.PNG" alt="FromToPct"></p>
-<p>The company's marginal cost
-of renting out a car (‘wear and tear’, administration, etc.) is estimated as follows:</p>
+<p>The following table shows the marginal cost of renting a vehicle.</p>
 <table>
 <thead><tr>
 <th>Days rented</th>
@@ -13171,22 +13165,10 @@ of renting out a car (‘wear and tear’, administration, etc.) is estimated as
 </tr>
 </tbody>
 </table>
-<p>The ‘opportunity cost’ (interest on capital, storage, servicing, etc.) of owning
-a car is $\$ 15$ per week.</p>
-<p>It is possible to transfer undamaged cars from one depot to another depot,
-irrespective of distance. Cars cannot be rented out during the day in which they
-are transferred. The costs in USD, per car, of transfer are given in the following table.</p>
+<p>The ‘opportunity cost’  of owning a vehicle is $\$ 15$ per week.</p>
+<p>Undamaged vehicles can be transferred from one depot to another depot, independently of the distance. A customer cannot rent out a vehicle on the day in which this vehicle is transferred. The following table shows the cost of the transfer.</p>
 <p><img src="FromToCst.PNG" alt="FromToCst"></p>
-<p>Ten percent of cars returned by customers are damaged. When this happens,
-the customer is charged an excess of $\$ 100$  (irrespective of the amount of damage
-that the company completely covers by its insurance). In addition, the car has
-to be transferred to a repair depot, where it will be repaired the following day.
-The cost of transferring a damaged car is the same as transferring an undamaged
-one (except when the repair depot is the current depot, 
-in which case the cost would be $\$0$). 
-The transfer of a damaged car takes a day, unless it is already at a repair depot.
-Having arrived at a repair depot, all types of repair (or replacement) take a day.
-Only two of the depots have repair capacity. The (cars/day) capacity at each repair depot is as follows:</p>
+<p>The percentage of returned cars that are damaged is 10%. In this case, the customer needs to pay an extra $100. The damaged vehicle has to be transferred to a repair depot, where it will be repaired the following day. We assume that the cost of transferring a damaged vehicle is the same as transferring an undamaged one. Notice that when the repair depot is the current depot, there is no transfer cost. It takes one day to transfer a damaged vehicle unless it is already at a repair depot. It takes one day to repair a vehicle at the repair depot. There are only two depots with repair capacity. The following table shows the capacity (cars/day) of each repair vehicle.</p>
 <table>
 <thead><tr>
 <th>Repair depot</th>
@@ -13204,45 +13186,49 @@ Only two of the depots have repair capacity. The (cars/day) capacity at each rep
 </tr>
 </tbody>
 </table>
-<p>Having been repaired, the car is available for rent at the depot the next day
-or may be transferred to another depot (taking a day). Thus, a car that is returned
-damaged on a Wednesday morning is transferred to a repair depot (if not the
-current depot) on Wednesday, repaired on Thursday and is available for rent
-at the repair depot on Friday morning.
-The rental price depends on the number of days for which the car is rented
-and whether it is returned to the same depot or not. The prices (in USD) are given in the following table.</p>
+<p>A repaired vehicle is available for rent at the depot the next day or may be transferred to another depot (taking a day). For example, a vehicle that is returned damaged on a Tuesday morning is transferred to a repair depot (if not the current depot) on Tuesday, repaired on Wednesday, and is available for rent at the repair depot on Thursday morning. The price to rent a vehicle depends on the number of days for which the car is rented and whether it is returned to the same depot or not. The following table shows the rental prices (in USD).</p>
 <p><img src="RentalPrice.PNG" alt="RentalPrice"></p>
-<p>We assume the following at the beginning of each day:</p>
-<ol>
-<li>Customers return cars that are due that day.</li>
-<li>Damaged cars are sent to the repair depot.</li>
-<li>Cars that were transferred from other depots arrive.</li>
-<li>Transfers are sent out.</li>
-<li>Cars are rented out.</li>
-<li>If it is a repair depot, then the repaired cars are available for rental.</li>
-</ol>
-<p>The car rental company wants to determine in which locations it should expand  repair capacity. The weekly fixed costs, given below, include interest payments on the necessary
-loans for expansion. The options are as follows:</p>
-<ol>
-<li>Expand repair capacity at Birmingham by 5 cars per day at a fixed cost
-per week of $\$18,000$.</li>
-<li>Further expand repair capacity at Birmingham by 5 cars per day at a fixed
-cost per week of $\$8,000$.</li>
-<li>Expand repair capacity at Manchester by 5 cars per day at a fixed cost per
-week of $\$20,000$.</li>
-<li>Further expand repair capacity at Manchester by 5 cars per day at a fixed
-cost per week of $\$5,000$.</li>
-<li>Create repair capacity at Plymouth of 5 cars per day at a fixed cost per
-week of $\$19,000$.</li>
-</ol>
-<p>If any of these options is chosen, it must be carried out in its entirety; that
-is, there can be no partial expansion. Also, a further expansion at a depot can be
-carried out only if the first expansion is also carried out -so, for example, option
-(2) at Birmingham cannot be chosen unless option (1) is also chosen. If option (2)
-is chosen, thereby also choosing option (1), these count as two options. Similar
-stipulations apply regarding the expansions at Manchester. At most three of the
-options can be carried out.</p>
-<p>The goal is to determine in which locations to expand  repair capacity, the numbers of cars the car rental company should own, and where they should  be located at the start of each week day in order to maximize weekly profit. The company wants a ‘steady state’ solution in which the same expected number of cars will be located at the same depot on the same day of subsequent weeks.</p>
+<p>We make the following assumptions at the beginning of each day:</p>
+<ul>
+<li>Clients return vehicles that are due that day.</li>
+<li>Rental enterprise sends damaged vehicles to the repair depot.</li>
+<li>Transferred vehicles from other depots arrive.</li>
+<li>Rental enterprise sends out transfer vehicles.</li>
+<li>Customers rent out vehicles.</li>
+<li>Repaired vehicles at a repair depot are available for rental.</li>
+</ul>
+<p>The car rental enterprise wants to determine in which locations it should expand repair capacity. The following table shows the fixed weekly costs to expand capacity</p>
+<table>
+<thead><tr>
+<th>Capacity Expansion Option</th>
+<th>Fixed Cost per Week</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expand capacity by five cars/day at the Birmingham depot</td>
+<td>$\$18,000$</td>
+</tr>
+<tr>
+<td>Further expansion of capacity by five cars/day at Birmingham</td>
+<td>$\$8,000$</td>
+</tr>
+<tr>
+<td>Expand capacity by five cars/day at the Manchester depot</td>
+<td>$\$20,000$</td>
+</tr>
+<tr>
+<td>Further expansion of capacity by five cars/day at Manchester</td>
+<td>$\$5,000$</td>
+</tr>
+<tr>
+<td>Create repair capacity of five cars/day at Plymouth</td>
+<td>$\$19,000$</td>
+</tr>
+</tbody>
+</table>
+<p>The car rental enterprise can choose any of these options. However, whenever the enterprise selects an option, it must be carried out completely. In addition,  a further expansion at a depot can be carried out only if the first expansion is also carried out. The enterprise does not want to implement more than three options.</p>
+<p>The goal is to determine in which locations to expand repair capacity, the numbers of cars that the rental enterprise should own, and where they should be located at the start of each weekday to maximize weekly profit. The enterprise wants a stable solution in which the same expected number of cars will be located at the same depot on the same day of subsequent weeks.</p>
 
 </div>
 </div>
@@ -13386,8 +13372,7 @@ Demand at depot $d$ for each day $t$.</p>
 \text{xRented}_{d,t} \leq \text{demand}_{d,t}
 \quad \forall d \in Depots, t \in Days
 \end{equation}<p><strong>Number of cars</strong> <br />
-Total number of cars owned equals number of cars rented out from all depots on Monday for 3 days, plus those on Tuesday for 2 or 3 days, plus all damaged and undamaged cars in depots at the beginning of Wednesday. 
-Rationale: Let’s choose a day (Wednesday), count the cars undamaged and damaged that were returned to the depots and that are available on Wednesday morning. Let’s count the cars that have been rented and have not been returned: Cars rented on Monday for 3 days, and cars rented on Tuesday for 2 or 3 days.</p>
+This constraint entails calculating the total number of vehicles that the enterprise needs to own. The total number of vehicles owned should be equal to the number of vehicles rented out from all depots on Monday for three days, plus those on Tuesday for 2 or 3 days, plus all damaged and undamaged cars in depots at the beginning of Wednesday. The rationale behind this equation follows. Let’s pick a day (Wednesday), count the cars undamaged and damaged that were returned to the depots and that are available on Wednesday morning. Let’s count the vehicles that have been rented and have not been returned: Cars rented on Monday for three days, and cars rented on Tuesday for 2 or 3 days.</p>
 \begin{equation}
 \sum_{d \in \text{Depots}} (0.25*\text{xRented}_{d,0} + 0.45*\text{xRented}_{d,1} + \text{xUndamaged}_{d,2}  + \text{xdamaged}_{d,2} ) = \text{xOwned}
 \end{equation}<p><strong>Capacity expansion constraints</strong> <br />
@@ -13711,7 +13696,6 @@ and where should they be located at the start of each day of a week to maximize 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13966,9 +13950,10 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 118 rows, 294 columns and 1136 nonzeros
-Model fingerprint: 0x92bbe71d
+Model fingerprint: 0xe441c90b
 Variable types: 289 continuous, 5 integer (5 binary)
 Coefficient statistics:
   Matrix range     [1e-03, 5e+00]
@@ -13977,7 +13962,7 @@ Coefficient statistics:
   RHS range        [3e+00, 2e+01]
 Found heuristic solution: objective -0.0000000
 Presolve removed 49 rows and 91 columns
-Presolve time: 0.00s
+Presolve time: 0.01s
 Presolved: 69 rows, 203 columns, 987 nonzeros
 Variable types: 198 continuous, 5 integer (5 binary)
 
@@ -13989,14 +13974,9 @@ Root relaxation: objective 1.357349e+05, 58 iterations, 0.00 seconds
      0     0 135734.925    0    2   -0.00000 135734.925      -     -    0s
 H    0     0                    130734.92534 135734.925  3.82%     -    0s
 H    0     0                    131725.36880 135734.925  3.04%     -    0s
-     0     0 132368.089    0    1 131725.369 132368.089  0.49%     -    0s
-H    0     0                    132341.46511 132368.089  0.02%     -    0s
+H    0     0                    132341.46511 135734.925  2.56%     -    0s
 
-Cutting planes:
-  MIR: 1
-  RLT: 1
-
-Explored 1 nodes (63 simplex iterations) in 0.05 seconds
+Explored 1 nodes (58 simplex iterations) in 0.07 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 4: 132341 131725 130735 -0 
