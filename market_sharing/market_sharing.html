@@ -13131,8 +13131,8 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A large company has two divisions: D1 and D2. The company supplies retailers with oil and spirit. The goal is to allocate each retailer to either division D1 or division D2. The allocated division will be the retailer’s supplier. As far as possible, the allocation must be made so that D1 controls 40% of the market and D2 the remaining 60%. The retailers in the table below are listed as M1 to M23. Each retailer has an estimated market for oil and spirit. Retailers M1 to M8 are in region 1, retailers M9 to M18 are in region 2, and retailers M19 to M23 are in region 3. Certain retailers are considered to have good growth prospects and categorized as group A and the others are in group B. Each retailer has a certain number of delivery points. 
-<img src="retailers.PNG" alt="retailers"></p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Let’s consider a company that supplies retailers with oil and spirit. The company has two large divisions, and we want to allocate each retailer to either division D1 or division D2 in such a way that D1 controls 40% of the market and D2 the remaining 60%. The table below lists retailers M1 to M23. Each retailer has an estimated market for oil and spirit. Retailers M1 to M8 are in region 1, retailers M9 to M18 are in region 2, and retailers M19 to M23 are in region 3. Retailers with good growth prospects are classified into group A, and the rest of the retailers are classified into group B. Each retailer has a certain number of delivery points.</p>
+<p><img src="retailers.PNG" alt="retailers"></p>
 <p>We want to make the 40%/60% split between D1 and D2 in each of the following categories:</p>
 <ol>
 <li>Total number of delivery points</li>
@@ -13143,7 +13143,7 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <li>Number of retailers in group A</li>
 <li>Number of retailers in group B.</li>
 </ol>
-<p>There is flexibility in that any market share may vary by $\pm$ 5%. That is, the share can vary between the limits 35%/65% and 45%/55%. The objective is to minimize the sum of the percentage deviations from the 40%/60% split.</p>
+<p>The 40%/60% split is flexible in that any market share may vary by  ±  5%.  That is, any market share can be within the range [35%/65%, 45%/55%.]. The objective is to minimize the sum of the percentage deviations from the 40%/60% split.</p>
 
 </div>
 </div>
@@ -13488,7 +13488,6 @@ $$
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13718,7 +13717,8 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 7 rows, 37 columns and 105 nonzeros
 Model fingerprint: 0xa5aab3a9
 Variable types: 14 continuous, 23 integer (23 binary)
@@ -13741,50 +13741,44 @@ H    0     0                     131.6000000    0.00000   100%     -    0s
 H    0     0                     111.6000000    0.00000   100%     -    0s
 H    0     0                      70.6000000    0.00000   100%     -    0s
 H    0     0                      66.8000000    0.00000   100%     -    0s
-H    0     0                      63.8000000    0.00000   100%     -    0s
-     0     0    0.20000    0    6   63.80000    0.20000   100%     -    0s
-H    0     0                      46.8000000    0.20000   100%     -    0s
-H    0     0                      43.6092243    0.20000   100%     -    0s
+     0     0    0.20000    0    6   66.80000    0.20000   100%     -    0s
+H    0     0                      63.8000000    0.20000   100%     -    0s
+H    0     0                      54.8000000    0.20000   100%     -    0s
+H    0     0                      42.4235294    0.20000   100%     -    0s
+H    0     0                      39.3737179    0.20000  99.5%     -    0s
 H    0     0                      38.8000000    0.20000  99.5%     -    0s
      0     0    0.20000    0    7   38.80000    0.20000  99.5%     -    0s
 H    0     0                      30.8000000    0.20000  99.4%     -    0s
-     0     0    0.20000    0   11   30.80000    0.20000  99.4%     -    0s
-H    0     0                      29.8000000    0.20000  99.3%     -    0s
-H    0     0                      28.6000000    0.20000  99.3%     -    0s
-     0     0    0.20000    0   10   28.60000    0.20000  99.3%     -    0s
 H    0     0                      24.8000000    0.20000  99.2%     -    0s
-     0     0    0.60000    0    9   24.80000    0.60000  97.6%     -    0s
-H    0     0                      18.8000000    0.60000  96.8%     -    0s
-     0     0    0.60000    0    9   18.80000    0.60000  96.8%     -    0s
-H    0     0                      16.8000000    0.60000  96.4%     -    0s
-H    0     0                      13.8303030    0.60000  95.7%     -    0s
-H    0     0                      12.8000000    0.60000  95.3%     -    0s
-     0     0    0.60000    0    9   12.80000    0.60000  95.3%     -    0s
-     0     0    0.60000    0    8   12.80000    0.60000  95.3%     -    0s
-     0     0    0.60000    0    4   12.80000    0.60000  95.3%     -    0s
-     0     0    0.60000    0    7   12.80000    0.60000  95.3%     -    0s
-     0     0    0.85394    0    7   12.80000    0.85394  93.3%     -    0s
-     0     0    1.27028    0    7   12.80000    1.27028  90.1%     -    0s
-H    0     0                       7.6000000    1.27028  83.3%     -    0s
-     0     0    5.30650    0    9    7.60000    5.30650  30.2%     -    0s
-     0     0    5.35256    0    9    7.60000    5.35256  29.6%     -    0s
-     0     2    5.35256    0    9    7.60000    5.35256  29.6%     -    0s
+     0     0    0.60000    0   11   24.80000    0.60000  97.6%     -    0s
+H    0     0                       7.6000000    0.60000  92.1%     -    0s
+     0     0    0.60000    0    7    7.60000    0.60000  92.1%     -    0s
+     0     0    0.60000    0   10    7.60000    0.60000  92.1%     -    0s
+     0     0    0.60000    0   10    7.60000    0.60000  92.1%     -    0s
+     0     0    0.60000    0   10    7.60000    0.60000  92.1%     -    0s
+     0     0    0.60000    0    8    7.60000    0.60000  92.1%     -    0s
+     0     0    0.67457    0    6    7.60000    0.67457  91.1%     -    0s
+     0     0    0.92289    0   11    7.60000    0.92289  87.9%     -    0s
+     0     0    6.72359    0    8    7.60000    6.72359  11.5%     -    0s
+     0     0    7.38975    0    8    7.60000    7.38975  2.77%     -    0s
+     0     2    7.38975    0    8    7.60000    7.38975  2.77%     -    0s
 
 Cutting planes:
   Gomory: 1
-  Cover: 20
-  MIR: 25
-  StrongCG: 2
-  Inf proof: 1
-  RLT: 3
+  Cover: 39
+  MIR: 24
+  StrongCG: 3
+  Inf proof: 5
+  RLT: 4
+  Relax-and-lift: 1
 
-Explored 268 nodes (1648 simplex iterations) in 0.14 seconds
+Explored 439 nodes (2410 simplex iterations) in 0.12 seconds
 Thread count was 8 (of 8 available processors)
 
-Solution count 10: 7.6 12.8 16.8 ... 46.8
+Solution count 10: 7.6 24.8 30.8 ... 131.6
 
 Optimal solution found (tolerance 1.00e-04)
-Best objective 7.600000000000e+00, best bound 7.600000000000e+00, gap 0.0000%
+Best objective 7.599999999999e+00, best bound 7.599999999999e+00, gap 0.0000%
 </pre>
 </div>
 </div>
