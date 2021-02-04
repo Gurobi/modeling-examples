@@ -13130,7 +13130,8 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A small company with six vans has a contract with a number of airlines to pick up lost or delayed baggage, belonging to customers in the London area, from Heathrow airport at 6 p.m. each evening. The contract stipulates that each customer must have their baggage delivered by 8 p.m. The company requires a model to advise them what is the minimum number of vans they need to use and to which customers each van should deliver and in what order. There is no practical capacity limitation on each van. Each van can hold all baggage that needs to be delivered in a two-hour period. To solve this problem, we can formulate an optimization model that minimizes the number of vans that need to be used.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Several airlines from Heathrow airport has a contract with a shuttle company with six vans. The agreement establishes that the shuttle company needs to pick up lost or delayed baggage belonging to customers in the London area from Heathrow airport at 6 p.m. each evening. The contract establishes that each customer must have their luggage delivered by 8 p.m.</p>
+<p>The shuttle company hires a mathematical programming expert to build a model that determines the minimum number of vans required to satisfy the distribution of the lost luggage, the assignment of customers to vans, and in which order the customers will be visited by each van. The vans have enough capacity to distribute the lost luggage, i.e., each van can hold all the bags that need to be delivered in two hours.</p>
 
 </div>
 </div>
@@ -13600,11 +13601,11 @@ Coefficient statistics:
   Objective range  [1e+00, 1e+00]
   Bounds range     [1e+00, 1e+00]
   RHS range        [1e+00, 1e+00]
-Presolve time: 0.02s
+Presolve time: 0.01s
 Presolved: 328 rows, 1740 columns, 5480 nonzeros
 Variable types: 0 continuous, 1740 integer (1740 binary)
 
-Root relaxation: objective 1.492625e+00, 908 iterations, 0.04 seconds
+Root relaxation: objective 1.492625e+00, 908 iterations, 0.03 seconds
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
@@ -13626,7 +13627,7 @@ Cutting planes:
   RLT: 1
   Lazy constraints: 228
 
-Explored 1043 nodes (58761 simplex iterations) in 2.06 seconds
+Explored 1043 nodes (58761 simplex iterations) in 2.10 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 2: 2 3 
@@ -13634,7 +13635,7 @@ Solution count 2: 2 3
 Optimal solution found (tolerance 1.00e-04)
 Best objective 2.000000000000e+00, best bound 2.000000000000e+00, gap 0.0000%
 
-User-callback calls 2408, time in user-callback 0.37 sec
+User-callback calls 2415, time in user-callback 0.36 sec
 </pre>
 </div>
 </div>
