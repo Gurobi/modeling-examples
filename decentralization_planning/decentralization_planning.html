@@ -13130,10 +13130,8 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A large company wants to move some of its departments out of London. Doing so will result in reduced costs in some areas
-(such as cheaper housing, government incentives, easier recruitment, etc.), and increased costs in other areas (such as communication between departments). The cost implications for all possible locations of each department have been calculated.
-The goal is to determine where to locate each department in order to maximize the total difference between the reduced costs  from relocating and the increased communication costs between departments.</p>
-<p>The company comprises five departments (A, B, C, D and E). The possible cities for relocation are Bristol and Brighton, or a department may be kept in London. None of these cities (including London) may be the location for more than three of the departments.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>An enterprise wants to move some of its departments out of London. Doing so will reduce costs in some areas (such as cheaper housing, government incentives, easier recruitment, etc.) and increased costs in other areas (such as communication between departments). The cost implications for all possible locations of each department have been calculated. The goal is to determine where to locate each department in order to maximize the total difference between the reduced costs from relocating and the increased communication costs between departments.</p>
+<p>The enterprise has five departments (A, B, C, D, and E). The cities where the five departments can be located are Bristol and Brighton, or a department may be kept in London. There is a constraint that a city can have at most three departments.</p>
 
 </div>
 </div>
@@ -13354,7 +13352,6 @@ y_{d,c,d2,c2} \leq \text{locate}_{d2,c2} \quad \forall (d,c,d2,c2) \in dcd2c2
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 Changed value of parameter nonConvex to 2
    Prev: -1  Min: -1  Max: 2  Default: -1
 </pre>
@@ -13464,7 +13461,8 @@ Changed value of parameter nonConvex to 2
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 8 rows, 15 columns and 30 nonzeros
 Model fingerprint: 0x2ad3c449
 Model has 54 quadratic objective terms
@@ -13498,7 +13496,7 @@ Cutting planes:
   Mod-K: 2
   RLT: 25
 
-Explored 1 nodes (43 simplex iterations) in 0.06 seconds
+Explored 1 nodes (43 simplex iterations) in 0.05 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 4: 14.9 -16.3 -33.9 -73.9 
