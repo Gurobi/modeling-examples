@@ -13136,7 +13136,7 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <li>Steel</li>
 <li>Transport</li>
 </ul>
-<p>Part of the outputs from these industries are needed as inputs to others. For example, coal is needed to fire the blast furnaces that produce steel, steel is needed in the machinery for extracting coal, etc. We measure all units of production in monetary terms.  That is, each dollar of production by one of the industries requires inputs (in dollars) from possibly its own industry as well as other industries. The required inputs as well as the labor requirements (also measured in dollars) are shown in the following table.</p>
+<p>Outputs from these industries are required as inputs to others. For instance, coal is required by furnaces that produce steel, and steel is required in the equipment to extract coal. The units of production are in monetary terms. That is, each dollar of production by one of the industries needs inputs (in dollars) from other industries and possibly from its own industry as well. The following table shows the required inputs and labor requirements, all measured in dollars. We assume that the economy has a time lag. This assumption means that the output in year t +1 requires an input in year t.</p>
 <table>
 <thead><tr>
 <th>input (t) / <br /> output (t+1)</th>
@@ -13178,8 +13178,8 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 </tr>
 </tbody>
 </table>
-<p>There is a time lag in the economy so that the output in year t +1 requires an input in year t.  For example, to produce one-dollar worth of coal requires 0.1 dollars of coal (to provide the necessary power), 0.1 dollars of steel (the steel ‘used up’ in the ‘wear and tear’ on the machinery) and 0.2 dollars of transport (for moving the coal from the mine). In addition, 0.6 dollars of manpower is required. Similarly, the other columns of the table give the inputs required (in dollars) for each dollar of steel and each dollar of transport (trucks, cars, trains, etc.). Notice that the value of each unit of output is exactly matched by the sum of the values of its inputs.</p>
-<p>Output from an industry may also be used to build productive capacity for itself or other industries in future years. The inputs required to give unit increases (capacity in dollars’ worth of extra production) in productive capacity are given in the following table. Input from an industry in year t results in a (permanent) increase in productive capacity in year t +2.</p>
+<p>Let’s consider the coal industry column in the table, to extract one-dollar worth of coal requires 0.1 dollars of coal, 0.1 dollars of steel, 0.2 dollars of transport, and 0.6 dollars of manpower. Similarly, the other columns of the table give the inputs required (in dollars) for each dollar of steel and each transport dollar. Notice that each unit of output's value is exactly matched by the sum of the values of its inputs.</p>
+<p>Each industry can build productive capacity from its own output or the production of other industries. The following table shows the inputs needed to give unit increases in productive capacity. The extra capacity available is measured in dollars. The input from an industry to build productive capacity in year t generates a permanent rise in productive capacity in year t + 2.</p>
 <table>
 <thead><tr>
 <th>input (t) / <br /> output (t+2)</th>
@@ -13215,7 +13215,7 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 </tr>
 </tbody>
 </table>
-<p>Stocks of goods may be held from year to year. At present (the beginning of year 1), the stocks and productive capacities (per year) are given in the following table (in millions of dollars).</p>
+<p>Inventories of goods may be held from year to year. The following table shows the inventories of goods at the beginning of year one and the yearly productive capacities (in millions of dollars).</p>
 <table>
 <thead><tr>
 <th>Present</th>
@@ -13241,11 +13241,11 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 </tr>
 </tbody>
 </table>
-<p>We want to maximize the total manpower utilization i.e. employment, over the planning horizon while meeting an exogenous consumption requirement in every year:</p>
+<p>The goal is to maximize the total manpower utilization, i.e., employment, over the planning horizon while meeting an exogenous consumption requirement every year:</p>
 <ul>
-<li>60 million dollars of coal. </li>
-<li>60 million dollars of steel.</li>
-<li>30 million dollars  of transport.</li>
+<li>Sixty million dollars of coal.</li>
+<li>Sixty million dollars of steel.</li>
+<li>Thirty million dollars of transport.</li>
 </ul>
 
 </div>
@@ -13254,7 +13254,7 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><p>A widely used type of national economic model is the input–output model representing the interrelationships between the different sectors of a country’s economy. Such models are often referred to as dynamic Leontief models after their originator, who built such a model of the American economy. A similar model has been considered by Wagner (1957).</p>
+<h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><p>Macro-economists frequently use an input-output model to represent the interrelationships between the different sectors of a nation’s economy. These models are called dynamic Leontief models. Wagner (1957) describes in detail this type of models.</p>
 <h3 id="Sets-and-indices">Sets and indices<a class="anchor-link" href="#Sets-and-indices">&#182;</a></h3><p>$i,j \in \text{Industries}=\{\text{coal}, \text{steel}, \text{transport}\}$</p>
 <p>$ t \in \text{Horizon} = \{\text{year1}, \text{year2}, \text{year3}, \text{year4}, \text{year5}, \text{year6} \}$</p>
 <p>$ t \in \text{fiveYears} = \{\text{year1}, \text{year2}, \text{year3}, \text{year4}, \text{year5} \}$</p>
@@ -13277,7 +13277,7 @@ Note: goods of industry j, in millions of dollars, available in year t but produ
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In order to build a realistic model, we need to think beyond year 5. Therefore, we make the following assumptions:</p>
+<p>A realistic model requires thinking beyond year 5. Therefore, we make the following assumptions:</p>
 <ul>
 <li>External demand is constant up to year 5 and beyond.</li>
 <li>Stock level remains constant at year 5 and beyond.</li>
@@ -13497,7 +13497,6 @@ $$<p>Where $x_{j}$ is the solution of the static model.</p>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
 Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 3 rows, 3 columns and 9 nonzeros
@@ -13508,12 +13507,12 @@ Coefficient statistics:
   Bounds range     [0e+00, 0e+00]
   RHS range        [3e+01, 6e+01]
 Presolve removed 3 rows and 3 columns
-Presolve time: 0.03s
+Presolve time: 0.04s
 Presolve: All rows and columns removed
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    0.0000000e+00   0.000000e+00   0.000000e+00      0s
 
-Solved in 0 iterations and 0.03 seconds
+Solved in 0 iterations and 0.04 seconds
 Optimal objective  0.000000000e+00
 
 
@@ -13757,7 +13756,7 @@ Generate $92.31 million dollars of transport
 <pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
 Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 33 rows, 51 columns and 183 nonzeros
-Model fingerprint: 0xf2157a17
+Model fingerprint: 0x297342fe
 Coefficient statistics:
   Matrix range     [1e-01, 1e+00]
   Objective range  [1e-01, 6e-01]
@@ -13768,10 +13767,10 @@ Presolve time: 0.01s
 Presolved: 24 rows, 33 columns, 126 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
-       0    2.2819243e+04   5.895263e+03   0.000000e+00      0s
-      25    1.9022169e+03   0.000000e+00   0.000000e+00      0s
+       0    4.9803351e+04   2.094811e+04   0.000000e+00      0s
+      33    1.9022169e+03   0.000000e+00   0.000000e+00      0s
 
-Solved in 25 iterations and 0.01 seconds
+Solved in 33 iterations and 0.01 seconds
 Optimal objective  1.902216910e+03
 </pre>
 </div>
