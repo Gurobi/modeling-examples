@@ -13116,16 +13116,10 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-Mathematical-Optimization-Modeling">Introduction to Mathematical Optimization Modeling<a class="anchor-link" href="#Introduction-to-Mathematical-Optimization-Modeling">&#182;</a></h1><h2 id="Objective-and-prerequisites">Objective and prerequisites<a class="anchor-link" href="#Objective-and-prerequisites">&#182;</a></h2><p>The goal of this modeling example is to introduce the key components in the formulation of mixed integer programming (MIP) problems. For each component of a MIP problem formulation, we provide a description,  the associated Python code,  and the mathematical notation describing the component.</p>
-<p>To fully understand the content of this notebook, the reader should:</p>
-<ul>
-<li>Be familiar with Python.</li>
-<li>Have a background in any branch of engineering, computer science, economics, statistics, any branch of the “hard” sciences, or any discipline that uses quantitative models and methods.</li>
-</ul>
-<p>The reader should also consult the  <a href="https://www.gurobi.com/resources/?category-filter=documentation">documentation</a>
-of the Gurobi Python API.
-This notebook is explained in detail in our series of tutorial videos on mixed integer linear programming.
-You can watch these videos by clicking 
+<h1 id="Introduction-to-Mathematical-Optimization-Modeling">Introduction to Mathematical Optimization Modeling<a class="anchor-link" href="#Introduction-to-Mathematical-Optimization-Modeling">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Are you looking to learn the basics of mathematical optimization modeling? If so, then this is a great place to start. In this tutorial, we’ll walk you through the process of building a mathematical optimization model and solving a mathematical optimization problem. We’ll begin by giving you an overview of the key components of a simple mathematical optimization problem, then show you how to create a mathematical optimization model (or, to be more precise, a mixed-integer programming or MIP model) of the problem using using the Gurobi Python API, and then demonstrate how you can automatically generate an optimal solution using the Gurobi Optimizer.</p>
+<p>This modeling tutorial is at the introductory level, where we assume that you know Python and that you have a background on a discipline that uses quantitative methods.</p>
+<p>You may find it helpful to refer to the <a href="https://www.gurobi.com/resources/?category-filter=documentation">documentation</a> 
+of the Gurobi Python API. This notebook is explained in detail in our series of tutorial videos on mixed-integer linear programming. You can watch these videos by clicking
 <a href="https://www.gurobi.com/resource/tutorial-mixed-integer-linear-programming/">here</a></p>
 <p><strong>Download the Repository</strong> <br />
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
@@ -13261,7 +13255,6 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13504,7 +13497,8 @@ The second argument, <code>GRB.MAXIMIZE</code>, is the optimization "sense." In 
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 6 rows, 9 columns and 18 nonzeros
 Model fingerprint: 0xb6602fb2
 Coefficient statistics:
@@ -13865,7 +13859,8 @@ $$
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 7 rows, 12 columns and 30 nonzeros
 Model fingerprint: 0xf3c6f8c8
 Variable types: 3 continuous, 9 integer (9 binary)
@@ -13893,7 +13888,7 @@ Cutting planes:
   GUB cover: 1
   RLT: 1
 
-Explored 1 nodes (7 simplex iterations) in 0.03 seconds
+Explored 1 nodes (7 simplex iterations) in 0.04 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 1: 52 
