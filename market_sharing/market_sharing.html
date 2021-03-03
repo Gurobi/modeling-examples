@@ -13116,8 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Market-Sharing">Market Sharing<a class="anchor-link" href="#Market-Sharing">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This problem is an example of a goal programming problem. For this market sharing problem, we want to allocate retailers to two divisions of a company in order to optimize the trade-offs of several market sharing goals. This problem is formulated as a mixed integer linear programming problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
-<p>This model is example 13 from the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on pages 267-268 and 322-324.</p>
+<h1 id="Market-Sharing">Market Sharing<a class="anchor-link" href="#Market-Sharing">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this example, we’ll show you how to solve a goal programming problem that involves allocating the retailers to two divisions of a company in order to optimize the trade-offs of several market sharing goals. You’ll learn how to create a mixed integer linear programming model of the problem using the Gurobi Python API and how to find an optimal solution to the problem using the Gurobi Optimizer.</p>
+<p>This model is example 13 from the fifth edition of Model Building in Mathematical Programming by H. Paul Williams on pages 267-268 and 322-324.</p>
 <p>This modeling example is at the beginner level, where we assume that you know Python and that you have some knowledge about building mathematical optimization models. The reader should also consult the  <a href="https://www.gurobi.com/resources/?category-filter=documentation">documentation</a>
 of the Gurobi Python API.</p>
 <p><strong>Download the Repository</strong> <br /> 
@@ -13131,8 +13131,8 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Let’s consider a company that supplies retailers with oil and spirit. The company has two large divisions, and we want to allocate each retailer to either division D1 or division D2 in such a way that D1 controls 40% of the market and D2 the remaining 60%. The table below lists retailers M1 to M23. Each retailer has an estimated market for oil and spirit. Retailers M1 to M8 are in region 1, retailers M9 to M18 are in region 2, and retailers M19 to M23 are in region 3. Retailers with good growth prospects are classified into group A, and the rest of the retailers are classified into group B. Each retailer has a certain number of delivery points.</p>
-<p><img src="retailers.PNG" alt="retailers"></p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A large company has two divisions: D1 and D2. The company supplies retailers with oil and spirit. The goal is to allocate each retailer to either division D1 or division D2. The allocated division will be the retailer’s supplier. As far as possible, the allocation must be made so that D1 controls 40% of the market and D2 the remaining 60%. The retailers in the table below are listed as M1 to M23. Each retailer has an estimated market for oil and spirit. Retailers M1 to M8 are in region 1, retailers M9 to M18 are in region 2, and retailers M19 to M23 are in region 3. Certain retailers are considered to have good growth prospects and categorized as group A and the others are in group B. Each retailer has a certain number of delivery points. 
+<img src="retailers.PNG" alt="retailers"></p>
 <p>We want to make the 40%/60% split between D1 and D2 in each of the following categories:</p>
 <ol>
 <li>Total number of delivery points</li>
@@ -13143,7 +13143,7 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <li>Number of retailers in group A</li>
 <li>Number of retailers in group B.</li>
 </ol>
-<p>The 40%/60% split is flexible in that any market share may vary by  ±  5%.  That is, any market share can be within the range [35%/65%, 45%/55%.]. The objective is to minimize the sum of the percentage deviations from the 40%/60% split.</p>
+<p>There is flexibility in that any market share may vary by $\pm$ 5%. That is, the share can vary between the limits 35%/65% and 45%/55%. The objective is to minimize the sum of the percentage deviations from the 40%/60% split.</p>
 
 </div>
 </div>
@@ -13772,7 +13772,7 @@ Cutting planes:
   RLT: 4
   Relax-and-lift: 1
 
-Explored 439 nodes (2410 simplex iterations) in 0.12 seconds
+Explored 439 nodes (2410 simplex iterations) in 0.11 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 10: 7.6 24.8 30.8 ... 131.6
