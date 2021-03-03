@@ -13116,8 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Constraint-Optimization">Constraint Optimization<a class="anchor-link" href="#Constraint-Optimization">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a constraint optimization problem. Considering a constraint of an integer programming model where all the decision variables in the constraint are binary, the goal is to find another constraint involving the same binary variables that is logically equivalent to the original constraint, but that has the smallest possible absolute value of the right-hand side. This problem is formulated as a linear programming problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
-<p>This model is example 18 from the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on pages 273 and 328-330.</p>
+<h1 id="Constraint-Optimization">Constraint Optimization<a class="anchor-link" href="#Constraint-Optimization">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>If you are looking to improve your modeling skills, then try this tricky constraint optimization problem. We’ll show you how to model this problem as a linear programming problem using the Gurobi Python API and solve it using the Gurobi Optimizer.</p>
+<p>This model is example 18 from the fifth edition of Model Building in Mathematical Programming by H. Paul Williams on pages 273 and 328-330.</p>
 <p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
 <p><strong>Download the Repository</strong> <br /> 
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
@@ -13131,13 +13131,14 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>Let’s consider the following constraint of an integer programming model:</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>In an integer programming model, the following constraint occurs:</p>
 $$
 9x_{1} + 13x_{2} -14x_{3} + 17x_{4} + 13x_{5} - 19x_{6} + 23x_{7} + 21x_{8} \leq 37
-$$<p>All the decision variables in the constraint are binary. The goal is to find another constraint in terms of the same binary variables that is logically equivalent to the original constraint but that has the smallest possible absolute value of the right-hand side (RHS).</p>
-<p>It is well established in the theory of integer programming that the ability to efficiently solve an integer programming problem depends on how "close" the linear programming relaxation is to the convex hull of all the integer solutions of the integer programming problem. A linear programming relaxation is "tight" when this formulation is "close" to the convex hull of all the integer solutions. We say that an equivalent constraint with respect to an original constraint is "tighter" whenever the equivalent constraint has the same integer solutions as the original one but has removed some fractional feasible solutions of the original one. These ideas are illustrated in the following figure.</p>
+$$<p>All the decision variables in the constraint are binary, and the objective is to find another constraint involving the same binary variables that is logically equivalent to the original constraint, but that has the smallest possible absolute value of the right-hand side (RHS).</p>
+<p>It is well established in the theory of  integer programming that the ability to efficiently solve an  integer programming problem depends on how "close" the linear programming relaxation is to the convex hull of all the integer solutions of the 
+integer programming problem. A linear programming relaxation is "tight" when this formulation is "close" to the convex hull of all the integer solutions. We say that an equivalent constraint with respect to an original constraint is "tighter" whenever the equivalent constraint has the same integer solutions as the original one, but has removed some fractional feasible solutions of the original one. These ideas are illustrated in the following figure.</p>
 <p><img src="OptimizedConstraint.PNG" alt="OptimizedConstraint"></p>
-<p>The line AB determines the original constraint in the figure, and the line CD defines the "tighter" equivalent constraint. Notice that the equivalent constraint has the same set of integer solutions and has removed fractional feasible solutions of the original constraint.</p>
+<p>The original constraint in the figure is determined by the line AB and the "tighter" equivalent constraint is defined by the line CD. Notice that the equivalent constraint has the same set of integer solutions and has removed fractional feasible solutions of the original constraint.</p>
 
 </div>
 </div>
@@ -13146,7 +13147,7 @@ $$<p>All the decision variables in the constraint are binary. The goal is to fin
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><p>Bradley et al. (1974) describe a procedure for simplifying a single constraint in binary variables. Their procedure entails using a linear programming model. We consider the constraint in a standard form with positive coefficients in descending order of magnitude for convenience. To transform the original constraint into the standard form, we define the following transformation:</p>
+<h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><p>A procedure for simplifying a single 0–1 constraint has been described by Bradley et al. (1974). We adopt their procedure of using a linear programming model. It is convenient to consider the constraint in a standard form with positive coefficients in descending order of magnitude. This can be achieved by the transformation:</p>
 $$
 y_{1} = x_{7}, y_{2} = x_{8}, y_{3} = 1 - x_{6}, y_{4} = x_{4},
 $$$$
@@ -13155,8 +13156,10 @@ $$<p>The resulting equivalent constraint is</p>
 $$
 23y_{1} + 21y_{2} + 19y_{3} + 17y_{4} + 14y_{5} + 13y_{6} + 13y_{7} + 9y_{8} \leq 70.
 $$<p>All inequalities of the form $\sum_{i=1}^{8} b_{i}*y_{i} \leq b_{0} $ equivalent to the constraint to be optimized are characterized by a set of inequalities of a linear programming model defined in terms of the decision variables $b_{i}$. Observe that the variables $b_{i}$ are the coefficients of the transformed constraint.</p>
-<p>To capture the original constraint's total logical import, we search for subsets of the indices known as <em>roofs</em> and <em>ceilings</em>. The definition of a ceiling is a maximal subset of the variables' indices such that the sum of the corresponding coefficients is less or equal than the right-hand side coefficient. Such a subset is maximal in the sense that no subset properly containing it, or to the left in the implied lexicographical ordering, can also be a ceiling. For example, the subset {1, 2, 4, 8} is a ceiling,  23+21+17+9≤70 , but any subset properly containing it (e.g. {1, 2, 4, 7, 8}) or to the ‘left’ of it (e.g. {1, 2, 4, 7}) is not a ceiling.</p>
-<p>A roof is a ‘minimal’ subset of variables’ indices such that the sum of the corresponding coefficients is greater or equal than the right-hand side coefficient. For example {2, 3, 4, 5} is a roof,  21+19+17+14&gt;70  , but any subset properly contained in it (e.g. {3, 4, 5}) or to the ‘right’ of it (e.g. {2, 3, 4, 6}) is not a roof. See the details about how these constraints are derived in Bradley et al. (1974).</p>
+<p>In order to capture the total logical import of the original constraint, we search for subsets of the indices known as <em>roofs</em> and <em>ceilings</em>. Ceilings are ‘maximal’ subsets of the indices of the variables for which the sum of the corresponding coefficients does not exceed the right-hand side coefficient. Such a subset is maximal in the sense that no subset properly containing it, or to the left in the implied lexicographical ordering, can also be a ceiling. For example, the subset {1, 2, 4, 8} is a ceiling, $23 +21 + 17 + 9 \leq 70$, but any subset properly containing it (e.g. {1, 2, 4, 7, 8}) or to the ‘left’ of it (e.g. {1, 2, 4, 7}) is not a ceiling. Roofs are ‘minimal’ subsets of the indices for which the sum of the corresponding coefficients exceeds the right-hand side coefficient. Such a subset is ‘minimal’ in the same sense as a subset is ‘maximal’. For example {2, 3, 4, 5} is a roof, 
+$21 +19+ 17 + 14 &gt; 70 $ ,
+but any subset properly contained in it (e.g. {3, 4, 5}) or to the ‘right’ of it (e.g.
+{2, 3, 4, 6}) is not a roof. See the details about how these constraints are derived in Bradley et al. (1974).</p>
 <p>Therefore, all inequalities of the form $\sum_{i=1}^{8} b_{i}*y_{i} \leq b_{0} $ equivalent to the constraint to be optimized are characterized by the following constraints.</p>
 <p><strong>Ceiling constraints</strong>: <br /></p>
 $$
@@ -13451,7 +13454,7 @@ Coefficient statistics:
   Objective range  [1e+00, 1e+00]
   Bounds range     [0e+00, 0e+00]
   RHS range        [1e+00, 1e+00]
-Presolve time: 0.01s
+Presolve time: 0.00s
 Presolved: 19 rows, 9 columns, 76 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
