@@ -13123,13 +13123,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This Jupyter Notebook  describes a marketing campaign optimization problem that is common in 
-the banking and financial services industry. 
-The problem is formulated using the Gurobi Python API and solved using the Gurobi Optimizer. 
-We assume that key parameters of the mathematical optimization model of the marketing campaign problem are estimated using machine learning predictive response models. 
-The marketing campaign optimization problem entails determining which products to offer to each customer 
-in order 
-to maximize total expected profit while satisfying various business constraints.</p>
+<h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Companies across almost every industry are looking to optimize their marketing campaigns. In this Jupyter Notebook, we’ll explore a marketing campaign optimization problem that is common in the banking and financial services industry, which involves determining which products to offer to individual customers in order to maximize total expected profit while satisfying various business constraints. You’ll learn how to formulate a mathematical optimization model of the problem (using machine learning predictive response models as parameters) and solve it using the Gurobi Optimizer.</p>
 <p>This modeling example is at the beginner level, where we assume that you know Python and that you have some knowledge about building mathematical optimization models. The reader should also consult the  <a href="https://www.gurobi.com/resources/?category-filter=documentation">documentation</a>
 of the Gurobi Python API.</p>
 <p><strong>Download the Repository</strong> <br />
@@ -13792,7 +13786,6 @@ x_{k,i,j} \in \{0,1 \} \quad \forall i \in I^{k},  j \in J^{k}, k \in K
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -14007,7 +14000,8 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 6 rows, 5 columns and 17 nonzeros
 Model fingerprint: 0x1eac2f22
 Coefficient statistics:
@@ -14383,7 +14377,8 @@ $\$6,000$. The total expected cost is $\$600$ which is equal to the original bud
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 14 rows, 20 columns and 40 nonzeros
 Model fingerprint: 0xe1e9d99f
 Variable types: 0 continuous, 20 integer (20 binary)
@@ -14694,7 +14689,8 @@ Optimal ROI is 1000.0% with a minimum ROI of  120.0%.
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 15 rows, 20 columns and 60 nonzeros
 Model fingerprint: 0x96da858f
 Variable types: 0 continuous, 20 integer (20 binary)
