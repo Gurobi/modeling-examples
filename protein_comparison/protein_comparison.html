@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Protein-Comparison">Protein Comparison<a class="anchor-link" href="#Protein-Comparison">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a Protein Comparison problem formulated as a quadratic assignment problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
+<h1 id="Protein-Comparison">Protein Comparison<a class="anchor-link" href="#Protein-Comparison">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this example, we’ll show you how to use mathematical optimization to address a Protein Comparison problem. You’ll learn how to model this problem – which involves measuring the similarities of two proteins – as a quadratic assignment problem using the Gurobi Python API and find an optimal solution to it with the Gurobi Optimizer.</p>
 <p>This model is example 29 from the fifth edition of Model Building in Mathematical Programming by H. Paul Williams on pages 290-291 and 345.</p>
 <p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
 <p><strong>Download the Repository</strong> <br /> 
@@ -13146,9 +13146,20 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>This modeling example is based on a problem discussed in a paper by Forrester and Greenberg (2008). The problem consists of measuring the similarities of two proteins. The nodes of a graph represent the acids of a protein. The edges of the graph represent two acids that are within a threshold distance of each other. This graph is known as the contact map of a protein. Let’s consider the contact map of two proteins, and our goal is to find the largest isomorphic subgraphs in each graph. We measure the largest isomorphic subgraphs in terms of the number of corresponding edges. We need to preserve the order of the acids in each of the subgraphs of the proteins. To satisfy this constraint, we need to ensure that there are no crossovers in the comparison. The following figure illustrates this.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>This problem is based on one problem discussed in a paper by Forrester and Greenberg (2008).
+It is concerned with measuring the similarities of two proteins. A protein can be
+represented by a graph with the acids represented by the nodes and
+the edges being present when two acids are within a threshold distance of each
+other. This graphical representation is known as the contact map of the protein.
+Given two contact maps representing proteins, we would like to find the largest
+(measured by the number of corresponding edges) isomorphic subgraphs in each
+graph. The acids in each of the proteins are ordered. We need to preserve this
+ordering in each of the subgraphs, which implies that there can be no crossovers
+in the comparison. This is illustrated in the following figure.</p>
 <p><img src="crossover.PNG" alt="crossover"></p>
-<p>Notice that if we want to associate acid $i$ with acid $j$ and acid $k$ with acid $l$ in the comparison, we need to ensure that if $i &lt; k$ in the first protein contact map, we cannot have $l &lt; j$  in the contact map of the second protein. The following figure gives a comparison between two small contact maps leading to five corresponding edges.</p>
+<p>If $i &lt; k$ in the contact map for the first protein then we cannot have $l &lt; j$ in the second protein, if $i$ is to be
+associated with $j$ and $k$ with $l$ in the comparison. The following figure gives a comparison between two small contact
+maps leading to five corresponding edges.</p>
 <p><img src="comparison.PNG" alt="comparison"></p>
 <p>The goal is to compare the contact maps given by the following figures.</p>
 <p>Mapping of the first protein:</p>
@@ -13169,13 +13180,13 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 <p>$E_{2} = \{(1,4),(2,3),(4,6),(4,7),(5,6),(6,8),(7,8),(7,10),(9,10),(10,11) \}$: Edges in graph $G_{2}$.</p>
 <h3 id="Decision-variables">Decision variables<a class="anchor-link" href="#Decision-variables">&#182;</a></h3><p>$\text{map}_{i,j} = x_{i,j} = 1$, iff node $i$ in $G_{1}$ is matched with node $j$ in $G_{2}$.</p>
 <p>$ w_{i,j,k,l} = x_{i,j}*x_{k,l}  = 1$, iff an edge $(i,k) \in E_{1}$ is matched with edge $(j,l) \in E_{2}$.</p>
-<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p><strong>$G_{1}$ matching</strong>: For each node in $G_{1}$, at most one node of $G_{2}$ can be matched.</p>
-$$
-\sum_{j \in N_{2} } x_{i,j} \leq 1 \quad \forall i \in N_{1}
-$$<p><strong>$G_{2}$ matching</strong>: For each node in $G_{2}$, at most one node of $G_{1}$  can be matched.</p>
+<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p><strong>$G_{1}$ matching</strong>: No node in $G_{1}$ can be matched with more than one  in $G_{2}$.</p>
 $$
 \sum_{i \in N_{1} } x_{i,j} \leq 1 \quad \forall j \in N_{2}
-$$<p><strong>Edge matching</strong>: if edges $(i, k)$ and $(j, l)$ are matched, then the corresponding nodes of the edges are also matched.</p>
+$$<p><strong>$G_{2}$ matching</strong>: No node in $G_{2}$ can be matched with more than one  in $G_{1}$.</p>
+$$
+\sum_{j \in N_{2} } x_{i,j} \leq 1 \quad \forall i \in N_{1}
+$$<p><strong>Edge matching</strong>: if edges $(i, k)$ and $(j, l)$ are matched then so are the corresponding nodes.</p>
 $$
  w_{i,j,k,l} \leq x_{i,j}, \;  w_{i,j,k,l} \leq x_{k,l} \quad \forall 
  (i,j,k,l) \in ijkl = \{ i,k \in N_{1}, j,l \in N_{2}: (i,k) \in E_{1},  (j,l) \in E_{2}  \}
@@ -13183,19 +13194,19 @@ $$<p><strong>No crossovers</strong>: There can be no crossovers.</p>
 $$
 x_{i,j} +  x_{k,l} \leq 1 \quad \forall 
 (i,j,k,l) \in ijklx = \{ (i,j,k,l) \in ijkl: i &lt; k \in N_{1},  j &gt; l \in N_{2}  \}
-$$<h3 id="Objective-function">Objective function<a class="anchor-link" href="#Objective-function">&#182;</a></h3><p>Maximize the number of edge matchings.</p>
+$$<h3 id="Objective-function">Objective function<a class="anchor-link" href="#Objective-function">&#182;</a></h3><p>The objective is to maximize the number of edge matchings.</p>
 $$
 \sum_{(i,j,k,l) \in ijkl} w_{i,j,k,l}
 $$<p>This linear integer programming formulation of the Protein Comparison problem is in fact a linearization of a quadratic assignment formulation of this problem. With Gurobi 9.1.0, you can directly solve the quadratic assignment formulation of the Protein Comparison problem without the auxiliary variables and the logical constraints.</p>
-<h3 id="Objective-function">Objective function<a class="anchor-link" href="#Objective-function">&#182;</a></h3><p>Maximize the number of edge matchings.</p>
+<h3 id="Objective-function">Objective function<a class="anchor-link" href="#Objective-function">&#182;</a></h3><p>The objective is to maximize the number of edge matchings.</p>
 $$
 \sum_{(i,j,k,l) \in ijkl} x_{i,j}*x_{k,l}
-$$<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p><strong>$G_{1}$ matching</strong>: For each node in $G_{1}$, at most one node of $G_{2}$ can be matched.</p>
-$$
-\sum_{j \in N_{2} } x_{i,j} \leq 1 \quad \forall i \in N_{1}
-$$<p><strong>$G_{2}$ matching</strong>: For each node in $G_{2}$, at most one node of $G_{1}$  can be matched.</p>
+$$<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p><strong>$G_{1}$ matching</strong>: No node in $G_{1}$ can be matched with more than one  in $G_{2}$.</p>
 $$
 \sum_{i \in N_{1} } x_{i,j} \leq 1 \quad \forall j \in N_{2}
+$$<p><strong>$G_{2}$ matching</strong>: No node in $G_{2}$ can be matched with more than one  in $G_{1}$.</p>
+$$
+\sum_{j \in N_{2} } x_{i,j} \leq 1 \quad \forall i \in N_{1}
 $$<p><strong>No crossovers</strong>: There can be no crossovers.</p>
 $$
 x_{i,j} +  x_{k,l} \leq 1 \quad \forall 
@@ -13336,7 +13347,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>$G_{2}$ matching</strong>: For each node in $G_{2}$, at most one node of $G_{1}$  can be matched.</p>
+<p><strong>$G_{1}$ matching constraint</strong>: No node in $G_{1}$ can be matched with more than one  in $G_{2}$.</p>
 $$
 \sum_{i \in N_{1} } x_{i,j} \leq 1 \quad \forall j \in N_{2}
 $$
@@ -13348,7 +13359,7 @@ $$
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 𝐺2  matching</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># At most one node in G1 is matched with a node in G2</span>
 
 <span class="n">node1_match</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">map_nodes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">nodes2</span> <span class="p">)</span> <span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;node1_match&#39;</span><span class="p">)</span>
 </pre></div>
@@ -13361,7 +13372,7 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>$G_{1}$ matching</strong>: For each node in $G_{1}$, at most one node of $G_{2}$ can be matched.</p>
+<p><strong>$G_{2}$ matching constraint</strong>: No node in $G_{2}$ can be matched with more than one  in $G_{1}$.</p>
 $$
 \sum_{j \in N_{2} } x_{i,j} \leq 1 \quad \forall i \in N_{1}
 $$
@@ -13373,7 +13384,7 @@ $$
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 𝐺1  matching</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># At most one node in G2 is matched with a node in G1</span>
 
 <span class="n">node2_match</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">map_nodes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">nodes2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nodes1</span> <span class="p">)</span> <span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;node2_match&#39;</span><span class="p">)</span>
 </pre></div>
@@ -13476,7 +13487,7 @@ Coefficient statistics:
   RHS range        [1e+00, 1e+00]
 Found heuristic solution: objective -0.0000000
 Presolve removed 1876 rows and 17 columns
-Presolve time: 0.02s
+Presolve time: 0.01s
 Presolved: 204 rows, 162 columns, 2026 nonzeros
 Variable types: 0 continuous, 162 integer (162 binary)
 
@@ -13495,7 +13506,7 @@ Cutting planes:
   Zero half: 20
   RLT: 17
 
-Explored 1 nodes (267 simplex iterations) in 0.10 seconds
+Explored 1 nodes (267 simplex iterations) in 0.09 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 3: 5 -0 -0 
