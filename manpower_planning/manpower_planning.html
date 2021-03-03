@@ -13116,10 +13116,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Manpower-Planning">Manpower Planning<a class="anchor-link" href="#Manpower-Planning">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a staffing problem. In staffing planning problems, choices must be made regarding the recruitment, training, layoffs (redundancy), and scheduling of workers. Staffing problems are common across a broad range of both manufacturing and service industries.</p>
-<h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this example, we will model and solve a manpower planning problem. We have three types of workers with different skills levels. For each year in the planning horizon, the forecasted number of required workers with specific skills is given. It is possible to recruit new people, train workers to improve their skills, or shift them to a part-time working arrangement. The aim is to create an optimal multi-period operation plan that achieves one of the following two objectives: minimizing the total number of layoffs over the whole horizon or minimizing total costs.</p>
-<p>More information on this type of model can be found in example #5 of the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on pages 256-257 and 303-304.</p>
-<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have  advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
+<h1 id="Manpower-Planning">Manpower Planning<a class="anchor-link" href="#Manpower-Planning">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Staffing problems – which require difficult decisions about the recruitment, training, layoffs, and scheduling of workers – are common across a broad range of manufacturing and service industries. In this example, you’ll learn how to model and solve a complex staffing problem by creating an optimal multi-period operation plan that minimizes the total number of layoffs and costs.</p>
+<p>More information on this type of model can be found in example #5 of the fifth edition of Model Building in Mathematical Programming by H. Paul Williams on pages 256 – 257 and 303 – 304.</p>
+<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
 <p><strong>Download the Repository</strong> <br />
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
 <p><strong>Gurobi License</strong> <br />
@@ -13452,7 +13451,6 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13640,9 +13638,10 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 30 rows, 72 columns and 117 nonzeros
-Model fingerprint: 0x06ec5b66
+Model fingerprint: 0x03e41c91
 Coefficient statistics:
   Matrix range     [3e-01, 1e+00]
   Objective range  [1e+00, 1e+00]
