@@ -13116,13 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Standard-Pooling-Problem">Standard Pooling Problem<a class="anchor-link" href="#Standard-Pooling-Problem">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>One of the new features of Gurobi 9.0 is the addition of a bilinear solver, which enables finding the optimal solution of non-convex quadratic programming  problems (i.e. QPs, QCQPs, MIQPs, and MIQCQPs). This notebook will show you how to use this feature by tackling an instance of the Standard Pooling Problem, one of the most well-known Bilinear Programs. Moreover, we will present two alternative formulations, casted as Quadratically Constrained Quadratic Problems, to contrast their performance when calling the optimizer.</p>
-<p>This modeling example is at the advanced level. To fully understand the content of this notebook, the reader should be familiar with the following:</p>
-<ul>
-<li>Python.</li>
-<li>Gurobi Python interface.</li>
-<li>Advanced knowledge of building mathematical optimization models. Typically, the constraints of these Jupyter Notebooks are complex or require advanced features of the Gurobi Python Interface.</li>
-</ul>
+<h1 id="Standard-Pooling-Problem">Standard Pooling Problem<a class="anchor-link" href="#Standard-Pooling-Problem">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Companies across numerous industries – including petrochemical refining, wastewater treatment, and mining – use mathematical optimization to solve the pooling problem. In this example, we’ll guide you through the process of building a mixed-integer quadratically-constrained programming (MIQCP) model of a pooling problem using the Gurobi Python API and show you how to generate an optimal solution to the problem with the Gurobi Optimizer.</p>
+<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
 <p><strong>Download the Repository</strong> <br /> 
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
 <p><strong>Gurobi License</strong> <br />
