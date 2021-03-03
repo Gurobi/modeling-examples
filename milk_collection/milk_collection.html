@@ -13116,9 +13116,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Milk-Collection-Problem">Milk Collection Problem<a class="anchor-link" href="#Milk-Collection-Problem">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>The Milk Collection Problem is an example of a capacitated vehicle routing problem. In this problem, one tanker lorry with limited capacity, collects milk from a set of farms, and the goal is to identify the optimal route for the tanker. This problem is formulated as a binary optimization problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
+<h1 id="Milk-Collection-Problem">Milk Collection Problem<a class="anchor-link" href="#Milk-Collection-Problem">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this example, you’ll discover how mathematical optimization can be leveraged to solve a capacitated vehicle routing problem: the Milk Collection Problem. With only one tanker truck with limited capacity, you will need to determine the best possible route for the tanker to take to collect milk every day from a set of farms. It’s a complicated problem to solve, but mathematical optimization will help show you the way!</p>
 <p>This model is example 23 from the fifth edition of Model Building in Mathematical Programming by H. Paul Williams on pages 278-281 and 336-337.</p>
-<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and you have  advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
+<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API</p>
 <p><strong>Download the Repository</strong> <br />
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
 <p><strong>Gurobi License</strong> <br />
@@ -13131,17 +13131,16 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>We consider a milk processing enterprise that collects raw milk from 20 farms. The enterprise depot processes the raw milk collected. Eleven small farms need raw milk collection only every other day. The remaining nine large farms require raw milk collection every day. The following table shows the farms’ position relative to the depot (numbered 1) and the farms’ collection requirements.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A small milk processing company is committed to collecting milk from 20 farms and taking it back to the depot for processing. The company has one tanker lorry with the capacity to carry 80 000 liters of milk. Eleven of the farms are small and need a collection only every other day. The other nine farms need a collection every day. The positions of the farms in relation to the depot (numbered 1) are given in the following table together with their collection requirements.</p>
 <p><img src="farmCoordinates.PNG" alt="farmCoordinates"></p>
-<p>The raw milk processing enterprise has only one tanker. The capacity of the tanker lorry is 80 000 liters of milk.</p>
-<p>The goal is to find the optimal route for the tanker lorry on each day. The tanker’s lorry route needs to satisfy the following conditions:</p>
-<ul>
-<li>Visit all the ‘every day’ farms.</li>
-<li>Visit some of the ‘every other day’ farms.</li>
-<li>Satisfy farms’ collection requirements.</li>
-<li>Satisfy tanker’s lorry capacity.</li>
-</ul>
-<p>On alternate days, the tanker must again collect raw milk from the ‘every day’ farms and collect raw milk from the ‘every other day’ farms not visited on the previous day.</p>
+<p>The goal is to find the optimal route for the tanker lorry on each day, bearing in mind that it has to:</p>
+<ol>
+<li>Visit all the ‘every day’ farms. </li>
+<li>Visit some of the ‘every other day’ farms. </li>
+<li>Work within its capacity. </li>
+</ol>
+<p>On alternate days, it must again visit the ‘every day’ farms and also visit the ‘every other day’ farms not visited on the
+previous day.</p>
 
 </div>
 </div>
@@ -13561,7 +13560,7 @@ Coefficient statistics:
   Bounds range     [1e+00, 1e+00]
   RHS range        [1e+00, 4e+01]
 Presolve removed 852 rows and 452 columns
-Presolve time: 0.02s
+Presolve time: 0.00s
 Presolved: 43 rows, 410 columns, 840 nonzeros
 Variable types: 0 continuous, 410 integer (410 binary)
 
@@ -13589,7 +13588,7 @@ H    0     0                     125.3778447  122.72599  2.12%     -    0s
 H    0     0                     123.6682019  122.72599  0.76%     -    0s
 H    0     0                     123.0562379  122.72599  0.27%     -    0s
 
-Explored 1 nodes (332 simplex iterations) in 0.23 seconds
+Explored 1 nodes (332 simplex iterations) in 0.16 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 5: 123.056 123.066 123.668 ... 125.416
@@ -13597,7 +13596,7 @@ Solution count 5: 123.056 123.066 123.668 ... 125.416
 Optimal solution found (tolerance 1.00e-04)
 Best objective 1.230562378535e+02, best bound 1.230562378535e+02, gap 0.0000%
 
-User-callback calls 193, time in user-callback 0.03 sec
+User-callback calls 170, time in user-callback 0.03 sec
 </pre>
 </div>
 </div>
