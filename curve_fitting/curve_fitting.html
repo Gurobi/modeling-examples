@@ -13116,14 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Curve-Fitting">Curve Fitting<a class="anchor-link" href="#Curve-Fitting">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This Jupyter Notebook describes an example of fitting a function to a set of observations. A quantity $y$ is known to depend on another quantity $x$. A set of corresponding values have been collected for $y$ and $x$. We want to identify a function of $x$ that explains the values of $y$. This problem is formulated as a linear programming problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
-<p>The goals of this Jupyter Notebook are to:</p>
-<ul>
-<li><p>Fit the “best” straight line $y=a+bx$ to the given data set. The objective is to minimize the sum of absolute deviations of each observed value of $y$ from the value predicted by the linear relationship.</p>
-</li>
-<li><p>Fit the "best" straight line where the objective is to minimize the maximum deviation of all the observed values of $y$ from the value predicted by the linear relationship.</p>
-</li>
-</ul>
+<h1 id="Curve-Fitting">Curve Fitting<a class="anchor-link" href="#Curve-Fitting">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Try this Jupyter Notebook Modeling Example to learn how you can fit a function to a set of observations. We will formulate this regression problem as a linear programming problem using the Gurobi Python API and then solve it with the Gurobi Optimizer.</p>
 <p>This model is example 11 from the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on pages 266 and 319-320.</p>
 <p>This modeling example is at the beginner level, where we assume that you know Python and that you have some knowledge about building mathematical optimization models. The reader should also consult the 
 <a href="https://www.gurobi.com/resources/?category-filter=documentation">documentation</a> 
@@ -13290,7 +13283,6 @@ z \geq v_{i}  \quad \forall i \in \text{Observations}
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
