@@ -13116,9 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Workforce-Scheduling-Problem">Workforce Scheduling Problem<a class="anchor-link" href="#Workforce-Scheduling-Problem">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This  Jupyter Notebook describes a workforce scheduling optimization problem that is common in the services industry. 
-The problem is formulated as a multi-objective mixed-integer-programming (MIP) model.
-The model is implemented using the Gurobi Python API and solved using the Gurobi Optimizer.</p>
+<h1 id="Workforce-Scheduling-Problem">Workforce Scheduling Problem<a class="anchor-link" href="#Workforce-Scheduling-Problem">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this example, you’ll learn how to solve a critical, central problem in the services industry: workforce scheduling. We’ll demonstrate how you can use mathematical optimization to generate an optimal workforce schedule that meets your business requirements, maximizes employee fairness and satisfaction, and minimizes the number of temporary workers your company needs to hire.</p>
 <p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
 <p><strong>Download the Repository</strong> <br />
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
@@ -13433,7 +13431,6 @@ $s \in \text{shifts}$.</p>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13780,9 +13777,10 @@ $$</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 22 rows, 96 columns and 180 nonzeros
-Model fingerprint: 0x3b9750f8
+Model fingerprint: 0x8f5c4720
 Model has 2 general constraints
 Variable types: 24 continuous, 72 integer (72 binary)
 Coefficient statistics:
@@ -13835,7 +13833,7 @@ Loaded user MIP start with objective 10
 Presolve added 7 rows and 0 columns
 Presolve removed 0 rows and 15 columns
 Presolve time: 0.00s
-Presolved: 40 rows, 103 columns, 251 nonzeros
+Presolved: 40 rows, 103 columns, 241 nonzeros
 Presolved model has 7 SOS constraint(s)
 Variable types: 16 continuous, 87 integer (80 binary)
 
@@ -13844,18 +13842,17 @@ Root relaxation: objective 3.333333e-01, 52 iterations, 0.00 seconds
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
 
-     0     0    0.33333    0   17   10.00000    0.33333  96.7%     -    0s
+     0     0    0.33333    0   16   10.00000    0.33333  96.7%     -    0s
 H    0     0                       1.0000000    0.33333  66.7%     -    0s
-     0     0 infeasible    0         1.00000    1.00000  0.00%     -    0s
+     0     0     cutoff    0         1.00000    1.00000  0.00%     -    0s
 
 Cutting planes:
   Gomory: 8
   Implied bound: 1
-  Flow cover: 2
   RLT: 6
   Relax-and-lift: 1
 
-Explored 1 nodes (89 simplex iterations) in 0.08 seconds
+Explored 1 nodes (79 simplex iterations) in 0.07 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 2: 1 10 
@@ -13864,7 +13861,7 @@ Optimal solution found (tolerance 1.00e-04)
 Best objective 1.000000000000e+00, best bound 1.000000000000e+00, gap 0.0000%
 
 ---------------------------------------------------------------------------
-Multi-objectives: solved in 0.09 seconds, solution count 3
+Multi-objectives: solved in 0.08 seconds, solution count 3
 
 </pre>
 </div>
@@ -13966,10 +13963,10 @@ Multi-objectives: solved in 0.09 seconds, solution count 3
 --------------------------------------------------
 Shifts
   Worker  Number of shifts
-0    Amy               8.0
+0    Amy               7.0
 1    Bob               7.0
 2  Cathy               7.0
-3    Dan               7.0
+3    Dan               8.0
 4     Ed               7.0
 5   Fred               7.0
 6     Gu               8.0
@@ -13985,7 +13982,7 @@ Shifts
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -14002,13 +13999,13 @@ Shifts
 Assigments
 Symbols: &#39;-&#39;: not working, &#39;*&#39;: working
   worker Mon1 Tue2 Wed3 Thu4 Fri5 Sat6 Sun7 Mon8 Tue9 Wed10 Thu11 Fri12 Sat13 Sun14
-0    Amy    -    -    *    -    *    -    *    -    -     *     *     *     *     *
+0    Amy    -    -    *    -    *    -    *    -    -     -     *     *     *     *
 1    Bob    *    *    -    -    *    *    -    *    -     -     *     -     *     -
-2  Cathy    -    -    *    *    -    -    *    -    -     *     *     *     *     -
-3    Dan    -    -    *    -    *    *    -    -    *     -     *     *     *     -
-4     Ed    *    -    -    *    *    -    *    *    -     -     -     -     *     *
-5   Fred    *    *    *    -    -    *    -    -    -     -     -     *     *     *
-6     Gu    -    -    -    -    *    *    *    -    *     *     -     *     *     *
+2  Cathy    -    -    -    *    *    -    *    -    *     *     -     *     *     -
+3    Dan    -    *    *    -    -    *    -    -    -     *     *     *     *     *
+4     Ed    *    -    -    *    *    -    *    -    *     -     *     -     *     -
+5   Fred    *    -    *    -    -    *    -    *    -     -     -     *     *     *
+6     Gu    -    -    *    -    *    *    *    -    -     *     -     *     *     *
 </pre>
 </div>
 </div>
