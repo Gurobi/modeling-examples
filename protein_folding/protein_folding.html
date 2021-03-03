@@ -13116,8 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Protein-Folding">Protein Folding<a class="anchor-link" href="#Protein-Folding">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a Protein Folding problem formulated as a binary optimization problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
-<p>This model is example 28 from the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on pages 289-290 and 344-345.</p>
+<h1 id="Protein-Folding">Protein Folding<a class="anchor-link" href="#Protein-Folding">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Hone your modeling skills with this challenging Protein Folding problem. We’ll show you how to create a binary optimization model of the problem with the Gurobi Python API and then solve it using the Gurobi Optimizer.</p>
+<p>This model is example 28 from the fifth edition of Model Building in Mathematical Programming by H. Paul Williams on pages 289-290 and 344-345.</p>
 <p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
 <p><strong>Download the Repository</strong> <br /> 
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
@@ -13313,7 +13313,6 @@ $$
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13404,9 +13403,10 @@ k \neq (i+j-1)/2$.</li>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 2441 rows, 197 columns and 4882 nonzeros
-Model fingerprint: 0xc7e306c0
+Model fingerprint: 0x7a3a8e69
 Variable types: 0 continuous, 197 integer (197 binary)
 Coefficient statistics:
   Matrix range     [1e+00, 1e+00]
@@ -13419,31 +13419,31 @@ Presolve time: 0.02s
 Presolved: 845 rows, 92 columns, 1779 nonzeros
 Variable types: 0 continuous, 92 integer (92 binary)
 
-Root relaxation: objective 3.200000e+01, 92 iterations, 0.00 seconds
+Root relaxation: objective 3.200000e+01, 90 iterations, 0.00 seconds
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
 
      0     0   32.00000    0   89   -0.00000   32.00000      -     -    0s
 H    0     0                       8.0000000   32.00000   300%     -    0s
-     0     0   21.00000    0   73    8.00000   21.00000   163%     -    0s
-     0     0   18.75000    0   77    8.00000   18.75000   134%     -    0s
-     0     0   18.00000    0   80    8.00000   18.00000   125%     -    0s
-     0     0   17.50000    0   80    8.00000   17.50000   119%     -    0s
-     0     0   14.00000    0   78    8.00000   14.00000  75.0%     -    0s
-     0     0   12.00000    0   79    8.00000   12.00000  50.0%     -    0s
-     0     0   12.00000    0   76    8.00000   12.00000  50.0%     -    0s
-     0     0   11.50000    0   71    8.00000   11.50000  43.8%     -    0s
-     0     2   11.50000    0   70    8.00000   11.50000  43.8%     -    0s
-*   22    20               6       9.0000000   11.50000  27.8%  14.6    0s
-H   54    23                      10.0000000   11.50000  15.0%  12.5    0s
+H    0     0                       9.0000000   32.00000   256%     -    0s
+     0     0   21.00000    0   69    9.00000   21.00000   133%     -    0s
+     0     0   13.50000    0   81    9.00000   13.50000  50.0%     -    0s
+     0     0   12.50000    0   82    9.00000   12.50000  38.9%     -    0s
+     0     0   12.50000    0   82    9.00000   12.50000  38.9%     -    0s
+     0     0   12.00000    0   82    9.00000   12.00000  33.3%     -    0s
+     0     0   12.00000    0   82    9.00000   12.00000  33.3%     -    0s
+H    0     0                      10.0000000   11.00000  10.0%     -    0s
+     0     0   11.00000    0   76   10.00000   11.00000  10.0%     -    0s
+     0     0   11.00000    0   67   10.00000   11.00000  10.0%     -    0s
+     0     2   11.00000    0   67   10.00000   11.00000  10.0%     -    0s
 
 Cutting planes:
-  Gomory: 3
-  Zero half: 27
-  RLT: 56
+  Gomory: 2
+  Zero half: 17
+  RLT: 38
 
-Explored 100 nodes (1515 simplex iterations) in 0.25 seconds
+Explored 55 nodes (1222 simplex iterations) in 0.21 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 4: 10 9 8 -0 
@@ -13501,7 +13501,7 @@ Hydrophobic acid matching (12, 17) with folding at amonacid 14.
 Hydrophobic acid matching (17, 20) with folding at amonacid 18.
 Hydrophobic acid matching (20, 25) with folding at amonacid 22.
 Hydrophobic acid matching (25, 28) with folding at amonacid 26.
-Hydrophobic acid matching (27, 30) with folding at amonacid 28.
+Hydrophobic acid matching (28, 31) with folding at amonacid 29.
 Hydrophobic acid matching (31, 46) with folding at amonacid 38.
 Hydrophobic acid matching (33, 44) with folding at amonacid 38.
 </pre>
