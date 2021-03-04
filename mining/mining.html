@@ -13116,9 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Mining">Mining<a class="anchor-link" href="#Mining">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a production planning problem. In such problems, decisions must be made regarding which products to produce, and which resources to use to produce those products. These problems are common across a broad range of manufacturing and mining industries.</p>
-<h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this example, we will model and solve a multi-period production planning problem. In this case, the aim of the application is to optimize mine production across a number of mines over a five-year period. The company has different mines, which can be opened, operational, or closed. Each mine varies in the quality of its ore and the amount of ore that can be extracted. The quality of ore required to meet production goals varies each year. The aim is to create an optimal production plan for the next five years to maximize the total profit, while considering production capacity, mine restrictions, and mine costs.</p>
-<p>More information on this type of model can be found in example # 7 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 261-262 and 310-312.</p>
+<h1 id="Mining">Mining<a class="anchor-link" href="#Mining">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Put your planning skills to the test in this example, where you’ll learn how to model and solve a production planning problem that involves optimizing the operations of a group of mines over a five-year period.</p>
+<p>More information on this type of model can be found in example # 7 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 261 – 262 and 310 – 312.</p>
 <p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Download the Repository</strong> <br />
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
@@ -13389,7 +13388,6 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13592,7 +13590,8 @@ This ensures that the quality standards are satisfied.</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 71 rows, 65 columns and 182 nonzeros
 Model fingerprint: 0xb3698537
 Variable types: 25 continuous, 40 integer (40 binary)
@@ -13616,8 +13615,8 @@ Root relaxation: objective 1.577309e+08, 40 iterations, 0.00 seconds
 H    0     0                    1.189074e+08 1.5773e+08  32.7%     -    0s
 H    0     0                    1.302711e+08 1.5773e+08  21.1%     -    0s
 H    0     0                    1.393620e+08 1.5524e+08  11.4%     -    0s
-     0     0 1.5462e+08    0    4 1.3936e+08 1.5462e+08  10.9%     -    0s
-H    0     0                    1.468620e+08 1.5462e+08  5.28%     -    0s
+     0     0 1.5479e+08    0    4 1.3936e+08 1.5479e+08  11.1%     -    0s
+H    0     0                    1.468620e+08 1.5479e+08  5.40%     -    0s
 
 Cutting planes:
   Implied bound: 4
