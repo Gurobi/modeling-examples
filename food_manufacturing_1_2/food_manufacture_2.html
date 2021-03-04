@@ -13116,11 +13116,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Food-Manufacture-II">Food Manufacture II<a class="anchor-link" href="#Food-Manufacture-II">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Food Manufacture I are examples of blending problems. In blending optimization problems, multiple raw materials are combined in a way the meets the stated constraints for the lowest cost. These problems are common in numerous industries including the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing feed that meets the different nutritional requirements of different animals).</p>
-<h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this particular example, we will model and solve a production planning problem where we must create a final product from a number of ingredients — each of which has different costs, restrictions, and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation  below.</p>
-<p>Compared to Food Manufacturing I, this example has additional constraints that change the problem type from a linear program (LP) to a mixed-integer program (MIP), making it harder to solve. You can see these additional constraints at the end of the Problem Description section below.</p>
-<p>More information on this type of model can be found in example #2 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 255 and 299-300.</p>
-<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
+<h1 id="Food-Manufacture-II">Food Manufacture II<a class="anchor-link" href="#Food-Manufacture-II">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this example, you’ll have to tackle the same problem that you did in “Food Manufacturing I,” but with additional constraints that change the problem type from a linear program (LP) problem to a mixed-integer program (MIP) problem, making it harder to solve.</p>
+<p>More information on this type of model can be found in example #2 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 255 and 299 – 300.</p>
+<p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Download the Repository</strong> <br /> 
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
 <p><strong>Gurobi License</strong> <br />
@@ -13483,7 +13481,6 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13750,7 +13747,8 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 71 rows, 126 columns and 288 nonzeros
 Model fingerprint: 0x9d193fb2
 Model has 72 general constraints
@@ -13765,39 +13763,37 @@ Presolve removed 0 rows and 66 columns
 Presolve time: 0.01s
 Presolved: 95 rows, 60 columns, 272 nonzeros
 Variable types: 35 continuous, 25 integer (25 binary)
-Found heuristic solution: objective 35250.000000
+Found heuristic solution: objective 34650.000000
 
-Root relaxation: objective 1.056500e+05, 65 iterations, 0.00 seconds
+Root relaxation: objective 1.056500e+05, 57 iterations, 0.00 seconds
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
 
-     0     0 105650.000    0    9 35250.0000 105650.000   200%     -    0s
-H    0     0                    96850.000000 105650.000  9.09%     -    0s
-H    0     0                    96875.000000 105650.000  9.06%     -    0s
-     0     0 105650.000    0    8 96875.0000 105650.000  9.06%     -    0s
+     0     0 105650.000    0    6 34650.0000 105650.000   205%     -    0s
+H    0     0                    98928.703704 105650.000  6.79%     -    0s
+     0     0 105650.000    0    8 98928.7037 105650.000  6.79%     -    0s
+H    0     0                    99516.666667 105650.000  6.16%     -    0s
+H    0     0                    99966.666667 105650.000  5.69%     -    0s
+     0     0 105650.000    0    9 99966.6667 105650.000  5.69%     -    0s
 H    0     0                    100053.70370 105650.000  5.59%     -    0s
-     0     0 105650.000    0    9 100053.704 105650.000  5.59%     -    0s
-     0     0 105650.000    0    9 100053.704 105650.000  5.59%     -    0s
+H    0     0                    100191.66667 105650.000  5.45%     -    0s
+     0     0 105650.000    0    6 100191.667 105650.000  5.45%     -    0s
 H    0     0                    100278.70370 105650.000  5.36%     -    0s
-     0     0 105650.000    0    8 100278.704 105650.000  5.36%     -    0s
-     0     0 105650.000    0    8 100278.704 105650.000  5.36%     -    0s
-     0     0 105533.431    0    9 100278.704 105533.431  5.24%     -    0s
-     0     0 105511.953    0    9 100278.704 105511.953  5.22%     -    0s
-     0     2 105511.953    0    9 100278.704 105511.953  5.22%     -    0s
+     0     0 105650.000    0    6 100278.704 105650.000  5.36%     -    0s
+     0     2 105650.000    0    6 100278.704 105650.000  5.36%     -    0s
 
 Cutting planes:
-  Gomory: 2
-  Implied bound: 6
-  MIR: 10
+  Gomory: 1
+  Implied bound: 5
+  MIR: 8
   Flow cover: 7
-  Inf proof: 3
-  Relax-and-lift: 1
+  Inf proof: 2
 
-Explored 388 nodes (2078 simplex iterations) in 0.12 seconds
+Explored 442 nodes (2628 simplex iterations) in 0.13 seconds
 Thread count was 8 (of 8 available processors)
 
-Solution count 5: 100279 100054 96875 ... 35250
+Solution count 7: 100279 100192 100054 ... 34650
 
 Optimal solution found (tolerance 1.00e-04)
 Best objective 1.002787037037e+05, best bound 1.002787037037e+05, gap 0.0000%
@@ -14000,19 +13996,19 @@ Best objective 1.002787037037e+05, best bound 1.002787037037e+05, gap 0.0000%
   <tbody>
     <tr>
       <th>Jan</th>
-      <td>85.2</td>
-      <td>114.8</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>250.0</td>
-    </tr>
-    <tr>
-      <th>Feb</th>
       <td>0.0</td>
       <td>200.0</td>
       <td>0.0</td>
       <td>230.0</td>
       <td>20.0</td>
+    </tr>
+    <tr>
+      <th>Feb</th>
+      <td>85.2</td>
+      <td>114.8</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>250.0</td>
     </tr>
     <tr>
       <th>Mar</th>
@@ -14123,11 +14119,11 @@ Best objective 1.002787037037e+05, best bound 1.002787037037e+05, gap 0.0000%
   <tbody>
     <tr>
       <th>Jan</th>
-      <td>414.8</td>
-      <td>385.2</td>
       <td>500.0</td>
+      <td>300.0</td>
       <td>500.0</td>
-      <td>250.0</td>
+      <td>270.0</td>
+      <td>480.0</td>
     </tr>
     <tr>
       <th>Feb</th>

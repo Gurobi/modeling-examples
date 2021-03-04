@@ -13116,10 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Food-Manufacture-I">Food Manufacture I<a class="anchor-link" href="#Food-Manufacture-I">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Food Manufacture II are examples of blending problems. In blending optimization problems, multiple raw materials are combined in a way that meets the stated constraints at the lowest cost. These problems are common in numerous industries including the oil industry (blending different types of crude oil at a refinery) and agriculture (manufacturing feed that meets the different nutritional requirements of different animals).</p>
-<h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this particular example, we will model and solve a production planning problem where we must create a final product from a number of ingredients — each of which has different costs, restrictions, and features. The aim is to create an optimal multi-period production plan that maximizes profit. More details can be found on the Problem Description and Model Formulation below.</p>
-<p>In Food Manufacture II, we will extend this example with additional constraints that change the problem type from a linear program (LP) to a mixed-integer program (MIP), making it harder to solve.</p>
-<p>More information on this type of model can be found in example #1 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 253-254 and 296-298.</p>
+<h1 id="Food-Manufacture-I">Food Manufacture I<a class="anchor-link" href="#Food-Manufacture-I">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>If you’re hungry for a mathematical optimization challenge, then try this food manufacturing problem. You’ll learn how to create an optimal multi-period production plan for a product that requires a number of ingredients – each of which has different costs, restrictions, and features.</p>
+<p>More information on this type of model can be found in example #1 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 253 – 254 and 296 – 298.</p>
 <p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Download the Repository</strong> <br />
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
@@ -13446,7 +13444,6 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13633,7 +13630,8 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 70 rows, 96 columns and 278 nonzeros
 Model fingerprint: 0xd588eb19
 Coefficient statistics:
