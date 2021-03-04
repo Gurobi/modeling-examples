@@ -13123,8 +13123,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this Jupyter Notebook, you will learn how to formulate a multi-depot vehicle routing problem with time windows constraints using the Gurobi Python API. To fully understand the content of this notebook, the reader should be familiar with object-oriented-programming.</p>
-<p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you have some knowledge about building mathematical optimization models.</p>
+<h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Try this modeling example to discover how mathematical optimization can help telecommunications firms automate and improve their technician assignment, scheduling, and routing decisions in order to ensure the highest levels of customer satisfaction.</p>
+<p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you have some knowledge about building mathematical optimization models. To fully understand the content of this notebook, you should be familiar with object-oriented-programming.</p>
 <p><strong>Download the Repository</strong> <br /> 
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
 <p><strong>Gurobi License</strong> <br /> 
@@ -14098,14 +14098,13 @@ Solving base scenario model
 ***************************
 
 Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
-Warning: variable name &#34;y[Offenburg,Freiburg im Breisgau,Albert]&#34; has a space
+Warning: variable name &#34;y[Loerrach,Freiburg im Breisgau,Albert]&#34; has a space
 Warning: constraint name &#34;tempoDepot[Freiburg im Breisgau,Customer1]&#34; has a space
 Warning: to let Gurobi read it back, use rlp format
 Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
 Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 217 rows, 660 columns and 2329 nonzeros
-Model fingerprint: 0x5802d250
+Model fingerprint: 0x0f3b53fc
 Variable types: 30 continuous, 630 integer (630 binary)
 Coefficient statistics:
   Matrix range     [1e+00, 8e+02]
@@ -14114,11 +14113,11 @@ Coefficient statistics:
   RHS range        [1e+00, 6e+02]
 Found heuristic solution: objective 245830.00000
 Presolve removed 28 rows and 188 columns
-Presolve time: 0.03s
-Presolved: 189 rows, 472 columns, 2130 nonzeros
+Presolve time: 0.04s
+Presolved: 189 rows, 472 columns, 2116 nonzeros
 Variable types: 26 continuous, 446 integer (446 binary)
 
-Root relaxation: objective 0.000000e+00, 142 iterations, 0.00 seconds
+Root relaxation: objective 0.000000e+00, 141 iterations, 0.00 seconds
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
@@ -14126,7 +14125,7 @@ Root relaxation: objective 0.000000e+00, 142 iterations, 0.00 seconds
 H    0     0                       0.0000000 -256200.00      -     -    0s
      0     0          -    0         0.00000    0.00000  0.00%     -    0s
 
-Explored 0 nodes (384 simplex iterations) in 0.08 seconds
+Explored 0 nodes (308 simplex iterations) in 0.09 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 2: 0 245830 
@@ -14134,30 +14133,30 @@ Solution count 2: 0 245830
 Optimal solution found (tolerance 1.00e-04)
 Best objective 0.000000000000e+00, best bound 0.000000000000e+00, gap 0.0000%
 
-Bob assigned to Customer1 (Equipment Setup) in Mannheim. Start at t=24.00.
-Doris assigned to Customer2 (Equipment Setup) in Karlsruhe. Start at t=150.00.
+Bob assigned to Customer1 (Equipment Setup) in Mannheim. Start at t=30.00.
+Doris assigned to Customer2 (Equipment Setup) in Karlsruhe. Start at t=113.00.
 Gina assigned to Customer3 (Repair - Regular) in Baden-Baden. Start at t=67.00.
 Gina assigned to Customer4 (Equipment Installation) in Buehl. Start at t=143.00.
-Flor assigned to Customer5 (Equipment Installation) in Offenburg. Start at t=360.00.
-Doris assigned to Customer6 (Repair - Critical) in Lahr/Schwarzwald. Start at t=300.00.
-Carlos assigned to Customer7 (Inspect/Service Equipment) in Loerrach. Start at t=360.00.
+Doris assigned to Customer5 (Equipment Installation) in Offenburg. Start at t=240.00.
+Doris assigned to Customer6 (Repair - Critical) in Lahr/Schwarzwald. Start at t=326.00.
+Ed assigned to Customer7 (Inspect/Service Equipment) in Loerrach. Start at t=480.00.
 
 Albert is not used
-Bob&#39;s route: Heidelberg -&gt; Mannheim (dist=24.0, t=24.00, proc=30.0) -&gt; Heidelberg (dist=24.0)
-Carlos&#39;s route: Freiburg im Breisgau -&gt; Loerrach (dist=48.0, t=360.00, proc=60.0) -&gt; Freiburg im Breisgau (dist=48.0)
-Doris&#39;s route: Freiburg im Breisgau -&gt; Karlsruhe (dist=85.0, t=150.00, proc=30.0) -&gt; Lahr/Schwarzwald (dist=61.0, t=300.00, proc=60.0) -&gt; Freiburg im Breisgau (dist=39.0)
-Ed is not used
-Flor&#39;s route: Freiburg im Breisgau -&gt; Offenburg (dist=45.0, t=360.00, proc=60.0) -&gt; Freiburg im Breisgau (dist=45.0)
+Bob&#39;s route: Heidelberg -&gt; Mannheim (dist=24.0, t=30.00, proc=30.0) -&gt; Heidelberg (dist=24.0)
+Carlos is not used
+Doris&#39;s route: Freiburg im Breisgau -&gt; Karlsruhe (dist=85.0, t=113.00, proc=30.0) -&gt; Offenburg (dist=51.0, t=240.00, proc=60.0) -&gt; Lahr/Schwarzwald (dist=26.0, t=326.00, proc=60.0) -&gt; Freiburg im Breisgau (dist=39.0)
+Ed&#39;s route: Heidelberg -&gt; Loerrach (dist=150.0, t=480.00, proc=60.0) -&gt; Heidelberg (dist=150.0)
+Flor is not used
 Gina&#39;s route: Heidelberg -&gt; Baden-Baden (dist=67.0, t=67.00, proc=60.0) -&gt; Buehl (dist=16.0, t=143.00, proc=60.0) -&gt; Heidelberg (dist=71.0)
 
 Albert&#39;s utilization is 0.00% (0.00/480.00)
 Bob&#39;s utilization is 16.25% (78.00/480.00)
-Carlos&#39;s utilization is 32.50% (156.00/480.00)
-Doris&#39;s utilization is 57.29% (275.00/480.00)
-Ed&#39;s utilization is 0.00% (0.00/480.00)
-Flor&#39;s utilization is 41.67% (150.00/360.00)
+Carlos&#39;s utilization is 0.00% (0.00/480.00)
+Doris&#39;s utilization is 73.12% (351.00/480.00)
+Ed&#39;s utilization is 75.00% (360.00/480.00)
+Flor&#39;s utilization is 0.00% (0.00/360.00)
 Gina&#39;s utilization is 76.11% (274.00/360.00)
-Total technician utilization is 29.90% (933.00/3120.00)
+Total technician utilization is 34.07% (1063.00/3120.00)
 </pre>
 </div>
 </div>
@@ -14302,13 +14301,13 @@ The third report describes the capacity utilization of each technician and the o
 Solving scenario 1 model
 ************************
 
-Warning: variable name &#34;y[Offenburg,Freiburg im Breisgau,Albert]&#34; has a space
+Warning: variable name &#34;y[Loerrach,Freiburg im Breisgau,Albert]&#34; has a space
 Warning: constraint name &#34;tempoDepot[Freiburg im Breisgau,Customer1]&#34; has a space
 Warning: to let Gurobi read it back, use rlp format
 Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
 Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 217 rows, 660 columns and 2329 nonzeros
-Model fingerprint: 0xb47b64dd
+Model fingerprint: 0x58dea2f1
 Variable types: 30 continuous, 630 integer (630 binary)
 Coefficient statistics:
   Matrix range     [1e+00, 8e+02]
@@ -14322,14 +14321,14 @@ Presolved: 49 rows, 67 columns, 279 nonzeros
 Found heuristic solution: objective 24610.000000
 Variable types: 15 continuous, 52 integer (52 binary)
 
-Root relaxation: objective 8.214242e+03, 19 iterations, 0.00 seconds
+Root relaxation: objective 8.214242e+03, 16 iterations, 0.00 seconds
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
 
 *    0     0               0    12410.000000 12410.0000  0.00%     -    0s
 
-Explored 0 nodes (20 simplex iterations) in 0.04 seconds
+Explored 0 nodes (17 simplex iterations) in 0.04 seconds
 Thread count was 8 (of 8 available processors)
 
 Solution count 3: 12410 24610 216670 
@@ -14337,30 +14336,30 @@ Solution count 3: 12410 24610 216670
 Optimal solution found (tolerance 1.00e-04)
 Best objective 1.241000000000e+04, best bound 1.241000000000e+04, gap 0.0000%
 
-Albert assigned to Customer1 (Equipment Setup) in Mannheim. Start at t=24.00.
-Albert assigned to Customer2 (Equipment Setup) in Karlsruhe. Start at t=107.00.
-Bob assigned to Customer3 (Repair - Regular) in Baden-Baden. Start at t=67.00.
+Gina assigned to Customer1 (Equipment Setup) in Mannheim. Start at t=24.00.
+Bob assigned to Customer2 (Equipment Setup) in Karlsruhe. Start at t=50.00.
+Bob assigned to Customer3 (Repair - Regular) in Baden-Baden. Start at t=111.00.
 Nobody assigned to Customer4 (Equipment Installation) in Buehl
 Flor assigned to Customer5 (Equipment Installation) in Offenburg. Start at t=45.00. 105.00 minutes late.
 Doris assigned to Customer6 (Repair - Critical) in Lahr/Schwarzwald. Start at t=300.00.
 Carlos assigned to Customer7 (Inspect/Service Equipment) in Loerrach. Start at t=480.00.
 
-Albert&#39;s route: Heidelberg -&gt; Mannheim (dist=24.0, t=24.00, proc=30.0) -&gt; Karlsruhe (dist=53.0, t=107.00, proc=30.0) -&gt; Heidelberg (dist=50.0)
-Bob&#39;s route: Heidelberg -&gt; Baden-Baden (dist=67.0, t=67.00, proc=60.0) -&gt; Heidelberg (dist=67.0)
+Albert is not used
+Bob&#39;s route: Heidelberg -&gt; Karlsruhe (dist=50.0, t=50.00, proc=30.0) -&gt; Baden-Baden (dist=31.0, t=111.00, proc=60.0) -&gt; Heidelberg (dist=67.0)
 Carlos&#39;s route: Freiburg im Breisgau -&gt; Loerrach (dist=48.0, t=480.00, proc=60.0) -&gt; Freiburg im Breisgau (dist=48.0)
 Doris&#39;s route: Freiburg im Breisgau -&gt; Lahr/Schwarzwald (dist=39.0, t=300.00, proc=60.0) -&gt; Freiburg im Breisgau (dist=39.0)
 Ed is not used
 Flor&#39;s route: Freiburg im Breisgau -&gt; Offenburg (dist=45.0, t=45.00, proc=60.0) -&gt; Freiburg im Breisgau (dist=45.0)
-Gina is not used
+Gina&#39;s route: Heidelberg -&gt; Mannheim (dist=24.0, t=24.00, proc=30.0) -&gt; Heidelberg (dist=24.0)
 
-Albert&#39;s utilization is 77.92% (187.00/240.00)
-Bob&#39;s utilization is 80.83% (194.00/240.00)
+Albert&#39;s utilization is 0.00% (0.00/240.00)
+Bob&#39;s utilization is 99.17% (238.00/240.00)
 Carlos&#39;s utilization is 65.00% (156.00/240.00)
 Doris&#39;s utilization is 57.50% (138.00/240.00)
 Ed&#39;s utilization is 0.00% (0.00/240.00)
 Flor&#39;s utilization is 83.33% (150.00/180.00)
-Gina&#39;s utilization is 0.00% (0.00/180.00)
-Total technician utilization is 52.88% (825.00/1560.00)
+Gina&#39;s utilization is 43.33% (78.00/180.00)
+Total technician utilization is 48.72% (760.00/1560.00)
 </pre>
 </div>
 </div>
