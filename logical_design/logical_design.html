@@ -13116,9 +13116,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Logical-Design">Logical Design<a class="anchor-link" href="#Logical-Design">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This problem is an example of constructing a circuit using the minimum number of NOR gates (devices with two inputs and one output) that will perform the logical function specified by a truth table. This problem is formulated as a binary optimization problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
-<p>This model is example 12 from the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on pages 266-267 and 320-321.</p>
-<p>This example is at the intermediate level where we assume that you know Python and the Gurobi Python API and that you have some knowledge of building mathematical optimization models.</p>
+<h1 id="Logical-Design">Logical Design<a class="anchor-link" href="#Logical-Design">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this example, you’ll learn how to solve a logical design problem, which involves constructing a circuit using the minimum number of NOR gates (devices with two inputs and  one output) that will perform the logical function specified by a truth table. We’ll show you how to formulate this problem as a binary optimization problem using the Gurobi Python API and then use Gurobi Optimizer to automatically find the optimal solution.</p>
+<p>This model is example 12 from the fifth edition of Model Building in Mathematical Programming by H. Paul Williams on pages 266-267 and 320-321.</p>
+<p>This example is at the intermediate level, where we assume that you know Python and the Gurobi Python API and that you have some knowledge of building mathematical optimization models.</p>
 <p><strong>Download the Repository</strong> <br /> 
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
 <p><strong>Gurobi License</strong> <br /> 
@@ -13380,7 +13380,6 @@ same kind as the outputs - 1 (positive input) or 0 (no input).</p>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13568,7 +13567,8 @@ Set parameter TokenServer to value SANTOS-SURFACE-
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 225 rows, 49 columns and 696 nonzeros
 Model fingerprint: 0x9adba516
 Variable types: 0 continuous, 49 integer (49 binary)
