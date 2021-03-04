@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Car-Rental-1">Car Rental 1<a class="anchor-link" href="#Car-Rental-1">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>This model is an example of a Car Rental problem. A car rental enterprise wants to determine how many cars to own and where should they be located at the start of each day of a week to maximize weekly profits. This problem is formulated as a linear programming problem using the Gurobi Python API and solved with the Gurobi Optimizer.</p>
+<h1 id="Car-Rental-1">Car Rental 1<a class="anchor-link" href="#Car-Rental-1">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Boost your modeling skills with this example, which will teach you how you can use mathematical optimization to figure out how many cars a car rental company should own and where they should be located every day to maximize weekly profits.</p>
 <p>This model is example 25 from the fifth edition of Model Building in Mathematical Programming by H. Paul Williams on pages 284-286 and 340-342.</p>
 <p>This example is at the intermediate level, where we assume that you know Python and the Gurobi Python API and that you have some knowledge of building mathematical optimization models.</p>
 <p><strong>Download the Repository</strong> <br /> 
@@ -13131,18 +13131,21 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A car rental enterprise (which rents only one type of car) has depots in Glasgow, Manchester, Birmingham, and Plymouth. We estimate the demand for each day of the week except Sunday (when the enterprise is closed). The following table shows these estimates. We assume that it is not necessary to meet all the demand.</p>
+<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>A small car rental company (which rents only one type of car) has depots in Glasgow, Manchester, Birmingham and Plymouth. There is an estimated demand for each day of the week except Sunday (when the company is closed). These estimates are given in the following table. It is not necessary to meet all demand.</p>
 <p><img src="weeklyDemand.PNG" alt="weeklyDemand"></p>
-<p>There are three options to rent a car: one, two, or three days rental. A customer can return the vehicle at the start of the next morning to either the depot from which it was rented or another depot. For example, let’s consider a customer that rents a vehicle for two days on a Thursday, then the vehicle has to be returned on Saturday morning. If a customer rents a vehicle on Friday for three days, the vehicle has to be returned on Tuesday morning. Another example is that the customer rents the vehicle for one day on Saturday. In this case, the vehicle has to be returned on Monday morning;  or if the vehicle is rented for two days, the vehicle has to be returned on Tuesday morning.</p>
-<p>The time period to rent a car is independent of the origin and destination. We know from historical data that the distribution of rental periods is as follows:</p>
-<ul>
-<li>55% of the vehicles are rented for one day,</li>
-<li>20% for two days,</li>
-<li>and 25% for three days.</li>
-</ul>
-<p>The following table shows the estimates of percentages of vehicles rented from each depot and returned to a given depot (independent of the day).</p>
+<p>Cars can be rented for one, two or three days and returned to either the
+depot from which they were rented or another depot at the start of the next morning. For
+example, a 2-day rental on Thursday means that the car has to be returned on
+Saturday morning; a 3-day rental on Friday means that the car has to be returned
+on Tuesday morning. A 1-day rental on Saturday means that the car has to be
+returned on Monday morning, and a 2-day rental on Tuesday morning.</p>
+<p>The rental period is independent of the origin and destination. From historical
+data, the company knows the distribution of rental periods: 55% of cars are hired
+for one day, 20% for two days, and 25% for three days. The current estimates
+of percentages of cars rented from each depot and returned to a given depot
+(independent of the day) are given in the following table.</p>
 <p><img src="FromToPct.PNG" alt="FromToPct"></p>
-<p>The following table shows the marginal cost of renting a vehicle.</p>
+<p>The company's marginal cost of renting out a car (‘wear and tear’, administration, etc.) is estimated as follows:</p>
 <table>
 <thead><tr>
 <th>Days rented</th>
@@ -13164,10 +13167,21 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 </tr>
 </tbody>
 </table>
-<p>The ‘opportunity cost’  of owning a vehicle is $\$ 15$ per week.</p>
-<p>Undamaged vehicles can be transferred from one depot to another depot, independently of the distance. A customer cannot rent out a vehicle on the day in which this vehicle is transferred. The following table shows the cost of the transfer.</p>
+<p>The ‘opportunity cost’ (interest on capital, storage, servicing, etc.) of owning
+a car is $\$ 15$ per week.</p>
+<p>It is possible to transfer undamaged cars from one depot to another depot,
+irrespective of distance. Cars cannot be rented out during the day in which they
+are transferred. The costs in USD, per car, of transfer are given in the following table.</p>
 <p><img src="FromToCst.PNG" alt="FromToCst"></p>
-<p>The percentage of returned cars that are damaged is 10%. In this case, the customer needs to pay an extra $100. The damaged vehicle has to be transferred to a repair depot, where it will be repaired the following day. We assume that the cost of transferring a damaged vehicle is the same as transferring an undamaged one. Notice that when the repair depot is the current depot, there is no transfer cost. It takes one day to transfer a damaged vehicle unless it is already at a repair depot. It takes one day to repair a vehicle at the repair depot. There are only two depots with repair capacity. The following table shows the capacity (cars/day) of each repair vehicle.</p>
+<p>Ten percent of cars returned by customers are damaged. When this happens,
+the customer is charged an excess of $\$ 100$  (irrespective of the amount of damage
+that the company completely covers by its insurance). In addition, the car has
+to be transferred to a repair depot, where it will be repaired the following day.
+The cost of transferring a damaged car is the same as transferring an undamaged
+one (except when the repair depot is the current depot, 
+in which case the cost would be $\$0$). The transfer of a damaged car takes a day, unless it is already at a repair depot.
+Having arrived at a repair depot, all types of repair (or replacement) take a day.
+Only two of the depots have repair capacity. The (cars/day) capacity at each repair depot is as follows:</p>
 <table>
 <thead><tr>
 <th>Repair depot</th>
@@ -13185,18 +13199,26 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 </tr>
 </tbody>
 </table>
-<p>A repaired vehicle is available for rent at the depot the next day or may be transferred to another depot (taking a day). For example, a vehicle that is returned damaged on a Tuesday morning is transferred to a repair depot (if not the current depot) on Tuesday, repaired on Wednesday, and is available for rent at the repair depot on Thursday morning. The price to rent a vehicle depends on the number of days for which the car is rented and whether it is returned to the same depot or not. The following table shows the rental prices (in USD).</p>
+<p>Having been repaired, the car is available for rent at the depot the next day
+or may be transferred to another depot (taking a day). Thus, a car that is returned
+damaged on a Wednesday morning is transferred to a repair depot (if not the
+current depot) on Wednesday, repaired on Thursday, and is available for rent
+at the repair depot on Friday morning.
+The rental price depends on the number of days for which the car is rented
+and whether it is returned to the same depot or not. The prices (in USD) are given in the following table.</p>
 <p><img src="RentalPrice.PNG" alt="RentalPrice"></p>
-<p>We make the following assumptions at the beginning of each day:</p>
-<ul>
-<li>Clients return vehicles that are due that day.</li>
-<li>Rental enterprise sends damaged vehicles to the repair depot.</li>
-<li>Transferred vehicles from other depots arrive.</li>
-<li>Rental enterprise sends out transfer vehicles.</li>
-<li>Customers rent out vehicles.</li>
-<li>Repaired vehicles at a repair depot are available for rental.</li>
-</ul>
-<p>The goal is to determine the number of vehicles the car rental enterprise should own and where they should be located at the start of each weekday to maximize weekly profit. The enterprise wants a stable solution in which the same expected number of vehicles will be located at the same depot on the same day of subsequent weeks.</p>
+<p>We assume the following at the beginning of each day:</p>
+<ol>
+<li>Customers return cars that are due that day.</li>
+<li>Damaged cars are sent to the repair depot.</li>
+<li>Cars that were transferred from other depots arrive.</li>
+<li>Transfers are sent out.</li>
+<li>Cars are rented out.</li>
+<li>If it is a repair depot, then the repaired cars are available for rental.</li>
+</ol>
+<p>The goal is to determine the numbers of cars the car rental company should own and where should they be located at the start of each week day in order to maximize weekly profit. The company wants a ‘steady state’ solution
+in which the same expected number of cars will be located at the same depot on
+the same day of subsequent weeks.</p>
 
 </div>
 </div>
@@ -13317,7 +13339,8 @@ Demand at depot $d$ for each day $t$.</p>
 \text{xRented}_{d,t} \leq \text{demand}_{d,t}
 \quad \forall d \in Depots, t \in Days
 \end{equation}<p><strong>Number of cars</strong> <br />
-This constraint entails calculating the total number of vehicles that the enterprise needs to own. The total number of vehicles owned should be equal to the number of vehicles rented out from all depots on Monday for three days, plus those on Tuesday for 2 or 3 days, plus all damaged and undamaged cars in depots at the beginning of Wednesday. The rationale behind this equation follows. Let’s pick a day (Wednesday), count the cars undamaged and damaged that were returned to the depots and that are available on Wednesday morning. Let’s count the vehicles that have been rented and have not been returned: Cars rented on Monday for three days, and cars rented on Tuesday for 2 or 3 days.</p>
+Total number of cars owned equals number of cars rented out from all depots on Monday for 3 days, plus those on Tuesday for 2 or 3 days, plus all damaged and undamaged cars in depots at the beginning of Wednesday. 
+Rationale: Let’s pick a day (Wednesday), count the cars undamaged and damaged that were returned to the depots and that are available on Wednesday morning. Let’s count the cars that have been rented and have not been returned: Cars rented on Monday for 3 days, and cars rented on Tuesday for 2 or 3 days.</p>
 \begin{equation}
 \sum_{d \in \text{Depots}} (0.25*\text{xRented}_{d,0} + 0.45*\text{xRented}_{d,1} + \text{xUndamaged}_{d,2}  + \text{xdamaged}_{d,2} ) = \text{xOwned}
 \end{equation}<hr>
