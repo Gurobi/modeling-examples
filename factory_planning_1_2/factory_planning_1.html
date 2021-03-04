@@ -13116,10 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Factory-Planning-I">Factory Planning I<a class="anchor-link" href="#Factory-Planning-I">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Factory Planning II are examples of production planning problems. In production planning problems, choices must be made about which products to produce, how much of those products to produce, and what resources to use in order to maximize profits or minimize costs, while meeting a range of constraints. These problems are common across a broad range of manufacturing situations.</p>
-<h3 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h3><p>In this particular example, we’ll model and solve a production mix problem: During each period we can manufacture a range of products. Each of the products requires a different amount of time to manufacture on different machines, and yields a different profit.The aim is to create an optimal multi-period production plan to maximize the profit. Some machines are not available in particular periods due to maintenance. There is an upper limit on the sales of each product in each month due to market limitations and the storage capacity is also restricted.</p>
-<p>In Factory Planning II, we’ll add more complexity to this example; the month in which each machine is down for maintenance will be chosen as a part of the optimized plan.</p>
-<p>More information on this type of model can be found in example # 3 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 255-256 and 300-302.</p>
+<h1 id="Factory-Planning-I">Factory Planning I<a class="anchor-link" href="#Factory-Planning-I">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Want to learn how to create an optimal production plan that will maximize your profits? In this example, we’ll teach you how to solve this classic production planning problem.</p>
+<p>More information on this type of model can be found in example # 3 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 255 – 256 and 300 – 302.</p>
 <p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Download the Repository</strong> <br />
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
@@ -13530,7 +13528,6 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13673,7 +13670,8 @@ the profit for each product minus the cost for storing the unsold products. This
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 79 rows, 126 columns and 288 nonzeros
 Model fingerprint: 0xead11e9d
 Coefficient statistics:
@@ -13687,9 +13685,10 @@ Presolved: 5 rows, 16 columns, 21 nonzeros
 
 Iteration    Objective       Primal Inf.    Dual Inf.      Time
        0    1.2466500e+05   3.640000e+02   0.000000e+00      0s
-       2    9.3715179e+04   0.000000e+00   0.000000e+00      0s
+Extra simplex iterations after uncrush: 2
+       4    9.3715179e+04   0.000000e+00   0.000000e+00      0s
 
-Solved in 2 iterations and 0.01 seconds
+Solved in 4 iterations and 0.01 seconds
 Optimal objective  9.371517857e+04
 </pre>
 </div>

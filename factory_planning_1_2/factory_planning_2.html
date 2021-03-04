@@ -13116,9 +13116,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Factory-Planning-II">Factory Planning II<a class="anchor-link" href="#Factory-Planning-II">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Both this model and Factory Planning I are examples of production planning problems. In production planning problems, choices must be made about which products to produce, how much of those products to produce, and what resources to use in order to maximize profits or minimize costs, while meeting a range of constraints. These problems are common across a broad range of manufacturing situations.</p>
-<h2 id="What-You-Will-Learn">What You Will Learn<a class="anchor-link" href="#What-You-Will-Learn">&#182;</a></h2><p>In this particular example, we’ll model and solve a production planning problem: During each period we can manufacture a range of products. Each of the products requires a different amount of time to manufacture on different machines, and yields a different profit. The aim is to create an optimal multi-period production plan to maximize the profit. In contrast to the Factory Planning I example, in this example the optimization model will choose the month in which each machine is down for maintenance. There is an upper limit on the sales of each product in each month due to market limitations and the storage capacity is also restricted.</p>
-<p>More information on this type of model can be found in example # 4 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 256 and 302-303.</p>
+<h1 id="Factory-Planning-II">Factory Planning II<a class="anchor-link" href="#Factory-Planning-II">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>Are you up for a major production planning challenge? Try this example where you will learn how to create an optimal production plan that will not only maximize profits, but also determine which month in which to perform maintenance operations on your machines.</p>
+<p>More information on this type of model can be found in example #4 of the fifth edition of Modeling Building in Mathematical Programming by H. P. Williams on pages 256 and 302 – 303.</p>
 <p>This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.</p>
 <p><strong>Download the Repository</strong> <br />
 You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
@@ -13506,7 +13505,6 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Using license file c:\gurobi\gurobi.lic
-Set parameter TokenServer to value SANTOS-SURFACE-
 </pre>
 </div>
 </div>
@@ -13671,7 +13669,8 @@ The balance constraints ensure that the amount of product that is in the storage
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Gurobi Optimizer version 9.0.0 build v9.0.0rc2 (win64)
+<pre>Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
 Optimize a model with 84 rows, 156 columns and 348 nonzeros
 Model fingerprint: 0x3c8ea5bf
 Variable types: 126 continuous, 30 integer (0 binary)
