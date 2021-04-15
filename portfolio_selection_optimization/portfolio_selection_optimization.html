@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>tsp</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>portfolio_selection_optimization</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,122 +14259,49 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Traveling-Salesman-Problem">Traveling Salesman Problem<a class="anchor-link" href="#Traveling-Salesman-Problem">&#182;</a></h1><h2 id="Objective-and-Prerequisites">Objective and Prerequisites<a class="anchor-link" href="#Objective-and-Prerequisites">&#182;</a></h2><p>In this example, you’ll learn how to tackle one of the most famous combinatorial optimization problems in existence: the Traveling Salesman Problem (TSP). The goal of the TSP – to find the shortest possible route that visits each city once and returns to the original city – is simple, but solving the problem is a complex and challenging endeavor. We’ll show you how to do it!</p>
-<p>This modeling example is at the advanced level, where we assume that you know Python and the Gurobi Python API and that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.</p>
-<p><strong>Download the Repository</strong> <br />
-You can download the repository containing this and other examples by clicking <a href="https://github.com/Gurobi/modeling-examples/archive/master.zip">here</a>.</p>
-<p><strong>Gurobi License</strong> <br />
-In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an <a href="https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-RAO-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_traveling-salesman_COM_EVAL_GITHUB_&amp;utm_term=traveling-salesman-problem&amp;utm_content=C_JPM">evaluation license</a> as a <em>commercial user</em>, or download a <a href="https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=3PW&amp;utm_medium=OT&amp;utm_campaign=WW-MU-RAO-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_traveling-salesman_ACADEMIC_EVAL_GITHUB_&amp;utm_term=traveling-salesman-problem&amp;utm_content=C_JPM">free license</a> as an <em>academic user</em>.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h2><p>The Traveling Salesman Problem (TSP) is one of the most famous combinatorial optimization problems. This problem is very easy to explain, but very complicated to solve – even for instances with a small number of cities. More detailed information on the TSP can be found in the book The Traveling Salesman Problem: A Computational Study [1], or at the TSP home page [2]. If you are interested in the history and mathematical background of the TSP, we recommend that you watch the video by William Cook [3].</p>
-<p>The origin of the traveling salesman problem is not very clear; it is mentioned in an 1832 manual for traveling salesman, which included example tours of 45 German cities but was not formulated as a mathematical problem. However, in the 1800s, mathematicians William Rowan Hamilton and Thomas Kirkman devised mathematical formulations of the problem.</p>
-<p>It seems that the general form of the Traveling Salesman Problem was first studied by Karl Menger in Vienna and Harvard in the 1930s.</p>
-<p>The problem became more and more popular in the 1950s and 1960s. In particular, George Dantzig, D. Ray Fulkerson, and Selmer M. Johnson at the RAND Corporation solved the 48-state problem by formulating it as a linear programming problem. The methods they described in their paper on this topic set the foundation for future work in combinatorial optimization, especially highlighting the importance of cutting planes.</p>
-<p>In the early 1970s, the concept of P vs. NP problems created excitement in the theoretical computer science community. In 1972, Richard Karp demonstrated that the Hamiltonian cycle problem was NP-complete, implying that the traveling salesman problem was NP-hard.</p>
-<p>Increasingly sophisticated codes led to rapid increases in the sizes of the traveling salesman problems solved. Dantzig, Fulkerson, and Johnson had solved a 48-city instance of the problem in 1954. Martin Grötechel more than doubled this 23 years later, solving a 120-city instance in 1977. Harlan Crowder and Manfred W. Padberg again more than doubled this in just 3 years, with a 318-city solution.</p>
-<p>In 1987, rapid improvements were made, culminating in a 2,392-city solution by Padberg and Giovanni Rinaldi. In the following two decades, great strides were made with David L. Applegate, Robert E. Bixby, Vasek Chvátal, &amp; William J. Cook solving a 3,308-city instance in 1992, a 7,397-city instance in 1994, a 24,978-city instance in 2004, and an 85,900-city instance in 2006 – which is the largest 2-D Euclidean TSP instance ever solved. William Cook et. al. wrote a program called Concorde TSP Solver for solving the TSP [4]. Concorde is a computer code for the symmetric TSP and some related network optimization problems. The code is written in the ANSI C programming language and it has been used to obtain the optimal solutions to the full set of 110 TSPLIB instances, the largest instance is a 109,399 node 3-D “star” instance.</p>
-<p>The continued interest in the TSP can be explained by its success as a general engine of discovery and a steady stream of new applications. Some of the general applications of the TSP are as follows:</p>
+<h1 id="Portfolio-Selection-Optimization">Portfolio Selection Optimization<a class="anchor-link" href="#Portfolio-Selection-Optimization">&#182;</a></h1><p>This model is an example of the classic Markowitz portfolio selection optimization model: to allocate investments to minimize risk. This is best suited to a matrix formulation, so we use the Gurobi Python matrix interface. The basic model is fairly simple, so we also solve it parametrically to find the efficient frontier.</p>
+<h2 id="Model-Formulation">Model Formulation<a class="anchor-link" href="#Model-Formulation">&#182;</a></h2><h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>We use the <a href="https://en.wikipedia.org/wiki/Greeks_\(finance\">Greek values</a>) that are traditional in finance:</p>
 <ul>
-<li>Scheduling and routing problems.</li>
-<li>Genome sequencing.</li>
-<li>Drilling problems.</li>
-<li>Aiming telescopes and x-rays.</li>
-<li>Data clustering.</li>
-<li>Machine scheduling.</li>
+<li>$\delta$: n-element vector measuring the change in price for each stock</li>
+<li>$\sigma$: n x n matrix measuring the covariance among stocks</li>
 </ul>
-<p>We use this classic combinatorial optimization problem to demonstrate how Gurobi can be used to easily and effectively solve small-sized problem instances of the TSP. However, in order to be able to solve larger instances, one needs more sophisticated techniques – such as those implemented in the Concord TSP Solver.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-Description">Problem Description<a class="anchor-link" href="#Problem-Description">&#182;</a></h2><p>The TSP can be defined as follows: for a given list of cities and the distances between each pair of them, we want to find the shortest possible route that goes to each city once and returns to the origin city.</p>
-<p>There is a class of Traveling Salesman Problems that assumes that the distance of going from city $i$ to city $j$  is the same as going form city $j$ to city $i$, this type of Traveling Salesman Problem  is also known as the symmetric Traveling Salesman Problem. In this example, we use Euclidean distances, but the TSP model formulation is valid independent of the way in which the individual distances are determined.</p>
-<h2 id="Solution-Approach">Solution Approach<a class="anchor-link" href="#Solution-Approach">&#182;</a></h2><p>Mathematical programming is a declarative approach where the modeler formulates a mathematical optimization model that captures the key aspects of a complex decision problem. The Gurobi Optimizer solves such models using state-of-the-art mathematics and computer science.</p>
-<p>A mathematical optimization model has five components, namely:</p>
+<p>There is one additional parameter when solving the model parametrically:</p>
 <ul>
-<li>Sets and indices.</li>
-<li>Parameters.</li>
-<li>Decision variables.</li>
-<li>Objective function(s).</li>
-<li>Constraints.</li>
+<li>r: target return</li>
 </ul>
-<p>We now present a MIP formulation of the TSP that identifies the shortest route that goes to all the cities once and returns to the origin city.</p>
-<h2 id="TSP-Model-Formulation">TSP Model Formulation<a class="anchor-link" href="#TSP-Model-Formulation">&#182;</a></h2><h3 id="Sets-and-Indices">Sets and Indices<a class="anchor-link" href="#Sets-and-Indices">&#182;</a></h3><p>$i, j \in Capitals $: indices and set of US capital cities.</p>
-<p>$\text{Pairings}= \{(i,j) \in Capitals \times Capitals \}$: Set of allowed pairings</p>
-<p>$S \subset Capitals$: A subset of the set of US capital cities.</p>
-<p>$G = (Capitals, Pairings)$: A graph where the set $Capitals$ defines the set of nodes and the set $Pairings$ defines the set of edges.</p>
-<h3 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h3><p>$d_{i, j} \in \mathbb{R}^+$: Distance from capital city $i$ to capital city $j$, for all $(i, j) \in Pairings$.</p>
-<p>Notice that the distance from capital city $i$ to capital city $j$ is the same as the distance from capital city $j$ to capital city $i$, i.e. $d_{i, j} = d_{j, i}$. For this reason, this TSP is also called the symmetric Traveling Salesman Problem.</p>
-<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><p>$x_{i, j} \in \{0, 1\}$: This variable is equal to 1, if we decide to connect city $i$ with city $j$. Otherwise, the decision variable is equal to zero.</p>
-<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h3><ul>
-<li><strong>Shortest Route</strong>. Minimize the total distance of a route. A route is a sequence of capital cities where the salesperson visits each city only once and returns to the starting capital city.</li>
+<h3 id="Decision-Variables">Decision Variables<a class="anchor-link" href="#Decision-Variables">&#182;</a></h3><ul>
+<li>$x \ge 0$: n-element vector where each element represents the fraction of the porfolio to invest in each stock</li>
 </ul>
+<h3 id="Objective-Function">Objective Function<a class="anchor-link" href="#Objective-Function">&#182;</a></h3><p>Minimize the total risk:</p>
 \begin{equation}
-\text{Min} \quad Z = \sum_{(i,j) \in \text{Pairings}}d_{i,j} \cdot x_{i,j}
-\tag{0}
-\end{equation}<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><ul>
-<li><strong>Symmetry Constraints</strong>. For each edge $(i,j)$, ensure that the city capitals $i$ and $j$ are connected, if the former is visited immediately before or after visiting the latter.</li>
-</ul>
+\min x^t \cdot \sigma \cdot x
+\end{equation}<h3 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h3><p>Allocate the entire portfolio: the total investments should be 1.0 (100%), where e is a unit vector (all 1's):</p>
 \begin{equation}
-x_{i, j} = x_{j, i} \quad \forall (i, j) \in Pairings
-\tag{1}
-\end{equation}<ul>
-<li><strong>Entering and leaving a capital city</strong>. For each capital city $i$, ensure that this city is connected to two other cities. </li>
-</ul>
+e \cdot x = 1
+\end{equation}<p>Return: When we solve the model parametrically for different return values $r$, we add a constraint on the target return:</p>
 \begin{equation}
-\sum_{(i,j) \in \text{Pairings}}x_{i,j} = 2 \quad \forall  i \in Capitals
-\tag{2}
-\end{equation}<ul>
-<li><strong>Subtour elimination</strong>. These constraints ensure that for any subset of cities $S$ of the set of $Capitals$, there is no cycle. That is, there is no route that visits all the cities in the subset and returns to the origin city.</li>
-</ul>
-\begin{equation}
-\sum_{(i \neq j) \in S}x_{i,j} \leq |S|-1 \quad \forall  S \subset  Capitals
-\tag{3}
-\end{equation}<ul>
-<li><strong>Remark</strong>. In general, if the number of cities of the TSP is $n$, then the possible number of routes is n!.
-Since there are an exponential number of constraints ($2^{n} - 2$) to eliminate cycles, we use lazy constraints to dynamically eliminate those cycles. </li>
-</ul>
-
+\delta \cdot x = r
+\end{equation}
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><p>Consider a salesperson that needs to visit customers at each state capital of the continental US. The salesperson wants to identify the shortest route that goes to all the state capitals.</p>
-<p>This modeling example requires the following libraries that are not part of the standard Python distribution:</p>
-<ul>
-<li><strong>folium</strong>: to create maps.</li>
-<li><strong>gurobipy</strong>: provides Gurobi algorithms to solve MIP models.</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Reading-Input-Data">Reading Input Data<a class="anchor-link" href="#Reading-Input-Data">&#182;</a></h3><p>The capital names and coordinates are read from a json file.</p>
+<h2 id="Python-Implementation">Python Implementation<a class="anchor-link" href="#Python-Implementation">&#182;</a></h2><h3 id="Stock-data">Stock data<a class="anchor-link" href="#Stock-data">&#182;</a></h3><p>Use <a href="https://pypi.org/project/yfinance/">yfinance</a> library to get the latest 2 years of <em>actual stock data</em> from the 20 most profitable US companies, <a href="https://en.wikipedia.org/wiki/List_of_largest_companies_in_the_United_States_by_revenue#List_of_companies_by_profit">according to Wikipedia in April 2021</a>.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
 
-<span class="c1"># Read capital names and coordinates from json file</span>
-<span class="n">capitals_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;capitals.json&#39;</span><span class="p">))</span>
-<span class="n">capitals</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">coordinates</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">capitals_json</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">state</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;AK&#39;</span><span class="p">,</span> <span class="s1">&#39;HI&#39;</span><span class="p">]:</span>
-      <span class="n">capital</span> <span class="o">=</span> <span class="n">capitals_json</span><span class="p">[</span><span class="n">state</span><span class="p">][</span><span class="s1">&#39;capital&#39;</span><span class="p">]</span>
-      <span class="n">capitals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">capital</span><span class="p">)</span>
-      <span class="n">coordinates</span><span class="p">[</span><span class="n">capital</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">capitals_json</span><span class="p">[</span><span class="n">state</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">capitals_json</span><span class="p">[</span><span class="n">state</span><span class="p">][</span><span class="s1">&#39;long&#39;</span><span class="p">]))</span>
+<span class="n">stocks</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BRK-A&#39;</span><span class="p">,</span> <span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;MSFT&#39;</span><span class="p">,</span> <span class="s1">&#39;JPM&#39;</span><span class="p">,</span> <span class="s1">&#39;GOOG&#39;</span><span class="p">,</span> <span class="s1">&#39;BAC&#39;</span><span class="p">,</span> <span class="s1">&#39;INTC&#39;</span><span class="p">,</span> <span class="s1">&#39;WFC&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;VZ&#39;</span><span class="p">,</span> <span class="s1">&#39;FB&#39;</span><span class="p">,</span> <span class="s1">&#39;PFE&#39;</span><span class="p">,</span> <span class="s1">&#39;JNJ&#39;</span><span class="p">,</span> <span class="s1">&#39;WMT&#39;</span><span class="p">,</span> <span class="s1">&#39;XOM&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;FNMA&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;UNH&#39;</span><span class="p">,</span> <span class="s1">&#39;CMCSA&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span> <span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">stocks</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s1">&#39;2y&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14385,27 +14312,23 @@ Since there are an exponential number of constraints ($2^{n} - 2$) to eliminate 
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Data-computation">Data computation<a class="anchor-link" href="#Data-computation">&#182;</a></h3><p>The following function calculates the distance for each pair of state capitals. Since we are solving the <em>symmetric</em> traveling salesman problem, we use <em>combinations</em> of cities.</p>
+<h3 id="Compute-Greeks">Compute Greeks<a class="anchor-link" href="#Compute-Greeks">&#182;</a></h3><p>Using the downloaded stock data, find the delta (return), sigma (covariance) and standard deviation values for stock prices:</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1"># Compute pairwise distance matrix</span>
-
-<span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">city1</span><span class="p">,</span> <span class="n">city2</span><span class="p">):</span>
-    <span class="n">c1</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">city1</span><span class="p">]</span>
-    <span class="n">c2</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">city2</span><span class="p">]</span>
-    <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">c1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">c2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">c2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">diff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">diff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">diff</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="n">dist</span> <span class="o">=</span> <span class="p">{(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span> <span class="n">distance</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span> <span class="k">for</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">capitals</span><span class="p">,</span> <span class="mi">2</span><span class="p">)}</span>
+<span class="n">closes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Close</span><span class="p">))</span> <span class="c1"># matrix of daily closing prices</span>
+<span class="n">absdiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">closes</span><span class="p">)</span>                   <span class="c1"># change in closing price each day</span>
+<span class="n">reldiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">absdiff</span><span class="p">,</span> <span class="n">closes</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># relative change in daily closing price</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">reldiff</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># mean price change</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">reldiff</span><span class="p">)</span>                     <span class="c1"># covariance (standard deviations)</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">reldiff</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>               <span class="c1"># standard deviation</span>
 </pre></div>
 
      </div>
@@ -14416,31 +14339,37 @@ Since there are an exponential number of constraints ($2^{n} - 2$) to eliminate 
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Model-Code">Model Code<a class="anchor-link" href="#Model-Code">&#182;</a></h3><p>We now write the model for the TSP, by defining decision variables, constraints, and objective function. Because this is the <em>symmetric</em> traveling salesman problem, we can make it more efficient by setting the <em>object</em> x[j,i] to x[i,j], instead of a constraint.</p>
-
+<h2 id="Minimize-risk-by-solving-QP-model">Minimize risk by solving QP model<a class="anchor-link" href="#Minimize-risk-by-solving-QP-model">&#182;</a></h2>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">gurobipy</span> <span class="k">as</span> <span class="nn">gp</span>
 <span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="n">GRB</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
-<span class="c1"># tested with Python 3.7 &amp; Gurobi 9.0.0</span>
+<span class="c1"># Create an empty model</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s1">&#39;portfolio&#39;</span><span class="p">)</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+<span class="c1"># Add matrix variable for the stocks</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addMVar</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stocks</span><span class="p">))</span>
 
-<span class="c1"># Variables: is city &#39;i&#39; adjacent to city &#39;j&#39; on the tour?</span>
-<span class="nb">vars</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">obj</span><span class="o">=</span><span class="n">dist</span><span class="p">,</span> <span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="c1"># Objective is to minimize risk (squared).  This is modeled using the</span>
+<span class="c1"># covariance matrix, which measures the historical correlation between stocks</span>
+<span class="n">portfolio_risk</span> <span class="o">=</span> <span class="n">x</span> <span class="o">@</span> <span class="n">sigma</span> <span class="o">@</span> <span class="n">x</span>
+<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">portfolio_risk</span><span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">)</span>
 
-<span class="c1"># Symmetric direction: Copy the object</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">vars</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-    <span class="nb">vars</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>  <span class="c1"># edge in opposite direction</span>
+<span class="c1"># Fix budget with a constraint</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;budget&#39;</span><span class="p">)</span>
 
-<span class="c1"># Constraints: two edges incident to each city</span>
-<span class="n">cons</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span><span class="nb">vars</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">capitals</span><span class="p">)</span>
+<span class="c1"># Verify model formulation</span>
+<span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;portfolio_selection_optimization.lp&#39;</span><span class="p">)</span>
+
+<span class="c1"># Optimize model to find the minimum risk portfolio</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -14448,71 +14377,52 @@ Since there are an exponential number of constraints ($2^{n} - 2$) to eliminate 
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Display-minimum-risk-portfolio-using-Pandas">Display minimum risk portfolio using Pandas<a class="anchor-link" href="#Display-minimum-risk-portfolio-using-Pandas">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">minrisk_volatility</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">ObjVal</span><span class="p">)</span>
+<span class="n">minrisk_return</span> <span class="o">=</span> <span class="n">delta</span> <span class="o">@</span> <span class="n">x</span><span class="o">.</span><span class="n">X</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="p">[</span><span class="n">minrisk_volatility</span><span class="p">,</span> <span class="n">minrisk_return</span><span class="p">]),</span>
+             <span class="n">index</span><span class="o">=</span><span class="n">stocks</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Volatility&#39;</span><span class="p">,</span> <span class="s1">&#39;Expected Return&#39;</span><span class="p">],</span>
+             <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Minimum Risk Portfolio&#39;</span><span class="p">])</span>
+</pre></div>
 
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Using license file /Library/gurobi/gurobi.lic
-</pre>
+     </div>
 </div>
 </div>
-
-</div>
-
 </div>
 
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Callback-Definition">Callback Definition<a class="anchor-link" href="#Callback-Definition">&#182;</a></h3><p>Subtour constraints prevent multiple loops in a TSP tour. Because there are an exponential number of these constraints, we don't want to add them all to the model. Instead, we use a callback function to find violated subtour constraints and add them to the model as lazy constraints.</p>
+<h2 id="Compute-the-efficient-frontier">Compute the efficient frontier<a class="anchor-link" href="#Compute-the-efficient-frontier">&#182;</a></h2><p>Solve the QP parametrically to find the lowest risk portfolio for different expected returns.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Callback - use lazy constraints to eliminate sub-tours</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create an expression representing the expected return for the portfolio</span>
+<span class="n">portfolio_return</span> <span class="o">=</span> <span class="n">delta</span> <span class="o">@</span> <span class="n">x</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">portfolio_return</span> <span class="o">==</span> <span class="n">minrisk_return</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">subtourelim</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">where</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">where</span> <span class="o">==</span> <span class="n">GRB</span><span class="o">.</span><span class="n">Callback</span><span class="o">.</span><span class="n">MIPSOL</span><span class="p">:</span>
-        <span class="c1"># make a list of edges selected in the solution</span>
-        <span class="n">vals</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">cbGetSolution</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_vars</span><span class="p">)</span>
-        <span class="n">selected</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">tuplelist</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-                             <span class="k">if</span> <span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
-        <span class="c1"># find the shortest cycle in the selected edge list</span>
-        <span class="n">tour</span> <span class="o">=</span> <span class="n">subtour</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tour</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">capitals</span><span class="p">):</span>
-            <span class="c1"># add subtour elimination constr. for every pair of cities in subtour</span>
-            <span class="n">model</span><span class="o">.</span><span class="n">cbLazy</span><span class="p">(</span><span class="n">gp</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_vars</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">tour</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-                         <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tour</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Given a tuplelist of edges, find the shortest subtour</span>
-
-<span class="k">def</span> <span class="nf">subtour</span><span class="p">(</span><span class="n">edges</span><span class="p">):</span>
-    <span class="n">unvisited</span> <span class="o">=</span> <span class="n">capitals</span><span class="p">[:]</span>
-    <span class="n">cycle</span> <span class="o">=</span> <span class="n">capitals</span><span class="p">[:]</span> <span class="c1"># Dummy - guaranteed to be replaced</span>
-    <span class="k">while</span> <span class="n">unvisited</span><span class="p">:</span>  <span class="c1"># true if list is non-empty</span>
-        <span class="n">thiscycle</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">neighbors</span> <span class="o">=</span> <span class="n">unvisited</span>
-        <span class="k">while</span> <span class="n">neighbors</span><span class="p">:</span>
-            <span class="n">current</span> <span class="o">=</span> <span class="n">neighbors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">thiscycle</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
-            <span class="n">unvisited</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
-            <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">edges</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span>
-                         <span class="k">if</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">unvisited</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">thiscycle</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cycle</span><span class="p">):</span>
-            <span class="n">cycle</span> <span class="o">=</span> <span class="n">thiscycle</span> <span class="c1"># New shortest subtour</span>
-    <span class="k">return</span> <span class="n">cycle</span>
+<span class="c1"># Solve for efficient frontier by varying target return</span>
+<span class="n">frontier</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">delta</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">25</span><span class="p">):</span>
+    <span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rhs</span> <span class="o">=</span> <span class="n">r</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+    <span class="n">frontier</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frontier</span><span class="p">,</span> <span class="p">[[</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">ObjVal</span><span class="p">)],[</span><span class="n">r</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14523,111 +14433,41 @@ Since there are an exponential number of constraints ($2^{n} - 2$) to eliminate 
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Solve-the-model">Solve the model<a class="anchor-link" href="#Solve-the-model">&#182;</a></h2>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">_vars</span> <span class="o">=</span> <span class="nb">vars</span>
-<span class="n">m</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">lazyConstraints</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">subtourelim</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Changed value of parameter lazyConstraints to 1
-   Prev: 0  Min: 0  Max: 1  Default: 0
-Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
-Thread count: 4 physical cores, 4 logical processors, using up to 4 threads
-Optimize a model with 48 rows, 1128 columns and 2256 nonzeros
-Model fingerprint: 0x63641a38
-Variable types: 0 continuous, 1128 integer (1128 binary)
-Coefficient statistics:
-  Matrix range     [1e+00, 1e+00]
-  Objective range  [6e-01, 5e+01]
-  Bounds range     [1e+00, 1e+00]
-  RHS range        [2e+00, 2e+00]
-Presolve time: 0.01s
-Presolved: 48 rows, 1128 columns, 2256 nonzeros
-Variable types: 0 continuous, 1128 integer (1128 binary)
-
-Root relaxation: objective 1.611858e+02, 72 iterations, 0.00 seconds
-
-    Nodes    |    Current Node    |     Objective Bounds      |     Work
- Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
-
-     0     0  161.18576    0   12          -  161.18576      -     -    2s
-     0     0  163.11017    0   18          -  163.11017      -     -    2s
-     0     0  165.78212    0   16          -  165.78212      -     -    2s
-     0     0  166.92479    0   14          -  166.92479      -     -    2s
-     0     0  167.07705    0   33          -  167.07705      -     -    2s
-H    0     0                     247.2512436  167.07705  32.4%     -    2s
-     0     2  167.07705    0   33  247.25124  167.07705  32.4%     -    3s
-*  111    37               8     180.7941235  167.77896  7.20%   5.4    3s
-*  112    37               8     179.7342579  167.77896  6.65%   5.4    3s
-*  123    43               8     178.7340009  167.77896  6.13%   5.8    4s
-*  135    26               5     176.9222764  169.41553  4.24%   6.2    4s
-*  138    26               5     176.4492940  169.87183  3.73%   6.3    4s
-*  166     0               5     175.4490370  174.62713  0.47%   7.0    4s
-
-Cutting planes:
-  Zero half: 8
-  Lazy constraints: 31
-
-Explored 183 nodes (1346 simplex iterations) in 4.82 seconds
-Thread count was 4 (of 4 available processors)
-
-Solution count 7: 175.449 176.449 176.922 ... 247.251
-
-Optimal solution found (tolerance 1.00e-04)
-Best objective 1.754490370198e+02, best bound 1.754490370198e+02, gap 0.0000%
-
-User-callback calls 624, time in user-callback 0.70 sec
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Analysis">Analysis<a class="anchor-link" href="#Analysis">&#182;</a></h2><p>We retrieve the optimal solution of the TSP and verify that the optimal route (or tour) goes to all the cities and returns to the origin city.</p>
+<h2 id="Plot-results">Plot results<a class="anchor-link" href="#Plot-results">&#182;</a></h2><p>Use the matplot library to plot the optimized solutions, along with the individual stocks</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Retrieve solution</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#plt.figure(figsize=(10,10))</span>
 
-<span class="n">vals</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">getAttr</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="nb">vars</span><span class="p">)</span>
-<span class="n">selected</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">tuplelist</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
-<span class="n">tour</span> <span class="o">=</span> <span class="n">subtour</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span>
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">tour</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">capitals</span><span class="p">)</span>
+<span class="c1"># Plot volatility versus expected return for individual stocks</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">std</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span>
+           <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Individual Stocks&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">stock</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stocks</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="p">(</span><span class="n">std</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">delta</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="c1"># Plot volatility versus expected return for minimum risk portfolio</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">minrisk_volatility</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">minrisk_return</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;DarkGreen&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Minimum</span><span class="se">\n</span><span class="s1">Risk</span><span class="se">\n</span><span class="s1">Portfolio&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">minrisk_volatility</span><span class="p">,</span> <span class="n">minrisk_return</span><span class="p">),</span>
+            <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot efficient frontier</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frontier</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">frontier</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Efficient Frontier&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;DarkGreen&#39;</span><span class="p">)</span>
+
+<span class="c1"># Format and display the final plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="n">frontier</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">*</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">frontier</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">delta</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">*</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">delta</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">1.2</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Volatility (standard deviation)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Expected Return&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -14635,83 +14475,6 @@ User-callback calls 624, time in user-callback 0.70 sec
 </div>
 </div>
 
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The optimal route is displayed in the following map.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Map the solution</span>
-
-<span class="kn">import</span> <span class="nn">folium</span>
-
-<span class="nb">map</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span><span class="o">-</span><span class="mi">95</span><span class="p">],</span> <span class="n">zoom_start</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-
-<span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">tour</span><span class="p">:</span>
-  <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordinates</span><span class="p">[</span><span class="n">city</span><span class="p">])</span>
-<span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="n">folium</span><span class="o">.</span><span class="n">PolyLine</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
-
-<span class="nb">map</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe src="about:blank" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" data-html=%3C%21DOCTYPE%20html%3E%0A%3Chead%3E%20%20%20%20%0A%20%20%20%20%3Cmeta%20http-equiv%3D%22content-type%22%20content%3D%22text/html%3B%20charset%3DUTF-8%22%20/%3E%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cscript%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20L_NO_TOUCH%20%3D%20false%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20L_DISABLE_3D%20%3D%20false%3B%0A%20%20%20%20%20%20%20%20%3C/script%3E%0A%20%20%20%20%0A%20%20%20%20%3Cstyle%3Ehtml%2C%20body%20%7Bwidth%3A%20100%25%3Bheight%3A%20100%25%3Bmargin%3A%200%3Bpadding%3A%200%3B%7D%3C/style%3E%0A%20%20%20%20%3Cstyle%3E%23map%20%7Bposition%3Aabsolute%3Btop%3A0%3Bbottom%3A0%3Bright%3A0%3Bleft%3A0%3B%7D%3C/style%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A//cdn.jsdelivr.net/npm/leaflet%401.6.0/dist/leaflet.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A//code.jquery.com/jquery-1.12.4.min.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js%22%3E%3C/script%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A//cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js%22%3E%3C/script%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A//cdn.jsdelivr.net/npm/leaflet%401.6.0/dist/leaflet.css%22/%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css%22/%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css%22/%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css%22/%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A//cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css%22/%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A//cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css%22/%3E%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20initial-scale%3D1.0%2C%20maximum-scale%3D1.0%2C%20user-scalable%3Dno%22%20/%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23map_acb064ae5b7249e2a630bc9eac782351%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20relative%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100.0%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100.0%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20left%3A%200.0%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20top%3A%200.0%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C/style%3E%0A%20%20%20%20%20%20%20%20%0A%3C/head%3E%0A%3Cbody%3E%20%20%20%20%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22folium-map%22%20id%3D%22map_acb064ae5b7249e2a630bc9eac782351%22%20%3E%3C/div%3E%0A%20%20%20%20%20%20%20%20%0A%3C/body%3E%0A%3Cscript%3E%20%20%20%20%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20map_acb064ae5b7249e2a630bc9eac782351%20%3D%20L.map%28%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22map_acb064ae5b7249e2a630bc9eac782351%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20center%3A%20%5B40.0%2C%20-95.0%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20crs%3A%20L.CRS.EPSG3857%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20zoom%3A%204%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20zoomControl%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20preferCanvas%3A%20false%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%29%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20tile_layer_d4fac3604d004d279532c58b748e8630%20%3D%20L.tileLayer%28%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22https%3A//%7Bs%7D.tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B%22attribution%22%3A%20%22Data%20by%20%5Cu0026copy%3B%20%5Cu003ca%20href%3D%5C%22http%3A//openstreetmap.org%5C%22%5Cu003eOpenStreetMap%5Cu003c/a%5Cu003e%2C%20under%20%5Cu003ca%20href%3D%5C%22http%3A//www.openstreetmap.org/copyright%5C%22%5Cu003eODbL%5Cu003c/a%5Cu003e.%22%2C%20%22detectRetina%22%3A%20false%2C%20%22maxNativeZoom%22%3A%2018%2C%20%22maxZoom%22%3A%2018%2C%20%22minZoom%22%3A%200%2C%20%22noWrap%22%3A%20false%2C%20%22opacity%22%3A%201%2C%20%22subdomains%22%3A%20%22abc%22%2C%20%22tms%22%3A%20false%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%29.addTo%28map_acb064ae5b7249e2a630bc9eac782351%29%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20poly_line_fc34ac03a228441f82895ed91562d650%20%3D%20L.polyline%28%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B%5B32.361538%2C%20-86.279118%5D%2C%20%5B30.4518%2C%20-84.27277%5D%2C%20%5B33.76%2C%20-84.39%5D%2C%20%5B34.0%2C%20-81.035%5D%2C%20%5B35.771%2C%20-78.638%5D%2C%20%5B37.54%2C%20-77.46%5D%2C%20%5B38.972945%2C%20-76.501157%5D%2C%20%5B39.161921%2C%20-75.526755%5D%2C%20%5B40.221741%2C%20-74.756138%5D%2C%20%5B41.767%2C%20-72.677%5D%2C%20%5B41.82355%2C%20-71.422132%5D%2C%20%5B42.2352%2C%20-71.0275%5D%2C%20%5B44.323535%2C%20-69.765261%5D%2C%20%5B43.220093%2C%20-71.549127%5D%2C%20%5B44.26639%2C%20-72.57194%5D%2C%20%5B42.659829%2C%20-73.781339%5D%2C%20%5B40.269789%2C%20-76.875613%5D%2C%20%5B38.349497%2C%20-81.633294%5D%2C%20%5B39.962245%2C%20-83.000647%5D%2C%20%5B42.7335%2C%20-84.5467%5D%2C%20%5B43.074722%2C%20-89.384444%5D%2C%20%5B44.95%2C%20-93.094%5D%2C%20%5B41.590939%2C%20-93.620866%5D%2C%20%5B39.04%2C%20-95.69%5D%2C%20%5B40.809868%2C%20-96.675345%5D%2C%20%5B44.367966%2C%20-100.336378%5D%2C%20%5B46.813343%2C%20-100.779004%5D%2C%20%5B41.145548%2C%20-104.802042%5D%2C%20%5B39.7391667%2C%20-104.984167%5D%2C%20%5B40.7547%2C%20-111.892622%5D%2C%20%5B46.595805%2C%20-112.027031%5D%2C%20%5B43.613739%2C%20-116.237651%5D%2C%20%5B47.042418%2C%20-122.893077%5D%2C%20%5B44.931109%2C%20-123.029159%5D%2C%20%5B38.555605%2C%20-121.468926%5D%2C%20%5B39.160949%2C%20-119.753877%5D%2C%20%5B33.448457%2C%20-112.073844%5D%2C%20%5B35.667231%2C%20-105.964575%5D%2C%20%5B35.482309%2C%20-97.534994%5D%2C%20%5B30.266667%2C%20-97.75%5D%2C%20%5B30.45809%2C%20-91.140229%5D%2C%20%5B32.32%2C%20-90.207%5D%2C%20%5B34.736009%2C%20-92.331122%5D%2C%20%5B38.572954%2C%20-92.189283%5D%2C%20%5B39.78325%2C%20-89.650373%5D%2C%20%5B39.790942%2C%20-86.147685%5D%2C%20%5B38.197274%2C%20-84.86311%5D%2C%20%5B36.165%2C%20-86.784%5D%2C%20%5B32.361538%2C%20-86.279118%5D%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B%22bubblingMouseEvents%22%3A%20true%2C%20%22color%22%3A%20%22%233388ff%22%2C%20%22dashArray%22%3A%20null%2C%20%22dashOffset%22%3A%20null%2C%20%22fill%22%3A%20false%2C%20%22fillColor%22%3A%20%22%233388ff%22%2C%20%22fillOpacity%22%3A%200.2%2C%20%22fillRule%22%3A%20%22evenodd%22%2C%20%22lineCap%22%3A%20%22round%22%2C%20%22lineJoin%22%3A%20%22round%22%2C%20%22noClip%22%3A%20false%2C%20%22opacity%22%3A%201.0%2C%20%22smoothFactor%22%3A%201.0%2C%20%22stroke%22%3A%20true%2C%20%22weight%22%3A%203%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%29.addTo%28map_acb064ae5b7249e2a630bc9eac782351%29%3B%0A%20%20%20%20%20%20%20%20%0A%3C/script%3E onload="this.contentDocument.open();this.contentDocument.write(    decodeURIComponent(this.getAttribute('data-html')));this.contentDocument.close();" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h2><p>The Traveling Salesman Problem (TSP) is the most popular combinatorial optimization problem. This problem is very easy to explain, although it is very complicated to solve. The largest TSP problem solved has 85,900 cities. The TSP is a source of discovery for new approaches to solve complex combinatorial optimization problems and has led to many applications.</p>
-<p>In this modeling example, we have shown how to formulate the symmetric Traveling Salesman Problem as a MIP problem. We also showed how to dynamically eliminate subtours by using lazy constraints.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>[1] D. L. Applegate, R. E. Bixby, V. Chvatal and W. J. Cook , The Traveling Salesman Problem: A Computational Study, Princeton University Press, Princeton, 2006.</p>
-<p>[2] <a href="http://www.math.uwaterloo.ca/tsp/index.html">http://www.math.uwaterloo.ca/tsp/index.html</a></p>
-<p>[3] <a href="https://www.youtube.com/watch?v=q8nQTNvCrjE&amp;t=35s">https://www.youtube.com/watch?v=q8nQTNvCrjE&amp;t=35s</a></p>
-<p>[4] <a href="http://www.math.uwaterloo.ca/tsp/concorde.html">http://www.math.uwaterloo.ca/tsp/concorde.html</a></p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Copyright © 2020 Gurobi Optimization, LLC</p>
-
-</div>
 </div>
 </body>
 
