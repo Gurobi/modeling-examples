@@ -1,8 +1,10 @@
 # Portfolio Selection Optimization
 
-This model is an example of the classic Markowitz portfolio selection optimization model: to allocate investments to minimize risk. This is best suited to a matrix formulation, so we use the Gurobi Python matrix interface. The basic model is fairly simple, so we also solve it parametrically to find the efficient frontier.
+This model is an example of the classic Markowitz portfolio selection optimization model: to allocate investments 
+to minimize risk. This is best suited to a matrix formulation, so we use the Gurobi Python matrix interface. 
+The basic model is fairly simple, so we also solve it parametrically to find the efficient frontier.
 
-https://gurobi.github.io/modeling-examples/portfolio\_selection\_optimization/portfolio\_selection\_optimization.html
+https://gurobi.github.io/modeling-examples/portfolio_selection_optimization/portfolio_selection_optimization.html
 
 ## Download the Repository
 
