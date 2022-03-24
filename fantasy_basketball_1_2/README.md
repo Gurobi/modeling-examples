@@ -6,6 +6,10 @@ Those predictions are then used in an optimization model that will select the op
 The second part expands the optimization model to reflect actual fantasy basketball competitions, shows different ways to model constraints, and 
 introduces the *slack* of a constraint.
 
+[Google Colab Link for Part 1](https://colab.research.google.com/github/yurchisin/modeling-examples/blob/master/fantasy_basketball_1_2/fantasy_basketball_part1.ipynb)
+
+[Google Colab Link for Part 2](https://colab.research.google.com/github/yurchisin/modeling-examples/blob/master/fantasy_basketball_1_2/fantasy_basketball_part2.ipynb)
+
 ## Download the Repository
 
 You can download the repository containing this and other examples 
