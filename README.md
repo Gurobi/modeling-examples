@@ -32,6 +32,7 @@ multi-objective hierarchical optimization.  They also illustrate common constrai
 - [Electrical Power Generation](https://github.com/Gurobi/modeling-examples/tree/master/electrical_power_generation_1_2)
 - [Facility Location](https://github.com/Gurobi/modeling-examples/tree/master/facility_location)
 - [Factory Planning](https://github.com/Gurobi/modeling-examples/tree/master/factory_planning_1_2)
+- [Fantasy Basketball](https://github.com/Gurobi/modeling-examples/tree/master/fantasy_basketball_1_2)
 - [Farm Planning](https://github.com/Gurobi/modeling-examples/tree/master/farm_planning)
 - [Food Manufacturing](https://github.com/Gurobi/modeling-examples/tree/master/food_manufacturing_1_2)
 - [Intro to Mathematical Optimization Modeling](https://github.com/Gurobi/modeling-examples/tree/master/intro_to_modeling)
