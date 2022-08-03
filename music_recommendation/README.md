@@ -4,7 +4,7 @@
 
 This example creates a music recommendation using mathematical optimization. The solution comprises of a set of artists that likable and diverse, and caters to a user of a music streaming platform. Users' preferences are learned using collaborative filtering  (via matrix factorization) and the artist selection is optimized using an Integer Program. This example illustrates how a prediction model combines with a prescriptive model to create a recommendation that is fine-tuned to a user's likes.
 
-[Google Colab Link](https://github.com/Gurobi/modeling-examples/blob/master/music_recommendation/music_recommendation_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/music_recommendation/music_recommendation_gcl.ipynb)
 
 
 ## Download the Repository
