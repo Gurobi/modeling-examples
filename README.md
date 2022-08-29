@@ -44,6 +44,7 @@ multi-objective hierarchical optimization.  They also illustrate common constrai
 - [Marketing Campaign Optimization](https://github.com/Gurobi/modeling-examples/tree/master/marketing_campaign_optimization)
 - [Milk Collection](https://github.com/Gurobi/modeling-examples/tree/master/milk_collection)
 - [Mining](https://github.com/Gurobi/modeling-examples/tree/master/mining)
+- [Music Recommendation](https://github.com/Gurobi/modeling-examples/tree/master/music_recommendation)
 - [Offshore Wind Farming](https://github.com/Gurobi/modeling-examples/tree/master/offshore_wind_farming)
 - [Opencast Mining](https://github.com/Gurobi/modeling-examples/tree/master/opencast_mining)
 - [Price Optimization](https://github.com/Gurobi/modeling-examples/tree/master/price_optimization)
