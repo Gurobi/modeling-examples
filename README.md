@@ -46,6 +46,7 @@ multi-objective hierarchical optimization.  They also illustrate common constrai
 - [Mining](https://github.com/Gurobi/modeling-examples/tree/master/mining)
 - [Offshore Wind Farming](https://github.com/Gurobi/modeling-examples/tree/master/offshore_wind_farming)
 - [Opencast Mining](https://github.com/Gurobi/modeling-examples/tree/master/opencast_mining)
+- [Price Optimization](https://github.com/Gurobi/modeling-examples/tree/master/price_optimization)
 - [Protein Comparison](https://github.com/Gurobi/modeling-examples/tree/master/protein_comparison)
 - [Protein Folding](https://github.com/Gurobi/modeling-examples/tree/master/protein_folding)
 - [Refinery](https://github.com/Gurobi/modeling-examples/tree/master/refinery)
