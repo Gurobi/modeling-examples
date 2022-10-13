@@ -22,7 +22,7 @@ def show_map(buildings, building_names, building_coordinates, demand, truck_coor
         placed_trucks = [key for key, value in truck_coordinates.items() if key in placed_trucks]
     
     # Create figure
-    minimap = Image.open('BurritoOptimizationGame_Util/minimap.png')
+    minimap = Image.open('https://github.com/Gurobi/modeling-examples/blob/master/burrito_optimization_game/BurritoOptimizationGame_Util/minimap.png')
     fig = go.Figure()
 
     # Add trace for truck spots
