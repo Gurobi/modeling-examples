@@ -3,6 +3,7 @@ from PIL import Image
 import gurobipy as gp
 import requests
 import urllib.request
+import io
 
 def show_map(buildings, building_names, building_coordinates, demand, truck_coordinates, placed_trucks = []):
     """displays the Burrito Optimization map with labels for open truck locations, buildings with demand, and placed trucks [optional].  This is intended to be used in the Gurobi Days Intro to Modeling course"""
@@ -25,8 +26,11 @@ def show_map(buildings, building_names, building_coordinates, demand, truck_coor
     
     # Create figure
     url = 'https://raw.githubusercontent.com/Gurobi/modeling-examples/master/burrito_optimization_game/BurritoOptimizationGame_Util/minimap.png'
-    urllib.request.urlretrieve(url, "minimap_local.png")
-    minimap = Image.open("minimap_local.png")
+    #urllib.request.urlretrieve(url, "minimap_local.png")
+    #minimap = Image.open("minimap_local.png")
+    response = requests.get(url)
+    image_bytes = io.BytesIO(response.content)
+    minimap = PIL.Image.open(image_bytes)
     fig = go.Figure()
 
     # Add trace for truck spots
