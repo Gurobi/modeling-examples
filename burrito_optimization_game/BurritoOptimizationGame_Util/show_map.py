@@ -30,7 +30,7 @@ def show_map(buildings, building_names, building_coordinates, demand, truck_coor
     #minimap = Image.open("minimap_local.png")
     response = requests.get(url)
     image_bytes = io.BytesIO(response.content)
-    minimap = PIL.Image.open(image_bytes)
+    minimap = Image.open(image_bytes)
     fig = go.Figure()
 
     # Add trace for truck spots
