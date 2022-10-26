@@ -1,6 +1,6 @@
 # Gurobi's Burrito Optimization Game
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/burrito_optimization_game/BurritoOptimizationGame_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/burrito_optimization_game/burrito_optimization_game_gcl.ipynb)
 
 ## Download the Repository
 
