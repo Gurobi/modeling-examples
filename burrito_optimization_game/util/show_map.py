@@ -25,20 +25,9 @@ def show_map(buildings, building_names, building_coordinates, demand, truck_coor
         placed_trucks = [key for key, value in truck_coordinates.items() if key in placed_trucks]
     
     # Create figure
-    url = 'https://raw.githubusercontent.com/Gurobi/modeling-examples/master/burrito_optimization_game/util/minimap.png'
-    
-    # Try 1
     url = 'https://raw.githubusercontent.com/Gurobi/modeling-examples/master/burrito_optimization_game/util/minimap.png'   
     response = requests.get(url)
     minimap = Image.open(BytesIO(response.content))
-    
-    
-    #url = 'https://raw.githubusercontent.com/Gurobi/modeling-examples/master/burrito_optimization_game/util/minimap.png'
-    #urllib.request.urlretrieve(url, "minimap_local.png")
-    #minimap = Image.open("minimap_local.png")
-    #response = requests.get(url)
-    #image_bytes = io.BytesIO(response.content)
-    #minimap = Image.open(image_bytes).tobytes()
     fig = go.Figure()
 
     # Add trace for truck spots
