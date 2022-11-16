@@ -1,2 +1,1 @@
-# GurobiOptimization-101
- 
+# Optimization-101 for Data Scientists
