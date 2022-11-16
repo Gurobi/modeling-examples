@@ -1,2 +1,2 @@
-# GurobiOptimization-101
+# Optimization-101
  
