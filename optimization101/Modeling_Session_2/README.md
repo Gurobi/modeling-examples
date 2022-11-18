@@ -5,7 +5,7 @@ A univeristy building is going to hold classes for a week, which requires electr
 1. Minimize the total electrity purchased from the grid.
 2. Given electrity prices for each period, minimize the total cost of purchasing electricity from the grid. 
 
-<img src="m2pic.jpg" alt="Markdown Monster icon"/>
+<img src="modeling2_pic.jpg" alt="Markdown Monster icon"/>
 
 Click to access the [Google Colab modeling2 notebook](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/modeling2_colab.ipynb). You will need to be signed into a Google account to execute the notebook. 
  
