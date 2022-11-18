@@ -1,4 +1,7 @@
-# Modeling Session 1
+# Modeling Session 1 - Widget Distribution Optimization
+
+## Problem
+Given demand data produced by a hypothetical machine learning model, as well as transportation costs and productin capacity, determine the optimal production and shipment of widgets from a set of production facilities to distribution locations that minimizes cost. 
 
 Click to access the [Google Colab modeling1 notebook](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/modeling1_colab.ipynb). You will need to be signed into a Google account to execute the notebook. 
  
