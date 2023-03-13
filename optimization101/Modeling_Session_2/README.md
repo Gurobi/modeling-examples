@@ -17,7 +17,7 @@ We also put **completed** versions of the modeling1 notebook in the repo. If you
 To get to the completed notebook on Colab, click [here](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/completed_modeling2_colab.ipynb)
 
 # Exercise Set 2
-The version *without* answers can be found here: [Exercise Set 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/Exercise_Set2.ipynb)
+The version *without* answers can be found here: [Exercise Set 2](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/Exercise_Set2.ipynb)
 
-The version *with* answers can be found here: [Completed Exercise Set 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/completed_Exercise_Set2.ipynb)
+The version *with* answers can be found here: [Completed Exercise Set 2](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/completed_Exercise_Set2.ipynb)
 
