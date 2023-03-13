@@ -11,3 +11,8 @@ If you are able to run Jupyter notebooks on your machine, feel free to download 
 We also put **completed** versions of the modeling1 notebook in the repo. If you want to work through the notebook without everything filled in make sure not to open that version. 
 
 To get to the completed notebook on Colab, click [here](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/completed_modeling1_colab.ipynb)
+
+# Exercise Set 1
+The version *without* answers can be found here: [Exercise Set 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/Exercise_Set1.ipynb)
+
+The version *with* answers can be found here: [Exercise Set 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/completed_Exercise_Set1.ipynb)
