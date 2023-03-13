@@ -15,4 +15,4 @@ To get to the completed notebook on Colab, click [here](https://colab.research.g
 # Exercise Set 1
 The version *without* answers can be found here: [Exercise Set 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/Exercise_Set1.ipynb)
 
-The version *with* answers can be found here: [Exercise Set 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/completed_Exercise_Set1.ipynb)
+The version *with* answers can be found here: [Completed Exercise Set 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/completed_Exercise_Set1.ipynb)
