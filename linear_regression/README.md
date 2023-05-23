@@ -42,9 +42,4 @@ Bertsimas et. al. (2016) successfully applied mathematical programming to solve 
 
 In order to run this Jupyter Notebook properly, you must have a valid Gurobi license. If you do not have one, you can request an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
 
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/linear_regression/l0_regression.html
-
-
 Copyright © 2020 Gurobi Optimization, LLC

@@ -1,0 +1,30 @@
+Name,Type,Demand,Country
+Aleppo S,R,0,Syrian Arab Republic
+Aleppo TS,TS,0,Syrian Arab Republic
+Amman S,I,0,Jordan
+Ar Raqqa D,D,10000,Syrian Arab Republic
+Ar Raqqa TS,TS,0,Syrian Arab Republic
+As_Suweida S,R,0,Syrian Arab Republic
+As_Suweida TS,TS,0,Syrian Arab Republic
+Beirut S,I,0,Lebanon
+Damascus S,R,0,Syrian Arab Republic
+Damascus TS,TS,0,Syrian Arab Republic
+Daraa D,D,10000,Syrian Arab Republic
+Daraa S,L,0,Syrian Arab Republic
+Daraa TS,TS,0,Syrian Arab Republic
+Dayr_Az_Zor D,D,25000,Syrian Arab Republic
+Dayr_Az_Zor S,L,0,Syrian Arab Republic
+Dayr_Az_Zor TS,TS,0,Syrian Arab Republic
+Gaziantep S,I,0,Turkey
+Hama S,R,0,Syrian Arab Republic
+Hama TS,TS,0,Syrian Arab Republic
+Hassakeh D,D,10000,Syrian Arab Republic
+Hassakeh S,L,0,Syrian Arab Republic
+Hassakeh TS,TS,0,Syrian Arab Republic
+Homs S,R,0,Syrian Arab Republic
+Homs TS,TS,0,Syrian Arab Republic
+Idleb D,D,5000,Syrian Arab Republic
+Idleb TS,TS,0,Syrian Arab Republic
+Jubb_al_Jarrah D,D,2000,Syrian Arab Republic
+Jubb_al_Jarrah TS,TS,0,Syrian Arab Republic
+Qamishli D,D,5000,Syrian Arab Republic
