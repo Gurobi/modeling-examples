@@ -1,12 +1,11 @@
 # Introduction to Gurobi Python API
 Welcome to Gurobi Python API session at Gurobi Days Digital 2023!
 
-In this session, we will walk you through the basics of the Gurobi Python API and
-implement a few optimization models together using the Gurobi Python API.
+In this session, we will walk you through the basics of the Gurobi Python API.
 
 
 ## How to Run the Notebook locally?
-- Clone the repository containing this and other examples or download it
+- Clone the repository which contains this and other examples or download it
 by clicking [here](https://github.com/Gurobi/modeling-examples/archive/refs/heads/master.zip)
 - [Start Jupyter Notebook Server](https://docs.jupyter.org/en/latest/running.html#id2)
 - Open the notebook in Jupyter Notebook
