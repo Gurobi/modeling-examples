@@ -10,6 +10,8 @@ This modeling example is at the advanced level, where we assume that you know Py
 that you have advanced knowledge of building mathematical optimization models. Typically, the objective function 
 and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.
 
+[Google Colab link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/colgen-cutting_stock/colgen-cutting_stock_gcl.ipynb)
+
 https://gurobi.github.io/modeling-examples/colgen-cutting_stock/colgen-cutting_stock.html
 
 ## Download the Repository
