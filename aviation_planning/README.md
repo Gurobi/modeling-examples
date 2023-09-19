@@ -1,25 +1,20 @@
-# Agricultural Pricing
+# Airline Planning After Flight Disruption
 
+Weather events are a major threat to the airline industry. The unpredictable nature of snowstorms, heavy rains, and icy runways make it difficult for aviation planners to make accurate schedules.
 
+This notebook walks through the optimization problem of deciding which flights to operate and which flights to cancel after a weather disruption. We do this by constructing a mathematical optimization model that reduces the revenue lost from the cancelled flights. In this example, we are using real data in France compiled by [Amadeus](https://amadeus.com/en).
 
-This problem is an example of an agricultural pricing problem, where we want to determine the prices and demand for the 
-dairy products of a country in order to maximize total revenue derived from the sales of those products. 
-This problem is formulated as a quadratic optimization problem using the Gurobi Python API and solved with the Gurobi 
-Optimizer.
+This modeling tutorial is at the introductory level, where we assume that you know Python and that you have a background on a discipline that uses quantitative methods.
 
-This model is example 21 from the fifth edition of Model Building in Mathematical Programming, by H. Paul Williams on 
-pages 276-278 and 333-335.
-
-This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the 
-Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.
+You may find it helpful to refer to the documentation of the [Gurobi Python API](https://www.gurobi.com/documentation/current/refman/py_python_api_overview.html).
 
 ## Access via Google Colab
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/agricultural_pricing/agricultural_pricing_gcl.ipynb
+https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/aviation_planning/airlineplanning_gcl.ipynb
 
 ## HTML Example URL
 
-https://gurobi.github.io/modeling-examples/agricultural_pricing/agricultural_pricing.html
+https://gurobi.github.io/modeling-examples/aviation_planning/airlineplanning.html
 
 
 
