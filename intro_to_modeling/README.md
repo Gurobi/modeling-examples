@@ -15,6 +15,14 @@ This notebook is explained in detail in our series of tutorial videos on mixed i
 You can watch these videos by clicking 
 [here](https://www.gurobi.com/resource/tutorial-mixed-integer-linear-programming/)
 
+## Access via Google Colab
+
+https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/intro_to_modeling/introduction_to_modeling_gcl.ipynb
+
+## HTML Example URL
+
+https://gurobi.github.io/modeling-examples/intro_to_modeling/introduction_to_modeling.html
+
 ## Licensing
 
 You can download the repository containing this and other examples by 
@@ -23,10 +31,6 @@ In order to run this Jupyter Notebook properly, you must have a Gurobi license.
 If you do not have one, you can request 
 an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) 
 as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/intro_to_modeling/introduction_to_modeling.html
 
 
 Copyright © 2020 Gurobi Optimization, LLC
