@@ -13,6 +13,12 @@ pages 273-275 and 330-332.
 This example is of beginning difficulty; we assume that you know Python and have some knowledge of the Gurobi Python API and 
 building mathematical optimization models.
 
+### Access via Google Colab
+
+https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/supply_network_design_1_2/supply_network_design_1_gcl.ipynb
+
+### HTML Example URL
+
 https://gurobi.github.io/modeling-examples/supply_network_design_1_2/supply_network_design_1.html
 
 ---
@@ -28,17 +34,18 @@ pages 275-276 and 332-333
 This example is of beginning difficulty; we assume that you know Python and have some knowledge of the Gurobi Python API and 
 building mathematical optimization models.
 
+
+### Access via Google Colab
+
+https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/supply_network_design_1_2/supply_network_design_2_gcl.ipynb
+
+### HTML Example URL
+
 https://gurobi.github.io/modeling-examples/supply_network_design_1_2/supply_network_design_2.html
 
 
-## Licensing
-
-You can download the repository containing this and other examples 
-by clicking [here](https://github.com/Gurobi/modeling-examples/archive/master.zip). 
-In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
-If you do not have one, you can request 
-an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) 
-as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
+#----
+For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 
 Copyright © 2020 Gurobi Optimization, LLC

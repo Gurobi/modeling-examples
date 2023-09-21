@@ -5,40 +5,45 @@ Given demand data produced by a hypothetical machine learning model, as well as 
 
 Along with the modeling example, an exercice is provided. It contains some general questions as well as some modeling questions.
 
-## Access via Google Colab
-
-Modeling Session:
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/modeling1_colab.ipynb
-
-Exercise:
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/Exercise_Set1.ipynb
-
-## HTML Example URL
-
-Modeling Session:
-https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_1/modeling1_colab.html
-
-Exercise:
-https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_1/Exercise_Set1.html
-
-
 ## Beware Spoilers!
 We also put **completed** versions of the modeling notebook and the exercise in the repo. If you want to work through the notebooks without everything filled in make sure not to open the completed versions.
 
-### Access via Google Colab
 
-Modeling Session:
+## Access via Google Colab
+
+Modeling Session *without* answers:
+
+https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/modeling1_colab.ipynb
+
+Exercise *without* answers:
+
+https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/Exercise_Set1.ipynb
+
+Modeling Session *with* answers:
+
 https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/completed_modeling1_colab.ipynb
 
-Exercise:
+Exercise *with* answers:
+
 https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_1/completed_Exercise_Set1.ipynb
 
-### HTML Example URL
 
-Modeling Session:
-https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_1/completed_modeling1_colab.html
+## HTML Example URL
 
-Exercise:
+Modeling Session *without* answers:
+
+https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_1/modeling1.html
+
+Exercise *without* answers:
+
+https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_1/Exercise_Set1.html
+
+Modeling Session *with* answers:
+
+https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_1/completed_modeling1.html
+
+Exercise *with* answers:
+
 https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_1/completed_Exercise_Set1.html
 
 ----

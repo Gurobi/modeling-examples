@@ -19,27 +19,16 @@ We use a mixture of Machine Learning (ML) and Mathematical Optimization (MO) to 
   or even modify it as you please to get new results. Just ensure the format of the output is similar
   in case you like to use the MO model of [bike_rebalancing](bike_rebalancing.ipynb) notebook.
 
-The MO model size is intentionally small to ensure even those without access to Gurobi license can run the model 
-(check out [License Requirement](#license-requirement) section for more info about the license).
 
-## Google Colab
-If you like to access the notebook in Google Colab, click on 
-[this link](https://colab.research.google.com/github/decision-spot/bike_share/blob/main/bike_rebalancing.ipynb).
-When you open the notebook, there will be further instructions under "For Google Colab Only" section.
+## Access via Google Colab
 
-Note that you must sign in with a Google account to be able to run the code in Colab.
+https://colab.research.google.com/github/decision-spot/bike_share/blob/main/bike_rebalancing.ipynb
 
-### What is Google Colab?
-Google Colab is a free, online Jupyter Notebook environment that allows you to 
-write and execute Python code through your browser.
-If you're curious to know the steps needed for loading a repo in Google Colab from scratch, here they are:
-- Go to https://colab.research.google.com/ (you must sign in with your Google account).
-- Click on the GitHub tab, and in the search box, enter this repo's URL (https://github.com/decision-spot/bike_share).
-- You should see the name of both notebooks. Click on the one you want (e.g. `bike_rebalancing.ipynb`). and it opens in a new tab.
 
-## License Requirement
-The problem is modeled using Gurobi Python API. So, a Gurobi license is required to run this model.
-If you don't have a license, you can request a free commercial evaluation license 
-or a free academic license [here](https://www.gurobi.com/downloads/).
-The data used in the MO model is small enough to run the model with gurobi restricted license
-(available via `pip install gurobi` as shown in the notebook).
+## HTML Example URL
+
+https://gurobi.github.io/modeling-examples/optimization101/bike_share/bike_rebalancing.html
+
+----
+For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+The data used in the MO model is small enough to run the model with gurobi restricted license (available via `pip install gurobi` as shown in the notebook).

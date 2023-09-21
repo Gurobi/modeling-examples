@@ -17,11 +17,12 @@ They touch on more advanced features such as generalized constraints, piecewise-
 multi-objective hierarchical optimization.  They also illustrate common constraint types such as “allocation constraints”, 
 “balance constraints”, “sequencing constraints”, “precedence constraints”, and others.
 
-## How to use the modeling example
+## How to use the modeling examples
 
 The examples are from different business purposes and reflect different levels on building mathematical optimization models.
 
 ### Introductory examples
+
 The introductory examples walk you through the process of building a mathematical optimization model.
 The basic requirements are that you know Python and have a background in a discipline that used quantitative methods.
 
@@ -30,18 +31,15 @@ The basic requirements are that you know Python and have a background in a disci
 - [Intro to Mathematical Optimization Modeling](https://github.com/Gurobi/modeling-examples/tree/master/intro_to_modeling)
   This tutorial discusses the basics of mathematical mopdeling on the example of a simple assignment problem.
 - [Optimization 101](https://github.com/Gurobi/modeling-examples/tree/master/optimization101)
-  This tutorial consists of two modeling sessions with exercises and questions. This can be used to test your knowledge and try out some modeling with Gurobipy by yourself.
-- [Aviation Planning](https://github.com/Gurobi/modeling-examples/tree/master/aviation_planning)
+  This tutorial is based on the Webinar on [Optimization 101 for Data Scientists](https://www.gurobi.com/events/optimization-101-for-data-scientists/) and consists of two modeling sessions with exercises and questions as well as a discussion of a use case. 
+- The following examples dicusses the input data and the optimization model step by step in a very detailed way
+  - [Aviation Planning](https://github.com/Gurobi/modeling-examples/tree/master/aviation_planning)
+  - [Music Recommendation](https://github.com/Gurobi/modeling-examples/tree/master/music_recommendation)
+  - [Text Dissimilarity](https://github.com/Gurobi/modeling-examples/tree/master/text_dissimilarity)
+  - [Power Generation](https://github.com/Gurobi/modeling-examples/tree/master/power_generation)
 
-- [Music Recommendation](https://github.com/Gurobi/modeling-examples/tree/master/music_recommendation)
 
-- [Text Dissimilarity](https://github.com/Gurobi/modeling-examples/tree/master/text_dissimilarity)
-
-### Beginner examples
-
-### Intermediate examples
-
-### Advanced examples
+It is also possible to browse through the examples w.r.t. difficulty level and business needs on the [Gurobi website](https://www.gurobi.com/jupyter_models/?_sft_difficulty_level=introductory).
 
 ## How to run the examples on Google Colab
 
@@ -56,7 +54,7 @@ Check out the [Colab Getting Started Guide](https://colab.research.google.com/no
 
 The Google Colab link for each example will be provided on the particular example-readme-page. There, you will also find a html link if you just want to have a look at the model and its description without running it.
 
-## How to Run the Notebooks Locally?
+## How to run the notebooks locally?
 
 - Clone the repository containing all examples or download it
 by clicking [here](https://github.com/Gurobi/modeling-examples/archive/refs/heads/master.zip)
@@ -73,7 +71,7 @@ an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-l
 as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
 All licenses can also be requested in the [Gurobi User Portal](https://portal.gurobi.com/iam/licenses/request/) after [registering for a Gurobi account](https://portal.gurobi.com/iam/register/).
 
-## Download the Repository
+## Download the repository
 
 You can download the repository containing all examples by clicking [here](https://github.com/Gurobi/modeling-examples/archive/master.zip). 
 
