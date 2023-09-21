@@ -1,7 +1,5 @@
 # Agricultural Pricing
 
-
-
 This problem is an example of an agricultural pricing problem, where we want to determine the prices and demand for the 
 dairy products of a country in order to maximize total revenue derived from the sales of those products. 
 This problem is formulated as a quadratic optimization problem using the Gurobi Python API and solved with the Gurobi 
@@ -22,15 +20,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/ag
 https://gurobi.github.io/modeling-examples/agricultural_pricing/agricultural_pricing.html
 
 
-
-## Licensing
-
-You can download the repository containing this and other examples 
-by clicking [here](https://github.com/Gurobi/modeling-examples/archive/master.zip). 
-In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
-If you do not have one, you can request 
-an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) 
-as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
+For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 
 Copyright © 2020 Gurobi Optimization, LLC
