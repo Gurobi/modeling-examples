@@ -17,5 +17,5 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/wo
 
 https://gurobi.github.io/modeling-examples/workforce/workforce_scheduling.html
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)

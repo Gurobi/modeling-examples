@@ -22,7 +22,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/co
 https://gurobi.github.io/modeling-examples/constraint_optimization/constraint_optimization.html
 
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 

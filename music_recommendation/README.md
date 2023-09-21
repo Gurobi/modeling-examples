@@ -22,7 +22,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/mu
 https://gurobi.github.io/modeling-examples/music_recommendation/music_recommendation.html
 
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 This notebook can be ran using the "online course" version of Gurobi.
 

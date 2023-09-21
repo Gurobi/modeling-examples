@@ -19,7 +19,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/pr
 https://gurobi.github.io/modeling-examples/protein_comparison/protein_comparison.html
 
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 

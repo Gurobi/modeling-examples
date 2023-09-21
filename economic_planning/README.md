@@ -20,8 +20,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/ec
 https://gurobi.github.io/modeling-examples/economic_planning/economic_planning.html
 
 
-
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 Copyright © 2020 Gurobi Optimization, LLC

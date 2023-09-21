@@ -21,7 +21,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/te
 https://gurobi.github.io/modeling-examples/text_dissimilarity/text_dissimilarity.html
 
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 This notebook can be ran using the "online course" version of Gurobi.
 

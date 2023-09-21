@@ -41,8 +41,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/el
 https://gurobi.github.io/modeling-examples/electrical_power_generation_1_2/electrical_power2.html
 
 
-
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 Copyright © 2020 Gurobi Optimization, LLC

@@ -18,7 +18,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/dr
 https://gurobi.github.io/modeling-examples/drone_network_1_2/drone_network.html
 
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 Copyright © 2022 Gurobi Optimization, LLC

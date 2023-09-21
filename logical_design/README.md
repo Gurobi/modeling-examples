@@ -19,8 +19,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/lo
 https://gurobi.github.io/modeling-examples/logical_design/logical_design.html
 
 
-
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 

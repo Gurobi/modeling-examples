@@ -13,7 +13,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/mi
 
 ##
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 

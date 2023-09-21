@@ -11,7 +11,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/gu
 https://gurobi.github.io/modeling-examples/gurobi_days_digital_2023/intro_to_gurobipy/intro_to_gurobipy.html
 
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 

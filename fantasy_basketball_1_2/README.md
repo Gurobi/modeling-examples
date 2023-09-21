@@ -23,7 +23,7 @@ Part2:
 https://gurobi.github.io/modeling-examples/fantasy_basketball_1_2/fantasy_basketball_part2.html
 
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 This notebook can be ran using the "online course" version of Gurobi.
 

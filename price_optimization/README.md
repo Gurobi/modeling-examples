@@ -24,7 +24,7 @@ Part1: https://gurobi.github.io/modeling-examples/price_optimization/price_optim
 
 Part1: https://gurobi.github.io/modeling-examples/price_optimization/price_optimization_gurobiML_gcl.html
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 

@@ -22,7 +22,7 @@ https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/cu
 https://gurobi.github.io/modeling-examples/curve_fitting/curve_fitting.html
 
 
-#----
+----
 For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
 
 
