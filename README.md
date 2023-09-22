@@ -26,34 +26,34 @@ The examples are from different business purposes and reflect different levels o
 The introductory examples walk you through the process of building a mathematical optimization model.
 The basic requirements are that you know Python and have a background in a discipline that used quantitative methods.
 
-- [GDD 2023: Intro to Gurobipy:](https://github.com/Gurobi/modeling-examples/tree/master/gurobi_days_digital_2023/intro_to_gurobipy)
+- [GDD 2023: Intro to Gurobipy:](tree/master/gurobi_days_digital_2023/intro_to_gurobipy/README.md)
   This tutorial was given at the Gurobi Days Digital 2023. It is an introduction to the Gurobi Python API Gurobipy. It walks you through the basics of Gurobipy and explains the usage with some small examples.
-- [Intro to Mathematical Optimization Modeling:](https://github.com/Gurobi/modeling-examples/tree/master/intro_to_modeling)
+- [Intro to Mathematical Optimization Modeling:](tree/master/intro_to_modeling/README.md)
   This tutorial discusses the basics of mathematical mopdeling on the example of a simple assignment problem.
-- [Optimization 101:](https://github.com/Gurobi/modeling-examples/tree/master/optimization101)
+- [Optimization 101:](tree/master/optimization101/README.md)
   This tutorial is based on the Webinar on [Optimization 101 for Data Scientists](https://www.gurobi.com/events/optimization-101-for-data-scientists/) and consists of two modeling sessions with exercises and questions as well as a discussion of a use case. 
 - The following examples dicusses the input data and the optimization model step by step in a very detailed way
-  - [Aviation Planning](https://github.com/Gurobi/modeling-examples/tree/master/aviation_planning)
-  - [Music Recommendation](https://github.com/Gurobi/modeling-examples/tree/master/music_recommendation)
-  - [Text Dissimilarity](https://github.com/Gurobi/modeling-examples/tree/master/text_dissimilarity)
-  - [Power Generation](https://github.com/Gurobi/modeling-examples/tree/master/power_generation)
+  - [Aviation Planning](tree/master/aviation_planning/README.md)
+  - [Music Recommendation](tree/master/music_recommendation/README.md)
+  - [Text Dissimilarity](tree/master/text_dissimilarity/README.md)
+  - [Power Generation](tree/master/power_generation/README.md)
 
 
 ### Beginner Examples
 
 The notebooks at beginner level assume you know Python and have some knowledge about building mathematical optimization models.
-- [3D Tic-Tac-Toe:](https://github.com/Gurobi/modeling-examples/tree/master/3d_tic_tac_toe)
+- [3D Tic-Tac-Toe:](tree/master/3d_tic_tac_toe/README.md)
   This example will show you how a binary programming model can be used to capture simple logical constraints.
-- [Cell Tower:](https://github.com/Gurobi/modeling-examples/tree/master/cell_tower_coverage)
+- [Cell Tower:](tree/master/cell_tower_coverage/README.md)
   In this example, you will learn how to define and solve a covering type problem, namely,
   how to configure a network of cell towers to provide signal coverage to the largest number of people.
-- [Curve Fitting](https://github.com/Gurobi/modeling-examples/tree/master/curve_fitting)
+- [Curve Fitting](tree/master/curve_fitting/README.md)
   Try this Jupyter Notebook Modeling Example to learn how you can fit a function to a set of observations. 
-- [Facility Location:](https://github.com/Gurobi/modeling-examples/tree/master/facility_location)
+- [Facility Location:](tree/master/facility_location/README.md)
   In this example, we will show you how to tackle a facility location problem that involves determining the number and location of warehouses that are needed to supply a group of supermarkets.
-- [Fantasy Basketball:](https://github.com/Gurobi/modeling-examples/tree/master/fantasy_basketball_1_2)
+- [Fantasy Basketball:](tree/master/fantasy_basketball_1_2/README.md)
   This example combines machine learning and optimization modeling in fantasy basketball.
-- [Market Sharing:](https://github.com/Gurobi/modeling-examples/tree/master/market_sharing)
+- [Market Sharing:](tree/master/market_sharing/README.md)
   In this example, we will show you how to solve a goal programming problem that involves allocating the retailers to two divisions of a company in order to optimize the trade-offs of several market sharing goals. 
 -
 
@@ -85,8 +85,8 @@ by clicking [here](https://github.com/Gurobi/modeling-examples/archive/refs/head
 
 In order to run the Jupyter Notebooks you will need a Gurobi license. Some Notebooks can be ran using the "online course" license version of Gurobi. This is a limited license and restricts the number of allowed variables and constraints. 
 You can also request  
-an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) 
-as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
+an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/) 
+as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/) as an *academic user*.
 All licenses can also be requested in the [Gurobi User Portal](https://portal.gurobi.com/iam/licenses/request/) after [registering for a Gurobi account](https://portal.gurobi.com/iam/register/).
 
 ## Download the repository
@@ -95,56 +95,56 @@ You can download the repository containing all examples by clicking [here](https
 
 ## Index of modeling examples
 
-- [3D Tic-Tac-Toe](https://github.com/Gurobi/modeling-examples/tree/master/3d_tic_tac_toe)
-- [Agricultural Pricing](https://github.com/Gurobi/modeling-examples/tree/master/agricultural_pricing)
-- [Aviation Planning](https://github.com/Gurobi/modeling-examples/tree/master/aviation_planning)
-- [Burrito Game](https://github.com/Gurobi/modeling-examples/tree/master/burrito_optimization_game)
-- [Car Rental](https://github.com/Gurobi/modeling-examples/tree/master/car_rental_1_2)
-- [Cell Tower](https://github.com/Gurobi/modeling-examples/tree/master/cell_tower_coverage)
-- [Cutting Stock](https://github.com/Gurobi/modeling-examples/tree/master/colgen-cutting_stock)
-- [Constraint Optimization](https://github.com/Gurobi/modeling-examples/tree/master/)
-- [Covid19 Facility Optimization](https://github.com/Gurobi/modeling-examples/tree/master/covid19_facility_location)
-- [Curve Fitting](https://github.com/Gurobi/modeling-examples/tree/master/curve_fitting)
-- [Customer Assignment](https://github.com/Gurobi/modeling-examples/tree/master/customer_assignment)
-- [Decentralization Planning](https://github.com/Gurobi/modeling-examples/tree/master/decentralization_planning)
-- [Drone Network](https://github.com/Gurobi/modeling-examples/tree/master/drone_network_1_2)
-- [Economic Planning](https://github.com/Gurobi/modeling-examples/tree/master/economic_planning)
-- [Efficiency Analysis](https://github.com/Gurobi/modeling-examples/tree/master/efficiency_analysis)
-- [Electrical Power Generation](https://github.com/Gurobi/modeling-examples/tree/master/electrical_power_generation_1_2)
-- [Facility Location](https://github.com/Gurobi/modeling-examples/tree/master/facility_location)
-- [Factory Planning](https://github.com/Gurobi/modeling-examples/tree/master/factory_planning_1_2)
-- [Fantasy Basketball](https://github.com/Gurobi/modeling-examples/tree/master/fantasy_basketball_1_2)
-- [Farm Planning](https://github.com/Gurobi/modeling-examples/tree/master/farm_planning)
-- [Food Manufacturing](https://github.com/Gurobi/modeling-examples/tree/master/food_manufacturing_1_2)
-- [Food Program](https://github.com/Gurobi/modeling-examples/tree/master/food_program)
-- [GDD 2023: Intro to Gurobipy](https://github.com/Gurobi/modeling-examples/tree/master/gurobi_days_digital_2023/intro_to_gurobipy)
-- [Intro to Mathematical Optimization Modeling](https://github.com/Gurobi/modeling-examples/tree/master/intro_to_modeling)
-- [Linear Regression](https://github.com/Gurobi/modeling-examples/tree/master/linear_regression)
-- [Logical Design](https://github.com/Gurobi/modeling-examples/tree/master/logical_design)
-- [Lost Luggage Distribution](https://github.com/Gurobi/modeling-examples/tree/master/lost_luggage_distribution)
-- [Manpower Planning](https://github.com/Gurobi/modeling-examples/tree/master/manpower_planning)
-- [Market Sharing](https://github.com/Gurobi/modeling-examples/tree/master/market_sharing)
-- [Marketing Campaign Optimization](https://github.com/Gurobi/modeling-examples/tree/master/marketing_campaign_optimization)
-- [Milk Collection](https://github.com/Gurobi/modeling-examples/tree/master/milk_collection)
-- [MILP Tutorial](https://github.com/Gurobi/modeling-examples/tree/master/milp_tutorial)
-- [Mining](https://github.com/Gurobi/modeling-examples/tree/master/mining)
-- [Music Recommendation](https://github.com/Gurobi/modeling-examples/tree/master/music_recommendation)
-- [Offshore Wind Farming](https://github.com/Gurobi/modeling-examples/tree/master/offshore_wind_farming)
-- [Opencast Mining](https://github.com/Gurobi/modeling-examples/tree/master/opencast_mining)
-- [Price Optimization](https://github.com/Gurobi/modeling-examples/tree/master/price_optimization)
-- [Optimization 101](https://github.com/Gurobi/modeling-examples/tree/master/optimization101)
-- [Pooling](https://github.com/Gurobi/modeling-examples/tree/master/pooling)
-- [Portfolio Selection Optimization](https://github.com/Gurobi/modeling-examples/tree/master/portfolio_selection_optimization)
-- [Power Generation](https://github.com/Gurobi/modeling-examples/tree/master/power_generation)
-- [Price Optimization](https://github.com/Gurobi/modeling-examples/tree/master/price_optimization)
-- [Protein Comparison](https://github.com/Gurobi/modeling-examples/tree/master/protein_comparison)
-- [Protein Folding](https://github.com/Gurobi/modeling-examples/tree/master/protein_folding)
-- [Refinery](https://github.com/Gurobi/modeling-examples/tree/master/refinery)
-- [Supply Network Design](https://github.com/Gurobi/modeling-examples/tree/master/supply_network_design_1_2)
-- [Technician Routing and Scheduling](https://github.com/Gurobi/modeling-examples/tree/master/technician_routing_scheduling)
-- [Text Dissimilarity](https://github.com/Gurobi/modeling-examples/tree/master/text_dissimilarity)
-- [Traveling Salesman](https://github.com/Gurobi/modeling-examples/tree/master/traveling_salesman)
-- [Workforce Scheduling](https://github.com/Gurobi/modeling-examples/tree/master/workforce)
-- [Yield Management](https://github.com/Gurobi/modeling-examples/tree/master/yield_management)
+- [3D Tic-Tac-Toe](tree/master/3d_tic_tac_toe/README.md)
+- [Agricultural Pricing](tree/master/agricultural_pricing/README.md)
+- [Aviation Planning](tree/master/aviation_planning/README.md)
+- [Burrito Game](tree/master/burrito_optimization_game/README.md)
+- [Car Rental](tree/master/car_rental_1_2/README.md)
+- [Cell Tower](tree/master/cell_tower_coverage/README.md)
+- [Cutting Stock](tree/master/colgen-cutting_stock/README.md)
+- [Constraint Optimization](tree/master/constraint_optimization/README.md)
+- [Covid19 Facility Optimization](tree/master/covid19_facility_location/README.md)
+- [Curve Fitting](tree/master/curve_fitting/README.md)
+- [Customer Assignment](tree/master/customer_assignment/README.md)
+- [Decentralization Planning](tree/master/decentralization_planning/README.md)
+- [Drone Network](tree/master/drone_network_1_2/README.md)
+- [Economic Planning](tree/master/economic_planning/README.md)
+- [Efficiency Analysis](tree/master/efficiency_analysis/README.md)
+- [Electrical Power Generation](tree/master/electrical_power_generation_1_2/README.md)
+- [Facility Location](tree/master/facility_location/README.md)
+- [Factory Planning](tree/master/factory_planning_1_2/README.md)
+- [Fantasy Basketball](tree/master/fantasy_basketball_1_2/README.md)
+- [Farm Planning](tree/master/farm_planning/README.md)
+- [Food Manufacturing](tree/master/food_manufacturing_1_2/README.md)
+- [Food Program](tree/master/food_program/README.md)
+- [GDD 2023: Intro to Gurobipy](tree/master/gurobi_days_digital_2023/intro_to_gurobipy/README.md)
+- [Intro to Mathematical Optimization Modeling](tree/master/intro_to_modeling/README.md)
+- [Linear Regression](tree/master/linear_regression/README.md)
+- [Logical Design](tree/master/logical_design/README.md)
+- [Lost Luggage Distribution](tree/master/lost_luggage_distribution/README.md)
+- [Manpower Planning](tree/master/manpower_planning/README.md)
+- [Market Sharing](tree/master/market_sharing/README.md)
+- [Marketing Campaign Optimization](tree/master/marketing_campaign_optimization/README.md)
+- [Milk Collection](tree/master/milk_collection/README.md)
+- [MILP Tutorial](tree/master/milp_tutorial/README.md)
+- [Mining](tree/master/mining/README.md)
+- [Music Recommendation](tree/master/music_recommendation/README.md)
+- [Offshore Wind Farming](tree/master/offshore_wind_farming/README.md)
+- [Opencast Mining](tree/master/opencast_mining/README.md)
+- [Price Optimization](tree/master/price_optimization/README.md)
+- [Optimization 101](tree/master/optimization101/README.md)
+- [Pooling](tree/master/pooling/README.md)
+- [Portfolio Selection Optimization](tree/master/portfolio_selection_optimization/README.md)
+- [Power Generation](tree/master/power_generation/README.md)
+- [Price Optimization](tree/master/price_optimization/README.md)
+- [Protein Comparison](tree/master/protein_comparison/README.md)
+- [Protein Folding](tree/master/protein_folding/README.md)
+- [Refinery](tree/master/refinery/README.md)
+- [Supply Network Design](tree/master/supply_network_design_1_2/README.md)
+- [Technician Routing and Scheduling](tree/master/technician_routing_scheduling/README.md)
+- [Text Dissimilarity](tree/master/text_dissimilarity/README.md)
+- [Traveling Salesman](tree/master/traveling_salesman/README.md)
+- [Workforce Scheduling](tree/master/workforce/README.md)
+- [Yield Management](tree/master/yield_management/README.md)
 
 These modeling examples are distributed under the Apache 2.0 license, (c) copyright 2019 Gurobi Optimization, LLC
