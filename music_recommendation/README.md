@@ -13,17 +13,13 @@ You may find it helpful to refer to the documentation of the [Gurobi Python API]
 This notebook is explained in detail in our webinar on data science and mathematical optimization. You can watch these videos by clicking [here](https://www.youtube.com/watch?v=AJRP9pPBx6s).
 
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/music_recommendation/music_recommendation_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/music_recommendation/music_recommendation.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/music_recommendation/music_recommendation_gcl.ipynb)
 
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)<br>
 This notebook can be ran using the "online course" version of Gurobi.
 
 

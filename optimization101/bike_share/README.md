@@ -20,15 +20,10 @@ We use a mixture of Machine Learning (ML) and Mathematical Optimization (MO) to 
   in case you like to use the MO model of [bike_rebalancing](bike_rebalancing.ipynb) notebook.
 
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/decision-spot/bike_share/blob/main/bike_rebalancing.ipynb
-
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/optimization101/bike_share/bike_rebalancing.html
+[Google Colab Link](https://colab.research.google.com/github/decision-spot/bike_share/blob/main/bike_rebalancing.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
-The data used in the MO model is small enough to run the model with gurobi restricted license (available via `pip install gurobi` as shown in the notebook).
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../../)<br>
+This notebook can be ran using the "online course" version of Gurobi.

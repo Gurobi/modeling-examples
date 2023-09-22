@@ -12,13 +12,9 @@ pages 270-271 and 325-326.
 This example is of intermediate difficulty; we assume that you know Python and the Gurobi Python API and that you have 
 some knowledge of building mathematical optimization models.
 
-### Access via Google Colab
+### View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/electrical_power_generation_1_2/electrical_power_1_gcl.ipynb
-
-### HTML Example URL
-
-https://gurobi.github.io/modeling-examples/electrical_power_generation_1_2/electrical_power_1.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/electrical_power_generation_1_2/electrical_power_1_gcl.ipynb)
 
 ---
 ## Electrical Power 2
@@ -32,16 +28,11 @@ pages 271-272 and 326-327.
 This example is of intermediate difficulty; we assume that you know Python and the Gurobi Python API and that you have 
 some knowledge of building mathematical optimization models.
 
-### Access via Google Colab
+### View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/electrical_power_generation_1_2/electrical_power2_gcl.ipynb
-
-### HTML Example URL
-
-https://gurobi.github.io/modeling-examples/electrical_power_generation_1_2/electrical_power2.html
-
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/electrical_power_generation_1_2/electrical_power2_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 Copyright © 2020 Gurobi Optimization, LLC

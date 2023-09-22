@@ -4,10 +4,10 @@ The video of the session can be watched [here](https://vimeo.com/830685647/c7f99
 
 ## View the notebook
 
- [Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/gurobi_days_digital_2023/intro_to_gurobipy/intro_to_gurobipy_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/gurobi_days_digital_2023/intro_to_gurobipy/intro_to_gurobipy_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see [Modeling Examples Overview](../)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../../)
 
 
 Copyright ©2023 Gurobi Optimization, LLC

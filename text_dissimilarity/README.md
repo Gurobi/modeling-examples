@@ -12,17 +12,13 @@ This modeling tutorial is at the introductory level, where we assume that you kn
 You may find it helpful to refer to the documentation of the [Gurobi Python API](https://www.gurobi.com/documentation/current/refman/py_python_api_overview.html).
 
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/text_dissimilarity/text_dissimilarity_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/text_dissimilarity/text_dissimilarity.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/text_dissimilarity/text_dissimilarity_gcl.ipynb)
 
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)<br>
 This notebook can be ran using the "online course" version of Gurobi.
 
 

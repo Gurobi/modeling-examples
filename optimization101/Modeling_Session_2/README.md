@@ -13,42 +13,16 @@ Along with the modeling example, an exercice is provided.
 ## Beware Spoilers!
 We also put **completed** versions of the modeling1 notebook and the exercise in the repo. If you want to work through the notebooks without everything filled in make sure not to open the completed versions.
 
-## Access via Google Colab
+## View the notebook
 
-Modeling Session *without* answers:
+[Google Colab Link - Modeling Session *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/modeling2_colab.ipynb)
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/modeling2_colab.ipynb
+[Google Colab Link - Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/Exercise_Set2.ipynb)
 
-Exercise *without* answers:
+[Google Colab Link - Modeling Session *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/completed_modeling2_colab.ipynb)
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/Exercise_Set2.ipynb
-
-Modeling Session *with* answers:
-
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/completed_modeling2_colab.ipynb
-
-Exercise *with* answers:
-
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/completed_Exercise_Set2.ipynb
-
-## HTML Example URL
-
-Modeling Session *without* answers:
-
-https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_2/modeling2.html
-
-Exercise *without* answers:
-
-https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_2/Exercise_Set2.html
-
-Modeling Session *with* answers:
-
-https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_2/completed_modeling2.html
-
-Exercise *with* answers:
-
-https://gurobi.github.io/modeling-examples/optimization101/Modeling_Session_2/completed_Exercise_Set2.html
+[Google Colab Link - Exercise *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/completed_Exercise_Set2.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../../)
 

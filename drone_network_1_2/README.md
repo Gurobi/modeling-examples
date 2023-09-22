@@ -9,16 +9,12 @@ The model and data come from the following studies:
 
 The data and its full description can be found here: https://github.com/INFORMSJoC/2020.1022
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/drone_network_1_2/drone_network_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/drone_network_1_2/drone_network.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/drone_network_1_2/drone_network_gcl.ipynb)
 
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 Copyright © 2022 Gurobi Optimization, LLC

@@ -11,13 +11,9 @@ Mathematical Programming by H. P. Williams on pages 253-254 and 296-298.
 This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the 
 Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.
 
-### Access via Google Colab
+### View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/food_manufacturing_1_2/food_manufacture_1_gcl.ipynb
-
-### HTML Example URL
-
-https://gurobi.github.io/modeling-examples/food_manufacturing_1_2/food_manufacture_1.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/food_manufacturing_1_2/food_manufacture_1_gcl.ipynb)
 
 ---
 ## Food Manufacture II
@@ -31,17 +27,12 @@ This modeling example is at the advanced level, where we assume that you know Py
 that you have advanced knowledge of building mathematical optimization models. Typically, the objective function 
 and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.
 
-### Access via Google Colab
+### View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/food_manufacturing_1_2/food_manufacture_2_gcl.ipynb
-
-### HTML Example URL
-
-https://gurobi.github.io/modeling-examples/food_manufacturing_1_2/food_manufacture_2.html
-
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/food_manufacturing_1_2/food_manufacture_2_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2020 Gurobi Optimization, LLC

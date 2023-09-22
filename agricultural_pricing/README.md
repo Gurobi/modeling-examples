@@ -11,16 +11,13 @@ pages 276-278 and 333-335.
 This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the 
 Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/agricultural_pricing/agricultural_pricing_gcl.ipynb
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/agricultural_pricing/agricultural_pricing_gcl.ipynb)
 
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/agricultural_pricing/agricultural_pricing.html
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2020 Gurobi Optimization, LLC

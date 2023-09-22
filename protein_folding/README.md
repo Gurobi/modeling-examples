@@ -10,16 +10,11 @@ This modeling example is at the advanced level, where we assume that you know Py
 that you have advanced knowledge of building mathematical optimization models. Typically, the objective function and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.
 
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/protein_folding/protein_folding_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/protein_folding/protein_folding.html
-
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/protein_folding/protein_folding_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 Copyright © 2020 Gurobi Optimization, LLC

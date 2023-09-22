@@ -13,13 +13,9 @@ pages 284-286 and 340-342.
 This example is at the intermediate level, where we assume that you know Python and the Gurobi Python API and that you 
 have some knowledge of building mathematical optimization models.
 
-### Access via Google Colab
+### View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/car_rental_1_2/car_rental_1_gcl.ipynb
-
-### HTML Example URL
-
-https://gurobi.github.io/modeling-examples/car_rental_1_2/car_rental_1.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/car_rental_1_2/car_rental_1_gcl.ipynb)
 
 ---
 ## Car Rental 2
@@ -34,17 +30,12 @@ on pages 287 and 342-343.
 This example is at the intermediate level, where we assume that you know Python and the Gurobi Python API and that 
 you have some knowledge of building mathematical optimization models.
 
-### Access via Google Colab
+### View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/car_rental_1_2/car_rental_2_gcl.ipynb
-
-### HTML Example URL
-
-https://gurobi.github.io/modeling-examples/car_rental_1_2/car_rental_2.html
-
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/car_rental_1_2/car_rental_2_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2020 Gurobi Optimization, LLC

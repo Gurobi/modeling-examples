@@ -12,25 +12,14 @@ Those predictions are then used in an optimization model that will select the op
 The second part expands the optimization model to reflect actual fantasy basketball competitions, shows different ways to model constraints, and 
 introduces the *slack* of a constraint.
 
-## Access via Google Colab
+## View the notebook
 
-Part1: 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/fantasy_basketball_1_2/fantasy_basketball_part1_gcl.ipynb
+[Google Colab Link Part 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/fantasy_basketball_1_2/fantasy_basketball_part1_gcl.ipynb)
 
-Part2:
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/fantasy_basketball_1_2/fantasy_basketball_part2_gcl.ipynb
-
-## HTML Example URL
-
-Part1: 
-https://gurobi.github.io/modeling-examples/fantasy_basketball_1_2/fantasy_basketball_part1.html
-
-Part2: 
-https://gurobi.github.io/modeling-examples/fantasy_basketball_1_2/fantasy_basketball_part2.html
-
+[Google Colab Link Part2](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/fantasy_basketball_1_2/fantasy_basketball_part2_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)<br>
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)<br>
 This notebook can be ran using the "online course" version of Gurobi.
 
 

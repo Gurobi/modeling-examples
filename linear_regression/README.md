@@ -38,16 +38,12 @@ It is shown that, unlike the Lasso, L0-Regression is scale invariant and does no
 
 Bertsimas et. al. (2016) successfully applied mathematical programming to solve the best-subset-selection problem for linear regression.
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/linear_regression/l0_regression_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/linear_regression/l0_regression.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/linear_regression/l0_regression_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2020 Gurobi Optimization, LLC

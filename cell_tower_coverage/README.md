@@ -31,16 +31,12 @@ to provide coverage to the largest percentage of the population possible
 
 A mixed-integer programming (MIP) formulation for the Cell Tower Coverage Problem..
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/cell_tower_coverage/cell_tower_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/cell_tower_coverage/cell_tower.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/cell_tower_coverage/cell_tower_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2020 Gurobi Optimization, LLC

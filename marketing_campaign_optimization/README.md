@@ -14,17 +14,13 @@ The reader should also consult the  [documentation](https://www.gurobi.com/resou
 of the Gurobi Python API.
 
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/marketing_campaign_optimization/marketing_campaign_optimization_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/marketing_campaign_optimization/marketing_campaign_optimization.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/marketing_campaign_optimization/marketing_campaign_optimization_gcl.ipynb)
 
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2020 Gurobi Optimization, LLC

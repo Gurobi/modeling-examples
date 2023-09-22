@@ -11,17 +11,13 @@ This modeling example is at the beginning level. We assume that you have some fa
 Python API, but you can hopefully pick up any missing concepts from the example.
 
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/3d_tic_tac_toe/3d_tic_tac_toe_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/3d_tic_tac_toe/3d_tic_tac_toe.html
+ [Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/3d_tic_tac_toe/3d_tic_tac_toe_gcl.ipynb)
 
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples Overview](../)
 
 Copyright © 2020 Gurobi Optimization, LLC
 

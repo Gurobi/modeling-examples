@@ -12,20 +12,15 @@ You may find it helpful to refer to the documentation of the [Gurobi Python API]
 This notebook is explained in detail in our webinar on data science and mathematical optimization. You can watch these videos by clicking [here](https://www.youtube.com/watch?v=AJRP9pPBx6s).
 
 
-## Access via Google Colab
+## View the notebook
 
-Part 1: https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/price_optimization/price_optimization_gcl.ipynb
+[Google Colab Link - Part 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/price_optimization/price_optimization_gcl.ipynb)
 
-Part 2: https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/price_optimization/price_optimization_gurobiML_gcl.ipynb
+[Google Colab Link - Part 2](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/price_optimization/price_optimization_gurobiML_gcl.ipynb)
 
-## HTML Example URL
-
-Part1: https://gurobi.github.io/modeling-examples/price_optimization/price_optimization.html
-
-Part1: https://gurobi.github.io/modeling-examples/price_optimization/price_optimization_gurobiML_gcl.html
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2023 Gurobi Optimization, LLC

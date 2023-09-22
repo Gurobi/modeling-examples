@@ -13,16 +13,12 @@ determine the optimal location and capacity of healthcare facilities in order to
 This modeling example is at the beginner level, where we assume that you know Python and that you have some knowledge of 
 how to build mathematical optimization models.
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/covid19_facility_location/covid19_facility_location_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/covid19_facility_location/covid19_facility_location.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/covid19_facility_location/covid19_facility_location_gcl.ipynb)
 
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 Copyright © 2020 Gurobi Optimization, LLC

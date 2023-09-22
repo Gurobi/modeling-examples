@@ -28,18 +28,13 @@ A mathematical model that selects the optimal placement of facilities (from a se
 
 It is shown how machine learning can be leveraged to cope with big datasets.
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/customer_assignment/customer_assignment_gcl.ipynb
-
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/customer_assignment/customer_assignment.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/customer_assignment/customer_assignment_gcl.ipynb)
 
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2020 Gurobi Optimization, LLC

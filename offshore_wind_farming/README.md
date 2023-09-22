@@ -66,17 +66,13 @@ problems -for example, in the planning of communication and transport networks.
 A mixed-integer programming (MIP) formulation for the offshore wind farming problem.
 
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/offshore_wind_farming/offshore_wind_farming_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/offshore_wind_farming/offshore_wind_farming.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/offshore_wind_farming/offshore_wind_farming_gcl.ipynb)
 
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 

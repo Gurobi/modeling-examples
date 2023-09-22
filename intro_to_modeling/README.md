@@ -15,17 +15,12 @@ This notebook is explained in detail in our series of tutorial videos on mixed i
 You can watch these videos by clicking 
 [here](https://www.gurobi.com/resource/tutorial-mixed-integer-linear-programming/)
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/intro_to_modeling/introduction_to_modeling_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/intro_to_modeling/introduction_to_modeling.html
-
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/intro_to_modeling/introduction_to_modeling_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2020 Gurobi Optimization, LLC

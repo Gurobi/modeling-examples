@@ -48,16 +48,11 @@ In this example, our goal is to find the optimal tradeoff between delivery cost 
 
 A mixed-integer programming (MIP) formulation for the facility location problem.
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/facility_location/facility_location_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/facility_location/facility_location.html
-
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/facility_location/facility_location_gcl.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 Copyright © 2020 Gurobi Optimization, LLC

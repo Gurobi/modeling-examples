@@ -13,17 +13,13 @@ about building mathematical optimization models. The reader should also consult 
 [documentation](https://www.gurobi.com/resources/?category-filter=documentation) 
 of the Gurobi Python API.
 
-## Access via Google Colab
+## View the notebook
 
-https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/curve_fitting/curve_fitting_gcl.ipynb
-
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/curve_fitting/curve_fitting.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/curve_fitting/curve_fitting_gcl.ipynb)
 
 
 ----
-For details on licensing or on running the notebooks, see the [Modeling Examples Overview/Readme](https://github.com/Gurobi/modeling-examples/)
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 
 Copyright © 2020 Gurobi Optimization, LLC
