@@ -7,8 +7,8 @@ The material is from the Webinar on [Optimization 101 for Data Scientists](https
 In this webinar two modeling examples and a use case were discussed. 
 You can review the Jupyter Notebooks here. For all examples a completed version is available. If you want to test yourself and try out some of the exercises by yourself, you should start with the not-completed-versions of the notebooks and then compare with the completed versions.
 
-- Resources for the first [hands-on modeling session](https://github.com/Gurobi/modeling-examples/tree/master/optimization101/Modeling_Session_1)
+- Resources for the first [hands-on modeling session](tree/master/optimization101/Modeling_Session_1/README.md)
 
-- Resources for the **second** [hands-on modeling session](https://github.com/Gurobi/modeling-examples/tree/master/optimization101/Modeling_Session_2)
+- Resources for the **second** [hands-on modeling session](tree/master/optimization101/Modeling_Session_2/README.md)
 
-- Resources for the **use case** [bike share modeling session](https://github.com/Gurobi/modeling-examples/tree/master/optimization101/Modeling_Session_2)
+- Resources for the **use case** [bike share modeling session](tree/master/optimization101/Modeling_Session_2/README.md)

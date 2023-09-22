@@ -26,11 +26,11 @@ The examples are from different business purposes and reflect different levels o
 The introductory examples walk you through the process of building a mathematical optimization model.
 The basic requirements are that you know Python and have a background in a discipline that used quantitative methods.
 
-- [GDD 2023: Intro to Gurobipy](https://github.com/Gurobi/modeling-examples/tree/master/gurobi_days_digital_2023/intro_to_gurobipy)
+- [GDD 2023: Intro to Gurobipy:](https://github.com/Gurobi/modeling-examples/tree/master/gurobi_days_digital_2023/intro_to_gurobipy)
   This tutorial was given at the Gurobi Days Digital 2023. It is an introduction to the Gurobi Python API Gurobipy. It walks you through the basics of Gurobipy and explains the usage with some small examples.
-- [Intro to Mathematical Optimization Modeling](https://github.com/Gurobi/modeling-examples/tree/master/intro_to_modeling)
+- [Intro to Mathematical Optimization Modeling:](https://github.com/Gurobi/modeling-examples/tree/master/intro_to_modeling)
   This tutorial discusses the basics of mathematical mopdeling on the example of a simple assignment problem.
-- [Optimization 101](https://github.com/Gurobi/modeling-examples/tree/master/optimization101)
+- [Optimization 101:](https://github.com/Gurobi/modeling-examples/tree/master/optimization101)
   This tutorial is based on the Webinar on [Optimization 101 for Data Scientists](https://www.gurobi.com/events/optimization-101-for-data-scientists/) and consists of two modeling sessions with exercises and questions as well as a discussion of a use case. 
 - The following examples dicusses the input data and the optimization model step by step in a very detailed way
   - [Aviation Planning](https://github.com/Gurobi/modeling-examples/tree/master/aviation_planning)
@@ -39,7 +39,25 @@ The basic requirements are that you know Python and have a background in a disci
   - [Power Generation](https://github.com/Gurobi/modeling-examples/tree/master/power_generation)
 
 
-It is also possible to browse through the examples w.r.t. difficulty level and business needs on the [Gurobi website](https://www.gurobi.com/jupyter_models/?_sft_difficulty_level=introductory).
+### Beginner Examples
+
+The notebooks at beginner level assume you know Python and have some knowledge about building mathematical optimization models.
+- [3D Tic-Tac-Toe:](https://github.com/Gurobi/modeling-examples/tree/master/3d_tic_tac_toe)
+  This example will show you how a binary programming model can be used to capture simple logical constraints.
+- [Cell Tower:](https://github.com/Gurobi/modeling-examples/tree/master/cell_tower_coverage)
+  In this example, you will learn how to define and solve a covering type problem, namely,
+  how to configure a network of cell towers to provide signal coverage to the largest number of people.
+- [Curve Fitting](https://github.com/Gurobi/modeling-examples/tree/master/curve_fitting)
+  Try this Jupyter Notebook Modeling Example to learn how you can fit a function to a set of observations. 
+- [Facility Location:](https://github.com/Gurobi/modeling-examples/tree/master/facility_location)
+  In this example, we will show you how to tackle a facility location problem that involves determining the number and location of warehouses that are needed to supply a group of supermarkets.
+- [Fantasy Basketball:](https://github.com/Gurobi/modeling-examples/tree/master/fantasy_basketball_1_2)
+  This example combines machine learning and optimization modeling in fantasy basketball.
+- [Market Sharing:](https://github.com/Gurobi/modeling-examples/tree/master/market_sharing)
+  In this example, we will show you how to solve a goal programming problem that involves allocating the retailers to two divisions of a company in order to optimize the trade-offs of several market sharing goals. 
+-
+
+It is also possible to browse through the examples w.r.t. difficulty level and business needs on the [Gurobi website](https://www.gurobi.com/jupyter_models/).
 
 ## How to run the examples on Google Colab
 
