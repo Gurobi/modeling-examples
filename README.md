@@ -23,12 +23,12 @@ The basic requirements are that you know Python and have a background in a disci
 
 - [GDD 2023: Intro to Gurobipy:](gurobi_days_digital_2023/intro_to_gurobipy)
   This tutorial was given at the Gurobi Days Digital 2023. It is an introduction to the Gurobi Python API Gurobipy. It walks you through the basics of Gurobipy and explains the usage with some small examples.
-- [Intro to Mathematical Optimization Modeling:](intro_to_modeling)
+- [Intro to Mathematical Optimization Modeling:](milp_tutorial)
   This tutorial discusses the basics of mathematical modeling on the example of a simple assignment problem.
 - [Optimization 101:](optimization101)
   This tutorial is based on the Webinar on [Optimization 101 for Data Scientists](https://www.gurobi.com/events/optimization-101-for-data-scientists/) and consists of two modeling sessions with exercises and questions as well as a discussion of a use case. 
 - The following examples discusses the input data and the optimization model step by step in a very detailed way
-  - [Aviation Planning](aviation_planning)
+  - [Airline Planning After Flight Disruption](aviation_planning)
   - [Music Recommendation](music_recommendation)
   - [Text Dissimilarity](text_dissimilarity)
   - [Power Generation](power_generation)
@@ -175,8 +175,8 @@ You can download the repository containing all examples by clicking [here](https
 # Index of modeling examples
 
 - [3D Tic-Tac-Toe](3d_tic_tac_toe)
+- [Airline Planning After Flight Disruption](aviation_planning)
 - [Agricultural Pricing](agricultural_pricing)
-- [Aviation Planning](aviation_planning)
 - [Burrito Game](burrito_optimization_game)
 - [Car Rental](car_rental_1_2)
 - [Cell Tower](cell_tower_coverage)
@@ -197,7 +197,7 @@ You can download the repository containing all examples by clicking [here](https
 - [Food Manufacturing](food_manufacturing_1_2)
 - [Food Program](food_program)
 - [GDD 2023: Intro to Gurobipy](gurobi_days_digital_2023/intro_to_gurobipy)
-- [Intro to Mathematical Optimization Modeling](intro_to_modeling)
+- [Intro to Mathematical Optimization Modeling / MILP Tutorial](milp_tutorial)
 - [Linear Regression](linear_regression)
 - [Logical Design](logical_design)
 - [Lost Luggage Distribution](lost_luggage_distribution)
@@ -205,7 +205,6 @@ You can download the repository containing all examples by clicking [here](https
 - [Market Sharing](market_sharing)
 - [Marketing Campaign Optimization](marketing_campaign_optimization)
 - [Milk Collection](milk_collection)
-- [MILP Tutorial](milp_tutorial)
 - [Mining](mining)
 - [Music Recommendation](music_recommendation)
 - [Offshore Wind Farming](offshore_wind_farming)
