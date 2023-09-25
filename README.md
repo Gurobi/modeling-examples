@@ -45,15 +45,25 @@ The notebooks at beginner level assume you know Python and have some knowledge a
 - [Cell Tower:](cell_tower_coverage)
   In this example, you will learn how to define and solve a covering type problem, namely,
   how to configure a network of cell towers to provide signal coverage to the largest number of people.
-- [Curve Fitting](curve_fitting)
+- [Curve Fitting:](curve_fitting)
   Try this Jupyter Notebook Modeling Example to learn how you can fit a function to a set of observations. 
 - [Facility Location:](facility_location)
   In this example, we will show you how to tackle a facility location problem that involves determining the number and location of warehouses that are needed to supply a group of supermarkets.
 - [Fantasy Basketball:](fantasy_basketball_1_2)
   This example combines machine learning and optimization modeling in fantasy basketball.
+- [Food Program_](food_program)
+  Transporting food in a global transportation network is a challenging undertaking. In this notebook, we will build an optimization model to set up a food supply chain based on real data from the UN World Food Program.
 - [Market Sharing:](market_sharing)
   In this example, we will show you how to solve a goal programming problem that involves allocating the retailers to two divisions of a company in order to optimize the trade-offs of several market sharing goals. 
--
+- [Marketing Campaign Optimization](marketing_campaign_optimization)
+  Companies across almost every industry are looking to optimize their marketing campaigns. In this Jupyter Notebook, we will explore a marketing campaign optimization problem that is common in the banking and financial services industry, which involves determining which products to offer to individual customers in order to maximize total expected profit while satisfying various business constraints. 
+- [Offshore Wind Farming](offshore_wind_farming)
+  In this example, we will learn how to solve an offshore wind power generation problem. The goal of the problem is to figure out which underwater cables should be laid to connect an offshore wind farm power network at a minimum cost. 
+- [Supply Network Design 1](supply_network_design_1_2)
+  Try this Jupyter Notebook Modeling Example to learn how to solve a classic supply network design problem that involves finding the minimum cost flow through a network. We’ll show you how – given a set of factories, depots, and customers – you can use mathematical optimization to determine the best way to satisfy customer demand while minimizing shipping costs.
+- [Supply Network Design 2](supply_network_design_1_2)
+  Take your supply chain network design skills to the next level in this example. We will show you how – given a set of factories, depots, and customers – you can use mathematical optimization to determine which depots to open or close in order to minimize overall costs.
+
 
 It is also possible to browse through the examples w.r.t. difficulty level and business needs on the [Gurobi website](https://www.gurobi.com/jupyter_models/).
 
