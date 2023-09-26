@@ -12,7 +12,7 @@ that you have advanced knowledge of building mathematical optimization models. T
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/protein_folding/protein_folding_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/protein_folding/protein_folding.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)

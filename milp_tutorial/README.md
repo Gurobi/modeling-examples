@@ -10,13 +10,13 @@ To get started with this video series, go to [Mixed Integer Linear Programming T
 
 ## View the notebooks
 
-[Google Colab to Jupyter Notebook-1: Resource Assignment Problem Formulation](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milp_tutorial/milp_tutorial_RAP_problem_001_gcl.ipynb) (Chapter 5)
+[Google Colab to Jupyter Notebook-1: Resource Assignment Problem Formulation](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milp_tutorial/milp_tutorial_RAP_problem_001.ipynb) (Chapter 5)
 
-[Google Colab to Jupyter Notebook-2: Perfect Formulation Resource Assignment Problem](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milp_tutorial/milp_tutorial_RAP_problem_002_gcl.ipynb) (Chapter 7)
+[Google Colab to Jupyter Notebook-2: Perfect Formulation Resource Assignment Problem](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milp_tutorial/milp_tutorial_RAP_problem_002.ipynb) (Chapter 7)
 
-[Google Colab to Jupyter Notebook-3: Why MIP Is Better than Simple Heuristics](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milp_tutorial/milp_tutorial_RAP_problem_003_gcl.ipynb) (Chapter 12)
+[Google Colab to Jupyter Notebook-3: Why MIP Is Better than Simple Heuristics](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milp_tutorial/milp_tutorial_RAP_problem_003.ipynb) (Chapter 12)
 
-[Google Colab to Jupyter Notebook for Assignment Problem Formulation](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milp_tutorial/introduction_to_modeling_gcl.ipynb)
+[Google Colab to Jupyter Notebook for Assignment Problem Formulation](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milp_tutorial/introduction_to_modeling.ipynb)
 (combining Notebook-1 and-2, with comments in notebook)
 
 

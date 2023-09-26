@@ -15,7 +15,7 @@ and/or constraints of these examples are complex or require advanced features of
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/manpower_planning/manpower_planning_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/manpower_planning/manpower_planning.ipynb)
 
 
 ----

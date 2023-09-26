@@ -50,7 +50,7 @@ A mixed-integer programming (MIP) formulation for the facility location problem.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/facility_location/facility_location_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/facility_location/facility_location.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)

@@ -14,7 +14,7 @@ of the Gurobi Python API.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/market_sharing/market_sharing_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/market_sharing/market_sharing.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)

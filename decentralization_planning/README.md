@@ -14,7 +14,7 @@ constraints of these examples are complex or require advanced features of the Gu
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/decentralization_planning/decentralization_planning_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/decentralization_planning/decentralization_planning.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)

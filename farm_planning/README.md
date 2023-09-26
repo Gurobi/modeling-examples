@@ -14,7 +14,7 @@ constraints of these examples are complex or require advanced features of the Gu
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/farm_planning/farm_planning_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/farm_planning/farm_planning.ipynb)
 
 
 ----

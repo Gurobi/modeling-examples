@@ -12,7 +12,7 @@ you have some knowledge of building mathematical optimization models.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/efficiency_analysis/efficiency_analysis_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/efficiency_analysis/efficiency_analysis.ipynb)
 
 
 ----

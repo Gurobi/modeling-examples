@@ -33,7 +33,7 @@ A mixed-integer programming (MIP) formulation for the Cell Tower Coverage Proble
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/cell_tower_coverage/cell_tower_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/cell_tower_coverage/cell_tower.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)

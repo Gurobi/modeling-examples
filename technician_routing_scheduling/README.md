@@ -12,7 +12,7 @@ Gurobi Python API. In addition, you have some knowledge about building mathemati
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/technician_routing_scheduling/technician_routing_scheduling_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/technician_routing_scheduling/technician_routing_scheduling.ipynb)
 
 
 ----

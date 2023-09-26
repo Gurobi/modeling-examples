@@ -31,7 +31,7 @@ It is shown that solving Bilinear Programs with Gurobi is as easy as configuring
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/pooling/std_pooling_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/pooling/std_pooling.ipynb)
 
 
 ----

@@ -7,7 +7,7 @@ The basic model is fairly simple, so we also solve it parametrically to find the
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/portfolio_selection_optimization/portfolio_selection_optimization_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/portfolio_selection_optimization/portfolio_selection_optimization.ipynb)
 
 
 ----

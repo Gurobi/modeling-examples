@@ -15,7 +15,7 @@ how to build mathematical optimization models.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/covid19_facility_location/covid19_facility_location_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/covid19_facility_location/covid19_facility_location.ipynb)
 
 
 ----

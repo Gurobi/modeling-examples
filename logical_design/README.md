@@ -12,7 +12,7 @@ have some knowledge of building mathematical optimization models.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/logical_design/logical_design_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/logical_design/logical_design.ipynb)
 
 
 ----

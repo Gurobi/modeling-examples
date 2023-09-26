@@ -68,7 +68,7 @@ A mixed-integer programming (MIP) formulation for the offshore wind farming prob
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/offshore_wind_farming/offshore_wind_farming_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/offshore_wind_farming/offshore_wind_farming.ipynb)
 
 
 ----

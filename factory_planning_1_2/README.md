@@ -13,7 +13,7 @@ the Gurobi Python API. In addition, you should have some knowledge about buildin
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/factory_planning_1_2/factory_planning_1_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/factory_planning_1_2/factory_planning_1.ipynb)
 
 ---
 ## Factory Planning II
@@ -28,7 +28,7 @@ the Gurobi Python API. In addition, you should have some knowledge about buildin
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/factory_planning_1_2/factory_planning_2_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/factory_planning_1_2/factory_planning_2.ipynb)
 
 
 ----

@@ -13,7 +13,7 @@ Python API, but you can hopefully pick up any missing concepts from the example.
 
 ## View the notebook
 
- [Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/3d_tic_tac_toe/3d_tic_tac_toe_gcl.ipynb)
+ [Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/3d_tic_tac_toe/3d_tic_tac_toe.ipynb)
 
 
 ----

@@ -14,7 +14,7 @@ Gurobi Python API. In addition, you should have some knowledge about building ma
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/refinery/refinery_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/refinery/refinery.ipynb)
 
 
 ----

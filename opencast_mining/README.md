@@ -13,7 +13,7 @@ you have some knowledge of building mathematical optimization models.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/opencast_mining/opencast_mining_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/opencast_mining/opencast_mining.ipynb)
 
 
 ----

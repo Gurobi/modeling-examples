@@ -15,7 +15,7 @@ of the Gurobi Python API.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/curve_fitting/curve_fitting_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/curve_fitting/curve_fitting.ipynb)
 
 
 ----
