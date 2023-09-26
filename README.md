@@ -130,7 +130,7 @@ For modeling examples at the advanced level, we assume that you know Python and 
 - [Protein Folding:](protein_folding)
   The problem pertains to a protein, which consists of a chain of amino acids. The objective is to predict the optimum folding of the chain.
 - [Traveling Salesman:](traveling_salesman)
-  This notebook covers one of the most famous combinatorial optimization problems in existence: the Traveling Salesman Problem (TSP). The goal of the TSP – to find the shortest possible route that visits each city once and returns to the original city – is simple, but solving the problem is a complex and challenging endeavor. 
+  This notebook covers one of the most famous combinatorial optimization problems in existence: the Traveling Salesman Problem (TSP). The goal of the TSP – to find the shortest possible route that visits each city once and returns to the original city – is simple, but solving the problem is a complex and challenging endeavor. This example uses the [callback](https://www.gurobi.com/documentation/current/refman/py_cb_s.html) feature of Gurobi.
 - [Workforce Scheduling:](workforce)
   In this notebook we demonstrate how you can use mathematical optimization to generate an optimal workforce schedule that minimizes the number of temporary workers your company needs to hire and maximizes employee fairness. The problem is formulated as a multi-objective mixed-integer-programming (MIP) model and uses the [multiple objectives feature](https://www.gurobi.com/documentation/current/refman/multiple_objectives.html) of Gurobi.
 - [Yield Management:](yield_management)

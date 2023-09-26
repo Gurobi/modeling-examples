@@ -1,7 +1,5 @@
 # Decentralization Planning
 
-
-
 This model is an example of a facility location problem. Given a set of departments of a company, and potential cities 
 where these departments can be located, we want to determine the "best" location of each department in order to maximize 
 gross margins. This problem is formulated as a quadratic assignment problem using the Gurobi Python API and solved with 

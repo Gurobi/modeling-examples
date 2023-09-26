@@ -14,7 +14,7 @@ of the Gurobi Python API.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/marketing_campaign_optimization/marketing_campaign_optimization_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/marketing_campaign_optimization/marketing_campaign_optimization_gcl.ipynb)
 
 
 ----
