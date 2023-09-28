@@ -1,4 +1,3 @@
-# Gurobi Modeling Examples
 
 ## Target audience:
 Data scientists, engineers, computer scientists, economists, and in general, professionals with a background in mathematical modeling and a basic knowledge of Python.
@@ -11,8 +10,6 @@ These modeling examples are coded using the Gurobi Python API and distributed as
 
 These modeling examples illustrate important capabilities of the Gurobi Python API, including adding decision variables, building linear expressions, adding constraints, and adding an objective function.
 They touch on more advanced features such as generalized constraints, piecewise-linear functions, and multi-objective hierarchical optimization.  They also illustrate common constraint types such as “allocation constraints”, “balance constraints”, “sequencing constraints”, “precedence constraints”, and others.
-
-# Guideline
 
 The examples are from different business purposes and reflect different levels on building mathematical optimization models.
 
@@ -139,9 +136,8 @@ For modeling examples at the advanced level, we assume that you know Python and 
 
 It is also possible to browse through the examples w.r.t. difficulty level and business needs on the [Gurobi website](https://www.gurobi.com/jupyter_models/).
 
-##  Run Examples
 
-### How to run the examples on Google Colab
+## Run on Google Colab
 
 You can access all the examples in Google Colab, which is a free, online Jupyter Notebook environment that allows you to write and execute Python code through your browser. You will need to be signed into a Google account to execute the notebooks. 
 But you do not need an account if you just want to look at the notebooks.
@@ -155,7 +151,7 @@ For each example the respective colab link is given in the readme:
 + The Gurobi Optimizer will find the optimal solution of the modeling example.
 Check out the [Colab Getting Started Guide](https://colab.research.google.com/notebooks/intro.ipynb#scrollTo=GJBs_flRovLc) for full details on how to use Colab Notebooks as well as create your own.
 
-### How to run the notebooks locally?
+## Run locally
 
 - Clone the repository containing all examples or download it
 by clicking [here](https://github.com/Gurobi/modeling-examples/archive/refs/heads/master.zip)
@@ -175,6 +171,7 @@ All licenses can also be requested in the [Gurobi User Portal](https://portal.gu
 ## Download the repository
 
 You can download the repository containing all examples by clicking [here](https://github.com/Gurobi/modeling-examples/archive/master.zip). 
+
 
 ## Index of modeling examples
 
