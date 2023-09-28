@@ -1,5 +1,4 @@
 # Text Dissimilarity Using Linear Programming
-<img src="spotify_image_howtogeek.jpeg" alt="Markdown Monster icon"/>
 
 In this notebook, we will walk-through a unique example demonstrating how you can apply optimization to assess text dissimilarity. There are numerous potential applications such as in detecting plagiarism, information retrieval, clustering, text categorization, topic detection, question answer session, machine translation and text summarization.
 
@@ -18,8 +17,6 @@ You may find it helpful to refer to the documentation of the [Gurobi Python API]
 
 
 ----
-For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)<br>
-This notebook can be ran using the "online course" version of Gurobi.
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-
-Copyright © 2022 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

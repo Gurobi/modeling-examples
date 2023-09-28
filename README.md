@@ -164,8 +164,7 @@ by clicking [here](https://github.com/Gurobi/modeling-examples/archive/refs/head
 
 # Licensing
 
-In order to run the Jupyter Notebooks you will need a Gurobi license. Most of the notebooks can be ran using the "online course" license version of Gurobi. This is a limited license and restricts the number of allowed variables and constraints. 
-You can also request  
+In order to run the Jupyter Notebooks you will need a Gurobi license. Most of the notebooks can be ran using the "online course" license version of Gurobi. This is a limited license and restricts the number of allowed variables and constraints. This restricted license comes also with the Gurobi pip package.  
 an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/) 
 as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/) as an *academic user*. The latter two license types allow you to run all notebooks.
 All licenses can also be requested in the [Gurobi User Portal](https://portal.gurobi.com/iam/licenses/request/) after [registering for a Gurobi account](https://portal.gurobi.com/iam/register/).

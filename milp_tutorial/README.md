@@ -19,9 +19,7 @@ To get started with this video series, go to [Mixed Integer Linear Programming T
 [Google Colab to Jupyter Notebook for Assignment Problem Formulation](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milp_tutorial/introduction_to_modeling.ipynb)
 (combining Notebook-1 and-2, with comments in notebook)
 
-
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-
-Copyright © 2023 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

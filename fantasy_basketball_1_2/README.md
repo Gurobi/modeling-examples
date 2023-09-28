@@ -19,8 +19,6 @@ introduces the *slack* of a constraint.
 [Google Colab Link Part2](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/fantasy_basketball_1_2/fantasy_basketball_part2.ipynb)
 
 ----
-For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)<br>
-This notebook can be ran using the "online course" version of Gurobi.
-
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
 Copyright © 2022 Gurobi Optimization, LLC

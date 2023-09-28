@@ -17,7 +17,7 @@ Gurobi Python API. In addition, you should have some knowledge about building ma
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/mining/mining.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/mining/mining.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
