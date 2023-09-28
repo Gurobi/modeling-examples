@@ -1,4 +1,4 @@
-# Introduction: 
+# Gurobi Modeling Examples
 
 ## Target audience:
 Data scientists, engineers, computer scientists, economists, and in general, professionals with a background in mathematical modeling and a basic knowledge of Python.
@@ -12,7 +12,7 @@ These modeling examples are coded using the Gurobi Python API and distributed as
 These modeling examples illustrate important capabilities of the Gurobi Python API, including adding decision variables, building linear expressions, adding constraints, and adding an objective function.
 They touch on more advanced features such as generalized constraints, piecewise-linear functions, and multi-objective hierarchical optimization.  They also illustrate common constraint types such as “allocation constraints”, “balance constraints”, “sequencing constraints”, “precedence constraints”, and others.
 
-# Guideline of browsing the modeling examples
+# Guideline
 
 The examples are from different business purposes and reflect different levels on building mathematical optimization models.
 
@@ -139,7 +139,9 @@ For modeling examples at the advanced level, we assume that you know Python and 
 
 It is also possible to browse through the examples w.r.t. difficulty level and business needs on the [Gurobi website](https://www.gurobi.com/jupyter_models/).
 
-# How to run the examples on Google Colab
+##  Run Examples
+
+### How to run the examples on Google Colab
 
 You can access all the examples in Google Colab, which is a free, online Jupyter Notebook environment that allows you to write and execute Python code through your browser. You will need to be signed into a Google account to execute the notebooks. 
 But you do not need an account if you just want to look at the notebooks.
@@ -153,7 +155,7 @@ For each example the respective colab link is given in the readme:
 + The Gurobi Optimizer will find the optimal solution of the modeling example.
 Check out the [Colab Getting Started Guide](https://colab.research.google.com/notebooks/intro.ipynb#scrollTo=GJBs_flRovLc) for full details on how to use Colab Notebooks as well as create your own.
 
-# How to run the notebooks locally?
+### How to run the notebooks locally?
 
 - Clone the repository containing all examples or download it
 by clicking [here](https://github.com/Gurobi/modeling-examples/archive/refs/heads/master.zip)
@@ -162,7 +164,7 @@ by clicking [here](https://github.com/Gurobi/modeling-examples/archive/refs/head
 - The notebook will install the gurobipy package and other dependencies. The Gurobi
   pip package includes a size-limited trial license equivalent to the Gurobi "online course" license. For most of the notebooks this restricted license is sufficient. For others you will need a full license.
 
-# Licensing
+## Licensing
 
 In order to run the Jupyter Notebooks you will need a Gurobi license. Most of the notebooks can be ran using the "online course" license version of Gurobi. This is a limited license and restricts the number of allowed variables and constraints. This restricted license comes also with the Gurobi pip package.
 You can also request a full license, i.e.,  
@@ -170,11 +172,11 @@ an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-l
 as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/) as an *academic user*. The latter two license types allow you to run all notebooks.
 All licenses can also be requested in the [Gurobi User Portal](https://portal.gurobi.com/iam/licenses/request/) after [registering for a Gurobi account](https://portal.gurobi.com/iam/register/).
 
-# Download the repository
+## Download the repository
 
 You can download the repository containing all examples by clicking [here](https://github.com/Gurobi/modeling-examples/archive/master.zip). 
 
-# Index of modeling examples
+## Index of modeling examples
 
 - [3D Tic-Tac-Toe](3d_tic_tac_toe)
 - [Airline Planning After Flight Disruption](aviation_planning)
