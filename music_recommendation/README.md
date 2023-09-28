@@ -21,4 +21,4 @@ This notebook is explained in detail in our webinar on data science and mathemat
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-Copyright © 2022 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

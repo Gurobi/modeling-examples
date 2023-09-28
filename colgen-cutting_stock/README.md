@@ -18,4 +18,4 @@ and/or constraints of these examples are complex or require advanced features of
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Example](../)
 
-Copyright © 2020 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

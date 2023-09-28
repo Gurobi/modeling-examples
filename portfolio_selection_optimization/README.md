@@ -13,4 +13,4 @@ The basic model is fairly simple, so we also solve it parametrically to find the
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-Copyright © 2021 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

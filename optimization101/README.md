@@ -12,3 +12,5 @@ You can review the Jupyter Notebooks here. For all examples a completed version 
 - Resources for the **second** [hands-on modeling session](Modeling_Session_2)
 
 - Resources for the **use case** [bike share modeling session](bike_share)
+
+© Gurobi Optimization, LLC

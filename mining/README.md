@@ -13,8 +13,6 @@ Programming by H. P. Williams on pages 261-262 and 310-312.
 This modeling example is at the intermediate level, where we assume that you know Python and are familiar with the 
 Gurobi Python API. In addition, you should have some knowledge about building mathematical optimization models.
 
-
-
 ## View the notebook
 
 [Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/mining/mining.ipynb)
@@ -22,5 +20,4 @@ Gurobi Python API. In addition, you should have some knowledge about building ma
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-Copyright © 2020 Gurobi Optimization, LLC
-
+© Gurobi Optimization, LLC

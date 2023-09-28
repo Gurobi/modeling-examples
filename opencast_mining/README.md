@@ -19,4 +19,4 @@ you have some knowledge of building mathematical optimization models.
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-Copyright © 2020 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

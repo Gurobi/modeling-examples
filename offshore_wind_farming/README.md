@@ -74,6 +74,4 @@ A mixed-integer programming (MIP) formulation for the offshore wind farming prob
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-
-
-Copyright © 2020 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

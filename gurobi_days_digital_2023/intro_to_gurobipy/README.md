@@ -9,5 +9,4 @@ The video of the session can be watched [here](https://vimeo.com/830685647/c7f99
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../../)
 
-
-Copyright ©2023 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

@@ -34,5 +34,4 @@ the Gurobi Python API. In addition, you should have some knowledge about buildin
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-Copyright © 2020 Gurobi Optimization, LLC
-
+© Gurobi Optimization, LLC

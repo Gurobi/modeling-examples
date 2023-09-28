@@ -19,5 +19,4 @@ Python API, but you can hopefully pick up any missing concepts from the example.
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-Copyright © 2020 Gurobi Optimization, LLC
-
+© Gurobi Optimization, LLC
