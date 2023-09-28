@@ -15,11 +15,11 @@ We also put **completed** versions of the modeling1 notebook and the exercise in
 
 ## View the notebook
 
-[Google Colab Link - Modeling Session *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/modeling2_colab.ipynb)
+[Google Colab Link - Modeling Session *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/modeling2.ipynb)
 
 [Google Colab Link - Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/Exercise_Set2.ipynb)
 
-[Google Colab Link - Modeling Session *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/completed_modeling2_colab.ipynb)
+[Google Colab Link - Modeling Session *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/completed_modeling2.ipynb)
 
 [Google Colab Link - Exercise *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/completed_Exercise_Set2.ipynb)
 

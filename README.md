@@ -141,11 +141,13 @@ It is also possible to browse through the examples w.r.t. difficulty level and b
 
 # How to run the examples on Google Colab
 
-You can access all the examples in Google Colab, which is a free, online Jupyter Notebook environment that allows you to write and execute Python code through your browser. You will need to be signed into a Google account to execute the notebooks. For each example the respective colab link is given in the readme:
+You can access all the examples in Google Colab, which is a free, online Jupyter Notebook environment that allows you to write and execute Python code through your browser. You will need to be signed into a Google account to execute the notebooks. 
+But you do not need an account if you just want to look at the notebooks.
+For each example the respective colab link is given in the readme:
 + To run the example the first time, choose “Runtime” and then click “Run all”.
 + All the cells in the Jupyter Notebook will be executed.
 + The example will install the gurobipy package. The Gurobi
-  pip package includes a size-limited trial license equivalent to the Gurobi "online course" license. For some of the notebooks this restricted license is sufficient. For others you will need a full license.
+  pip package includes a size-limited trial license equivalent to the Gurobi "online course" license. For most of the notebooks this restricted license is sufficient to run them. For others you will need a full license, see the license section below.
 + You can also modify and re-run individual cells.
 + For subsequent runs, choose “Runtime” and click “Restart and run all”.
 + The Gurobi Optimizer will find the optimal solution of the modeling example.
@@ -156,16 +158,16 @@ Check out the [Colab Getting Started Guide](https://colab.research.google.com/no
 - Clone the repository containing all examples or download it
 by clicking [here](https://github.com/Gurobi/modeling-examples/archive/refs/heads/master.zip)
 - [Start Jupyter Notebook Server](https://docs.jupyter.org/en/latest/running.html#id2)
-- Open the particular notebook in Jupyter Notebook. Use the file with the name that *does not* end in *colab* or *gcl*.
+- Open the particular notebook in Jupyter Notebook. 
 - The notebook will install the gurobipy package and other dependencies. The Gurobi
-  pip package includes a size-limited trial license equivalent to the Gurobi "online course" license. For some of the notebooks this restricted license is sufficient. For others you will need a full license.
+  pip package includes a size-limited trial license equivalent to the Gurobi "online course" license. For most of the notebooks this restricted license is sufficient. For others you will need a full license.
 
 # Licensing
 
-In order to run the Jupyter Notebooks you will need a Gurobi license. Some Notebooks can be ran using the "online course" license version of Gurobi. This is a limited license and restricts the number of allowed variables and constraints. 
+In order to run the Jupyter Notebooks you will need a Gurobi license. Most of the notebooks can be ran using the "online course" license version of Gurobi. This is a limited license and restricts the number of allowed variables and constraints. 
 You can also request  
 an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/) 
-as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/) as an *academic user*.
+as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/) as an *academic user*. The latter two license types allow you to run all notebooks.
 All licenses can also be requested in the [Gurobi User Portal](https://portal.gurobi.com/iam/licenses/request/) after [registering for a Gurobi account](https://portal.gurobi.com/iam/register/).
 
 # Download the repository

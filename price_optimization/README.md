@@ -14,9 +14,9 @@ This notebook is explained in detail in our webinar on data science and mathemat
 
 ## View the notebook
 
-[Google Colab Link - Part 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/price_optimization/price_optimization_gcl.ipynb)
+[Google Colab Link - Part 1](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/price_optimization/price_optimization.ipynb)
 
-[Google Colab Link - Part 2](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/price_optimization/price_optimization_gurobiML_gcl.ipynb)
+[Google Colab Link - Part 2](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/price_optimization/price_optimization_gurobiML.ipynb)
 
 
 ----

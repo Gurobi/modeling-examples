@@ -30,7 +30,7 @@ It is shown how machine learning can be leveraged to cope with big datasets.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/customer_assignment/customer_assignment_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/customer_assignment/customer_assignment.ipynb)
 
 
 ----

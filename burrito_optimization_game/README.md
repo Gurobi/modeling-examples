@@ -11,7 +11,7 @@ The Burrito Optimization Game is an educational game designed to introduce stude
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/burrito_optimization_game/burrito_optimization_game_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/burrito_optimization_game/burrito_optimization_game.ipynb)
 
 ## Play the game
 [BurritoOptimizationGame.com](https://www.burritooptimizationgame.com/)

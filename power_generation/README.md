@@ -12,7 +12,7 @@ You may find it helpful to refer to the documentation of the [Gurobi Python API]
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/power_generation/optimize_power_schedule_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/power_generation/optimize_power_schedule.ipynb)
 
 
 ----

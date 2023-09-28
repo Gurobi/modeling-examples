@@ -14,7 +14,7 @@ You may find it helpful to refer to the documentation of the [Gurobi Python API]
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/text_dissimilarity/text_dissimilarity_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/text_dissimilarity/text_dissimilarity.ipynb)
 
 
 ----

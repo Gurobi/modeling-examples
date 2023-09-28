@@ -15,7 +15,7 @@ This notebook is explained in detail in our webinar on data science and mathemat
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/music_recommendation/music_recommendation_gcl.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/music_recommendation/music_recommendation.ipynb)
 
 
 ----
