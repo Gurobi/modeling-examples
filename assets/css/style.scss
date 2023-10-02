@@ -14,7 +14,6 @@ header {
 	background: #dd2113;
 	border: #dd2113;
 
-
 	.fork {
 		background: #a7b4c9;
 		border: #a7b4c9;
@@ -24,18 +23,18 @@ header {
 	.fork:hover {
 		background:#e0e4eb;
 	}	
-}
+	
+	.downloads {	
+		color: #a7b4c9;
 
-.downloads {	
-	color: #a7b4c9;
+		.button {
+			background: #a7b4c9;
+			border: #a7b4c9;
+		}
 
-	.button {
-		background: #a7b4c9;
-		border: #a7b4c9;
-	}
-
-	.button:hover {
-		background:#e0e4eb;
+		.button:hover {
+			background:#e0e4eb;
+		}
 	}
 }
 
