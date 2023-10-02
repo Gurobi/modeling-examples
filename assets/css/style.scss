@@ -5,19 +5,16 @@
 
 header {
 	background: #0b1a3c;
-	h1 {
-		color: #ffffff;
-	}
+	color: #f4f4f4;
 }
 
 #banner {
 	background: #dd2113;
-	border: #dd2113;
+	border: unset;
 
 	.fork {
 		background: #a7b4c9;
-		border: #a7b4c9;
-
+		border: unset;
 	}
 
 	.fork:hover {
@@ -27,12 +24,12 @@ header {
 	.downloads {	
 		
 		span {
-			color: #a7b4c9;
+			color: #f4f4f4;
 		}
 
 		.button {
 			background: #a7b4c9;
-			border: #a7b4c9;
+			border: unset;
 		}
 
 		.button:hover {
