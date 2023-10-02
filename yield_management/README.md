@@ -16,6 +16,8 @@ function and/or constraints of these examples are complex or require advanced fe
 
 [Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/yield_management/yield_management.ipynb)
 
+Note that you need a full Gurobi license to run this notebook.
+
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
