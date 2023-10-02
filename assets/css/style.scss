@@ -25,7 +25,10 @@ header {
 	}	
 	
 	.downloads {	
-		color: #a7b4c9;
+		
+		span {
+			color: #a7b4c9;
+		}
 
 		.button {
 			background: #a7b4c9;
