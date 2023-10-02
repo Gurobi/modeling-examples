@@ -14,14 +14,13 @@ header {
 	background: #dd2113;
 	border: #dd2113;
 
-	.dowloads {
-		background: #008080;
-		color: #00ff7f;
+	.fork {
+		background: #a7b4c9;
+		border: #a7b4c9;
 	}
 
-	.fork {
-		background: #000000;
-		color: #ffffff;
+	.fork:hover {
+		background-color:#e0e4eb;
 	}
 }
 
@@ -29,18 +28,4 @@ body {
 	background:  #a7b4c9;
 }
 
-.downloads {
-	background: #000000;
-	color: #ffffff;
-}
-
-.button {
-	background: #1c4679;
-	color: #dd2113;
-}
-
-.fork {
-	background: #000000;
-	color: #ffffff;
-}
 
