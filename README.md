@@ -1,4 +1,4 @@
-![Gurobi](assets/img/gurobi-light.png)
+[![Gurobi](assets/img/gurobi-light.png)](www.gurobi.com)
 
 ## Target audience
 Data scientists, engineers, computer scientists, economists, and in general, professionals with a background in mathematical modeling and a basic knowledge of Python.
