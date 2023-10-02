@@ -13,18 +13,12 @@ about building mathematical optimization models. The reader should also consult 
 [documentation](https://www.gurobi.com/resources/?category-filter=documentation) 
 of the Gurobi Python API.
 
-https://gurobi.github.io/modeling-examples/curve_fitting/curve_fitting.html
+## View the notebook
+
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/curve_fitting/curve_fitting.ipynb)
 
 
-## Licensing
+----
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-You can download the repository containing this and other examples 
-by clicking [here](https://github.com/Gurobi/modeling-examples/archive/master.zip). 
-In order to run this Jupyter Notebook properly, you must have a Gurobi license. 
-If you do not have one, you can request 
-an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) 
-as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
-
-
-Copyright © 2020 Gurobi Optimization, LLC
-
+© Gurobi Optimization, LLC

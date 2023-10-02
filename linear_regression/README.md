@@ -38,8 +38,12 @@ It is shown that, unlike the Lasso, L0-Regression is scale invariant and does no
 
 Bertsimas et. al. (2016) successfully applied mathematical programming to solve the best-subset-selection problem for linear regression.
 
-## Licensing
+## View the notebook
 
-In order to run this Jupyter Notebook properly, you must have a valid Gurobi license. If you do not have one, you can request an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/linear_regression/l0_regression.ipynb)
+
+----
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
+
 
 Copyright © 2020 Gurobi Optimization, LLC

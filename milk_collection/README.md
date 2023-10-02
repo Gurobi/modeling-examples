@@ -12,19 +12,12 @@ This modeling example is at the advanced level, where we assume that you know Py
 and you have  advanced knowledge of building mathematical optimization models. Typically, the objective function 
 and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.
 
-https://gurobi.github.io/modeling-examples/milk_collection/milk_collection.html
 
-## Download the Repository
+## View the notebook
 
-You can download the repository containing this and other examples 
-by clicking [here](https://github.com/Gurobi/modeling-examples/archive/master.zip). 
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/milk_collection/milk_collection.ipynb)
 
-## Gurobi License
+----
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-
-In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can 
-request an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=3PW&utm_medium=OT&utm_campaign=WW-MU-MUI-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_Milk_Collection_COM_EVAL_GitHub&utm_term=Milk%20Collection&utm_content=C_JPM) 
-as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=3PW&utm_medium=OT&utm_campaign=WW-MU-EDU-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_Milk_Collection_COM_EVAL_GitHub&utm_term=Milk%20Collection&utm_content=C_JPM) 
-as an *academic user*.
-
-Copyright © 2020 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

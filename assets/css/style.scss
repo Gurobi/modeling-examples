@@ -1,0 +1,45 @@
+---
+---
+
+@import 'jekyll-theme-leap-day';
+
+header {
+	background: #0b1a3c;
+	color: #f4f4f4;
+}
+
+#banner {
+	background: #dd2113;
+	border: unset;
+
+	.fork {
+		background: #a7b4c9;
+		border: unset;
+	}
+
+	.fork:hover {
+		background:#e0e4eb;
+	}	
+	
+	.downloads {	
+		
+		span {
+			color: #f4f4f4;
+		}
+
+		.button {
+			background: #a7b4c9;
+			border: unset;
+		}
+
+		.button:hover {
+			background:#e0e4eb;
+		}
+	}
+}
+
+body {
+	background:  #e0e4eb;
+}
+
+

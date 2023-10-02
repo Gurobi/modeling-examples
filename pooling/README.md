@@ -28,13 +28,13 @@ Two alternative formulations based on Bilinear Programming, a subclass of non-co
 
 It is shown that solving Bilinear Programs with Gurobi is as easy as configuring a single global parameter. The dramatic difference in performance of alternative formulations is also highlighted.
 
-## Licensing
 
-In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=CommercialDataScience) as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=Github&utm_medium=website_JupyterME&utm_campaign=AcademicDataScience) as an *academic user*.
+## View the notebook
 
-## HTML Example URL
-
-https://gurobi.github.io/modeling-examples/pooling/std_pooling.html
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/pooling/std_pooling.ipynb)
 
 
-Copyright © 2020 Gurobi Optimization, LLC
+----
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
+
+© Gurobi Optimization, LLC

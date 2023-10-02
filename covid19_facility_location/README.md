@@ -13,18 +13,12 @@ determine the optimal location and capacity of healthcare facilities in order to
 This modeling example is at the beginner level, where we assume that you know Python and that you have some knowledge of 
 how to build mathematical optimization models.
 
-https://gurobi.github.io/modeling-examples/covid19_facility_location/covid19_facility_location.html
+## View the notebook
 
-## Download the Repository
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/covid19_facility_location/covid19_facility_location.ipynb)
 
-You can download the repository containing this and other examples 
-by clicking [here](https://github.com/Gurobi/modeling-examples/archive/master.zip). 
 
-## Gurobi License
+----
+For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
-In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request an 
-[evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=3PW&utm_medium=OT&utm_campaign=WW-MU-MUI-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_Covid19_HC_Facility_Location_COM_EVAL_GitHub&utm_term=Covid-19%20Healthcare%20Facility%20Location&utm_content=C_JPM) 
-as a *commercial user*, or download a 
-[free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=3PW&utm_medium=OT&utm_campaign=WW-MU-EDU-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_Covid19_HC_Facility_Location_COM_EVAL_GitHub&utm_term=Covid-19%20Healthcare%20Facility%20Location&utm_content=C_JPM) as an *academic user*.
-
-Copyright © 2020 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC

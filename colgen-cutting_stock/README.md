@@ -10,23 +10,12 @@ This modeling example is at the advanced level, where we assume that you know Py
 that you have advanced knowledge of building mathematical optimization models. Typically, the objective function 
 and/or constraints of these examples are complex or require advanced features of the Gurobi Python API.
 
-[Google Colab link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/colgen-cutting_stock/colgen-cutting_stock_gcl.ipynb)
+## View the notebook
 
-https://gurobi.github.io/modeling-examples/colgen-cutting_stock/colgen-cutting_stock.html
-
-## Download the Repository
-
-You can download the repository containing this and other examples 
-by clicking [here](https://github.com/Gurobi/modeling-examples/archive/master.zip). 
-
-## Gurobi License
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/colgen-cutting_stock/colgen-cutting_stock.ipynb)
 
 
-In order to run this Jupyter Notebook properly, you must have a Gurobi license. If you do not have one, you can request 
-an 
-[evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/?utm_source=3PW&utm_medium=OT&utm_campaign=WW-MU-OGS-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_standard-pooling_COM_EVAL_GITHUB_&utm_term=standard-pooling-problem&utm_content=C_JPM) 
-as a *commercial user*, or download a 
-[free license](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=3PW&utm_medium=OT&utm_campaign=WW-MU-OGS-OR-O_LEA-PR_NO-Q3_FY20_WW_JPME_standard-pooling_ACADEMIC_EVAL_GITHUB_&utm_term=standard-pooling-problem&utm_content=C_JPM) 
-as an *academic user*.
+----
+For details on licensing or on running the notebooks, see the overview on [Modeling Example](../)
 
-Copyright © 2020 Gurobi Optimization, LLC
+© Gurobi Optimization, LLC
