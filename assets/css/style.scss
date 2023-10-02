@@ -18,15 +18,21 @@ header {
 		background: #a7b4c9;
 		border: #a7b4c9;
 
-		.button {
-			background: #a7b4c9;
-			border: #a7b4c9;
-		}
 	}
 
 	.fork:hover {
 		background:#e0e4eb;
 	}
+
+	.button {
+		background: #a7b4c9;
+		border: #a7b4c9;
+	}
+
+	.button:hover {
+		background:#e0e4eb;
+	}
+	
 }
 
 body {
