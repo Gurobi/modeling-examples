@@ -14,6 +14,8 @@ that you have advanced knowledge of building mathematical optimization models. T
 
 [Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/protein_folding/protein_folding.ipynb)
 
+Note that you need a full Gurobi license to run this notebook.
+
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
 
