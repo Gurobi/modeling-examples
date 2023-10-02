@@ -14,7 +14,25 @@ header {
 	background: #dd2113;
 	border: #dd2113;
 	color: #dd2113;
-	
+
+	.button {
+		background: #1c4679;
+		color: #dd2113;
+	}
+
+	.fork {
+		background: #000000;
+		color: #ffffff;
+	}
+}
+
+body {
+	background:  #a7b4c9;
+}
+
+.downloads {
+	background: #000000;
+	color: #ffffff;
 }
 
 .button {
@@ -27,6 +45,3 @@ header {
 	color: #ffffff;
 }
 
-body {
-	background:  #a7b4c9;
-}
