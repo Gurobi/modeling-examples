@@ -55,3 +55,8 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: "Noticia Text";
 }
 
+@media print, screen and (max-width: 1060px) {
+	section {
+		padding: 20px 10px;
+	}
+}
