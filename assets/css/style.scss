@@ -40,6 +40,7 @@ header {
 
 body {
 	background:  #e0e4eb;
+	font-family: "Roboto";
 }
 
 ul {
@@ -49,3 +50,8 @@ ul {
 hr {
 	background-image: url("../img/hr.png");
 }
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Noticia Text";
+}
+
