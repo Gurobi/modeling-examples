@@ -6,6 +6,11 @@
 header {
 	background: #1c4679;
 	color: #f4f4f4;
+	width: unset;
+}
+
+header a {
+    color: #f4f4f4;
 }
 
 #banner {
@@ -40,6 +45,7 @@ header {
 
 body {
 	background:  #e0e4eb;
+	font-family: "Roboto";
 }
 
 ul {
@@ -48,4 +54,18 @@ ul {
 
 hr {
 	background-image: url("../img/hr.png");
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Noticia Text";
+}
+
+header h1 {
+	font-family: "Noticia Text";
+}
+
+@media print, screen and (max-width: 1060px) {
+	section {
+		padding: 20px 10px;
+	}
 }
