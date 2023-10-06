@@ -1,7 +1,7 @@
-# Factory Planning I and II
+# Factory Planning
 
 ---
-## Factory Planning I
+## Factory Planning 1
 This model is an example of a production planning problem. In such problems, the goal is to create an 
 optimal production plan to maximize profit.
 
@@ -13,10 +13,10 @@ the Gurobi Python API. In addition, you should have some knowledge about buildin
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/factory_planning_1_2/factory_planning_1.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/factory_planning/factory_planning_1.ipynb)
 
 ---
-## Factory Planning II
+## Factory Planning 2
 This model extends the Factory Planning I example above to add complexity whereby the month where each machine is 
 down will, instead of being fixed, be determined as a part of the optimized plan.
 
@@ -28,7 +28,7 @@ the Gurobi Python API. In addition, you should have some knowledge about buildin
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/factory_planning_1_2/factory_planning_2.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/factory_planning/factory_planning_2.ipynb)
 
 
 ----

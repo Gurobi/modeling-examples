@@ -1,4 +1,4 @@
-# Supply Network Design 1 and 2
+# Supply Network Design
 
 ---
 ## Supply Network Design 1
@@ -15,7 +15,7 @@ building mathematical optimization models.
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/supply_network_design_1_2/supply_network_design_1.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/supply_network_design/supply_network_design_1.ipynb)
 
 ---
 ## Supply Network Design 2
@@ -33,7 +33,7 @@ building mathematical optimization models.
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/supply_network_design_1_2/supply_network_design_2.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/supply_network_design/supply_network_design_2.ipynb)
 
 
 ----
