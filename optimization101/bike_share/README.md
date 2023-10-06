@@ -22,7 +22,7 @@ We use a mixture of Machine Learning (ML) and Mathematical Optimization (MO) to 
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/decision-spot/bike_share/blob/main/bike_rebalancing_complete.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/bike_share/bike_rebalancing_complete.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../../)<br>
