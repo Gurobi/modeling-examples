@@ -1,7 +1,7 @@
-# Food Manufacture I and II
+# Food Manufacture
 
 ---
-## Food Manufacture I
+## Food Manufacture 1
 This model is an example of a blending problem. In blending optimization problems, multiple raw materials are combined 
 in a way the meets the stated constraints for the lowest cost.
 
@@ -13,10 +13,10 @@ Gurobi Python API. In addition, you should have some knowledge about building ma
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/food_manufacturing_1_2/food_manufacture_1.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/food_manufacturing/food_manufacture_1.ipynb)
 
 ---
-## Food Manufacture II
+## Food Manufacture 2
 This model extends the Food Manufacture I example above to include new constraints that change the problem from a 
 fairly easy to solve linear programming model to an mixed integer model that is harder to solve.
 
@@ -29,7 +29,7 @@ and/or constraints of these examples are complex or require advanced features of
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/food_manufacturing_1_2/food_manufacture_2.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/food_manufacturing/food_manufacture_2.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)

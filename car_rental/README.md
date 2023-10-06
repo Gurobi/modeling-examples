@@ -1,4 +1,4 @@
-# Car Rental 1 and 2
+# Car Rental
 
 ---
 ## Car Rental 1
@@ -15,7 +15,7 @@ have some knowledge of building mathematical optimization models.
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/car_rental_1_2/car_rental_1.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/car_rental/car_rental_1.ipynb)
 
 ---
 ## Car Rental 2
@@ -32,7 +32,7 @@ you have some knowledge of building mathematical optimization models.
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/car_rental_1_2/car_rental_2.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/car_rental/car_rental_2.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
