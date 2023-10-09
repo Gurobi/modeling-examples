@@ -11,7 +11,7 @@ The data and its full description can be found here: https://github.com/INFORMSJ
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/drone_network_1_2/drone_network.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/drone_network/drone_network.ipynb)
 
 
 ----
