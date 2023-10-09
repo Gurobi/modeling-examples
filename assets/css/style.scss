@@ -69,3 +69,17 @@ header h1 {
 		padding: 20px 10px;
 	}
 }
+
+details summary {
+    cursor: pointer;
+}
+
+details[open] summary::before {
+    content: "▼";
+    margin-right: 5px;
+}
+
+details summary::before {
+    content: "▶︎";
+    margin-right: 6px;
+}
