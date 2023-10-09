@@ -30,7 +30,7 @@ some knowledge of building mathematical optimization models.
 
 ### View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/electrical_power_generation/electrical_power2.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/electrical_power_generation/electrical_power_2.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../)
