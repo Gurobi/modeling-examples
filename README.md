@@ -45,7 +45,7 @@ The notebooks at beginner level assume you know Python and have some knowledge a
   Try this Jupyter Notebook Modeling Example to learn how you can fit a function to a set of observations. 
 - [Facility Location:](facility_location)
   In this example, we will show you how to tackle a facility location problem that involves determining the number and location of warehouses that are needed to supply a group of supermarkets.
-- [Fantasy Basketball:](fantasy_basketball_1_2)
+- [Fantasy Basketball:](fantasy_basketball)
   This example combines machine learning and optimization modeling in fantasy basketball.
 - [Food Program:](food_program)
   Transporting food in a global transportation network is a challenging undertaking. In this notebook, we will build an optimization model to set up a food supply chain based on real data from the UN World Food Program.
@@ -55,7 +55,7 @@ The notebooks at beginner level assume you know Python and have some knowledge a
   Companies across almost every industry are looking to optimize their marketing campaigns. In this Jupyter Notebook, we will explore a marketing campaign optimization problem that is common in the banking and financial services industry, which involves determining which products to offer to individual customers in order to maximize total expected profit while satisfying various business constraints. 
 - [Offshore Wind Farming:](offshore_wind_farming)
   In this example, we will learn how to solve an offshore wind power generation problem. The goal of the problem is to figure out which underwater cables should be laid to connect an offshore wind farm power network at a minimum cost. 
-- [Supply Network Design 1:](supply_network_design_1_2)
+- [Supply Network Design 1:](supply_network_design)
   Try this Jupyter Notebook Modeling Example to learn how to solve a classic supply network design problem that involves finding the minimum cost flow through a network. We will show you how – given a set of factories, depots, and customers – you can use mathematical optimization to determine the best way to satisfy customer demand while minimizing shipping costs.
   In part 2, we additionally determine which depots to open or close in order to minimize overall costs.
 
@@ -68,7 +68,7 @@ Examples at the intermediate level assume that you know Python and are familiar 
   Try this example to learn how to use mathematical optimization to tackle a common, but critical agricultural pricing problem: Determining the prices and demand for a country’s dairy products in order to maximize total revenue derived from the sales of those products. You will learn how to model this problem as a quadratic optimization problem using the Gurobi Python API and solve it using the Gurobi Optimizer.
 - [Linear Regression:](linear_regression)
   In this example, you will learn how to perform linear regression with feature selection using mathematical programming. We will show you how to construct a mixed-integer quadratic programming (MIQP) model of this linear regression problem.
-- [Car Rental:](car_rental_1_2)
+- [Car Rental:](car_rental)
   This notebook will teach you how you can use mathematical optimization to figure out how many cars a car rental company should own and where they should be located every day to maximize weekly profits.
   Part 2 considers an extension on how mathematical optimization can be used to figure out in which locations a car rental company should expand repair capacity.
 - [Customer Assignment:](customer_assignment)
@@ -77,13 +77,13 @@ Examples at the intermediate level assume that you know Python and are familiar 
   In this example, you will discover how mathematical optimization can be used to address a macroeconomic planning problem that a country may face. The goal is to determine different possible growth patterns for the economy.
 - [Efficiency Analysis:](efficiency_analysis)
   How can mathematical optimization be used to measure the efficiency of an organization? Find out in this example, where you will learn how to formulate an Efficiency Analysis model as a linear programming problem.
-- [Electrical Power Generation:](electrical_power_generation_1_2)
+- [Electrical Power Generation:](electrical_power_generation)
   This model is an example of an electrical power generation problem (also known as a unit commitment problem). It selects an optimal set of power stations to turn on in order to satisfy anticipated power demand over a 24-hour time horizon.
   In part 2, the model is extended and adds the option of using hydroelectric power plants to satisfy demand.
-- [Factory Planning:](factory_planning_1_2)
+- [Factory Planning:](factory_planning)
   In this example, we create an optimal production plan that maximize profits.
   In part 2, we create an optimal production plan that will not only maximize profits, but also determine the months in which to perform maintenance operations on the machines.
-- [Food Manufacturing:](food_manufacturing_1_2)
+- [Food Manufacturing:](food_manufacturing)
   You will learn how to create an optimal multi-period production plan for a product that requires a number of ingredients – each of which has different costs, restrictions, and features. 
   In part 2,  additional constraints are considered that change the problem type from a linear program (LP) problem to a mixed-integer program (MIP) problem, making it harder to solve.
 - [Logical Design:](logical_design)
@@ -180,7 +180,7 @@ You can download the repository containing all examples by clicking [here](https
 - [Airline Planning After Flight Disruption](aviation_planning)
 - [Agricultural Pricing](agricultural_pricing)
 - [Burrito Game](burrito_optimization_game)
-- [Car Rental](car_rental_1_2)
+- [Car Rental](car_rental)
 - [Cell Tower](cell_tower_coverage)
 - [Cutting Stock](colgen-cutting_stock)
 - [Constraint Optimization](constraint_optimization)
@@ -188,15 +188,15 @@ You can download the repository containing all examples by clicking [here](https
 - [Curve Fitting](curve_fitting)
 - [Customer Assignment](customer_assignment)
 - [Decentralization Planning](decentralization_planning)
-- [Drone Network](drone_network_1_2)
+- [Drone Network](drone_network)
 - [Economic Planning](economic_planning)
 - [Efficiency Analysis](efficiency_analysis)
-- [Electrical Power Generation](electrical_power_generation_1_2)
+- [Electrical Power Generation](electrical_power_generation)
 - [Facility Location](facility_location)
-- [Factory Planning](factory_planning_1_2)
-- [Fantasy Basketball](fantasy_basketball_1_2)
+- [Factory Planning](factory_planning)
+- [Fantasy Basketball](fantasy_basketball)
 - [Farm Planning](farm_planning)
-- [Food Manufacturing](food_manufacturing_1_2)
+- [Food Manufacturing](food_manufacturing)
 - [Food Program](food_program)
 - [GDD 2023: Intro to Gurobipy](gurobi_days_digital_2023/intro_to_gurobipy)
 - [Intro to Mathematical Optimization Modeling / MILP Tutorial](milp_tutorial)
@@ -220,7 +220,7 @@ You can download the repository containing all examples by clicking [here](https
 - [Protein Comparison](protein_comparison)
 - [Protein Folding](protein_folding)
 - [Refinery](refinery)
-- [Supply Network Design](supply_network_design_1_2)
+- [Supply Network Design](supply_network_design)
 - [Technician Routing and Scheduling](technician_routing_scheduling)
 - [Text Dissimilarity](text_dissimilarity)
 - [Traveling Salesman](traveling_salesman)
