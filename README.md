@@ -12,20 +12,20 @@ These modeling examples are coded using the Gurobi Python API and distributed as
 These modeling examples illustrate important capabilities of the Gurobi Python API, including adding decision variables, building linear expressions, adding constraints, and adding an objective function.
 They touch on more advanced features such as generalized constraints, piecewise-linear functions, and multi-objective hierarchical optimization.  They also illustrate common constraint types such as “allocation constraints”, “balance constraints”, “sequencing constraints”, “precedence constraints”, and others.
 
-The examples are from different business purposes and reflect different levels on building mathematical optimization models.
+The examples are from different business purposes and reflect different levels of building mathematical optimization models.
 
 ## Introductory examples
 
 The introductory examples walk you through the process of building a mathematical optimization model.
-The basic requirements are that you know Python and have a background in a discipline that use quantitative methods.
+The basic requirements are that you know Python and have a background in a discipline that uses quantitative methods.
 
 - [GDD 2023: Intro to Gurobipy:](gurobi_days_digital_2023/intro_to_gurobipy)
-  This tutorial was given at the Gurobi Days Digital 2023. It is an introduction to the Gurobi Python API Gurobipy. It walks you through the basics of Gurobipy and explains the usage with some small examples.
+  This tutorial was given at the Gurobi Days Digital 2023. It is an introduction to the Gurobi Python API Gurobipy. It walks you through the basics of Gurobipy and explains its usage with some small examples.
 - [Intro to Mathematical Optimization Modeling:](milp_tutorial)
   This tutorial discusses the basics of mathematical modeling on the example of a simple assignment problem.
 - [Optimization 101:](optimization101)
   This tutorial is based on the Webinar on [Optimization 101 for Data Scientists](https://www.gurobi.com/events/optimization-101-for-data-scientists/) and consists of two modeling sessions with exercises and questions as well as a discussion of a use case. 
-- The following examples discusses the input data and the optimization model step by step in a very detailed way
+- The following examples discuss the input data and the optimization model step by step in a very detailed way
   - [Airline Planning After Flight Disruption](aviation_planning)
   - [Music Recommendation](music_recommendation)
   - [Text Dissimilarity](text_dissimilarity)
@@ -34,12 +34,12 @@ The basic requirements are that you know Python and have a background in a disci
 
 ## Beginner Examples
 
-The notebooks at beginner level assume you know Python and have some knowledge about building mathematical optimization models.
+The notebooks at the beginner level assume you know Python and have some knowledge about building mathematical optimization models.
 
 - [3D Tic-Tac-Toe:](3d_tic_tac_toe)
   This example will show you how a binary programming model can be used to capture simple logical constraints.
 - [Cell Tower:](cell_tower_coverage)
-  In this example, you will learn how to define and solve a covering type problem, namely,
+  In this example, you will learn how to define and solve a covering-type problem, namely,
   how to configure a network of cell towers to provide signal coverage to the largest number of people.
 - [Curve Fitting:](curve_fitting)
   Try this Jupyter Notebook Modeling Example to learn how you can fit a function to a set of observations. 
@@ -50,7 +50,7 @@ The notebooks at beginner level assume you know Python and have some knowledge a
 - [Food Program:](food_program)
   Transporting food in a global transportation network is a challenging undertaking. In this notebook, we will build an optimization model to set up a food supply chain based on real data from the UN World Food Program.
 - [Market Sharing:](market_sharing)
-  In this example, we will show you how to solve a goal programming problem that involves allocating the retailers to two divisions of a company in order to optimize the trade-offs of several market sharing goals. 
+  In this example, we will show you how to solve a goal programming problem that involves allocating the retailers to two divisions of a company in order to optimize the trade-offs of several market-sharing goals. 
 - [Marketing Campaign Optimization:](marketing_campaign_optimization)
   Companies across almost every industry are looking to optimize their marketing campaigns. In this Jupyter Notebook, we will explore a marketing campaign optimization problem that is common in the banking and financial services industry, which involves determining which products to offer to individual customers in order to maximize total expected profit while satisfying various business constraints. 
 - [Offshore Wind Farming:](offshore_wind_farming)
@@ -81,8 +81,8 @@ Examples at the intermediate level assume that you know Python and are familiar 
   This model is an example of an electrical power generation problem (also known as a unit commitment problem). It selects an optimal set of power stations to turn on in order to satisfy anticipated power demand over a 24-hour time horizon.
   In part 2, the model is extended and adds the option of using hydroelectric power plants to satisfy demand.
 - [Factory Planning:](factory_planning)
-  In this example, we create an optimal production plan that maximize profits.
-  In part 2, we create an optimal production plan that will not only maximize profits, but also determine the months in which to perform maintenance operations on the machines.
+  In this example, we create an optimal production plan that maximizes profits.
+  In part 2, we create an optimal production plan that will not only maximize profits but also determine the months in which to perform maintenance operations on the machines.
 - [Food Manufacturing:](food_manufacturing)
   You will learn how to create an optimal multi-period production plan for a product that requires a number of ingredients – each of which has different costs, restrictions, and features. 
   In part 2,  additional constraints are considered that change the problem type from a linear program (LP) problem to a mixed-integer program (MIP) problem, making it harder to solve.
@@ -108,7 +108,7 @@ For modeling examples at the advanced level, we assume that you know Python and 
 - [Constraint Optimization:](constraint_optimization)
   In this example, we consider a constraint of an integer programming model where all the decision variables in the constraint are binary, the goal is to find another constraint involving the same binary variables that is logically equivalent to the original constraint, but that has the smallest possible absolute value of the right-hand side. 
 - [Decentralization Planning:](decentralization_planning)
-  This model is an advanced version of a facility location problem. Given a set of departments of a company, and potential cities where these departments can be located, we want to determine the "best" location of each department in order to maximize gross margins.
+  This model is an advanced version of a facility location problem. Given a set of departments of a company and potential cities where these departments can be located, we want to determine the "best" location of each department in order to maximize gross margins.
 - [Farm Planning:](farm_planning)
   This is an example of an advanced production planning problem. 
 - [Lost Luggage Distribution:](lost_luggage_distribution)
@@ -130,9 +130,227 @@ For modeling examples at the advanced level, we assume that you know Python and 
 - [Traveling Salesman:](traveling_salesman)
   This notebook covers one of the most famous combinatorial optimization problems in existence: the Traveling Salesman Problem (TSP). The goal of the TSP – to find the shortest possible route that visits each city once and returns to the original city – is simple, but solving the problem is a complex and challenging endeavor. This example uses the [callback](https://www.gurobi.com/documentation/current/refman/py_cb_s.html) feature of Gurobi.
 - [Workforce Scheduling:](workforce)
-  In this notebook we demonstrate how you can use mathematical optimization to generate an optimal workforce schedule that minimizes the number of temporary workers your company needs to hire and maximizes employee fairness. The problem is formulated as a multi-objective mixed-integer-programming (MIP) model and uses the [multiple objectives feature](https://www.gurobi.com/documentation/current/refman/multiple_objectives.html) of Gurobi.
+  In this notebook, we demonstrate how you can use mathematical optimization to generate an optimal workforce schedule that minimizes the number of temporary workers your company needs to hire and maximizes employee fairness. The problem is formulated as a multi-objective mixed-integer-programming (MIP) model and uses the [multiple objectives feature](https://www.gurobi.com/documentation/current/refman/multiple_objectives.html) of Gurobi.
 - [Yield Management:](yield_management)
-  In this example, we will show you how an airline can use the AI technology to devise an optimal seat pricing strategy. You will learn how to formulate this Yield Management Problem as a three-period stochastic programming problem.
+  In this example, we will show you how an airline can use AI technology to devise an optimal seat pricing strategy. You will learn how to formulate this Yield Management Problem as a three-period stochastic programming problem.
+
+## Examples via Business Needs
+
+<details>  
+  <summary>Automation</summary>
+  <!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="marketing_campaign_optimization">Marketing Campaign Optimization</a> (beginner)</li>
+    <li><a href="supply_network_design">Supply Network Design</a> (beginner)</li>
+    <li><a href="technician_routing_scheduling">Technician Routing and Scheduling</a> (intermediate)</li>
+    <li><a href="manpower_planning">Manpower Planning</a> (advanced)</li>
+    <li><a href="workforce">Workforce Scheduling</a> (advanced) </li>
+  </ul>
+</details>
+
+<details>
+  <summary>Customer Management</summary>
+  <!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="supply_network_design">Supply Network Design</a> (beginner)</li>
+    <li><a href="covid19_facility_location">Covid19 Facility Optimization</a> (beginner)</li>
+    <li><a href="yield_management">Yield Management</a> (advanced)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Forecasting</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="price_optimization">Price Optimization</a> (introductory)</li>
+    <li><a href="music_recommendation">Music Recommendation</a> (introductory)</li>
+    <li><a href="fantasy_basketball">Fantasy Basketball</a> (beginner)</li>
+    <li><a href="covid19_facility_location">Covid19 Facility Optimization</a> (beginner)</li>
+    <li><a href="agricultural_pricing">Agricultural Pricing</a> (intermediate)</li>
+    <li><a href="linear_regression">Linear Regression</a> (intermediate)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Inventory Optimization</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="price_optimization">Price Optimization</a> (introductory)</li>
+    <li><a href="food_program">Food Program</a> (beginner)</li>
+    <li><a href="car_rental">Car Rental</a> (intermediate)</li>
+    <li><a href="economic_planning">Economic Planning</a> (intermediate)</li>
+    <li><a href="factory_planning">Factory Planning</a> (intermediate)</li>
+    <li><a href="food_manufacturing">Food Manufacturing</a> (intermediate)</li>
+    <li><a href="farm_planning">Farm Planning</a> (advanced)</li>
+  </ul>
+</details>  
+
+<details>
+<summary>Location Planning</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="cell_tower_coverage">Cell Tower</a> (beginner)</li>
+    <li><a href="facility_location">Facility Location</a> (beginner)</li>
+    <li><a href="car_rental">Car Rental</a> (intermediate)</li>
+    <li><a href="customer_assignment">Customer Assignment</a> (intermediate)</li>
+    <li><a href="opencast_mining">Opencast Mining</a> (intermediate)</li>
+    <li><a href="decentralization_planning">Decentralization Planning</a> (advanced)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Logistics</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="price_optimization">Price Optimization</a> (introductory)</li>
+    <li><a href="supply_network_design">Supply Network Design</a> (beginner)</li>
+    <li><a href="food_program">Food Program</a> (beginner)</li>
+    <li><a href="traveling_salesman">Traveling Salesman</a> (advanced)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Marketing</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="music_recommendation">Music Recommendation</a> (introductory)</li>
+    <li><a href="marketing_campaign_optimization">Marketing Campaign Optimization</a> (beginner)</li>
+    <li><a href="customer_assignment">Customer Assignment</a> (intermediate)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Network Optimization</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="aviation_planning">Airline Planning After Flight Disruption</a> (introductory)</li>
+    <li><a href="food_program">Food Program</a> (beginner)</li>
+    <li><a href="supply_network_design">Supply Network Design</a> (beginner)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Operations</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="aviation_planning">Airline Planning After Flight Disruption</a> (introductory)</li>
+    <li><a href="price_optimization">Price Optimization</a> (introductory)</li>
+    <li><a href="covid19_facility_location">Covid19 Facility Optimization</a> (beginner)</li>
+    <li><a href="power_generation">Power Generation</a> (intermediate)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Portfolio Management</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="portfolio_selection_optimization">Portfolio Selection Optimization</a> (advanced)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Production</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="economic_planning">Economic Planning</a> (intermediate)</li>
+    <li><a href="efficiency_analysis">Efficiency Analysis</a> (intermediate)</li>
+    <li><a href="electrical_power_generation">Electrical Power Generation</a> (intermediate)</li>
+    <li><a href="factory_planning">Factory Planning</a> (intermediate)</li>
+    <li><a href="food_manufacturing">Food Manufacturing</a> (intermediate)</li>
+    <li><a href="mining">Mining</a> (intermediate)</li>
+    <li><a href="power_generation">Power Generation</a> (intermediate)</li>
+    <li><a href="refinery">Refinery</a> (intermediate)</li>
+    <li><a href="farm_planning">Farm Planning</a> (advanced)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Research</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="curve_fitting">Curve Fitting</a> (beginner)</li>
+    <li><a href="linear_regression">Linear Regression</a> (intermediate)</li>
+    <li><a href="efficiency_analysis">Efficiency Analysis</a> (intermediate)</li>
+    <li><a href="constraint_optimization">Constraint Optimization</a> (intermediate)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Resource</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="price_optimization">Price Optimization</a> (introductory)</li>
+    <li><a href="economic_planning">Economic Planning</a> (intermediate)</li>
+    <li><a href="electrical_power_generation">Electrical Power Generation</a> (intermediate)</li>
+    <li><a href="power_generation">Power Generation</a> (intermediate)</li>
+    <li><a href="food_manufacturing">Food Manufacturing</a> (intermediate)</li>
+    <li><a href="farm_planning">Farm Planning</a> (advanced)</li>
+    <li><a href="yield_management">Yield Management</a> (advanced)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Routing</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="food_program">Food Program</a> (beginner)</li>
+    <li><a href="technician_routing_scheduling">Technician Routing and Scheduling</a> (intermediate)</li>
+    <li><a href="lost_luggage_distribution">Lost Luggage Distribution</a> (advanced)</li>
+    <li><a href="milk_collection">Milk Collection</a> (advanced)</li>    
+    <li><a href="traveling_salesman">Traveling Salesman</a> (advanced)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Sales Optimization</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="price_optimization">Price Optimization</a> (introductory)</li>
+    <li><a href="marketing_campaign_optimization">Marketing Campaign Optimization</a> (beginner)</li>
+    <li><a href="customer_assignment">Customer Assignment</a> (intermediate)</li>
+    <li><a href="food_manufacturing">Food Manufacturing</a> (intermediate)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Supply Chain</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="market_sharing">Market Sharing</a> (beginner)</li>
+    <li><a href="supply_network_design">Supply Network Design</a> (beginner)</li>
+    <li><a href="food_program">Food Program</a> (beginner)</li>
+    <li><a href="power_generation">Power Generation</a> (intermediate)</li>
+    <li><a href="traveling_salesman">Traveling Salesman</a> (advanced)</li>
+  </ul>
+</details>
+
+<details>
+<summary>Allocation/Scheduling</summary>
+<!--All you need is a blank line-->
+
+  <ul>
+    <li><a href="technician_routing_scheduling">Technician Routing and Scheduling</a> (intermediate)</li>
+    <li><a href="manpower_planning">Manpower Planning</a> (advanced)</li>
+    <li><a href="traveling_salesman">Traveling Salesman</a> (advanced)</li>
+    <li><a href="workforce">Workforce Scheduling</a> (advanced)</li>
+  </ul>
+</details>
 
 
 It is also possible to browse through the examples w.r.t. difficulty level and business needs on the [Gurobi website](https://www.gurobi.com/jupyter_models/).
@@ -142,11 +360,11 @@ It is also possible to browse through the examples w.r.t. difficulty level and b
 
 You can access all the examples in Google Colab, which is a free, online Jupyter Notebook environment that allows you to write and execute Python code through your browser. You will need to be signed into a Google account to execute the notebooks. 
 But you do not need an account if you just want to look at the notebooks.
-For each example the respective colab link is given in the readme:
+For each example, the respective colab link is given in the readme:
 + To run the example the first time, choose “Runtime” and then click “Run all”.
 + All the cells in the Jupyter Notebook will be executed.
 + The example will install the gurobipy package. The Gurobi
-  pip package includes a size-limited trial license equivalent to the Gurobi "online course" license. For most of the notebooks this restricted license is sufficient to run them. For others you will need a full license, see the license section below.
+  pip package includes a size-limited trial license equivalent to the Gurobi "online course" license. For most of the notebooks, this restricted license is sufficient to run them. For others, you will need a full license, see the license section below.
 + You can also modify and re-run individual cells.
 + For subsequent runs, choose “Runtime” and click “Restart and run all”.
 + The Gurobi Optimizer will find the optimal solution of the modeling example.
@@ -159,11 +377,11 @@ by clicking [here](https://github.com/Gurobi/modeling-examples/archive/refs/head
 - [Start Jupyter Notebook Server](https://docs.jupyter.org/en/latest/running.html#id2)
 - Open the particular notebook in Jupyter Notebook. 
 - The notebook will install the gurobipy package and other dependencies. The Gurobi
-  pip package includes a size-limited trial license equivalent to the Gurobi "online course" license. For most of the notebooks this restricted license is sufficient. For others you will need a full license.
+  pip package includes a size-limited trial license equivalent to the Gurobi "online course" license. For most of the notebooks, this restricted license is sufficient. For others, you will need a full license.
 
 ## Licensing
 
-In order to run the Jupyter Notebooks you will need a Gurobi license. Most of the notebooks can be ran using the "online course" license version of Gurobi. This is a limited license and restricts the number of allowed variables and constraints. This restricted license comes also with the Gurobi pip package.
+In order to run the Jupyter Notebooks you will need a Gurobi license. Most of the notebooks can be run using the "online course" license version of Gurobi. This is a limited license and restricts the number of allowed variables and constraints. This restricted license comes also with the Gurobi pip package.
 You can also request a full license, i.e.,  
 an [evaluation license](https://www.gurobi.com/downloads/request-an-evaluation-license/) 
 as a *commercial user*, or download a [free license](https://www.gurobi.com/academia/academic-program-and-licenses/) as an *academic user*. The latter two license types allow you to run all notebooks.
