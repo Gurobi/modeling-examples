@@ -429,7 +429,6 @@ You can download the repository containing all examples by clicking [here](https
 - [Music Recommendation](music_recommendation)
 - [Offshore Wind Farming](offshore_wind_farming)
 - [Opencast Mining](opencast_mining)
-- [Price Optimization](price_optimization)
 - [Optimization 101](optimization101)
 - [Pooling](pooling)
 - [Portfolio Selection Optimization](portfolio_selection_optimization)
