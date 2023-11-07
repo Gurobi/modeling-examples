@@ -1,5 +1,5 @@
 
-# Optimization 101 for Data Scientists!
+# Optimization 201 for Data Scientists!
 
 ![Opti101Logo](Gurobi-Training-Opti-201.png)
 
