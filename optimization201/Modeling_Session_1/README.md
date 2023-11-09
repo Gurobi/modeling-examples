@@ -1,7 +1,7 @@
 # Modeling Session 1 - More Widget Distribution Optimization
 
 ## Problem
-Given demand data produced by a hypothetical machine learning model, as well as transportation costs and production capacity, determine the optimal production and shipment of widgets from a set of production facilities to distribution locations that minimizes cost. 
+Given demand data produced by a hypothetical machine learning model, as well as transportation costs and production capacity, determine the optimal production and shipment of widgets from a set of production facilities to distribution locations that minimize cost. 
 
 This is an extension of the same example from Opti 101's first modeling session.
 
