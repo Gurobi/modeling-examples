@@ -1,4 +1,4 @@
-# Modeling Session 2 - Renewable Energy and Storage Optimization
+# Modeling Session 2 - Hidden Modeling Gems in Renewable Energy and Storage Optimization
 
 ## Problem
 A univeristy building is going to hold classes for a week, which requires electricity to run. and the demand for electricity changes due to the course load. There is a solar panel to provide energy and two batteries that can store it. Additionally, electricity can be purchased from the gird. The goal of the problem is to find the battery charge and discharge schedule that will:
@@ -9,11 +9,10 @@ A univeristy building is going to hold classes for a week, which requires electr
 
 Along with the modeling example, an exercice is provided.
 
-
 ## Beware Spoilers!
 We also put **completed** versions of the modeling1 notebook and the exercise in the repo. If you want to work through the notebooks without everything filled in make sure not to open the completed versions.
 
-## View the notebook
+## Notebooks will be posted by the end of day Thursday, Nov 9
 ````
 [Google Colab Link - Modeling Session *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization101/Modeling_Session_2/modeling2.ipynb)
 
