@@ -1,0 +1,8 @@
+Route ID,Stop Number,Customer Name,Technician Name,Location Name,Job type,Processing Time,Customer Time Window Start,Customer Time Window End,Earliest Start,Latest Start,Earliest End,Latest End
+1,1,Customer1,Albert,Mannheim,Equipment Setup,30.0,0.0,30.0,24.0,30.0,54.0,60.0
+1,2,Customer7,Albert,Loerrach,Inspect/Service Equipment,60.0,360.0,480.0,360.0,390.0,420.0,450.0
+2,1,Customer2,Bob,Karlsruhe,Equipment Setup,30.0,30.0,150.0,50.0,150.0,80.0,180.0
+3,1,Customer4,Doris,Buehl,Equipment Installation,60.0,120.0,240.0,120.0,240.0,180.0,300.0
+3,2,Customer6,Doris,Lahr/Schwarzwald,Repair - Critical,60.0,300.0,420.0,300.0,420.0,360.0,480.0
+4,1,Customer3,Ed,Baden-Baden,Repair - Regular,60.0,60.0,180.0,67.0,180.0,127.0,240.0
+5,1,Customer5,Flor,Offenburg,Equipment Installation,60.0,240.0,360.0,240.0,360.0,300.0,420.0
