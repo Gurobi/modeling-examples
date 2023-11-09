@@ -10,6 +10,6 @@ You can review the Jupyter Notebooks here. For all examples a completed version 
 
 - Resources for the **second** [hands-on modeling session](Modeling_Session_2)
 
-- Resources for the **use case** [technitian assignment optimization](technician_assignment)
+- Resources for the **use case** [technician assignment optimization](technician_assignment)
 
 © Gurobi Optimization, LLC
