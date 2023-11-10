@@ -19,11 +19,11 @@ We also put **completed** versions of the modeling2 notebook and the exercises i
 
 [Google Colab Link - Modeling Session *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/modeling2.ipynb)
 
-[Google Colab Link - Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/Exercise_Set2.ipynb)
+[Google Colab Link - Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/exercise_Set2.ipynb)
 
 [Google Colab Link - Modeling Session *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/completed_modeling2.ipynb)
 
-[Google Colab Link - Exercise *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/completed_Exercise_Set2.ipynb)
+[Google Colab Link - Exercise *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/completed_exercise_Set2.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../../)
