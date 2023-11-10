@@ -42,5 +42,5 @@ Note that you must sign in with a Google account to be able to run the code in C
 The problem is modeled using Gurobi Python API. So, a Gurobi license is required to run this model.
 If you don't have a license, you can request a free commercial evaluation license 
 or a free academic license [here](https://www.gurobi.com/downloads/).
-The data used in the models is small enough to run the model with gurobi restricted license
+The data used in the models is small enough to run the model with a Gurobi restricted license
 (available via `pip install gurobi` as shown in the notebook).
