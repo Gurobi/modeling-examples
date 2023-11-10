@@ -15,15 +15,14 @@ This notebook will expand on the above problem (completed in Opti 101) by implem
 ## Beware Spoilers!
 We also put **completed** versions of the modeling2 notebook and the exercises in the repo. If you want to work through the notebooks without everything filled in, make sure not to open the completed versions.
 
-## Notebooks will be posted by the end of day Thursday, Nov 9.
+## Notebooks links
 
-````
 [Google Colab Link - Modeling Session *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/modeling2.ipynb)
-
+````
 [Google Colab Link - Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/Exercise_Set2.ipynb)
-
+````
 [Google Colab Link - Modeling Session *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/completed_modeling2.ipynb)
-
+````
 [Google Colab Link - Exercise *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization201/Modeling_Session_2/completed_Exercise_Set2.ipynb)
 ````
 ----
