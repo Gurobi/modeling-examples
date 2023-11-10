@@ -29,8 +29,7 @@ and in what sequence. This model is described and solved in the [technician_rout
   or even modify it as you please to get new results. Ensure the format of the output is similar
   in case you like to use the `resource_assignment` notebook afterward.
 
-The model size is intentionally small to ensure even those without access to Gurobi license can run the model 
-(check out [License Requirement](#license-requirement) section for more info about the license).
+The model size is intentionally small to ensure even those without access to a Gurobi license can run the model (check out [License Requirement](#license-requirement) section for more info about the license).
 
 ## Google Colab
 If you like to access the notebooks in Google Colab, click: 
