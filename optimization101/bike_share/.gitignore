@@ -10,7 +10,6 @@
 *.coverage
 *htmlcov/
 *.html
-*.zip
 
 # Jupyter Notebook
 .ipynb_checkpoints
