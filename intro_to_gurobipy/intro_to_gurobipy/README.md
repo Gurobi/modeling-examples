@@ -3,7 +3,7 @@ This notebook was used for the Gurobi Python API session at Gurobi Days Digital.
 
 ## View the notebook
 
-[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/gurobi_days_digital_2023/intro_to_gurobipy/intro_to_gurobipy.ipynb)
+[Google Colab Link](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/intro_to_gurobipy/intro_to_gurobipy.ipynb)
 
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../../)
