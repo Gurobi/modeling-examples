@@ -40,7 +40,6 @@ jupyter_client==8.6.1
 jupyter_core==5.7.2
 jupyterlab_widgets==3.0.10
 kiwisolver==1.4.5
-lightfm==1.17
 lxml==5.2.1
 MarkupSafe==2.1.5
 matplotlib==3.8.4
