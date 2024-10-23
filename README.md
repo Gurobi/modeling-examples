@@ -110,7 +110,9 @@ For modeling examples at the advanced level, we assume that you know Python and 
 - [Decentralization Planning:](decentralization_planning)
   This model is an advanced version of a facility location problem. Given a set of departments of a company and potential cities where these departments can be located, we want to determine the "best" location of each department in order to maximize gross margins.
 - [Farm Planning:](farm_planning)
-  This is an example of an advanced production planning problem. 
+  This is an example of an advanced production planning problem.
+- [Index Tracking:](index_tracking)
+  Index tracking portfolio optimization. 
 - [Lost Luggage Distribution:](lost_luggage_distribution)
   This is an example of a vehicle routing problem with time windows. It involves helping a company figure out the minimum number of vans required to deliver pieces of lost or delayed baggage to their rightful owners and determining the optimal assignment of vans to customers.
 - [Manpower Planning:](manpower_planning)
@@ -255,6 +257,7 @@ For modeling examples at the advanced level, we assume that you know Python and 
 
   <ul>
     <li><a href="portfolio_selection_optimization">Portfolio Selection Optimization</a> (advanced)</li>
+    <li><a href="index_tracking">Index Tracking</a> (advanced)</li>
   </ul>
 </details>
 
@@ -415,6 +418,7 @@ You can download the repository containing all examples by clicking [here](https
 - [Food Manufacturing](food_manufacturing)
 - [Food Program](food_program)
 - [GDD 2023: Intro to Gurobipy](gurobi_days_digital_2023/intro_to_gurobipy)
+- [Index Tracking](index_tracking)
 - [Intro to Mathematical Optimization Modeling / MILP Tutorial](milp_tutorial)
 - [Linear Regression](linear_regression)
 - [Logical Design](logical_design)

@@ -16,6 +16,7 @@ decorator==5.1.1
 et-xmlfile==1.1.0
 executing==2.0.1
 fastjsonschema==2.19.1
+fastparquet==2023.2.0
 folium==0.16.0
 fonttools==4.51.0
 frozendict==2.4.2
