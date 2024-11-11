@@ -10,7 +10,7 @@ The goal is to decide:
 - How to respond to disaster events at minimal cost
 
 ## Google Colab
-[Google Colab Link - ESUPS Case Study](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/ESUPS_case_study/disaster_prepositioning.ipynb)
+[Google Colab Link - ESUPS Case Study](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/ESUPS_case_study/opti202_disaster_prepositioning.ipynb)
 
 Note that you must sign in with a Google account to be able to run the code in Colab.
 
