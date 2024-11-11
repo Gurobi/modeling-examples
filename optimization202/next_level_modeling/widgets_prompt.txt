@@ -1,0 +1,27 @@
+We make widgets. We have a set of production facilities that produce boxes of widgets. There is also a set of distribution locations that will then distribute the widgets for sale. Each distribution center has a forecasted demand and each production facility has a min and max number of widgets it can make during this period. We need to ensure that each distribution facility receives enough widgets to satisfy demand from production and we want to do this at minimal cost. The minimum production is 75% of the production facilities max value. 
+
+Objective: Minimize cost of tranporting widgets from production to distribution facilities. 
+
+Constraints:
+Demand: We must meet demand at each distribution location
+Production limits: We have a maximum number of widgets each production facility can make. We also have that each facility must make at least 75% of its max production. 
+
+Data: 
+Transportation costs are in the attached cost.csv
+
+Production capacity:
+production,	 max_production
+Baltimore,	 180
+Cleveland,	 200
+Little Rock, 140
+Birmingham,	 80
+Charleston,	 180
+
+Demand: 
+distribution, demand
+Columbia,	  89
+Indianapolis, 95
+Lexington,	  121
+Nashville,	  101
+Richmond,	  116
+St. Louis,	  181
