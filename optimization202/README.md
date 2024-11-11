@@ -6,7 +6,7 @@
 The material is from the [Optimization 202 for Data Scientists](https://www.gurobi.com/events/optimization-203-for-data-scientists/) training, which consists of two modeling examples and a culminating use case. 
 You can review the Jupyter Notebooks here. For all examples, a completed version is available. If you want to test yourself and try out some of the exercises, you should start with the not-completed-versions of the notebooks and then compare with the completed versions.
 
-- Resources for the first [hands-on exercises](Modeling_Session_1)
+- Resources for the **first** [hands-on exercises](Modeling_Session_1)
 
 - Resources for the **second** [hands-on exercises](Modeling_Session_2)
 

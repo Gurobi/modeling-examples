@@ -11,6 +11,7 @@ We also put **completed** versions of the modeling notebook and the exercise in 
 
 
 ## Exercise Set 2 Notebook Links
+Note that you must sign in with a Google account to be able to run the code in Colab.
 
 [Google Colab Link - Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_2/exercise_set2.ipynb)
 
