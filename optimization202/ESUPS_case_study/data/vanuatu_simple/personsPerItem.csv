@@ -1,0 +1,29 @@
+Item,Disaster Type,Month,gglCountry,PersonsPerItem
+Blankets,DEFAULT,DEFAULT,DEFAULT,0.6
+Buckets,DEFAULT,DEFAULT,DEFAULT,2.5
+Dignity Kits,DEFAULT,DEFAULT,DEFAULT,1
+Family Tents,DEFAULT,DEFAULT,DEFAULT,5
+Hygiene Kits,DEFAULT,DEFAULT,DEFAULT,5
+Kitchen sets,DEFAULT,DEFAULT,DEFAULT,5
+mosquito nets,DEFAULT,DEFAULT,DEFAULT,2.5
+Personal Protection Equipment kit (PPE),DEFAULT,DEFAULT,DEFAULT,1
+Shelter tool kits,DEFAULT,DEFAULT,DEFAULT,5
+Solar Lights,DEFAULT,DEFAULT,DEFAULT,5
+Sleeping mats,DEFAULT,DEFAULT,DEFAULT,5
+Tarpaulins,DEFAULT,DEFAULT,DEFAULT,2.5
+Water Containers,DEFAULT,DEFAULT,DEFAULT,2.5
+Water Purification Tablets,DEFAULT,DEFAULT,DEFAULT,1
+Blankets,DEFAULT,-1,DEFAULT,0.6
+Buckets,DEFAULT,-1,DEFAULT,2.5
+Dignity Kits,DEFAULT,-1,DEFAULT,1
+Family Tents,DEFAULT,-1,DEFAULT,5
+Hygiene Kits,DEFAULT,-1,DEFAULT,5
+Kitchen sets,DEFAULT,-1,DEFAULT,5
+mosquito nets,DEFAULT,-1,DEFAULT,2.5
+Personal Protection Equipment kit (PPE),DEFAULT,-1,DEFAULT,1
+Shelter tool kits,DEFAULT,-1,DEFAULT,5
+Solar Lights,DEFAULT,-1,DEFAULT,5
+Sleeping mats,DEFAULT,-1,DEFAULT,5
+Tarpaulins,DEFAULT,-1,DEFAULT,2.5
+Water Containers,DEFAULT,-1,DEFAULT,2.5
+Water Purification Tablets,DEFAULT,-1,DEFAULT,1

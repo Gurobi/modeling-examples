@@ -1,0 +1,16 @@
+ItemName,WeightMetricTon,CubicMeters
+Blankets,0.0015,0.01
+Buckets,0.00091,0.00617
+Clothes,0.0003,0.001
+HygieneAndDignityKits,0.00561,0.0262
+Kitchenset,0.00499,0.01763
+Mosquitonets,0.0004435,0.00135
+Otherlampslanterns,0.0002,0.00038
+PersonalProtectionEquipmentkit(PPE),0.0035,0.0000288
+SafeDeliverykits,0.245,1.036
+SchoolPlaykits,0.013,0.12
+ShelterToolKit,0.010421,0.02819
+Sleepingmats,0.00144,0.00745
+Tarpaulins,0.0041626,0.00943
+Tents,0.0528,0.19
+WaterContainers,0.0001738,0.0021

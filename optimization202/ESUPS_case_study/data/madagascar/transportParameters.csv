@@ -1,0 +1,12 @@
+Attribute,Mode,gglAddress,Number
+FixedAddlTime_Hrs,Truck,DEFAULT,24
+FixedAddlTime_Hrs,Air,DEFAULT,100000000
+StretchTimeFactor,Truck,DEFAULT,1.1
+StretchTimeFactor,Air,DEFAULT,100000000
+SpeedKmPerHr,Air,DEFAULT,0.000001
+FixedAddlCost_USD,Truck,DEFAULT,233000
+FixedAddlCost_USD,Air,DEFAULT,1.00E+08
+VarCost_USD_ton_km,Truck,DEFAULT,1115
+VarCost_USD_ton_km,Air,DEFAULT,1.00E+08
+StretchDistanceFactor,Truck,DEFAULT,1
+StretchDistanceFactor,Air,DEFAULT,1
