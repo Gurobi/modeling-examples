@@ -19,10 +19,10 @@ Note that you must sign in with a Google account to be able to run the code in C
 [Google Colab Link - Exercise *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/completed_exercise_set1.ipynb)
 
 
-[Google Colab Link - Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/nonlinear_regression_exercise.ipynb)
+[Google Colab Link - Nonlinear Regression Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/nonlinear_regression_exercise.ipynb)
 
 
-[Google Colab Link - Exercise *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/completed_nonlinear_regression_exercise.ipynb)
+[Google Colab Link - Nonlinear Regression Exercise *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/completed_nonlinear_regression_exercise.ipynb)
 
 
 ----
