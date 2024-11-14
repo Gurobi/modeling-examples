@@ -13,10 +13,10 @@ We also put **completed** versions of the modeling notebook and the exercise in 
 ## Exercise Set 1 Notebook Links
 Note that you must sign in with a Google account to be able to run the code in Colab.
 
-[Google Colab Link - Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/exercise_set1.ipynb)
+[Google Colab Link - Exercise Set 1 *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/exercise_set1.ipynb)
 
 
-[Google Colab Link - Exercise *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/completed_exercise_set1.ipynb)
+[Google Colab Link - Exercise Set 1 *with* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/completed_exercise_set1.ipynb)
 
 
 [Google Colab Link - Nonlinear Regression Exercise *without* answers](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/Modeling_Session_1/nonlinear_regression_exercise.ipynb)
