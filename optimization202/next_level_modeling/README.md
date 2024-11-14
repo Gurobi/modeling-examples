@@ -7,6 +7,8 @@ Gurobi AI Modeling is a way for people new to mathematical optimization to learn
 
 If you're an experienced Gurobi user, check out [Gurobot](https://chatgpt.com/g/g-vPqYcfN7M-gurobot), which helps with optimization modeling, Gurobi API questions, and troubleshooting. 
 
+[Google Colab Link - Modeling with GenAI links and MMO Code](https://colab.research.google.com/github/Gurobi/modeling-examples/blob/master/optimization202/next_level_modeling/modeling-with-genAI.ipynb)
+
 ----
 For details on licensing or on running the notebooks, see the overview on [Modeling Examples](../../)
 
