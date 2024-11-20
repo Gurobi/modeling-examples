@@ -19,7 +19,7 @@ The examples are from different business purposes and reflect different levels o
 The introductory examples walk you through the process of building a mathematical optimization model.
 The basic requirements are that you know Python and have a background in a discipline that uses quantitative methods.
 
-- [GDD 2023: Intro to Gurobipy:](gurobi_days_digital_2023/intro_to_gurobipy)
+- [Intro to Gurobipy:](intro_to_gurobipy)
   This tutorial was given at the Gurobi Days Digital 2023. It is an introduction to the Gurobi Python API Gurobipy. It walks you through the basics of Gurobipy and explains its usage with some small examples.
 - [Intro to Mathematical Optimization Modeling:](milp_tutorial)
   This tutorial discusses the basics of mathematical modeling on the example of a simple assignment problem.
@@ -417,8 +417,8 @@ You can download the repository containing all examples by clicking [here](https
 - [Farm Planning](farm_planning)
 - [Food Manufacturing](food_manufacturing)
 - [Food Program](food_program)
-- [GDD 2023: Intro to Gurobipy](gurobi_days_digital_2023/intro_to_gurobipy)
 - [Index Tracking](index_tracking)
+- [Intro to Gurobipy](intro_to_gurobipy)
 - [Intro to Mathematical Optimization Modeling / MILP Tutorial](milp_tutorial)
 - [Linear Regression](linear_regression)
 - [Logical Design](logical_design)
