@@ -1,0 +1,114 @@
+ItemName,Warehouse(Region),gglAddress,gglCountry,Total
+Blankets,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,3400
+Blankets,Africa,"Toamasina I, Madagascar",Madagascar,5000
+Buckets,Africa,"Ambanja, Madagascar",Madagascar,375
+Buckets,Africa,"Ambatondrazaka, Madagascar",Madagascar,26
+Buckets,Africa,"Ambositra, Madagascar",Madagascar,41
+Buckets,Africa,"Ambovombe, Madagascar",Madagascar,2322
+Buckets,Africa,"Ampanihy, Madagascar",Madagascar,1027
+Buckets,Africa,"Antalaha, Madagascar",Madagascar,5700
+Buckets,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,9046
+Buckets,Africa,"Antsohihy, Madagascar",Madagascar,610
+Buckets,Africa,"Farafangana, Madagascar",Madagascar,3331
+Buckets,Africa,"Fenerive Est, Madagascar",Madagascar,2762
+Buckets,Africa,"Mahajanga I, Madagascar",Madagascar,150
+Buckets,Africa,"Maintirano, Madagascar",Madagascar,2460
+Buckets,Africa,"Manakara, Madagascar",Madagascar,4235
+Buckets,Africa,"Maroantsetra, Madagascar",Madagascar,1870
+Buckets,Africa,"Miarinarivo, Madagascar",Madagascar,3
+Buckets,Africa,"Midongy, Madagascar",Madagascar,1870
+Buckets,Africa,"Morondava, Madagascar",Madagascar,736
+Buckets,Africa,"Sainte-Marie, Madagascar",Madagascar,1682
+Buckets,Africa,"Soanierana Ivongo, Madagascar",Madagascar,375
+Buckets,Africa,"Toamasina I, Madagascar",Madagascar,1580
+Buckets,Africa,"Toliara, Madagascar",Madagascar,610
+Clothes,Africa,"Ambanja, Madagascar",Madagascar,80
+Clothes,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,3200
+Clothes,Africa,"Soanierana Ivongo, Madagascar",Madagascar,80
+HygieneAndDignityKits,Africa,"Ambovombe, Madagascar",Madagascar,300
+HygieneAndDignityKits,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,2500
+HygieneAndDignityKits,Africa,"Maroantsetra, Madagascar",Madagascar,276
+Kitchenset,Africa,"Ambanja, Madagascar",Madagascar,375
+Kitchenset,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,2581
+Kitchenset,Africa,"Mahajanga I, Madagascar",Madagascar,150
+Kitchenset,Africa,"Morondava, Madagascar",Madagascar,2280
+Kitchenset,Africa,"Soanierana Ivongo, Madagascar",Madagascar,375
+Mosquitonets,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,3052
+Mosquitonets,Africa,"Fenerive Est, Madagascar",Madagascar,1000
+Mosquitonets,Africa,"Toamasina I, Madagascar",Madagascar,25300
+Otherlampslanterns,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,4
+Otherlampslanterns,Africa,"Toamasina I, Madagascar",Madagascar,3
+PersonalProtectionEquipmentkit(PPE),Africa,"Ambanja, Madagascar",Madagascar,80
+PersonalProtectionEquipmentkit(PPE),Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,4840
+PersonalProtectionEquipmentkit(PPE),Africa,"Fenerive Est, Madagascar",Madagascar,1352
+PersonalProtectionEquipmentkit(PPE),Africa,"Soanierana Ivongo, Madagascar",Madagascar,80
+PersonalProtectionEquipmentkit(PPE),Africa,"Toamasina I, Madagascar",Madagascar,361
+PersonalProtectionEquipmentkit(PPE),Africa,"Toliara, Madagascar",Madagascar,50
+SafeDeliverykits,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,40
+SchoolPlaykits,Africa,"Ambovombe, Madagascar",Madagascar,295
+SchoolPlaykits,Africa,"Antalaha, Madagascar",Madagascar,750
+SchoolPlaykits,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,77
+SchoolPlaykits,Africa,"Farafangana, Madagascar",Madagascar,273
+SchoolPlaykits,Africa,"Fenerive Est, Madagascar",Madagascar,131
+SchoolPlaykits,Africa,"Maevatanana, Madagascar",Madagascar,60
+SchoolPlaykits,Africa,"Mahajanga I, Madagascar",Madagascar,1684
+SchoolPlaykits,Africa,"Maintirano, Madagascar",Madagascar,125
+SchoolPlaykits,Africa,"Manakara, Madagascar",Madagascar,300
+SchoolPlaykits,Africa,"Mananara, Madagascar",Madagascar,171
+SchoolPlaykits,Africa,"Maroantsetra, Madagascar",Madagascar,48
+SchoolPlaykits,Africa,"Sambava, Madagascar",Madagascar,75
+SchoolPlaykits,Africa,"Taolagnaro, Madagascar",Madagascar,218
+SchoolPlaykits,Africa,"Toamasina I, Madagascar",Madagascar,65
+SchoolPlaykits,Africa,"Toliara, Madagascar",Madagascar,144
+ShelterToolKit,Africa,"Ambanja, Madagascar",Madagascar,225
+ShelterToolKit,Africa,"Antalaha, Madagascar",Madagascar,600
+ShelterToolKit,Africa,"Soanierana Ivongo, Madagascar",Madagascar,225
+Sleepingmats,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,4
+Tarpaulins,Africa,"Ambanja, Madagascar",Madagascar,450
+Tarpaulins,Africa,"Ambositra, Madagascar",Madagascar,10
+Tarpaulins,Africa,"Ambovombe, Madagascar",Madagascar,156
+Tarpaulins,Africa,"Antalaha, Madagascar",Madagascar,996
+Tarpaulins,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,8582
+Tarpaulins,Africa,"Antsohihy, Madagascar",Madagascar,15
+Tarpaulins,Africa,"Benenitra, Madagascar",Madagascar,230
+Tarpaulins,Africa,"Farafangana, Madagascar",Madagascar,4
+Tarpaulins,Africa,"Fenerive Est, Madagascar",Madagascar,1548
+Tarpaulins,Africa,"Maevatanana, Madagascar",Madagascar,10
+Tarpaulins,Africa,"Mahajanga I, Madagascar",Madagascar,689
+Tarpaulins,Africa,"Maintirano, Madagascar",Madagascar,916
+Tarpaulins,Africa,"Manakara, Madagascar",Madagascar,511
+Tarpaulins,Africa,"Mananara, Madagascar",Madagascar,115
+Tarpaulins,Africa,"Miarinarivo, Madagascar",Madagascar,72
+Tarpaulins,Africa,"Morondava, Madagascar",Madagascar,50
+Tarpaulins,Africa,"Sainte-Marie, Madagascar",Madagascar,5
+Tarpaulins,Africa,"Soanierana Ivongo, Madagascar",Madagascar,450
+Tarpaulins,Africa,"Taolagnaro, Madagascar",Madagascar,200
+Tarpaulins,Africa,"Toamasina I, Madagascar",Madagascar,1200
+Tarpaulins,Africa,"Toliara, Madagascar",Madagascar,821
+Tents,Africa,"Ambovombe, Madagascar",Madagascar,7
+Tents,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,204
+Tents,Africa,"Fenerive Est, Madagascar",Madagascar,8
+Tents,Africa,"Mahajanga I, Madagascar",Madagascar,1
+Tents,Africa,"Maintirano, Madagascar",Madagascar,9
+Tents,Africa,"Manakara, Madagascar",Madagascar,13
+Tents,Africa,"Mananara, Madagascar",Madagascar,4
+Tents,Africa,"Maroantsetra, Madagascar",Madagascar,2
+Tents,Africa,"Taolagnaro, Madagascar",Madagascar,14
+Tents,Africa,"Toamasina I, Madagascar",Madagascar,17
+Tents,Africa,"Toliara, Madagascar",Madagascar,6
+WaterContainers,Africa,"Ambanja, Madagascar",Madagascar,375
+WaterContainers,Africa,"Ambatondrazaka, Madagascar",Madagascar,943
+WaterContainers,Africa,"Antalaha, Madagascar",Madagascar,1000
+WaterContainers,Africa,"Antananarivo Renivohitra, Madagascar",Madagascar,10100
+WaterContainers,Africa,"Antsohihy, Madagascar",Madagascar,2250
+WaterContainers,Africa,"Fenerive Est, Madagascar",Madagascar,2600
+WaterContainers,Africa,"Mahajanga I, Madagascar",Madagascar,150
+WaterContainers,Africa,"Manakara, Madagascar",Madagascar,3200
+WaterContainers,Africa,"Maroantsetra, Madagascar",Madagascar,595
+WaterContainers,Africa,"Midongy, Madagascar",Madagascar,3967
+WaterContainers,Africa,"Morondava, Madagascar",Madagascar,77
+WaterContainers,Africa,"Sainte-Marie, Madagascar",Madagascar,900
+WaterContainers,Africa,"Soanierana Ivongo, Madagascar",Madagascar,375
+WaterContainers,Africa,"Toamasina I, Madagascar",Madagascar,118
+WaterContainers,Africa,"Toliara, Madagascar",Madagascar,1200
+WaterContainers,Africa,"Vangaindrano, Madagascar",Madagascar,3476

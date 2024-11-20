@@ -1,0 +1,12 @@
+Problem description:
+<describe the problem on a high level, making sure you also introduce the context. Normally, 3-5 sentences is sufficient for this.>
+
+Objective: <Maximize/Minimize> <objective>
+Constraints:
+- <constraint name 1>: <describe constraint>
+- <constraint name 2>: <describe constraint>
+- <constraint name 3>: <describe constraint>
+- etc.
+
+Data:
+<data in csv format, including headers> or <upload your files and name the filename here>

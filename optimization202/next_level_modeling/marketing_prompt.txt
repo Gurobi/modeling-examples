@@ -1,0 +1,11 @@
+I’m tasked with building an optimization engine for our marketing effectiveness platform. I want to be able to input a goal for the response variable and the engine calculates the optimal input values, subject to constraints on overall spending and marketing channel diversity. The output should be to determine how much to spend on various marketing platforms and media types for a set of products.
+
+Objective: Maximize the total number of impressions.
+
+Constraints:
+- Overall Budget: total spending must be at most 373896
+- Individual spending bounds: If a media type and platform is selected for a product, there are min and max spending restrictions
+- Impressions LM: Impressions are estimated using the slope of a linear regression model, which is impressions per dollar spend
+
+Data:
+In the csv file lm_coeff.csv has all of the data needed.
