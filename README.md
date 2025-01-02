@@ -129,6 +129,8 @@ For modeling examples at the advanced level, we assume that you know Python and 
   You will learn how to model the protein comparison problem as a quadratic assignment problem. It involves measuring the similarities of two proteins.
 - [Protein Folding:](protein_folding)
   The problem pertains to a protein, which consists of a chain of amino acids. The objective is to predict the optimum folding of the chain.
+- [Railway Dispatching:](railway_dispatching)
+  In this notebook, we look at dispatching of trains sharing resources (tracks and stations) with limited capacity. The objective is to minimize delays.
 - [Traveling Salesman:](traveling_salesman)
   This notebook covers one of the most famous combinatorial optimization problems in existence: the Traveling Salesman Problem (TSP). The goal of the TSP – to find the shortest possible route that visits each city once and returns to the original city – is simple, but solving the problem is a complex and challenging endeavor. This example uses the [callback](https://www.gurobi.com/documentation/current/refman/py_cb_s.html) feature of Gurobi.
 - [Workforce Scheduling:](workforce)
@@ -351,6 +353,7 @@ For modeling examples at the advanced level, we assume that you know Python and 
     <li><a href="technician_routing_scheduling">Technician Routing and Scheduling</a> (intermediate)</li>
     <li><a href="manpower_planning">Manpower Planning</a> (advanced)</li>
     <li><a href="traveling_salesman">Traveling Salesman</a> (advanced)</li>
+    <li><a href="railway_dispatching">Railway Dispatching</a> (advanced)</li>
     <li><a href="workforce">Workforce Scheduling</a> (advanced)</li>
   </ul>
 </details>
@@ -438,6 +441,7 @@ You can download the repository containing all examples by clicking [here](https
 - [Price Optimization](price_optimization)
 - [Protein Comparison](protein_comparison)
 - [Protein Folding](protein_folding)
+- [Railway Dispatching](railway_dispatching)
 - [Refinery](refinery)
 - [Supply Network Design](supply_network_design)
 - [Technician Routing and Scheduling](technician_routing_scheduling)
