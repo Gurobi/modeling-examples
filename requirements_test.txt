@@ -18,7 +18,7 @@ executing==2.0.1
 fastjsonschema==2.19.1
 fastparquet==2023.2.0
 folium==0.16.0
-fonttools==4.51.0
+fonttools==4.60.2
 frozendict==2.4.2
 gensim==4.3.2
 gurobi-machinelearning==1.5.0
