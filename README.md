@@ -38,6 +38,8 @@ The notebooks at the beginner level assume you know Python and have some knowled
 
 - [3D Tic-Tac-Toe:](3d_tic_tac_toe)
   This example will show you how a binary programming model can be used to capture simple logical constraints.
+- [Battery Scheduling:](battery_scheduling)
+  This example shows how you can build a simple battery scheduling model that involves energy balance equations, state-of-charge dynamics, and nonlinear objectives.
 - [Cell Tower:](cell_tower_coverage)
   In this example, you will learn how to define and solve a covering-type problem, namely,
   how to configure a network of cell towers to provide signal coverage to the largest number of people.
@@ -247,6 +249,7 @@ For modeling examples at the advanced level, we assume that you know Python and 
 
   <ul>
     <li><a href="aviation_planning">Airline Planning After Flight Disruption</a> (introductory)</li>
+    <li><a href="battery_scheduling">Battery Scheduling</a> (beginner)</li>
     <li><a href="price_optimization">Price Optimization</a> (introductory)</li>
     <li><a href="covid19_facility_location">Covid19 Facility Optimization</a> (beginner)</li>
     <li><a href="power_generation">Power Generation</a> (intermediate)</li>
@@ -401,6 +404,7 @@ You can download the repository containing all examples by clicking [here](https
 - [3D Tic-Tac-Toe](3d_tic_tac_toe)
 - [Airline Planning After Flight Disruption](aviation_planning)
 - [Agricultural Pricing](agricultural_pricing)
+- [Battery Scheduling](battery_scheduling)
 - [Burrito Game](burrito_optimization_game)
 - [Car Rental](car_rental)
 - [Cell Tower](cell_tower_coverage)
