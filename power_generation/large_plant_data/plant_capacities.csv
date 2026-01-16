@@ -1,0 +1,99 @@
+Plant,PlantType,FuelType,Capacity,LAT,LON
+Allatoona,HYDRO,WAT,86.6,34.1637,-84.7282
+Athens Regional Medical Center,OIL,DFO,4.5,33.9625,-83.3981
+Avondale Mills,HYDRO,WAT,2.1,33.4883,-81.9925
+Baconton Power Plant,GAS,NG,240.0,31.3869,-84.0819
+Bainbridge,OIL,DFO,80.0,30.9111,-84.5472
+Bank of America Plaza,OIL,DFO,3.0,33.7708,-84.3861
+Barnett Shoals,HYDRO,WAT,2.8,33.8406,-83.3092
+BJ Gas Recovery,BIOMASS,LFG,2.4,33.93,-84.2378
+Blue Ridge,HYDRO,WAT,23.5,34.8825,-84.2803
+Bowen,COAL,BIT,3540.4,34.1256,-84.9192
+Brunswick Cellulose,BIOMASS,BLQ,72.2,31.1722,-81.5189
+Brunswick Plant,BIOMASS,WDS,9.1,31.1722,-81.5189
+Buford,HYDRO,WAT,131.2,34.1625,-84.0756
+Burton,HYDRO,WAT,6.0,34.7939,-83.5406
+Carters,HYDRO,WAT,500.0,34.6121,-84.6733
+Chattahoochee Energy Facility,GAS,NG,539.7,33.407,-85.0387
+Crisp Plant,COAL,BIT,17.5,31.8477,-83.9421
+Dahlberg,GAS,NG,919.0,34.0386,-83.3972
+Dekalb Medical Center,OIL,DFO,3.9,33.7919,-84.2831
+DeKalb Medical Center-Hillandale,OIL,DFO,1.6,33.7036,-84.1494
+Doyle Generating Facility,GAS,NG,409.0,33.8376,-83.6996
+Dublin Mill,COAL,BIT,82.1,32.5036,-82.8443
+Eagle & Phenix,HYDRO,WAT,4.2,32.4608,-84.9875
+Edwin I Hatch,NUCLEAR,NUC,1721.8,31.9342,-82.3447
+Effingham County Power Project,GAS,NG,594.3,32.2792,-81.2842
+Flint River,HYDRO,WAT,5.4,31.6028,-84.1376
+Flint River Operations,BIOMASS,BLQ,42.0,32.2544,-84.0667
+Georgia Pacific Cedar Springs,BIOMASS,BLQ,101.2,31.166,-85.0951
+Graniteville Enterprise Division,HYDRO,WAT,1.2,33.4767,-81.9825
+Hammond,COAL,BIT,953.0,34.2533,-85.3456
+Harllee Branch,COAL,BIT,1746.2,33.1942,-83.2994
+Hartwell Energy LP,GAS,NG,360.0,34.3387,-82.8207
+Hartwell Lake,HYDRO,WAT,420.0,34.3564,-82.8219
+Heard County Power LLC,GAS,NG,495.0,33.35706,-84.99329
+High Shoals Hydro,HYDRO,WAT,1.4,33.8003,-83.5014
+Inland Paperboard Packaging Rome,BIOMASS,BLQ,70.4,34.2528,-85.3275
+International Paper Augusta Mill,BIOMASS,BLQ,84.7,33.3217,-81.9564
+International Paper Savanna Mill,BIOMASS,BLQ,154.0,32.1047,-81.1222
+Jack McDonough,COAL,BIT,682.0,33.8244,-84.475
+Kamin LLC Wrens Plant,GAS,NG,10.4,33.2725,-82.4078
+KGen Murray I and II LLC,GAS,NG,1192.0,34.7094,-84.9182
+Kraft,COAL,BIT,352.4,32.1486,-81.1458
+Lake Blackshear Project,HYDRO,WAT,17.2,31.8475,-83.9419
+Lloyd Shoals,HYDRO,WAT,14.4,33.3206,-83.8419
+McIntosh,COAL,BIT,988.0,32.3558,-81.1683
+McIntosh Combined Cycle Facility,GAS,NG,1376.6,32.3478,-81.1828
+McManus,OIL,RFO,644.3,31.2125,-81.5458
+Mid-Georgia Cogeneration Facility,GAS,NG,323.0,32.4853,-83.6036
+Milstead,HYDRO,WAT,1.0,33.7242,-83.9736
+Mitchell,COAL,BIT,288.6,31.4444,-84.1322
+Morgan Falls,HYDRO,WAT,16.8,33.9677,-84.3818
+MPC Generating,GAS,NG,386.1,33.8122,-83.6954
+Nacoochee,HYDRO,WAT,4.8,34.7528,-83.5014
+Naval Submarine Base Kings Bay,OIL,DFO,30.0,30.7917,-81.5333
+North Highlands,HYDRO,WAT,29.6,32.4992,-84.9967
+Nottely,HYDRO,WAT,15.9,34.9594,-84.0903
+Oliver Dam,HYDRO,WAT,60.0,32.5163,-84.9969
+Port Wentworth Mill,BIOMASS,BLQ,72.3,32.1561,-81.1586
+Rayonier Jesup Mill,BIOMASS,BLQ,82.0,31.6593,-81.8439
+Richard B Russell,HYDRO,WAT,628.0,34.0256,-82.5953
+Riverside Manufacturing,GAS,NG,1.1,31.1683,-83.8025
+Riverwood 100 Building,OIL,DFO,1.1,33.8775,-84.4603
+Riverwood International Macon Mill,BIOMASS,BLQ,33.4,32.7714,-83.6281
+Robins,GAS,NG,183.8,32.5806,-83.5831
+Sandersville,GAS,NG,692.0,33.1189,-82.8608
+Savannah River Mill,OIL,PC,140.4,32.3683,-81.3413
+Savannah Sugar Refinery,COAL,BIT,11.7,32.14329,-81.146667
+Scherer,COAL,SUB,3564.0,33.0583,-83.8072
+Sewell Creek Energy,GAS,NG,570.0,33.9486,-85.2769
+Shepherd Center,OIL,DFO,1.7,33.8111,-84.3928
+Sinclair Dam,HYDRO,WAT,45.0,33.1403,-83.2028
+Smarr Energy Center,GAS,NG,242.0,32.9856,-83.8464
+South Georgia Medical Center,OIL,DFO,1.9,30.8625,-83.2894
+Sowega Power,GAS,NG,120.0,31.3869,-84.0814
+State Farm Insurance Support Center East,OIL,DFO,10.8,34.0858,-84.2353
+Stevens Creek,HYDRO,WAT,18.4,33.5628,-82.0514
+Sun Trust Plaza,OIL,DFO,2.4,33.7625,-84.3872
+Talbot County Energy,GAS,NG,726.0,32.5892,-84.6917
+Tallulah Falls,HYDRO,WAT,72.0,34.731,-83.3757
+Tenaska Georgia Generation Facility,GAS,NG,1099.2,33.3516,-84.9996
+Terrora,HYDRO,WAT,16.0,34.7507,-83.4057
+Thiele Kaolin Reedy Creek,OIL,DFO,2.2,33.2708,-82.4569
+Thiele Kaolin Sandersville,OIL,DFO,2.4,32.9708,-82.8028
+Tugalo,HYDRO,WAT,44.8,34.7133,-83.3519
+Valdosta Water Treatment Plant,OIL,DFO,3.4,30.9103,-83.2358
+Vogtle,NUCLEAR,NUC,2320.0,33.1419,-81.7565
+Walter F George,HYDRO,WAT,130.0,31.6256,-85.0639
+Walton County Power LLC,GAS,NG,612.0,33.8147,-83.6969
+Wansley,COAL,BIT,1956.8,33.4124,-85.0345
+Wansley Combined Cycle,GAS,NG,1239.0,33.4124,-85.0344
+Wansley Unit 9,GAS,NG,568.0,33.4082,-85.0399
+Washington County,GAS,NG,797.6,33.0917,-82.9803
+West Georgia Generating,GAS,NG,701.2,32.911,-84.3059
+West Point,HYDRO,WAT,73.3,32.9187,-85.1886
+Wilson,OIL,DFO,321.2,33.138,-81.748
+Yates,COAL,BIT,1487.3,33.4622,-84.8986
+YKK USA Chestney,OIL,DFO,6.8,32.8061,-83.5456
+Yonah,HYDRO,WAT,22.5,34.6814,-83.3419
