@@ -1,4 +1,11 @@
-[![Gurobi](assets/img/gurobi_light.svg)](https://www.gurobi.com)
+<a href="https://example.com/target" target="_blank" rel="noopener">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/img/gurobi_dark.svg">
+    <img src="assets/img/gurobi_light.svg" alt="Gurobi Logo" style="width:60%">
+  </picture>
+</a>
+
+<!-- [![Gurobi](assets/img/gurobi_dark.svg)](https://www.gurobi.com) -->
 
 ## Target audience
 Data scientists, engineers, computer scientists, economists, and in general, professionals with a background in mathematical modeling and a basic knowledge of Python.
