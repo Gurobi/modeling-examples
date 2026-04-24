@@ -1,13 +1,17 @@
 
+
 <a href="https://example.com/target" target="_blank" rel="noopener">
-  <img
-    src="assets/img/gurobi_dark.svg"
-    alt="Gurobi Logo"
-    style="width:60%; background-color:#000; padding:8px; border-radius:12px;"
-  >
+  <span style="
+    display:inline-block;
+    background:#000;
+    padding:8px;
+    border-radius:12px;
+  ">
+    <img src="assets/img/gurobi_dark.svg"
+         alt="Gurobi Logo"
+         style="width:60%; display:block;">
+  </span>
 </a>
-
-
 
 ## Target audience
 Data scientists, engineers, computer scientists, economists, and in general, professionals with a background in mathematical modeling and a basic knowledge of Python.
