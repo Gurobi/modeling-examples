@@ -1,16 +1,7 @@
-
-
-<a href="https://example.com/target" target="_blank" rel="noopener">
-  <span style="
-    display:inline-block;
-    background:#000;
-    padding:8px;
-    border-radius:12px;
-  ">
-    <img src="assets/img/gurobi_dark.svg"
-         alt="Gurobi Logo"
-         style="width:60%; display:block;">
-  </span>
+<a href="https://www.gurobi.com">
+  <img src="assets/img/gurobi_light.svg"
+       alt="Gurobi Logo"
+       style="width:60%">
 </a>
 
 ## Target audience
