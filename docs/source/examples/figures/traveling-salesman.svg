@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Shortest tour through twelve cities">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M210 60 L320 300 M420 55 L220 340 M80 200 L540 290" stroke="#c3c8d0" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+  <path d="M120 80 L210 60 L310 85 L420 55 L520 90 L580 180 L540 290 L430 330 L320 300 L220 340 L120 300 L80 200 Z" fill="none" stroke="#2f6fb0" stroke-width="4" stroke-linejoin="round"/>
+  <g fill="#1f2937" stroke="#ffffff" stroke-width="2.5">
+    <circle cx="210" cy="60" r="8"/>
+    <circle cx="310" cy="85" r="8"/>
+    <circle cx="420" cy="55" r="8"/>
+    <circle cx="520" cy="90" r="8"/>
+    <circle cx="580" cy="180" r="8"/>
+    <circle cx="540" cy="290" r="8"/>
+    <circle cx="430" cy="330" r="8"/>
+    <circle cx="320" cy="300" r="8"/>
+    <circle cx="220" cy="340" r="8"/>
+    <circle cx="120" cy="300" r="8"/>
+    <circle cx="80" cy="200" r="8"/>
+  </g>
+  <circle cx="120" cy="80" r="11" fill="#e07b39" stroke="#ffffff" stroke-width="2.5"/>
+</svg>

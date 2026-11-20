@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Input-output table of three sectors">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle">
+    <rect x="80" y="80" width="150" height="40" fill="#1f2937"/>
+    <rect x="230" y="80" width="110" height="40" fill="#1f2937"/>
+    <rect x="340" y="80" width="110" height="40" fill="#1f2937"/>
+    <rect x="450" y="80" width="110" height="40" fill="#1f2937"/>
+    <text x="285" y="106" font-weight="bold" fill="#ffffff">Coal</text>
+    <text x="395" y="106" font-weight="bold" fill="#ffffff">Steel</text>
+    <text x="505" y="106" font-weight="bold" fill="#ffffff">Transport</text>
+
+    <rect x="80" y="120" width="150" height="40" fill="#ffffff"/>
+    <rect x="80" y="160" width="150" height="40" fill="#ffffff"/>
+    <rect x="80" y="200" width="150" height="40" fill="#ffffff"/>
+    <rect x="80" y="240" width="150" height="40" fill="#ffffff"/>
+    <rect x="80" y="280" width="150" height="40" fill="#ffffff"/>
+
+    <rect x="230" y="120" width="110" height="40" fill="#dbe8f5" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="340" y="120" width="110" height="40" fill="#2f6fb0" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="450" y="120" width="110" height="40" fill="#2f6fb0" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="230" y="160" width="110" height="40" fill="#dbe8f5" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="340" y="160" width="110" height="40" fill="#dbe8f5" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="450" y="160" width="110" height="40" fill="#8fb4de" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="230" y="200" width="110" height="40" fill="#8fb4de" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="340" y="200" width="110" height="40" fill="#dbe8f5" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="450" y="200" width="110" height="40" fill="#8fb4de" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="230" y="240" width="110" height="40" fill="#2f6fb0" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="340" y="240" width="110" height="40" fill="#8fb4de" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="450" y="240" width="110" height="40" fill="#8fb4de" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="230" y="280" width="110" height="40" fill="#e5e9f0" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="340" y="280" width="110" height="40" fill="#e5e9f0" stroke="#f5f6f8" stroke-width="3"/>
+    <rect x="450" y="280" width="110" height="40" fill="#e5e9f0" stroke="#f5f6f8" stroke-width="3"/>
+
+    <text x="96" y="146" text-anchor="start" fill="#1f2937">Coal</text>
+    <text x="96" y="186" text-anchor="start" fill="#1f2937">Steel</text>
+    <text x="96" y="226" text-anchor="start" fill="#1f2937">Transport</text>
+    <text x="96" y="266" text-anchor="start" fill="#1f2937">Labor</text>
+    <text x="96" y="306" text-anchor="start" font-weight="bold" fill="#1f2937">Total</text>
+
+    <text x="285" y="146" fill="#1f2937">0.1</text>
+    <text x="395" y="146" fill="#ffffff">0.5</text>
+    <text x="505" y="146" fill="#ffffff">0.4</text>
+    <text x="285" y="186" fill="#1f2937">0.1</text>
+    <text x="395" y="186" fill="#1f2937">0.1</text>
+    <text x="505" y="186" fill="#1f2937">0.2</text>
+    <text x="285" y="226" fill="#1f2937">0.2</text>
+    <text x="395" y="226" fill="#1f2937">0.1</text>
+    <text x="505" y="226" fill="#1f2937">0.2</text>
+    <text x="285" y="266" fill="#ffffff">0.6</text>
+    <text x="395" y="266" fill="#1f2937">0.3</text>
+    <text x="505" y="266" fill="#1f2937">0.2</text>
+    <text x="285" y="306" fill="#1f2937">1.0</text>
+    <text x="395" y="306" fill="#1f2937">1.0</text>
+    <text x="505" y="306" fill="#1f2937">1.0</text>
+  </g>
+</svg>

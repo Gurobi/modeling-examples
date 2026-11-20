@@ -1,0 +1,7 @@
+/* Keep gallery card thumbnails a uniform size regardless of the source image. */
+.sd-card .sd-card-img-top {
+    height: 180px;
+    object-fit: contain;
+    padding: 0.75rem;
+    background-color: #ffffff;
+}

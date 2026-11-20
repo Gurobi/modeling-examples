@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Grouped bars of dairy product prices and demand">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M80 130 H580 M80 180 H580 M80 230 H580 M80 280 H580" stroke="#c3c8d0" stroke-width="1"/>
+  <rect x="90" y="70" width="14" height="14" fill="#2f6fb0"/>
+  <rect x="90" y="92" width="14" height="14" fill="#8fb4de"/>
+  <g fill="#2f6fb0">
+    <rect x="108" y="130" width="40" height="200"/>
+    <rect x="228" y="160" width="40" height="170"/>
+    <rect x="348" y="180" width="40" height="150"/>
+    <rect x="468" y="210" width="40" height="120"/>
+  </g>
+  <g fill="#8fb4de">
+    <rect x="152" y="180" width="40" height="150"/>
+    <rect x="272" y="210" width="40" height="120"/>
+    <rect x="392" y="140" width="40" height="190"/>
+    <rect x="512" y="230" width="40" height="100"/>
+  </g>
+  <path d="M80 330 H580" stroke="#1f2937" stroke-width="2"/>
+</svg>

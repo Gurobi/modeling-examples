@@ -1,0 +1,4 @@
+gurobi-sphinxtheme @ git+https://github.com/Gurobi/gurobi-sphinxtheme.git@v2.0.0
+Sphinx
+sphinx-copybutton
+sphinx-design

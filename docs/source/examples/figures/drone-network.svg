@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Drone base stations selected from candidate sites, with incident assignments">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M120 95 L150 120 M175 140 L150 120 M140 150 L150 120 M110 135 L150 120 M280 60 L300 80 M320 100 L300 80 M300 110 L300 80 M440 90 L460 110 M480 135 L460 110 M470 75 L460 110 M450 140 L460 110 M540 210 L560 230 M580 255 L560 230 M555 260 L560 230 M400 230 L420 250 M440 275 L420 250 M410 280 L420 250 M240 235 L260 250 M280 270 L260 250 M255 290 L260 250 M110 280 L130 300 M150 320 L130 300 M120 330 L130 300" fill="none" stroke="#8fb4de" stroke-width="1.5"/>
+  <g fill="#1f2937" fill-opacity="0.65">
+    <circle cx="120" cy="95" r="3.5"/>
+    <circle cx="175" cy="140" r="3.5"/>
+    <circle cx="140" cy="150" r="3.5"/>
+    <circle cx="110" cy="135" r="3.5"/>
+    <circle cx="280" cy="60" r="3.5"/>
+    <circle cx="320" cy="100" r="3.5"/>
+    <circle cx="300" cy="110" r="3.5"/>
+    <circle cx="440" cy="90" r="3.5"/>
+    <circle cx="480" cy="135" r="3.5"/>
+    <circle cx="470" cy="75" r="3.5"/>
+    <circle cx="450" cy="140" r="3.5"/>
+    <circle cx="540" cy="210" r="3.5"/>
+    <circle cx="580" cy="255" r="3.5"/>
+    <circle cx="555" cy="260" r="3.5"/>
+    <circle cx="400" cy="230" r="3.5"/>
+    <circle cx="440" cy="275" r="3.5"/>
+    <circle cx="410" cy="280" r="3.5"/>
+    <circle cx="240" cy="235" r="3.5"/>
+    <circle cx="280" cy="270" r="3.5"/>
+    <circle cx="255" cy="290" r="3.5"/>
+    <circle cx="110" cy="280" r="3.5"/>
+    <circle cx="150" cy="320" r="3.5"/>
+    <circle cx="120" cy="330" r="3.5"/>
+  </g>
+  <g fill="#f5c39b" stroke="#e07b39" stroke-width="1.5">
+    <circle cx="210" cy="190" r="8"/>
+    <circle cx="360" cy="160" r="8"/>
+    <circle cx="520" cy="320" r="8"/>
+    <circle cx="340" cy="320" r="8"/>
+    <circle cx="80" cy="200" r="8"/>
+    <circle cx="600" cy="80" r="8"/>
+    <circle cx="230" cy="330" r="8"/>
+  </g>
+  <g fill="#2f6fb0" stroke="#ffffff" stroke-width="2">
+    <rect x="140" y="110" width="20" height="20" rx="3"/>
+    <rect x="290" y="70" width="20" height="20" rx="3"/>
+    <rect x="450" y="100" width="20" height="20" rx="3"/>
+    <rect x="550" y="220" width="20" height="20" rx="3"/>
+    <rect x="410" y="240" width="20" height="20" rx="3"/>
+    <rect x="250" y="240" width="20" height="20" rx="3"/>
+    <rect x="120" y="290" width="20" height="20" rx="3"/>
+  </g>
+</svg>

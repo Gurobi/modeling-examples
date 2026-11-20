@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Farm with fields, barn and herd">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <g>
+    <rect x="60" y="80" width="105" height="76" rx="6" fill="#e9d8a6"/>
+    <rect x="173" y="80" width="105" height="76" rx="6" fill="#a8d19a"/>
+    <rect x="286" y="80" width="105" height="76" rx="6" fill="#e9d8a6"/>
+    <rect x="60" y="164" width="105" height="76" rx="6" fill="#a8d19a"/>
+    <rect x="173" y="164" width="105" height="76" rx="6" fill="#e9d8a6"/>
+    <rect x="286" y="164" width="105" height="76" rx="6" fill="#a8d19a"/>
+    <rect x="60" y="248" width="105" height="76" rx="6" fill="#e9d8a6"/>
+    <rect x="173" y="248" width="105" height="76" rx="6" fill="#e9d8a6"/>
+    <rect x="286" y="248" width="105" height="76" rx="6" fill="#a8d19a"/>
+  </g>
+  <path d="M430 180 L520 110 L610 180 Z" fill="#e07b39"/>
+  <rect x="445" y="180" width="150" height="100" fill="#ffffff" stroke="#1f2937" stroke-width="3"/>
+  <rect x="500" y="230" width="40" height="50" fill="#2f6fb0"/>
+  <rect x="420" y="330" width="200" height="50" rx="8" fill="#cfe6c4"/>
+  <g fill="#1f2937">
+    <ellipse cx="455" cy="355" rx="15" ry="9"/>
+    <ellipse cx="510" cy="355" rx="15" ry="9"/>
+    <ellipse cx="565" cy="355" rx="15" ry="9"/>
+  </g>
+  <g fill="#ffffff">
+    <circle cx="450" cy="352" r="3"/>
+    <circle cx="518" cy="357" r="3"/>
+    <circle cx="560" cy="352" r="3"/>
+  </g>
+</svg>

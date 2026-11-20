@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Tracking portfolio following a market index over time, with a subset of stocks selected">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M60 110 H600 M60 170 H600 M60 230 H600 M60 290 H600" stroke="#c3c8d0" stroke-width="1"/>
+  <path d="M60 60 V330 H600" fill="none" stroke="#1f2937" stroke-width="2"/>
+  <path d="M60 230 L90 215 L120 225 L150 200 L180 185 L210 195 L240 170 L270 180 L300 155 L330 165 L360 140 L390 150 L420 130 L450 145 L480 120 L510 130 L540 105 L570 115 L600 95" fill="none" stroke="#1f2937" stroke-width="3" stroke-dasharray="8 5"/>
+  <path d="M60 233 L90 220 L120 229 L150 204 L180 190 L210 199 L240 176 L270 184 L300 161 L330 170 L360 147 L390 155 L420 137 L450 149 L480 127 L510 136 L540 113 L570 121 L600 102" fill="none" stroke="#2f6fb0" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#dbe8f5" stroke="#9aa2ae" stroke-width="1.5">
+    <rect x="70" y="352" width="14" height="14" rx="2"/>
+    <rect x="154" y="352" width="14" height="14" rx="2"/>
+    <rect x="196" y="352" width="14" height="14" rx="2"/>
+    <rect x="280" y="352" width="14" height="14" rx="2"/>
+    <rect x="364" y="352" width="14" height="14" rx="2"/>
+    <rect x="406" y="352" width="14" height="14" rx="2"/>
+    <rect x="532" y="352" width="14" height="14" rx="2"/>
+  </g>
+  <g fill="#2f6fb0">
+    <rect x="112" y="352" width="14" height="14" rx="2"/>
+    <rect x="238" y="352" width="14" height="14" rx="2"/>
+    <rect x="322" y="352" width="14" height="14" rx="2"/>
+    <rect x="448" y="352" width="14" height="14" rx="2"/>
+    <rect x="490" y="352" width="14" height="14" rx="2"/>
+  </g>
+</svg>

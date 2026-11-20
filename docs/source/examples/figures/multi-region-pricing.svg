@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Price matrix by product and region beside a constant-elasticity demand curve">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <g fill="#2f6fb0">
+    <rect x="60" y="80" width="44" height="30" rx="4" fill-opacity="0.35"/>
+    <rect x="108" y="80" width="44" height="30" rx="4" fill-opacity="0.55"/>
+    <rect x="156" y="80" width="44" height="30" rx="4" fill-opacity="0.45"/>
+    <rect x="204" y="80" width="44" height="30" rx="4" fill-opacity="0.7"/>
+    <rect x="252" y="80" width="44" height="30" rx="4" fill-opacity="0.3"/>
+    <rect x="300" y="80" width="44" height="30" rx="4" fill-opacity="0.5"/>
+    <rect x="60" y="114" width="44" height="30" rx="4" fill-opacity="0.6"/>
+    <rect x="108" y="114" width="44" height="30" rx="4" fill-opacity="0.4"/>
+    <rect x="156" y="114" width="44" height="30" rx="4" fill-opacity="0.8"/>
+    <rect x="204" y="114" width="44" height="30" rx="4" fill-opacity="0.5"/>
+    <rect x="252" y="114" width="44" height="30" rx="4" fill-opacity="0.65"/>
+    <rect x="300" y="114" width="44" height="30" rx="4" fill-opacity="0.25"/>
+    <rect x="60" y="148" width="44" height="30" rx="4" fill-opacity="0.25"/>
+    <rect x="108" y="148" width="44" height="30" rx="4" fill-opacity="0.7"/>
+    <rect x="156" y="148" width="44" height="30" rx="4" fill-opacity="0.5"/>
+    <rect x="204" y="148" width="44" height="30" rx="4" fill-opacity="0.9"/>
+    <rect x="252" y="148" width="44" height="30" rx="4" fill-opacity="0.4"/>
+    <rect x="300" y="148" width="44" height="30" rx="4" fill-opacity="0.6"/>
+    <rect x="60" y="182" width="44" height="30" rx="4" fill-opacity="0.5"/>
+    <rect x="108" y="182" width="44" height="30" rx="4" fill-opacity="0.3"/>
+    <rect x="156" y="182" width="44" height="30" rx="4" fill-opacity="0.6"/>
+    <rect x="204" y="182" width="44" height="30" rx="4" fill-opacity="0.45"/>
+    <rect x="252" y="182" width="44" height="30" rx="4" fill-opacity="0.75"/>
+    <rect x="300" y="182" width="44" height="30" rx="4" fill-opacity="0.35"/>
+    <rect x="60" y="216" width="44" height="30" rx="4" fill-opacity="0.8"/>
+    <rect x="108" y="216" width="44" height="30" rx="4" fill-opacity="0.55"/>
+    <rect x="156" y="216" width="44" height="30" rx="4" fill-opacity="0.3"/>
+    <rect x="204" y="216" width="44" height="30" rx="4" fill-opacity="0.6"/>
+    <rect x="252" y="216" width="44" height="30" rx="4" fill-opacity="0.5"/>
+    <rect x="300" y="216" width="44" height="30" rx="4" fill-opacity="0.9"/>
+    <rect x="60" y="250" width="44" height="30" rx="4" fill-opacity="0.4"/>
+    <rect x="108" y="250" width="44" height="30" rx="4" fill-opacity="0.65"/>
+    <rect x="156" y="250" width="44" height="30" rx="4" fill-opacity="0.75"/>
+    <rect x="204" y="250" width="44" height="30" rx="4" fill-opacity="0.35"/>
+    <rect x="252" y="250" width="44" height="30" rx="4" fill-opacity="0.6"/>
+    <rect x="300" y="250" width="44" height="30" rx="4" fill-opacity="0.45"/>
+    <rect x="60" y="284" width="44" height="30" rx="4" fill-opacity="0.6"/>
+    <rect x="108" y="284" width="44" height="30" rx="4" fill-opacity="0.2"/>
+    <rect x="156" y="284" width="44" height="30" rx="4" fill-opacity="0.5"/>
+    <rect x="204" y="284" width="44" height="30" rx="4" fill-opacity="0.7"/>
+    <rect x="252" y="284" width="44" height="30" rx="4" fill-opacity="0.4"/>
+    <rect x="300" y="284" width="44" height="30" rx="4" fill-opacity="0.55"/>
+    <rect x="60" y="318" width="44" height="30" rx="4" fill-opacity="0.45"/>
+    <rect x="108" y="318" width="44" height="30" rx="4" fill-opacity="0.8"/>
+    <rect x="156" y="318" width="44" height="30" rx="4" fill-opacity="0.35"/>
+    <rect x="204" y="318" width="44" height="30" rx="4" fill-opacity="0.55"/>
+    <rect x="252" y="318" width="44" height="30" rx="4" fill-opacity="0.7"/>
+    <rect x="300" y="318" width="44" height="30" rx="4" fill-opacity="0.3"/>
+  </g>
+  <path d="M400 80 V340 H600" fill="none" stroke="#1f2937" stroke-width="2"/>
+  <path d="M420 80 C450 200 500 290 590 318" fill="none" stroke="#1f2937" stroke-width="3"/>
+  <path d="M420 340 C445 240 470 212 500 212 S565 262 590 322" fill="none" stroke="#2f6fb0" stroke-width="3" stroke-dasharray="8 6"/>
+  <circle cx="500" cy="212" r="7" fill="#e07b39" stroke="#ffffff" stroke-width="2"/>
+</svg>

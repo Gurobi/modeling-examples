@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Technician routes from a service center to jobs">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M320 200 L220 120 L130 150 L160 260 Z" fill="none" stroke="#2f6fb0" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M320 200 L440 110 L540 140 L520 250 Z" fill="none" stroke="#e07b39" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M320 200 L330 330 L460 320 Z" fill="none" stroke="#1f2937" stroke-width="4" stroke-linejoin="round"/>
+  <g fill="#ffffff" stroke="#2f6fb0" stroke-width="4">
+    <circle cx="220" cy="120" r="14"/>
+    <circle cx="130" cy="150" r="11"/>
+    <circle cx="160" cy="260" r="11"/>
+  </g>
+  <g fill="#ffffff" stroke="#e07b39" stroke-width="4">
+    <circle cx="440" cy="110" r="11"/>
+    <circle cx="540" cy="140" r="14"/>
+    <circle cx="520" cy="250" r="11"/>
+  </g>
+  <g fill="#ffffff" stroke="#1f2937" stroke-width="4">
+    <circle cx="330" cy="330" r="11"/>
+    <circle cx="460" cy="320" r="14"/>
+  </g>
+  <rect x="302" y="182" width="36" height="36" rx="6" fill="#1f2937"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Van routes from Heathrow across London">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M0 300 Q160 250 280 290 T640 250" fill="none" stroke="#dbe8f5" stroke-width="22"/>
+  <path d="M120 200 L250 120 L340 90 L430 130 L390 190 Z" fill="none" stroke="#2f6fb0" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M120 200 L240 290 L330 330 L460 300 L500 250 Z" fill="none" stroke="#e07b39" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M120 200 L300 200 L470 170 L560 230 Z" fill="none" stroke="#1f2937" stroke-width="3" stroke-dasharray="10 6" stroke-linejoin="round"/>
+  <g fill="#ffffff" stroke="#2f6fb0" stroke-width="3">
+    <circle cx="250" cy="120" r="6"/>
+    <circle cx="340" cy="90" r="6"/>
+    <circle cx="430" cy="130" r="6"/>
+    <circle cx="390" cy="190" r="6"/>
+  </g>
+  <g fill="#ffffff" stroke="#e07b39" stroke-width="3">
+    <circle cx="240" cy="290" r="6"/>
+    <circle cx="330" cy="330" r="6"/>
+    <circle cx="460" cy="300" r="6"/>
+    <circle cx="500" cy="250" r="6"/>
+  </g>
+  <g fill="#ffffff" stroke="#1f2937" stroke-width="3">
+    <circle cx="300" cy="200" r="6"/>
+    <circle cx="470" cy="170" r="6"/>
+    <circle cx="560" cy="230" r="6"/>
+  </g>
+  <rect x="104" y="184" width="32" height="32" rx="6" fill="#1f2937" stroke="#ffffff" stroke-width="3"/>
+</svg>

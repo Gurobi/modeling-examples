@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Curve fitting with deviations">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M80 60 V340 H580" fill="none" stroke="#1f2937" stroke-width="2.5"/>
+  <path d="M120 305 V311 M170 288 V292 M210 262 V270 M250 252 V258 M300 230 V235 M340 200 V212 M390 189 V195 M430 160 V171 M480 149 V152 M560 113 V125" stroke="#9aa2ae" stroke-width="3"/>
+  <path d="M520 118 V131" stroke="#e07b39" stroke-width="5"/>
+  <line x1="100" y1="320" x2="560" y2="113" stroke="#e07b39" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#2f6fb0" stroke="#ffffff" stroke-width="2">
+    <circle cx="120" cy="305" r="7"/>
+    <circle cx="170" cy="292" r="7"/>
+    <circle cx="210" cy="262" r="7"/>
+    <circle cx="250" cy="258" r="7"/>
+    <circle cx="300" cy="235" r="7"/>
+    <circle cx="340" cy="200" r="7"/>
+    <circle cx="390" cy="195" r="7"/>
+    <circle cx="430" cy="160" r="7"/>
+    <circle cx="480" cy="152" r="7"/>
+    <circle cx="520" cy="118" r="7"/>
+    <circle cx="560" cy="125" r="7"/>
+  </g>
+</svg>

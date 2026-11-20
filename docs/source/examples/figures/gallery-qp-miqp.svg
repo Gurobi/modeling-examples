@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="QP / MIQP">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <rect x="12" y="12" width="616" height="376" fill="none" stroke="#c3c8d0" stroke-width="2" stroke-dasharray="10 8" rx="8"/>
+  <path d="M150 130 Q320 390 490 130" fill="none" stroke="#2f6fb0" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#2f6fb0">
+    <circle cx="235" cy="228" r="6"/>
+    <circle cx="320" cy="260" r="8"/>
+    <circle cx="405" cy="228" r="6"/>
+  </g>
+  <text x="320" y="335" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#1f2937">QP / MIQP</text>
+</svg>

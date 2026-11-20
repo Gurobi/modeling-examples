@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Two-week workforce schedule with temporary workers">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M330 100 V340" stroke="#9aa2ae" stroke-width="2" stroke-dasharray="4 6"/>
+  <path d="M50 270 H610" stroke="#1f2937" stroke-width="2" stroke-dasharray="8 6"/>
+  <g fill="#2f6fb0">
+    <rect x="70" y="280" width="26" height="50" rx="3"/>
+    <rect x="108" y="270" width="26" height="60" rx="3"/>
+    <rect x="146" y="280" width="26" height="50" rx="3"/>
+    <rect x="184" y="270" width="26" height="60" rx="3"/>
+    <rect x="222" y="270" width="26" height="60" rx="3"/>
+    <rect x="260" y="290" width="26" height="40" rx="3"/>
+    <rect x="298" y="300" width="26" height="30" rx="3"/>
+    <rect x="336" y="280" width="26" height="50" rx="3"/>
+    <rect x="374" y="270" width="26" height="60" rx="3"/>
+    <rect x="412" y="270" width="26" height="60" rx="3"/>
+    <rect x="450" y="290" width="26" height="40" rx="3"/>
+    <rect x="488" y="270" width="26" height="60" rx="3"/>
+    <rect x="526" y="280" width="26" height="50" rx="3"/>
+    <rect x="564" y="290" width="26" height="40" rx="3"/>
+  </g>
+  <g fill="#e07b39">
+    <rect x="108" y="260" width="26" height="10" rx="3"/>
+    <rect x="146" y="270" width="26" height="10" rx="3"/>
+    <rect x="184" y="250" width="26" height="20" rx="3"/>
+    <rect x="222" y="240" width="26" height="30" rx="3"/>
+    <rect x="336" y="270" width="26" height="10" rx="3"/>
+    <rect x="374" y="260" width="26" height="10" rx="3"/>
+    <rect x="412" y="250" width="26" height="20" rx="3"/>
+    <rect x="450" y="280" width="26" height="10" rx="3"/>
+    <rect x="488" y="240" width="26" height="30" rx="3"/>
+    <rect x="526" y="270" width="26" height="10" rx="3"/>
+  </g>
+  <path d="M50 330 H610" stroke="#1f2937" stroke-width="2"/>
+</svg>

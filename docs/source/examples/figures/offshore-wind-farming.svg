@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Offshore wind farm with cable network">
+  <rect width="640" height="400" fill="#dbe8f5"/>
+  <path d="M200 0 Q178 100 196 200 Q214 300 190 400 H0 V0 Z" fill="#e5e9f0" stroke="#9aa2ae" stroke-width="2"/>
+  <rect x="400" y="80" width="180" height="240" rx="12" fill="none" stroke="#2f6fb0" stroke-width="2" stroke-dasharray="8 6"/>
+  <path d="M340 150 L430 110 M340 150 L490 110 M340 150 L550 110 M340 150 L430 190 M340 150 L490 190 M340 150 L550 190 M340 270 L430 290 M340 270 L490 290 M340 270 L550 290" stroke="#9aa2ae" stroke-width="2" fill="none"/>
+  <path d="M150 200 L340 150 M150 200 L340 270" stroke="#2f6fb0" stroke-width="5" fill="none"/>
+  <g fill="#ffffff" stroke="#1f2937" stroke-width="2.5">
+    <circle cx="430" cy="110" r="9"/>
+    <circle cx="490" cy="110" r="9"/>
+    <circle cx="550" cy="110" r="9"/>
+    <circle cx="430" cy="190" r="9"/>
+    <circle cx="490" cy="190" r="9"/>
+    <circle cx="550" cy="190" r="9"/>
+    <circle cx="430" cy="290" r="9"/>
+    <circle cx="490" cy="290" r="9"/>
+    <circle cx="550" cy="290" r="9"/>
+  </g>
+  <g fill="#2f6fb0" stroke="#ffffff" stroke-width="2">
+    <rect x="329" y="139" width="22" height="22" rx="3"/>
+    <rect x="329" y="259" width="22" height="22" rx="3"/>
+  </g>
+  <rect x="137" y="187" width="26" height="26" rx="3" fill="#e07b39" stroke="#ffffff" stroke-width="2"/>
+</svg>

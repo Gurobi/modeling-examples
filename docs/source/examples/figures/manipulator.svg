@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Two-link arm moving its end effector around a circular obstacle">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M60 374 H580" stroke="#9aa2ae" stroke-width="2"/>
+  <rect x="106" y="360" width="28" height="14" fill="#1f2937"/>
+  <circle cx="235" cy="215" r="20" fill="#c3c8d0" stroke="#1f2937" stroke-width="2"/>
+  <path d="M176 168 C205 130 250 130 266 159 S305 180 323 201" fill="none" stroke="#e07b39" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <circle cx="323" cy="201" r="15" fill="none" stroke="#e07b39" stroke-width="3"/>
+  <path d="M120 360 L72 228 L176 168" fill="none" stroke="#9aa2ae" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.5"/>
+  <path d="M120 360 L168 228 L266 159" fill="none" stroke="#8fb4de" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 360 L219 261 L323 201" fill="none" stroke="#2f6fb0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#ffffff" stroke="#1f2937" stroke-width="2">
+    <circle cx="72" cy="228" r="6"/>
+    <circle cx="176" cy="168" r="6"/>
+    <circle cx="168" cy="228" r="6"/>
+    <circle cx="266" cy="159" r="6"/>
+    <circle cx="219" cy="261" r="6"/>
+  </g>
+  <circle cx="323" cy="201" r="6" fill="#e07b39"/>
+</svg>

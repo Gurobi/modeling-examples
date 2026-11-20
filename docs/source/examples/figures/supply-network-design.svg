@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Supply network from factories through depots to customers">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M110 130 L300 60 M110 130 L300 170 M110 290 L300 170 M110 290 L300 270 M110 290 L300 350" stroke="#1f2937" stroke-width="3" stroke-opacity="0.6" fill="none"/>
+  <path d="M300 60 L520 45 M300 60 L520 115 M300 170 L520 115 M300 170 L520 185 M300 170 L520 245 M300 270 L520 245 M300 270 L520 305 M300 350 L520 305 M300 350 L520 365" stroke="#2f6fb0" stroke-width="2.5" fill="none"/>
+  <path d="M110 130 L520 45 M110 290 L520 305" stroke="#e07b39" stroke-width="2" stroke-dasharray="8 6" fill="none"/>
+  <g fill="#1f2937">
+    <rect x="93" y="113" width="34" height="34" rx="4"/>
+    <rect x="93" y="273" width="34" height="34" rx="4"/>
+  </g>
+  <g fill="#2f6fb0">
+    <circle cx="300" cy="60" r="18"/>
+    <circle cx="300" cy="170" r="18"/>
+    <circle cx="300" cy="270" r="18"/>
+    <circle cx="300" cy="350" r="18"/>
+  </g>
+  <g fill="#ffffff" stroke="#1f2937" stroke-width="3">
+    <circle cx="520" cy="45" r="12"/>
+    <circle cx="520" cy="115" r="12"/>
+    <circle cx="520" cy="185" r="12"/>
+    <circle cx="520" cy="245" r="12"/>
+    <circle cx="520" cy="305" r="12"/>
+    <circle cx="520" cy="365" r="12"/>
+  </g>
+</svg>

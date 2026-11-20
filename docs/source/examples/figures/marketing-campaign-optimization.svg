@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Customer offers grid and campaign budget">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <g fill="#9aa2ae">
+    <circle cx="120" cy="80" r="10"/>
+    <circle cx="120" cy="112" r="10"/>
+    <circle cx="120" cy="144" r="10"/>
+    <circle cx="120" cy="176" r="10"/>
+    <circle cx="120" cy="208" r="10"/>
+    <circle cx="120" cy="240" r="10"/>
+    <circle cx="120" cy="272" r="10"/>
+    <circle cx="120" cy="304" r="10"/>
+  </g>
+  <g fill="#ffffff" stroke="#c3c8d0" stroke-width="2">
+    <circle cx="260" cy="80" r="10"/>
+    <circle cx="420" cy="80" r="10"/>
+    <circle cx="500" cy="80" r="10"/>
+    <circle cx="180" cy="112" r="10"/>
+    <circle cx="340" cy="112" r="10"/>
+    <circle cx="420" cy="112" r="10"/>
+    <circle cx="500" cy="112" r="10"/>
+    <circle cx="260" cy="144" r="10"/>
+    <circle cx="340" cy="144" r="10"/>
+    <circle cx="180" cy="176" r="10"/>
+    <circle cx="260" cy="176" r="10"/>
+    <circle cx="420" cy="176" r="10"/>
+    <circle cx="500" cy="176" r="10"/>
+    <circle cx="180" cy="208" r="10"/>
+    <circle cx="340" cy="208" r="10"/>
+    <circle cx="420" cy="208" r="10"/>
+    <circle cx="260" cy="240" r="10"/>
+    <circle cx="500" cy="240" r="10"/>
+    <circle cx="180" cy="272" r="10"/>
+    <circle cx="260" cy="272" r="10"/>
+    <circle cx="340" cy="272" r="10"/>
+    <circle cx="420" cy="272" r="10"/>
+    <circle cx="180" cy="304" r="10"/>
+    <circle cx="420" cy="304" r="10"/>
+    <circle cx="500" cy="304" r="10"/>
+  </g>
+  <g fill="#e07b39">
+    <circle cx="180" cy="80" r="10"/>
+    <circle cx="340" cy="80" r="10"/>
+    <circle cx="260" cy="112" r="10"/>
+    <circle cx="180" cy="144" r="10"/>
+    <circle cx="420" cy="144" r="10"/>
+    <circle cx="500" cy="144" r="10"/>
+    <circle cx="340" cy="176" r="10"/>
+    <circle cx="260" cy="208" r="10"/>
+    <circle cx="500" cy="208" r="10"/>
+    <circle cx="180" cy="240" r="10"/>
+    <circle cx="340" cy="240" r="10"/>
+    <circle cx="420" cy="240" r="10"/>
+    <circle cx="500" cy="272" r="10"/>
+    <circle cx="260" cy="304" r="10"/>
+    <circle cx="340" cy="304" r="10"/>
+  </g>
+  <rect x="160" y="340" width="360" height="16" rx="8" fill="#dbe8f5"/>
+  <rect x="160" y="340" width="234" height="16" rx="8" fill="#2f6fb0"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="3D Tic-Tac-Toe board">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <rect x="290" y="60" width="180" height="180" rx="4" fill="#eef3f9" stroke="#9aa2ae" stroke-width="3"/>
+  <rect x="230" y="105" width="180" height="180" rx="4" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="3"/>
+  <rect x="170" y="150" width="180" height="180" rx="4" fill="#ffffff" stroke="#2f6fb0" stroke-width="4"/>
+  <path d="M230 150 V330 M290 150 V330 M170 210 H350 M170 270 H350" stroke="#c3c8d0" stroke-width="2" fill="none"/>
+  <path d="M186 166 L214 194 M214 166 L186 194 M306 166 L334 194 M334 166 L306 194 M246 226 L274 254 M274 226 L246 254 M186 286 L214 314 M214 286 L186 314 M306 286 L334 314 M334 286 L306 314" stroke="#e07b39" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <g fill="none" stroke="#2f6fb0" stroke-width="6">
+    <circle cx="260" cy="180" r="14"/>
+    <circle cx="200" cy="240" r="14"/>
+    <circle cx="320" cy="240" r="14"/>
+    <circle cx="260" cy="300" r="14"/>
+  </g>
+</svg>

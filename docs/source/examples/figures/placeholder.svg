@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Figure placeholder">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <rect x="12" y="12" width="616" height="376" fill="none" stroke="#c3c8d0" stroke-width="2" stroke-dasharray="10 8" rx="8"/>
+  <g fill="none" stroke="#9aa2ae" stroke-width="3" stroke-linecap="round">
+    <path d="M160 268 L240 196 L320 232 L400 148 L480 184"/>
+  </g>
+  <g fill="#9aa2ae">
+    <circle cx="160" cy="268" r="7"/>
+    <circle cx="240" cy="196" r="7"/>
+    <circle cx="320" cy="232" r="7"/>
+    <circle cx="400" cy="148" r="7"/>
+    <circle cx="480" cy="184" r="7"/>
+  </g>
+  <text x="320" y="330" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#6b7280">Figure coming soon</text>
+</svg>

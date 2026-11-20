@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Map of four regions, each with its own price tag, and bars comparing region prices">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M60 120 L180 80 L250 130 L220 220 L110 230 Z" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M250 130 L360 110 L390 200 L300 260 L220 220 Z" fill="#8fb4de" stroke="#2f6fb0" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M110 230 L220 220 L300 260 L270 330 L140 320 Z" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M360 110 L450 90 L470 170 L450 280 L300 260 L390 200 Z" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M160 160 L300 170 L200 280 M300 170 L410 200" fill="none" stroke="#1f2937" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <g fill="#ffffff" stroke="#e07b39" stroke-width="2">
+    <rect x="140" y="148" width="44" height="20" rx="4"/>
+    <rect x="282" y="158" width="44" height="20" rx="4"/>
+    <rect x="182" y="268" width="44" height="20" rx="4"/>
+    <rect x="392" y="188" width="44" height="20" rx="4"/>
+  </g>
+  <g fill="#e07b39">
+    <circle cx="150" cy="158" r="3"/>
+    <circle cx="292" cy="168" r="3"/>
+    <circle cx="192" cy="278" r="3"/>
+    <circle cx="402" cy="198" r="3"/>
+  </g>
+  <line x1="486" y1="340" x2="610" y2="340" stroke="#9aa2ae" stroke-width="1.5"/>
+  <rect x="492" y="260" width="22" height="80" fill="#2f6fb0"/>
+  <rect x="522" y="220" width="22" height="120" fill="#e07b39"/>
+  <rect x="552" y="280" width="22" height="60" fill="#2f6fb0"/>
+  <rect x="582" y="240" width="22" height="100" fill="#2f6fb0"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="LP / MILP">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <rect x="12" y="12" width="616" height="376" fill="none" stroke="#c3c8d0" stroke-width="2" stroke-dasharray="10 8" rx="8"/>
+  <polygon points="170,250 250,140 390,120 480,200 380,250" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="4" stroke-linejoin="round"/>
+  <g fill="#2f6fb0">
+    <circle cx="250" cy="220" r="6"/>
+    <circle cx="310" cy="200" r="6"/>
+    <circle cx="370" cy="180" r="6"/>
+    <circle cx="300" cy="240" r="6"/>
+    <circle cx="360" cy="220" r="6"/>
+  </g>
+  <text x="320" y="335" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="52" font-weight="bold" fill="#1f2937">LP / MILP</text>
+</svg>

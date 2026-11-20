@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Staffing levels by skill over four years">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M70 90 H570 M70 138 H570 M70 186 H570 M70 234 H570" stroke="#dde2ea" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <path d="M70 330 H570" stroke="#1f2937" stroke-width="2"/>
+  <g fill="#9aa2ae">
+    <rect x="90" y="138" width="30" height="192"/>
+    <rect x="210" y="234" width="30" height="96"/>
+    <rect x="330" y="282" width="30" height="48"/>
+  </g>
+  <g fill="#8fb4de">
+    <rect x="125" y="186" width="30" height="144"/>
+    <rect x="245" y="196" width="30" height="134"/>
+    <rect x="365" y="138" width="30" height="192"/>
+    <rect x="485" y="90" width="30" height="240"/>
+  </g>
+  <g fill="#2f6fb0">
+    <rect x="160" y="234" width="30" height="96"/>
+    <rect x="280" y="234" width="30" height="96"/>
+    <rect x="400" y="186" width="30" height="144"/>
+    <rect x="520" y="138" width="30" height="192"/>
+  </g>
+</svg>

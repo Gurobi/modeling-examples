@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Customers assigned to facilities">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M110 90 L180 130 M130 170 L180 130 M220 170 L180 130 M150 60 L180 130 M230 90 L180 130 M90 140 L180 130 M200 200 L180 130 M255 130 L180 130 M380 70 L430 120 M470 80 L430 120 M500 140 L430 120 M400 170 L430 120 M470 190 L430 120 M540 110 L430 120 M360 150 L430 120 M560 170 L430 120 M260 320 L320 300 M300 360 L320 300 M380 350 L320 300 M240 280 L320 300 M400 280 L320 300 M350 240 L320 300 M290 250 L320 300 M420 330 L320 300" stroke="#aab3bf" stroke-width="2" fill="none"/>
+  <g fill="#2f6fb0">
+    <circle cx="110" cy="90" r="5"/>
+    <circle cx="130" cy="170" r="5"/>
+    <circle cx="220" cy="170" r="5"/>
+    <circle cx="150" cy="60" r="5"/>
+    <circle cx="230" cy="90" r="5"/>
+    <circle cx="90" cy="140" r="5"/>
+    <circle cx="200" cy="200" r="5"/>
+    <circle cx="255" cy="130" r="5"/>
+    <circle cx="380" cy="70" r="5"/>
+    <circle cx="470" cy="80" r="5"/>
+    <circle cx="500" cy="140" r="5"/>
+    <circle cx="400" cy="170" r="5"/>
+    <circle cx="470" cy="190" r="5"/>
+    <circle cx="540" cy="110" r="5"/>
+    <circle cx="360" cy="150" r="5"/>
+    <circle cx="560" cy="170" r="5"/>
+    <circle cx="260" cy="320" r="5"/>
+    <circle cx="300" cy="360" r="5"/>
+    <circle cx="380" cy="350" r="5"/>
+    <circle cx="240" cy="280" r="5"/>
+    <circle cx="400" cy="280" r="5"/>
+    <circle cx="350" cy="240" r="5"/>
+    <circle cx="290" cy="250" r="5"/>
+    <circle cx="420" cy="330" r="5"/>
+  </g>
+  <g fill="#1f2937" stroke="#ffffff" stroke-width="2">
+    <rect x="167" y="117" width="26" height="26" rx="3"/>
+    <rect x="417" y="107" width="26" height="26" rx="3"/>
+    <rect x="307" y="287" width="26" height="26" rx="3"/>
+  </g>
+</svg>

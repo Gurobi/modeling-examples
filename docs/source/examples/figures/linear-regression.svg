@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Bar chart comparing OLS, Lasso and L0-Regression, with a row of selected features">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <rect x="150" y="150" width="110" height="180" fill="#9aa2ae"/>
+  <rect x="265" y="154" width="110" height="176" fill="#8fb4de"/>
+  <rect x="380" y="140" width="110" height="190" fill="#2f6fb0"/>
+  <path d="M90 330 H580" stroke="#1f2937" stroke-width="2"/>
+  <g fill="#dbe8f5" stroke="#9aa2ae" stroke-width="1.5">
+    <rect x="126" y="350" width="20" height="20" rx="3"/>
+    <rect x="162" y="350" width="20" height="20" rx="3"/>
+    <rect x="234" y="350" width="20" height="20" rx="3"/>
+    <rect x="306" y="350" width="20" height="20" rx="3"/>
+    <rect x="342" y="350" width="20" height="20" rx="3"/>
+    <rect x="414" y="350" width="20" height="20" rx="3"/>
+    <rect x="450" y="350" width="20" height="20" rx="3"/>
+    <rect x="522" y="350" width="20" height="20" rx="3"/>
+  </g>
+  <g fill="#2f6fb0">
+    <rect x="90" y="350" width="20" height="20" rx="3"/>
+    <rect x="198" y="350" width="20" height="20" rx="3"/>
+    <rect x="270" y="350" width="20" height="20" rx="3"/>
+    <rect x="378" y="350" width="20" height="20" rx="3"/>
+    <rect x="486" y="350" width="20" height="20" rx="3"/>
+  </g>
+</svg>

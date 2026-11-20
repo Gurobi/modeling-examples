@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Oil refining and blending process">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <rect x="75" y="200" width="150" height="22" rx="4" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="2"/>
+  <rect x="290" y="200" width="226" height="22" rx="4" fill="#fbe3d2" stroke="#e07b39" stroke-width="2"/>
+  <rect x="90" y="70" width="56" height="100" rx="10" fill="#2f6fb0"/>
+  <rect x="170" y="70" width="56" height="100" rx="10" fill="#2f6fb0"/>
+  <rect x="300" y="70" width="56" height="100" rx="10" fill="#e07b39"/>
+  <rect x="380" y="70" width="56" height="100" rx="10" fill="#e07b39"/>
+  <rect x="460" y="70" width="56" height="100" rx="10" fill="#e07b39"/>
+  <path d="M118 170 V200 M198 170 V200 M328 170 V200 M408 170 V200 M488 170 V200" stroke="#1f2937" stroke-width="3"/>
+  <path d="M150 222 V246 H300 V270 M403 222 V246 H340 V270" fill="none" stroke="#1f2937" stroke-width="3"/>
+  <rect x="250" y="270" width="140" height="90" rx="12" fill="#dbe8f5" stroke="#1f2937" stroke-width="3"/>
+  <path d="M250 300 Q280 290 320 300 T390 300" fill="none" stroke="#2f6fb0" stroke-width="3"/>
+  <path d="M390 315 H465" stroke="#1f2937" stroke-width="4"/>
+  <polygon points="465,305 480,315 465,325" fill="#1f2937"/>
+  <rect x="480" y="260" width="110" height="110" rx="12" fill="#2f6fb0"/>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Warehouses supplying supermarkets">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M120 90 L180 130 M200 90 L180 130 M280 90 L180 130 M360 90 L180 130 M120 160 L180 130 M200 160 L180 130 M280 160 L180 130 M120 230 L180 130 M200 230 L180 130 M280 230 L180 130 M120 300 L180 130 M200 300 L180 130 M440 90 L450 260 M520 90 L450 260 M360 160 L450 260 M440 160 L450 260 M520 160 L450 260 M360 230 L450 260 M440 230 L450 260 M520 230 L450 260 M280 300 L450 260 M360 300 L450 260 M440 300 L450 260 M520 300 L450 260" stroke="#aab3bf" stroke-width="2" fill="none"/>
+  <g fill="#2f6fb0">
+    <circle cx="120" cy="90" r="6"/>
+    <circle cx="200" cy="90" r="6"/>
+    <circle cx="280" cy="90" r="6"/>
+    <circle cx="360" cy="90" r="6"/>
+    <circle cx="440" cy="90" r="6"/>
+    <circle cx="520" cy="90" r="6"/>
+    <circle cx="120" cy="160" r="6"/>
+    <circle cx="200" cy="160" r="6"/>
+    <circle cx="280" cy="160" r="6"/>
+    <circle cx="360" cy="160" r="6"/>
+    <circle cx="440" cy="160" r="6"/>
+    <circle cx="520" cy="160" r="6"/>
+    <circle cx="120" cy="230" r="6"/>
+    <circle cx="200" cy="230" r="6"/>
+    <circle cx="280" cy="230" r="6"/>
+    <circle cx="360" cy="230" r="6"/>
+    <circle cx="440" cy="230" r="6"/>
+    <circle cx="520" cy="230" r="6"/>
+    <circle cx="120" cy="300" r="6"/>
+    <circle cx="200" cy="300" r="6"/>
+    <circle cx="280" cy="300" r="6"/>
+    <circle cx="360" cy="300" r="6"/>
+    <circle cx="440" cy="300" r="6"/>
+    <circle cx="520" cy="300" r="6"/>
+  </g>
+  <g fill="#e07b39" stroke="#ffffff" stroke-width="3">
+    <rect x="165" y="115" width="30" height="30" rx="4"/>
+    <rect x="435" y="245" width="30" height="30" rx="4"/>
+  </g>
+</svg>

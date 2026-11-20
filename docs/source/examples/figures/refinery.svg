@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Refinery process flow from crude to blended products">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#1f2937"/>
+    </marker>
+  </defs>
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <rect x="50" y="110" width="60" height="70" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="3"/>
+  <ellipse cx="80" cy="110" rx="30" ry="8" fill="#cfe0f2" stroke="#2f6fb0" stroke-width="3"/>
+  <rect x="50" y="250" width="60" height="70" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="3"/>
+  <ellipse cx="80" cy="250" rx="30" ry="8" fill="#cfe0f2" stroke="#2f6fb0" stroke-width="3"/>
+  <path d="M110 145 H190 M110 285 H190" stroke="#1f2937" stroke-width="3"/>
+  <rect x="190" y="70" width="60" height="260" rx="14" fill="#ffffff" stroke="#1f2937" stroke-width="3"/>
+  <path d="M195 120 H245 M195 170 H245 M195 220 H245 M195 270 H245" stroke="#9aa2ae" stroke-width="2"/>
+  <path d="M250 130 H300 M250 260 H300" stroke="#1f2937" stroke-width="3"/>
+  <rect x="300" y="100" width="100" height="60" rx="8" fill="#2f6fb0"/>
+  <rect x="300" y="230" width="100" height="60" rx="8" fill="#e07b39"/>
+  <path d="M400 130 H430 V108 H460 M400 130 H430 V198 H460 M400 260 H430 V288 H460 M400 260 H430 V198 H460" fill="none" stroke="#1f2937" stroke-width="3"/>
+  <rect x="460" y="80" width="70" height="56" rx="10" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="3"/>
+  <rect x="460" y="170" width="70" height="56" rx="10" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="3"/>
+  <rect x="460" y="260" width="70" height="56" rx="10" fill="#dbe8f5" stroke="#2f6fb0" stroke-width="3"/>
+  <path d="M530 108 H600 M530 198 H600 M530 288 H600" stroke="#1f2937" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>

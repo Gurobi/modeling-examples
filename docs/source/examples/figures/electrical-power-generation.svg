@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Generation stack by period against demand">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M80 80 H580 M80 130 H580 M80 180 H580 M80 230 H580 M80 280 H580" stroke="#dde2ea" stroke-width="1.5"/>
+  <rect x="110" y="180" width="60" height="150" fill="#2f6fb0"/>
+  <rect x="110" y="130" width="60" height="50" fill="#8fb4de"/>
+  <rect x="200" y="180" width="60" height="150" fill="#2f6fb0"/>
+  <rect x="200" y="100" width="60" height="80" fill="#8fb4de"/>
+  <rect x="200" y="70" width="60" height="30" fill="#e07b39"/>
+  <rect x="290" y="180" width="60" height="150" fill="#2f6fb0"/>
+  <rect x="290" y="70" width="60" height="110" fill="#8fb4de"/>
+  <rect x="290" y="30" width="60" height="40" fill="#e07b39"/>
+  <rect x="380" y="180" width="60" height="150" fill="#2f6fb0"/>
+  <rect x="380" y="90" width="60" height="90" fill="#8fb4de"/>
+  <rect x="380" y="60" width="60" height="30" fill="#e07b39"/>
+  <rect x="470" y="180" width="60" height="150" fill="#2f6fb0"/>
+  <rect x="470" y="120" width="60" height="60" fill="#8fb4de"/>
+  <path d="M80 330 H580" stroke="#1f2937" stroke-width="2"/>
+  <polyline points="140,130 230,70 320,30 410,60 500,120" fill="none" stroke="#1f2937" stroke-width="3" stroke-dasharray="8 6"/>
+  <g fill="#ffffff" stroke="#1f2937" stroke-width="2">
+    <circle cx="140" cy="130" r="5"/>
+    <circle cx="230" cy="70" r="5"/>
+    <circle cx="320" cy="30" r="5"/>
+    <circle cx="410" cy="60" r="5"/>
+    <circle cx="500" cy="120" r="5"/>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Basketball and a five-player lineup">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <circle cx="150" cy="200" r="90" fill="#e07b39" stroke="#1f2937" stroke-width="4"/>
+  <path d="M60 200 H240 M150 110 V290 M96 130 Q130 200 96 270 M204 130 Q170 200 204 270" fill="none" stroke="#1f2937" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#ffffff" stroke="#c3c8d0" stroke-width="2">
+    <rect x="290" y="60" width="300" height="44" rx="8"/>
+    <rect x="290" y="120" width="300" height="44" rx="8"/>
+    <rect x="290" y="180" width="300" height="44" rx="8"/>
+    <rect x="290" y="240" width="300" height="44" rx="8"/>
+    <rect x="290" y="300" width="300" height="44" rx="8"/>
+  </g>
+  <g fill="#1f2937">
+    <circle cx="316" cy="82" r="12"/>
+    <circle cx="316" cy="142" r="12"/>
+    <circle cx="316" cy="202" r="12"/>
+    <circle cx="316" cy="262" r="12"/>
+    <circle cx="316" cy="322" r="12"/>
+  </g>
+  <g fill="#2f6fb0">
+    <rect x="340" y="76" width="230" height="12" rx="6"/>
+    <rect x="340" y="136" width="185" height="12" rx="6"/>
+    <rect x="340" y="196" width="205" height="12" rx="6"/>
+    <rect x="340" y="256" width="150" height="12" rx="6"/>
+    <rect x="340" y="316" width="175" height="12" rx="6"/>
+  </g>
+</svg>

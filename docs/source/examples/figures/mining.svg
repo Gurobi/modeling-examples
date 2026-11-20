@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Five-year operating plan for four mines">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <g fill="#9aa2ae">
+    <polygon points="88,122 106,98 124,122"/>
+    <polygon points="88,182 106,158 124,182"/>
+    <polygon points="88,242 106,218 124,242"/>
+    <polygon points="88,302 106,278 124,302"/>
+  </g>
+  <g fill="#2f6fb0">
+    <rect x="150" y="110" width="72" height="46" rx="8"/>
+    <rect x="230" y="110" width="72" height="46" rx="8"/>
+    <rect x="390" y="110" width="72" height="46" rx="8"/>
+    <rect x="150" y="170" width="72" height="46" rx="8"/>
+    <rect x="310" y="170" width="72" height="46" rx="8"/>
+    <rect x="470" y="170" width="72" height="46" rx="8"/>
+    <rect x="150" y="230" width="72" height="46" rx="8"/>
+    <rect x="310" y="230" width="72" height="46" rx="8"/>
+    <rect x="390" y="290" width="72" height="46" rx="8"/>
+  </g>
+</svg>

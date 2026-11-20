@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Assignment grid of five departments to three cities">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <g font-family="Helvetica, Arial, sans-serif" fill="#1f2937" text-anchor="middle">
+    <text x="300" y="82" font-size="14">Bristol</text>
+    <text x="400" y="82" font-size="14">Brighton</text>
+    <text x="500" y="82" font-size="14">London</text>
+    <text x="230" y="121" font-size="16">A</text>
+    <text x="230" y="173" font-size="16">B</text>
+    <text x="230" y="225" font-size="16">C</text>
+    <text x="230" y="277" font-size="16">D</text>
+    <text x="230" y="329" font-size="16">E</text>
+  </g>
+  <g fill="#ffffff" stroke="#c3c8d0" stroke-width="1.5">
+    <rect x="360" y="96" width="80" height="40" rx="6"/>
+    <rect x="460" y="96" width="80" height="40" rx="6"/>
+    <rect x="260" y="148" width="80" height="40" rx="6"/>
+    <rect x="460" y="148" width="80" height="40" rx="6"/>
+    <rect x="360" y="200" width="80" height="40" rx="6"/>
+    <rect x="460" y="200" width="80" height="40" rx="6"/>
+    <rect x="260" y="252" width="80" height="40" rx="6"/>
+    <rect x="360" y="252" width="80" height="40" rx="6"/>
+    <rect x="260" y="304" width="80" height="40" rx="6"/>
+    <rect x="460" y="304" width="80" height="40" rx="6"/>
+  </g>
+  <g fill="#2f6fb0">
+    <rect x="260" y="96" width="80" height="40" rx="6"/>
+    <rect x="360" y="148" width="80" height="40" rx="6"/>
+    <rect x="260" y="200" width="80" height="40" rx="6"/>
+    <rect x="460" y="252" width="80" height="40" rx="6"/>
+    <rect x="360" y="304" width="80" height="40" rx="6"/>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Open-pit mine with stepped benches, a haul truck, and ore">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M0 110 L150 110 L165 150 L250 150 L265 190 L350 190 L365 230 L440 230 L455 270 L530 110 L640 110 L640 400 L0 400 Z" fill="#c3c8d0" stroke="#9aa2ae" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M165 150 L250 150 M265 190 L350 190 M365 230 L440 230" fill="none" stroke="#9aa2ae" stroke-width="3"/>
+  <rect x="290" y="174" width="30" height="16" fill="#e07b39"/>
+  <rect x="372" y="214" width="34" height="16" fill="#e07b39"/>
+  <rect x="182" y="124" width="46" height="20" rx="3" fill="#2f6fb0"/>
+  <rect x="226" y="116" width="18" height="28" rx="3" fill="#2f6fb0"/>
+  <circle cx="192" cy="144" r="6" fill="#1f2937"/>
+  <circle cx="230" cy="144" r="6" fill="#1f2937"/>
+</svg>

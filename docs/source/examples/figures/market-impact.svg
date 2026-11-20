@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Convex market impact cost curve beside buy and sell trades in a rebalanced portfolio">
+  <rect width="640" height="400" fill="#f5f6f8"/>
+  <path d="M60 60 V340 H300" fill="none" stroke="#1f2937" stroke-width="2"/>
+  <path d="M70 340 L290 110" fill="none" stroke="#9aa2ae" stroke-width="2" stroke-dasharray="6 5"/>
+  <path d="M70 340 Q230 340 290 110" fill="none" stroke="#2f6fb0" stroke-width="3"/>
+  <path d="M340 210 H600" fill="none" stroke="#1f2937" stroke-width="2"/>
+  <g fill="#2f6fb0">
+    <rect x="360" y="140" width="20" height="70"/>
+    <rect x="390" y="170" width="20" height="40"/>
+    <rect x="450" y="185" width="20" height="25"/>
+    <rect x="510" y="150" width="20" height="60"/>
+    <rect x="570" y="195" width="20" height="15"/>
+  </g>
+  <g fill="#e07b39">
+    <rect x="420" y="210" width="20" height="55"/>
+    <rect x="480" y="210" width="20" height="30"/>
+    <rect x="540" y="210" width="20" height="45"/>
+  </g>
+</svg>
